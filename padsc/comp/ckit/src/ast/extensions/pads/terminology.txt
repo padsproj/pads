@@ -1,0 +1,9 @@
+Abbreviations:
+pty = PADS type
+tid = type ID
+tidtab = tid table
+pp = pretty print
+aid = ???
+paid = PADS aid ???
+PCT = Parse-tree C type
+ED = external decl

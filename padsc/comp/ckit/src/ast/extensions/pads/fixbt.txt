@@ -1,0 +1,31 @@
+1. Add column to base types table to indicate which PADS/X type to use
+   for a given base type. Right now, the rep type is used.
+
+2. Change BaseTy module to handle new column
+
+3. Add function(s) for accessing the info.
+
+4. For each PADS construct that generates PADS/X code, change base
+   type name to correct one.
+   x Ptypedef
+   - Pstruct
+   - Punion
+   - Parray
+   - Penum
+
+5. Add correct functions to pglx library.
+   - pglx-internal.h: add necessary declarations (2).
+   - pglx.c: 
+     <new_type>_typed_value
+     <new_type>_sndNode_typed_value
+     PDCI_IMPL_BASE_VT(<new_type>);
+     PDCI_IMPL_BASE_VAL_VT(<new_type>); or  PDCI_IMPL_BASE_VAL_VT_ARG1 ...
+   - path_walk.h: add necessary decls.
+     + make sure to surround with #ifndef FOR_CKIT, as needed.
+   - path_walk.c:PDCI_DEF_BASE_PATH_WALK(<new_type>);
+
+
+notes:
+
+Should the children of Ppos (byte,num) really be Pint32? Their reps are size_t,
+which is an unsigned long. See, for example, path_walk.c.

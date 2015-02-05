@@ -1,0 +1,494 @@
+# PADSL BASE TYPE INFO
+#
+#
+#   The PDC types and function prototypes below are defined in pads.h
+#
+#   Note that the term 'on disk' below is meant to indicate the input data
+#   in some data stream -- data streams need not be disk-based.
+#
+#   Types starting with "Pa_"    are represented on disk using ASCII character encoding.
+#   Types starting with "Pe_"    are represented on disk using EBCDIC character encoding.
+#   Types starting with "Pb_"    are represented on disk using raw binary encoding
+#                                (fixed number of bytes, endian-ness determined by disc setting).
+#   Types starting with "Pbl_"    are represented on disk using raw binary encoding
+#                                (fixed number of bytes, low-order byte first [big-endian]).
+#   Types starting with "Pbh_"    are represented on disk using raw binary encoding
+#                                (fixed number of bytes, high-order byte first [big-endian]).
+#   Types starting with "Psbl_"   are represented on disk using a serialized binary encoding
+#                                 (variable number of bytes, low-order byte first)
+#   Types starting with "Psbh_"   are represented on disk using a serialized binary encoding
+#                                 (variable number of bytes, high-order byte first)
+#   Types starting with "Pebc_"  are represented on disk using EBCDIC numeric encoding,
+#                                which stores 1 digit per byte on disk.
+#   Types starting with "Pbcd_"  are represented on disk using BCD numeric encoding,
+#                                which stores 2 digits per byte on disk.
+# 
+#   "u" represents unsigned, while its absence indicates signed.
+#
+#   Trailing number indicates number of bits required to store in memory; this
+#   property is checked by read functions.
+#
+#   "_FW" suffix indicates a type where a fixed on-disk width must be specified
+#   as a parameter of the type.
+#
+#   Examples:
+#
+#   Pa_uint8
+#
+#      An ASCII-character encoded number that must fit in 1 byte (8 bits) of #
+#      memory; the width in number of chars on disk is not specified (the read #
+#      function reads ASCII characters until it encounters a non-digit #
+#      character).
+#
+#   Pa_uint8_FW(:3:)
+#
+#      An ASCII-character encoded number that must fit in 1 byte (8 bits) of
+#      memory that is represented using exactly 3 characters on disk.
+#
+#   Note that "_FW" is only used when a width must be specified.  Types that
+#   have only one fixed width, such as bint8, do not have the "_FW" suffix.
+#
+#   For the fixedpoint types, TWO parameters are required: the number of digits
+#   (for the ebc_ and bcd_ fpoint types) or bytes (for the sbl_ and sbh_fpoint types)
+#   used to encode the numerator, and the number of digits after the decimal
+#   place.  Digits-after-decimal is part of the type specification, and is not
+#   encoded on disk.  "_FW" is not used for this case because it does not fit
+#   the pattern of the other "_FW" types.
+#
+#   Example:
+#
+#   Pbcd_ufpoint64(:4, 3:)
+#
+#      A fixed point number whose numerator must be unsigned and fit in 8 bytes
+#      (64 bits) of memory, where the numerator is made up of 4 digits (2 BCD
+#      numeric bytes).  The denominator is always 1000 (10^3).
+# 
+#External               Abstract      Internal Rep
+#PADS_name       numArg Pads/X        inMemory      mask       parseDescription     isPredOpt            scanFunctionOpt       accumulatorOpt  DiskSize     Memory(S/V) Endian
+				      				      
+Puint8           0      Puint8        Puint8        Pbase_m    Pbase_pd             -                    -                     Puint8_acc      V            S           N
+Pint8            0      Pint8         Pint8         Pbase_m    Pbase_pd             -                    -                     Pint8_acc       V            S           N
+Puint8_FW        1      Puint8        Puint8        Pbase_m    Pbase_pd             -                    -                     Puint8_acc      P(p1)        S           N
+Pint8_FW         1      Pint8         Pint8         Pbase_m    Pbase_pd             -                    -                     Pint8_acc       P(p1)        S           N
+				      				      
+Puint16          0      Puint16       Puint16       Pbase_m    Pbase_pd             -                    -                     Puint16_acc     V            S           N
+Pint16           0      Pint16        Pint16        Pbase_m    Pbase_pd             -                    -                     Pint16_acc      V            S           N
+Puint16_FW       1      Puint16       Puint16       Pbase_m    Pbase_pd             -                    -                     Puint16_acc     P(p1)        S           N
+Pint16_FW        1      Pint16        Pint16        Pbase_m    Pbase_pd             -                    -                     Pint16_acc      P(p1)        S           N
+				      				      
+Puint32          0      Puint32       Puint32       Pbase_m    Pbase_pd             -                    -                     Puint32_acc     V            S           N
+Pint32           0      Pint32        Pint32        Pbase_m    Pbase_pd             -                    -                     Pint32_acc      V            S           N
+Puint32_FW       1      Puint32       Puint32       Pbase_m    Pbase_pd             -                    -                     Puint32_acc     P(p1)        S           N
+Pint32_FW        1      Pint32        Pint32        Pbase_m    Pbase_pd             -                    -                     Pint32_acc      P(p1)        S           N
+				      				      
+Puint64          0      Puint64       Puint64       Pbase_m    Pbase_pd             -                    -                     Puint64_acc     V            S           N
+Pint64           0      Pint64        Pint64        Pbase_m    Pbase_pd             -                    -                     Pint64_acc      V            S           N
+Puint64_FW       1      Puint64       Puint64       Pbase_m    Pbase_pd             -                    -                     Puint64_acc     P(p1)        S           N
+Pint64_FW        1      Pint64        Pint64        Pbase_m    Pbase_pd             -                    -                     Pint64_acc      P(p1)        S           N
+				      				      
+Pa_uint8         0      Puint8        Puint8        Pbase_m    Pbase_pd             -                    -                     Puint8_acc      V            S           N
+Pa_int8          0      Pint8         Pint8         Pbase_m    Pbase_pd             -                    -                     Pint8_acc       V            S           N
+Pa_uint8_FW      1      Puint8        Puint8        Pbase_m    Pbase_pd             -                    -                     Puint8_acc      P(p1)        S           N
+Pa_int8_FW       1      Pint8         Pint8         Pbase_m    Pbase_pd             -                    -                     Pint8_acc       P(p1)        S           N
+				      				      
+Pa_uint16        0      Puint16       Puint16       Pbase_m    Pbase_pd             -                    -                     Puint16_acc     V            S           N
+Pa_int16         0      Pint16        Pint16        Pbase_m    Pbase_pd             -                    -                     Pint16_acc      V            S           N
+Pa_uint16_FW     1      Puint16       Puint16       Pbase_m    Pbase_pd             -                    -                     Puint16_acc     P(p1)        S           N
+Pa_int16_FW      1      Pint16        Pint16        Pbase_m    Pbase_pd             -                    -                     Pint16_acc      P(p1)        S           N
+				      				      
+Pa_uint32        0      Puint32       Puint32       Pbase_m    Pbase_pd             -                    -                     Puint32_acc     V            S           N
+Pa_int32         0      Pint32        Pint32        Pbase_m    Pbase_pd             -                    -                     Pint32_acc      V            S           N
+Pa_uint32_FW     1      Puint32       Puint32       Pbase_m    Pbase_pd             -                    -                     Puint32_acc     P(p1)        S           N
+Pa_int32_FW      1      Pint32        Pint32        Pbase_m    Pbase_pd             -                    -                     Pint32_acc      P(p1)        S           N
+				      				      
+Pa_uint64        0      Puint64       Puint64       Pbase_m    Pbase_pd             -                    -                     Puint64_acc     V            S           N
+Pa_int64         0      Pint64        Pint64        Pbase_m    Pbase_pd             -                    -                     Pint64_acc      V            S           N
+Pa_uint64_FW     1      Puint64       Puint64       Pbase_m    Pbase_pd             -                    -                     Puint64_acc     P(p1)        S           N
+Pa_int64_FW      1      Pint64        Pint64        Pbase_m    Pbase_pd             -                    -                     Pint64_acc      P(p1)        S           N
+				      				      
+Pe_uint8         0      Puint8        Puint8        Pbase_m    Pbase_pd             -                    -                     Puint8_acc      V            S           N
+Pe_int8          0      Pint8         Pint8         Pbase_m    Pbase_pd             -                    -                     Pint8_acc       V            S           N
+Pe_uint8_FW      1      Puint8        Puint8        Pbase_m    Pbase_pd             -                    -                     Puint8_acc      P(p1)        S           N
+Pe_int8_FW       1      Pint8         Pint8         Pbase_m    Pbase_pd             -                    -                     Pint8_acc       P(p1)        S           N
+				      				      
+Pe_uint16        0      Puint16       Puint16       Pbase_m    Pbase_pd             -                    -                     Puint16_acc     V            S           N
+Pe_int16         0      Pint16        Pint16        Pbase_m    Pbase_pd             -                    -                     Pint16_acc      V            S           N
+Pe_uint16_FW     1      Puint16       Puint16       Pbase_m    Pbase_pd             -                    -                     Puint16_acc     P(p1)        S           N
+Pe_int16_FW      1      Pint16        Pint16        Pbase_m    Pbase_pd             -                    -                     Pint16_acc      P(p1)        S           N
+				      				      
+Pe_uint32        0      Puint32       Puint32       Pbase_m    Pbase_pd             -                    -                     Puint32_acc     V            S           N
+Pe_int32         0      Pint32        Pint32        Pbase_m    Pbase_pd             -                    -                     Pint32_acc      V            S           N
+Pe_uint32_FW     1      Puint32       Puint32       Pbase_m    Pbase_pd             -                    -                     Puint32_acc     P(p1)        S           N
+Pe_int32_FW      1      Pint32        Pint32        Pbase_m    Pbase_pd             -                    -                     Pint32_acc      P(p1)        S           N
+				      				      
+Pe_uint64        0      Puint64       Puint64       Pbase_m    Pbase_pd             -                    -                     Puint64_acc     V            S           N
+Pe_int64         0      Pint64        Pint64        Pbase_m    Pbase_pd             -                    -                     Pint64_acc      V            S           N
+Pe_uint64_FW     1      Puint64       Puint64       Pbase_m    Pbase_pd             -                    -                     Puint64_acc     P(p1)        S           N
+Pe_int64_FW      1      Pint64        Pint64        Pbase_m    Pbase_pd             -                    -                     Pint64_acc      P(p1)        S           N
+				      				      
+Pb_uint8         0      Puint8        Puint8        Pbase_m    Pbase_pd             -                    -                     Puint8_acc      1            S           N
+Pb_int8          0      Pint8         Pint8         Pbase_m    Pbase_pd             -                    -                     Pint8_acc       1            S           N
+Pb_uint16        0      Puint16       Puint16       Pbase_m    Pbase_pd             -                    -                     Puint16_acc     2            S           Y
+Pb_int16         0      Pint16        Pint16        Pbase_m    Pbase_pd             -                    -                     Pint16_acc      2            S           Y
+Pb_uint32        0      Puint32       Puint32       Pbase_m    Pbase_pd             -                    -                     Puint32_acc     4            S           Y
+Pb_int32         0      Pint32        Pint32        Pbase_m    Pbase_pd             -                    -                     Pint32_acc      4            S           Y
+Pb_uint64        0      Puint64       Puint64       Pbase_m    Pbase_pd             -                    -                     Puint64_acc     8            S           Y
+Pb_int64         0      Pint64        Pint64        Pbase_m    Pbase_pd             -                    -                     Pint64_acc      8            S           Y
+				      				      
+Pbl_uint8        0      Puint8        Puint8        Pbase_m    Pbase_pd             -                    -                     Puint8_acc      1            S           N
+Pbl_int8         0      Pint8         Pint8         Pbase_m    Pbase_pd             -                    -                     Pint8_acc       1            S           N
+Pbl_uint16       0      Puint16       Puint16       Pbase_m    Pbase_pd             -                    -                     Puint16_acc     2            S           N
+Pbl_int16        0      Pint16        Pint16        Pbase_m    Pbase_pd             -                    -                     Pint16_acc      2            S           N
+Pbl_uint32       0      Puint32       Puint32       Pbase_m    Pbase_pd             -                    -                     Puint32_acc     4            S           N
+Pbl_int32        0      Pint32        Pint32        Pbase_m    Pbase_pd             -                    -                     Pint32_acc      4            S           N
+Pbl_uint64       0      Puint64       Puint64       Pbase_m    Pbase_pd             -                    -                     Puint64_acc     8            S           N
+Pbl_int64        0      Pint64        Pint64        Pbase_m    Pbase_pd             -                    -                     Pint64_acc      8            S           N
+				      				      
+Pbh_uint8        0      Puint8        Puint8        Pbase_m    Pbase_pd             -                    -                     Puint8_acc      1            S           N
+Pbh_int8         0      Pint8         Pint8         Pbase_m    Pbase_pd             -                    -                     Pint8_acc       1            S           N
+Pbh_uint16       0      Puint16       Puint16       Pbase_m    Pbase_pd             -                    -                     Puint16_acc     2            S           N
+Pbh_int16        0      Pint16        Pint16        Pbase_m    Pbase_pd             -                    -                     Pint16_acc      2            S           N
+Pbh_uint32       0      Puint32       Puint32       Pbase_m    Pbase_pd             -                    -                     Puint32_acc     4            S           N
+Pbh_int32        0      Pint32        Pint32        Pbase_m    Pbase_pd             -                    -                     Pint32_acc      4            S           N
+Pbh_uint64       0      Puint64       Puint64       Pbase_m    Pbase_pd             -                    -                     Puint64_acc     8            S           N
+Pbh_int64        0      Pint64        Pint64        Pbase_m    Pbase_pd             -                    -                     Pint64_acc      8            S           N
+				      				      
+Pebc_uint8       1      Puint8        Puint8        Pbase_m    Pbase_pd             -                    -                     Puint8_acc      P(p1)        S           N
+Pebc_int8        1      Pint8         Pint8         Pbase_m    Pbase_pd             -                    -                     Pint8_acc       P(p1)        S           N
+Pebc_uint16      1      Puint16       Puint16       Pbase_m    Pbase_pd             -                    -                     Puint16_acc     P(p1)        S           N
+Pebc_int16       1      Pint16        Pint16        Pbase_m    Pbase_pd             -                    -                     Pint16_acc      P(p1)        S           N
+Pebc_uint32      1      Puint32       Puint32       Pbase_m    Pbase_pd             -                    -                     Puint32_acc     P(p1)        S           N
+Pebc_int32       1      Pint32        Pint32        Pbase_m    Pbase_pd             -                    -                     Pint32_acc      P(p1)        S           N
+Pebc_uint64      1      Puint64       Puint64       Pbase_m    Pbase_pd             -                    -                     Puint64_acc     P(p1)        S           N
+Pebc_int64       1      Pint64        Pint64        Pbase_m    Pbase_pd             -                    -                     Pint64_acc      P(p1)        S           N
+				      				      
+Pbcd_uint8       1      Puint8        Puint8        Pbase_m    Pbase_pd             -                    -                     Puint8_acc      P((p1+2)/2)  S           N
+Pbcd_int8        1      Pint8         Pint8         Pbase_m    Pbase_pd             -                    -                     Pint8_acc       P((p1+2)/2)  S           N
+Pbcd_uint16      1      Puint16       Puint16       Pbase_m    Pbase_pd             -                    -                     Puint16_acc     P((p1+2)/2)  S           N
+Pbcd_int16       1      Pint16        Pint16        Pbase_m    Pbase_pd             -                    -                     Pint16_acc      P((p1+2)/2)  S           N
+Pbcd_uint32      1      Puint32       Puint32       Pbase_m    Pbase_pd             -                    -                     Puint32_acc     P((p1+2)/2)  S           N
+Pbcd_int32       1      Pint32        Pint32        Pbase_m    Pbase_pd             -                    -                     Pint32_acc      P((p1+2)/2)  S           N
+Pbcd_uint64      1      Puint64       Puint64       Pbase_m    Pbase_pd             -                    -                     Puint64_acc     P((p1+2)/2)  S           N
+Pbcd_int64       1      Pint64        Pint64        Pbase_m    Pbase_pd             -                    -                     Pint64_acc      P((p1+2)/2)  S           N
+				      				      
+Psbl_uint8       1      Puint8        Puint8        Pbase_m    Pbase_pd             -                    -                     Puint8_acc      P(p1)        S           N
+Psbl_int8        1      Pint8         Pint8         Pbase_m    Pbase_pd             -                    -                     Pint8_acc       P(p1)        S           N
+Psbl_uint16      1      Puint16       Puint16       Pbase_m    Pbase_pd             -                    -                     Puint16_acc     P(p1)        S           N
+Psbl_int16       1      Pint16        Pint16        Pbase_m    Pbase_pd             -                    -                     Pint16_acc      P(p1)        S           N
+Psbl_uint32      1      Puint32       Puint32       Pbase_m    Pbase_pd             -                    -                     Puint32_acc     P(p1)        S           N
+Psbl_int32       1      Pint32        Pint32        Pbase_m    Pbase_pd             -                    -                     Pint32_acc      P(p1)        S           N
+Psbl_uint64      1      Puint64       Puint64       Pbase_m    Pbase_pd             -                    -                     Puint64_acc     P(p1)        S           N
+Psbl_int64       1      Pint64        Pint64        Pbase_m    Pbase_pd             -                    -                     Pint64_acc      P(p1)        S           N
+				      				      
+Psbh_uint8       1      Puint8        Puint8        Pbase_m    Pbase_pd             -                    -                     Puint8_acc      P(p1)        S           N
+Psbh_int8        1      Pint8         Pint8         Pbase_m    Pbase_pd             -                    -                     Pint8_acc       P(p1)        S           N
+Psbh_uint16      1      Puint16       Puint16       Pbase_m    Pbase_pd             -                    -                     Puint16_acc     P(p1)        S           N
+Psbh_int16       1      Pint16        Pint16        Pbase_m    Pbase_pd             -                    -                     Pint16_acc      P(p1)        S           N
+Psbh_uint32      1      Puint32       Puint32       Pbase_m    Pbase_pd             -                    -                     Puint32_acc     P(p1)        S           N
+Psbh_int32       1      Pint32        Pint32        Pbase_m    Pbase_pd             -                    -                     Pint32_acc      P(p1)        S           N
+Psbh_uint64      1      Puint64       Puint64       Pbase_m    Pbase_pd             -                    -                     Puint64_acc     P(p1)        S           N
+Psbh_int64       1      Pint64        Pint64        Pbase_m    Pbase_pd             -                    -                     Pint64_acc      P(p1)        S           N
+				      				      
+Pfloat32         0      Pfloat32      Pfloat32      Pbase_m    Pbase_pd             -                    -                     Pfloat32_acc    V            S           N
+Pfloat32_FW      1      Pfloat32      Pfloat32      Pbase_m    Pbase_pd             -                    -                     Pfloat32_acc    P(p1)        S           N
+Pfloat64         0      Pfloat64      Pfloat64      Pbase_m    Pbase_pd             -                    -                     Pfloat64_acc    V            S           N
+Pfloat64_FW      1      Pfloat64      Pfloat64      Pbase_m    Pbase_pd             -                    -                     Pfloat64_acc    P(p1)        S           N
+				      				      
+Pa_float32       0      Pfloat32      Pfloat32      Pbase_m    Pbase_pd             -                    -                     Pfloat32_acc    V            S           N
+Pa_float32_FW    1      Pfloat32      Pfloat32      Pbase_m    Pbase_pd             -                    -                     Pfloat32_acc    P(p1)        S           N
+Pa_float64       0      Pfloat64      Pfloat64      Pbase_m    Pbase_pd             -                    -                     Pfloat64_acc    V            S           N
+Pa_float64_FW    1      Pfloat64      Pfloat64      Pbase_m    Pbase_pd             -                    -                     Pfloat64_acc    P(p1)        S           N
+				      				      
+Pe_float32       0      Pfloat32      Pfloat32      Pbase_m    Pbase_pd             -                    -                     Pfloat32_acc    V            S           N
+Pe_float32_FW    1      Pfloat32      Pfloat32      Pbase_m    Pbase_pd             -                    -                     Pfloat32_acc    P(p1)        S           N
+Pe_float64       0      Pfloat64      Pfloat64      Pbase_m    Pbase_pd             -                    -                     Pfloat64_acc    V            S           N
+Pe_float64_FW    1      Pfloat64      Pfloat64      Pbase_m    Pbase_pd             -                    -                     Pfloat64_acc    P(p1)        S           N
+				      				      
+Pebc_ufpoint8    2      Pufpoint8     Pufpoint8     Pbase_m    Pbase_pd             -                    -                     Pufpoint8_acc   P(p1)        S           N
+Pebc_fpoint8     2      Pfpoint8      Pfpoint8      Pbase_m    Pbase_pd             -                    -                     Pfpoint8_acc    P(p1)        S           N
+Pebc_ufpoint16   2      Pufpoint16    Pufpoint16    Pbase_m    Pbase_pd             -                    -                     Pufpoint16_acc  P(p1)        S           N
+Pebc_fpoint16    2      Pfpoint16     Pfpoint16     Pbase_m    Pbase_pd             -                    -                     Pfpoint16_acc   P(p1)        S           N
+Pebc_ufpoint32   2      Pufpoint32    Pufpoint32    Pbase_m    Pbase_pd             -                    -                     Pufpoint32_acc  P(p1)        S           N
+Pebc_fpoint32    2      Pfpoint32     Pfpoint32     Pbase_m    Pbase_pd             -                    -                     Pfpoint32_acc   P(p1)        S           N
+Pebc_ufpoint64   2      Pufpoint64    Pufpoint64    Pbase_m    Pbase_pd             -                    -                     Pufpoint64_acc  P(p1)        S           N
+Pebc_fpoint64    2      Pfpoint64     Pfpoint64     Pbase_m    Pbase_pd             -                    -                     Pfpoint64_acc   P(p1)        S           N
+				      				      
+Pbcd_ufpoint8    2      Pufpoint8     Pufpoint8     Pbase_m    Pbase_pd             -                    -                     Pufpoint8_acc   P((p1+2)/2)  S           N
+Pbcd_fpoint8     2      Pfpoint8      Pfpoint8      Pbase_m    Pbase_pd             -                    -                     Pfpoint8_acc    P((p1+2)/2)  S           N
+Pbcd_ufpoint16   2      Pufpoint16    Pufpoint16    Pbase_m    Pbase_pd             -                    -                     Pufpoint16_acc  P((p1+2)/2)  S           N
+Pbcd_fpoint16    2      Pfpoint16     Pfpoint16     Pbase_m    Pbase_pd             -                    -                     Pfpoint16_acc   P((p1+2)/2)  S           N
+Pbcd_ufpoint32   2      Pufpoint32    Pufpoint32    Pbase_m    Pbase_pd             -                    -                     Pufpoint32_acc  P((p1+2)/2)  S           N
+Pbcd_fpoint32    2      Pfpoint32     Pfpoint32     Pbase_m    Pbase_pd             -                    -                     Pfpoint32_acc   P((p1+2)/2)  S           N
+Pbcd_ufpoint64   2      Pufpoint64    Pufpoint64    Pbase_m    Pbase_pd             -                    -                     Pufpoint64_acc  P((p1+2)/2)  S           N
+Pbcd_fpoint64    2      Pfpoint64     Pfpoint64     Pbase_m    Pbase_pd             -                    -                     Pfpoint64_acc   P((p1+2)/2)  S           N
+				      				      
+Psbl_ufpoint8    2      Pufpoint8     Pufpoint8     Pbase_m    Pbase_pd             -                    -                     Pufpoint8_acc   P(p1)        S           N
+Psbl_fpoint8     2      Pfpoint8      Pfpoint8      Pbase_m    Pbase_pd             -                    -                     Pfpoint8_acc    P(p1)        S           N
+Psbl_ufpoint16   2      Pufpoint16    Pufpoint16    Pbase_m    Pbase_pd             -                    -                     Pufpoint16_acc  P(p1)        S           N
+Psbl_fpoint16    2      Pfpoint16     Pfpoint16     Pbase_m    Pbase_pd             -                    -                     Pfpoint16_acc   P(p1)        S           N
+Psbl_ufpoint32   2      Pufpoint32    Pufpoint32    Pbase_m    Pbase_pd             -                    -                     Pufpoint32_acc  P(p1)        S           N
+Psbl_fpoint32    2      Pfpoint32     Pfpoint32     Pbase_m    Pbase_pd             -                    -                     Pfpoint32_acc   P(p1)        S           N
+Psbl_ufpoint64   2      Pufpoint64    Pufpoint64    Pbase_m    Pbase_pd             -                    -                     Pufpoint64_acc  P(p1)        S           N
+Psbl_fpoint64    2      Pfpoint64     Pfpoint64     Pbase_m    Pbase_pd             -                    -                     Pfpoint64_acc   P(p1)        S           N
+				      				      
+Psbh_ufpoint8    2      Pufpoint8     Pufpoint8     Pbase_m    Pbase_pd             -                    -                     Pufpoint8_acc   P(p1)        S           N
+Psbh_fpoint8     2      Pfpoint8      Pfpoint8      Pbase_m    Pbase_pd             -                    -                     Pfpoint8_acc    P(p1)        S           N
+Psbh_ufpoint16   2      Pufpoint16    Pufpoint16    Pbase_m    Pbase_pd             -                    -                     Pufpoint16_acc  P(p1)        S           N
+Psbh_fpoint16    2      Pfpoint16     Pfpoint16     Pbase_m    Pbase_pd             -                    -                     Pfpoint16_acc   P(p1)        S           N
+Psbh_ufpoint32   2      Pufpoint32    Pufpoint32    Pbase_m    Pbase_pd             -                    -                     Pufpoint32_acc  P(p1)        S           N
+Psbh_fpoint32    2      Pfpoint32     Pfpoint32     Pbase_m    Pbase_pd             -                    -                     Pfpoint32_acc   P(p1)        S           N
+Psbh_ufpoint64   2      Pufpoint64    Pufpoint64    Pbase_m    Pbase_pd             -                    -                     Pufpoint64_acc  P(p1)        S           N
+Psbh_fpoint64    2      Pfpoint64     Pfpoint64     Pbase_m    Pbase_pd             -                    -                     Pfpoint64_acc   P(p1)        S           N
+
+# pchar/a_char/e_char : a single character on disk
+
+Pchar            0      Pchar         Pchar         Pbase_m    Pbase_pd             -                    -                     Pchar_acc       1            S           N
+Pa_char          0      Pchar         Pchar         Pbase_m    Pbase_pd             -                    -                     Pchar_acc       1            S           N
+Pe_char          0      Pchar         Pchar         Pbase_m    Pbase_pd             -                    -                     Pchar_acc       1            S           N
+
+# The following string types are for a sequence of ASCII/EBCDIC characters on disk; Pstring in memory.
+# The difference is in how the extent of the string is specified. 
+#   *string_FW   : takes width as a parameter.
+#   *string      : takes terminating character as a parameter.
+#   *string_ME   : takes a Match Expression as parameter (a string containing a regular expression)
+#   *string_CME  : takes a Compiled Match Expression as parameter
+#   *string_SE   : takes a Stop Expression as parameter (a string containing a regular expression)
+#   *string_CSE  : takes a Compiled Stop Expression as parameter 
+#                  Note: pads.h describes syntax of regular expressions -- currently quite limited --
+#                        (see Pregexp_compile for regular expression compilation).
+
+Pstring          1      Pstring       Pstring       Pbase_m    Pbase_pd             -                    -                     Pstring_acc     V            V           N
+Pa_string        1      Pstring       Pstring       Pbase_m    Pbase_pd             -                    -                     Pstring_acc     V            V           N
+Pe_string        1      Pstring       Pstring       Pbase_m    Pbase_pd             -                    -                     Pstring_acc     V            V           N
+				      				      
+Pstring_FW       1      Pstring       Pstring       Pbase_m    Pbase_pd             -                    -                     Pstring_acc     P(p1)        V           N
+Pa_string_FW     1      Pstring       Pstring       Pbase_m    Pbase_pd             -                    -                     Pstring_acc     P(p1)        V           N
+Pe_string_FW     1      Pstring       Pstring       Pbase_m    Pbase_pd             -                    -                     Pstring_acc     P(p1)        V           N
+				      				      
+Pstring_ME       1      Pstring       Pstring       Pbase_m    Pbase_pd             -                    -                     Pstring_acc     V            V           N
+Pa_string_ME     1      Pstring       Pstring       Pbase_m    Pbase_pd             -                    -                     Pstring_acc     V            V           N
+Pe_string_ME     1      Pstring       Pstring       Pbase_m    Pbase_pd             -                    -                     Pstring_acc     V            V           N
+				      				      
+Pstring_CME      1      Pstring       Pstring       Pbase_m    Pbase_pd             -                    -                     Pstring_acc     V            V           N
+Pa_string_CME    1      Pstring       Pstring       Pbase_m    Pbase_pd             -                    -                     Pstring_acc     V            V           N
+Pe_string_CME    1      Pstring       Pstring       Pbase_m    Pbase_pd             -                    -                     Pstring_acc     V            V           N
+				      				      
+Pstring_SE       1      Pstring       Pstring       Pbase_m    Pbase_pd             -                    -                     Pstring_acc     V            V           N
+Pa_string_SE     1      Pstring       Pstring       Pbase_m    Pbase_pd             -                    -                     Pstring_acc     V            V           N
+Pe_string_SE     1      Pstring       Pstring       Pbase_m    Pbase_pd             -                    -                     Pstring_acc     V            V           N
+				      				      
+Pstring_CSE      1      Pstring       Pstring       Pbase_m    Pbase_pd             -                    -                     Pstring_acc     V            V           N
+Pa_string_CSE    1      Pstring       Pstring       Pbase_m    Pbase_pd             -                    -                     Pstring_acc     V            V           N
+Pe_string_CSE    1      Pstring       Pstring       Pbase_m    Pbase_pd             -                    -                     Pstring_acc     V            V           N
+
+# *timestamp_explicit*: 
+#    Converts ASCII/EBCDIC char date/time description into seconds since Midnight Jan 1, 1970.
+#    Format-based parsing is based on libast's tmdate function.
+#    Input format and input time zone are specified explicitly.
+#    The format used controls whether input is date and time, just date, or just time.
+#    Default output format is set via disc->out_formats.timestamp_explicit
+# *date_explicit*:
+#    Like *timestamp_explicit*, with explicit format and time zone argument.
+#    INTENDED to be used for just date, but format determines actual use.
+#    Default output format is set via disc->out_formats.date_explicit
+# *time_explicit*:
+#    Like *timestamp_explicit*, with explicit format and time zone argument.
+#    INTENDED to be used for just time, but format determines actual use.
+#    Default output format is set via disc->out_formats.time_explicit
+# *timestamp*:
+#    Like *timestamp_explicit*, but input format and input time zone are taken from
+#    disc->in_formats.timestamp and disc->in_time_zone.
+#    INTENDED to be used for both a date and time, but format determines actual use.
+#    Default output format is set via disc->out_formats.timestamp
+# *date*:
+#    Like *date_explicit*, but input format and input time zone are taken from
+#    disc->in_formats.date and disc->in_time_zone.
+#    INTENDED to be used for just date, but format determines actual use.
+#    Default output format is set via disc->out_formats.date
+# *time*:
+#    Like *time_explicit*, but input format and input time zone are taken from
+#    disc->in_formats.time and disc->in_time_zone.
+#    INTENDED to be used for just time, but format determines actual use.
+#    Default output format is set via disc->out_formats.time
+#
+
+Ptimestamp_explicit       3 Ptimestamp   Puint32   Pbase_m    Pbase_pd             -                    -                     Ptimestamp_explicit_acc  V     S         N
+Pa_timestamp_explicit     3 Ptimestamp   Puint32   Pbase_m    Pbase_pd             -                    -                     Ptimestamp_explicit_acc  V     S         N
+Pe_timestamp_explicit     3 Ptimestamp   Puint32   Pbase_m    Pbase_pd             -                    -                     Ptimestamp_explicit_acc  V     S         N
+
+Ptimestamp_explicit_FW    3 Ptimestamp   Puint32   Pbase_m    Pbase_pd             -                    -                     Ptimestamp_explicit_acc  P(p1) S         N
+Pa_timestamp_explicit_FW  3 Ptimestamp   Puint32   Pbase_m    Pbase_pd             -                    -                     Ptimestamp_explicit_acc  P(p1) S         N
+Pe_timestamp_explicit_FW  3 Ptimestamp   Puint32   Pbase_m    Pbase_pd             -                    -                     Ptimestamp_explicit_acc  P(p1) S         N
+
+Ptimestamp_explicit_ME    3 Ptimestamp   Puint32   Pbase_m    Pbase_pd             -                    -                     Ptimestamp_explicit_acc  V     S         N
+Pa_timestamp_explicit_ME  3 Ptimestamp   Puint32   Pbase_m    Pbase_pd             -                    -                     Ptimestamp_explicit_acc  V     S         N
+Pe_timestamp_explicit_ME  3 Ptimestamp   Puint32   Pbase_m    Pbase_pd             -                    -                     Ptimestamp_explicit_acc  V     S         N
+
+Ptimestamp_explicit_CME   3 Ptimestamp   Puint32   Pbase_m    Pbase_pd             -                    -                     Ptimestamp_explicit_acc  V     S         N
+Pa_timestamp_explicit_CME 3 Ptimestamp   Puint32   Pbase_m    Pbase_pd             -                    -                     Ptimestamp_explicit_acc  V     S         N
+Pe_timestamp_explicit_CME 3 Ptimestamp   Puint32   Pbase_m    Pbase_pd             -                    -                     Ptimestamp_explicit_acc  V     S         N
+
+Ptimestamp_explicit_SE    3 Ptimestamp   Puint32   Pbase_m    Pbase_pd             -                    -                     Ptimestamp_explicit_acc  V     S         N
+Pa_timestamp_explicit_SE  3 Ptimestamp   Puint32   Pbase_m    Pbase_pd             -                    -                     Ptimestamp_explicit_acc  V     S         N
+Pe_timestamp_explicit_SE  3 Ptimestamp   Puint32   Pbase_m    Pbase_pd             -                    -                     Ptimestamp_explicit_acc  V     S         N
+
+Ptimestamp_explicit_CSE   3 Ptimestamp   Puint32   Pbase_m    Pbase_pd             -                    -                     Ptimestamp_explicit_acc  V     S         N
+Pa_timestamp_explicit_CSE 3 Ptimestamp   Puint32   Pbase_m    Pbase_pd             -                    -                     Ptimestamp_explicit_acc  V     S         N
+Pe_timestamp_explicit_CSE 3 Ptimestamp   Puint32   Pbase_m    Pbase_pd             -                    -                     Ptimestamp_explicit_acc  V     S         N
+
+
+Pdate_explicit       3  Pdate      Puint32       Pbase_m    Pbase_pd             -                    -                     Pdate_explicit_acc  V        S           N
+Pa_date_explicit     3  Pdate      Puint32       Pbase_m    Pbase_pd             -                    -                     Pdate_explicit_acc  V        S           N
+Pe_date_explicit     3  Pdate      Puint32       Pbase_m    Pbase_pd             -                    -                     Pdate_explicit_acc  V        S           N
+
+Pdate_explicit_FW    3  Pdate      Puint32       Pbase_m    Pbase_pd             -                    -                     Pdate_explicit_acc  P(p1)    S           N
+Pa_date_explicit_FW  3  Pdate      Puint32       Pbase_m    Pbase_pd             -                    -                     Pdate_explicit_acc  P(p1)    S           N
+Pe_date_explicit_FW  3  Pdate      Puint32       Pbase_m    Pbase_pd             -                    -                     Pdate_explicit_acc  P(p1)    S           N
+
+Pdate_explicit_ME    3  Pdate      Puint32       Pbase_m    Pbase_pd             -                    -                     Pdate_explicit_acc  V        S           N
+Pa_date_explicit_ME  3  Pdate      Puint32       Pbase_m    Pbase_pd             -                    -                     Pdate_explicit_acc  V        S           N
+Pe_date_explicit_ME  3  Pdate      Puint32       Pbase_m    Pbase_pd             -                    -                     Pdate_explicit_acc  V        S           N
+
+Pdate_explicit_CME   3  Pdate      Puint32       Pbase_m    Pbase_pd             -                    -                     Pdate_explicit_acc  V        S           N
+Pa_date_explicit_CME 3  Pdate      Puint32       Pbase_m    Pbase_pd             -                    -                     Pdate_explicit_acc  V        S           N
+Pe_date_explicit_CME 3  Pdate      Puint32       Pbase_m    Pbase_pd             -                    -                     Pdate_explicit_acc  V        S           N
+
+Pdate_explicit_SE    3  Pdate      Puint32       Pbase_m    Pbase_pd             -                    -                     Pdate_explicit_acc  V        S           N
+Pa_date_explicit_SE  3  Pdate      Puint32       Pbase_m    Pbase_pd             -                    -                     Pdate_explicit_acc  V        S           N
+Pe_date_explicit_SE  3  Pdate      Puint32       Pbase_m    Pbase_pd             -                    -                     Pdate_explicit_acc  V        S           N
+
+Pdate_explicit_CSE   3  Pdate      Puint32       Pbase_m    Pbase_pd             -                    -                     Pdate_explicit_acc  V        S           N
+Pa_date_explicit_CSE 3  Pdate      Puint32       Pbase_m    Pbase_pd             -                    -                     Pdate_explicit_acc  V        S           N
+Pe_date_explicit_CSE 3  Pdate      Puint32       Pbase_m    Pbase_pd             -                    -                     Pdate_explicit_acc  V        S           N
+				      				      
+				      				      
+Ptime_explicit       3  Ptime       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptime_explicit_acc  V        S           N
+Pa_time_explicit     3  Ptime       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptime_explicit_acc  V        S           N
+Pe_time_explicit     3  Ptime       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptime_explicit_acc  V        S           N
+
+Ptime_explicit_FW    3  Ptime       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptime_explicit_acc  P(p1)    S           N
+Pa_time_explicit_FW  3  Ptime       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptime_explicit_acc  P(p1)    S           N
+Pe_time_explicit_FW  3  Ptime       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptime_explicit_acc  P(p1)    S           N
+
+Ptime_explicit_ME    3  Ptime       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptime_explicit_acc  V        S           N
+Pa_time_explicit_ME  3  Ptime       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptime_explicit_acc  V        S           N
+Pe_time_explicit_ME  3  Ptime       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptime_explicit_acc  V        S           N
+
+Ptime_explicit_CME   3  Ptime       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptime_explicit_acc  V        S           N
+Pa_time_explicit_CME 3  Ptime       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptime_explicit_acc  V        S           N
+Pe_time_explicit_CME 3  Ptime       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptime_explicit_acc  V        S           N
+
+Ptime_explicit_SE    3  Ptime       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptime_explicit_acc  V        S           N
+Pa_time_explicit_SE  3  Ptime       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptime_explicit_acc  V        S           N
+Pe_time_explicit_SE  3  Ptime       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptime_explicit_acc  V        S           N
+
+Ptime_explicit_CSE   3  Ptime       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptime_explicit_acc  V        S           N
+Pa_time_explicit_CSE 3  Ptime       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptime_explicit_acc  V        S           N
+Pe_time_explicit_CSE 3  Ptime       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptime_explicit_acc  V        S           N
+				      				      
+				      				      
+Ptimestamp       1      Ptimestamp       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptimestamp_acc  V            S           N
+Pa_timestamp     1      Ptimestamp       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptimestamp_acc  V            S           N
+Pe_timestamp     1      Ptimestamp       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptimestamp_acc  V            S           N
+
+Ptimestamp_FW    1      Ptimestamp       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptimestamp_acc  P(p1)        S           N
+Pa_timestamp_FW  1      Ptimestamp       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptimestamp_acc  P(p1)        S           N
+Pe_timestamp_FW  1      Ptimestamp       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptimestamp_acc  P(p1)        S           N
+
+Ptimestamp_ME    1      Ptimestamp       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptimestamp_acc  V            S           N
+Pa_timestamp_ME  1      Ptimestamp       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptimestamp_acc  V            S           N
+Pe_timestamp_ME  1      Ptimestamp       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptimestamp_acc  V            S           N
+
+Ptimestamp_CME   1      Ptimestamp       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptimestamp_acc  V            S           N
+Pa_timestamp_CME 1      Ptimestamp       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptimestamp_acc  V            S           N
+Pe_timestamp_CME 1      Ptimestamp       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptimestamp_acc  V            S           N
+
+Ptimestamp_SE    1      Ptimestamp       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptimestamp_acc  V            S           N
+Pa_timestamp_SE  1      Ptimestamp       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptimestamp_acc  V            S           N
+Pe_timestamp_SE  1      Ptimestamp       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptimestamp_acc  V            S           N
+
+Ptimestamp_CSE   1      Ptimestamp       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptimestamp_acc  V            S           N
+Pa_timestamp_CSE 1      Ptimestamp       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptimestamp_acc  V            S           N
+Pe_timestamp_CSE 1      Ptimestamp       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptimestamp_acc  V            S           N
+				      				      
+				      				      
+Pdate            1      Pdate      Puint32       Pbase_m    Pbase_pd             -                    -                     Pdate_acc       V            S           N
+Pa_date          1      Pdate      Puint32       Pbase_m    Pbase_pd             -                    -                     Pdate_acc       V            S           N
+Pe_date          1      Pdate      Puint32       Pbase_m    Pbase_pd             -                    -                     Pdate_acc       V            S           N
+
+Pdate_FW         1      Pdate      Puint32       Pbase_m    Pbase_pd             -                    -                     Pdate_acc       P(p1)        S           N
+Pa_date_FW       1      Pdate      Puint32       Pbase_m    Pbase_pd             -                    -                     Pdate_acc       P(p1)        S           N
+Pe_date_FW       1      Pdate      Puint32       Pbase_m    Pbase_pd             -                    -                     Pdate_acc       P(p1)        S           N
+
+Pdate_ME         1      Pdate      Puint32       Pbase_m    Pbase_pd             -                    -                     Pdate_acc       V            S           N
+Pa_date_ME       1      Pdate      Puint32       Pbase_m    Pbase_pd             -                    -                     Pdate_acc       V            S           N
+Pe_date_ME       1      Pdate      Puint32       Pbase_m    Pbase_pd             -                    -                     Pdate_acc       V            S           N
+
+Pdate_CME        1      Pdate      Puint32       Pbase_m    Pbase_pd             -                    -                     Pdate_acc       V            S           N
+Pa_date_CME      1      Pdate      Puint32       Pbase_m    Pbase_pd             -                    -                     Pdate_acc       V            S           N
+Pe_date_CME      1      Pdate      Puint32       Pbase_m    Pbase_pd             -                    -                     Pdate_acc       V            S           N
+
+Pdate_SE         1      Pdate      Puint32       Pbase_m    Pbase_pd             -                    -                     Pdate_acc       V            S           N
+Pa_date_SE       1      Pdate      Puint32       Pbase_m    Pbase_pd             -                    -                     Pdate_acc       V            S           N
+Pe_date_SE       1      Pdate      Puint32       Pbase_m    Pbase_pd             -                    -                     Pdate_acc       V            S           N
+
+Pdate_CSE        1      Pdate      Puint32       Pbase_m    Pbase_pd             -                    -                     Pdate_acc       V            S           N
+Pa_date_CSE      1      Pdate      Puint32       Pbase_m    Pbase_pd             -                    -                     Pdate_acc       V            S           N
+Pe_date_CSE      1      Pdate      Puint32       Pbase_m    Pbase_pd             -                    -                     Pdate_acc       V            S           N
+				      				      
+				      				      
+Ptime            1      Ptime       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptime_acc       V            S           N
+Pa_time          1      Ptime       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptime_acc       V            S           N
+Pe_time          1      Ptime       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptime_acc       V            S           N
+
+Ptime_FW         1      Ptime       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptime_acc       P(p1)        S           N
+Pa_time_FW       1      Ptime       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptime_acc       P(p1)        S           N
+Pe_time_FW       1      Ptime       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptime_acc       P(p1)        S           N
+
+Ptime_ME         1      Ptime       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptime_acc       V            S           N
+Pa_time_ME       1      Ptime       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptime_acc       V            S           N
+Pe_time_ME       1      Ptime       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptime_acc       V            S           N
+
+Ptime_CME        1      Ptime       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptime_acc       V            S           N
+Pa_time_CME      1      Ptime       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptime_acc       V            S           N
+Pe_time_CME      1      Ptime       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptime_acc       V            S           N
+
+Ptime_SE         1      Ptime       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptime_acc       V            S           N
+Pa_time_SE       1      Ptime       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptime_acc       V            S           N
+Pe_time_SE       1      Ptime       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptime_acc       V            S           N
+
+Ptime_CSE        1      Ptime       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptime_acc       V            S           N
+Pa_time_CSE      1      Ptime       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptime_acc       V            S           N
+Pe_time_CSE      1      Ptime       Puint32       Pbase_m    Pbase_pd             -                    -                     Ptime_acc       V            S           N
+
+# *ip: Converts ASCII/EBCDIC numeric IP address (dotted form) into a Puint32.
+
+Pip              0      Pip       Puint32       Pbase_m    Pbase_pd             -                    -                     Pip_acc         V            S           N
+Pa_ip            0      Pip       Puint32       Pbase_m    Pbase_pd             -                    -                     Pip_acc         V            S           N
+Pe_ip            0      Pip       Puint32       Pbase_m    Pbase_pd             -                    -                     Pip_acc         V            S           N
+
+# *countX   is a counter data type that is parameterized by an ASCII count char (X)
+#           and represents the number of ASCII/EBCDIC X chars between the current IO position and the first EOR/EOF
+#           a second param indicates whether encountering EOF before EOR is an error (0 means no, 1 means yes) and
+#           a third param, if > 0, sets a total character scan limit: if the limit is reached before EOR/EOF,
+#           an error occurs.  Examples:
+#
+#           e_countX(:'|', 1, 0:) counts the number of EBCDIC vertical bars between the current IO position and
+#           the remainder of the current record, where an error occurs if EOF prior to detecting EOR.
+#
+#           e_countX(:'|', 1, 1024:) is the same, except there is also an error if EOR is not encountered
+#           with 1024 characters of the current IO position.
+#
+# *countXtoY is a counter data type that is parameterized by ASCII count char (X) and terminating char (Y),
+#           and represents the number of ASCII/EBCDIC X chars between the current IO position and the first Y char.
+#           Like countX, it also has a final param to set a scan limit.
+#           E.g., e_countXtoY(:'|', '+', 0:) counts the number of EBCDIC vertical bars between the current
+#           IO position and the first occurence of an EBCDIC plus.
+
+PcountX          3      Pint32        Pint32        Pbase_m    Pbase_pd             -                    -                     Pint32_acc      0            S           N
+Pa_countX        3      Pint32        Pint32        Pbase_m    Pbase_pd             -                    -                     Pint32_acc      0            S           N
+Pe_countX        3      Pint32        Pint32        Pbase_m    Pbase_pd             -                    -                     Pint32_acc      0            S           N
+				      				      			      
+PcountXtoY       3      Pint32        Pint32        Pbase_m    Pbase_pd             -                    -                     Pint32_acc      0            S           N
+Pa_countXtoY     3      Pint32        Pint32        Pbase_m    Pbase_pd             -                    -                     Pint32_acc      0            S           N
+Pe_countXtoY     3      Pint32        Pint32        Pbase_m    Pbase_pd             -                    -                     Pint32_acc      0            S           N

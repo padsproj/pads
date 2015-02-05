@@ -1,0 +1,127 @@
+
+file: README
+date: 8/25/03
+author: Ricardo Medel
+-----------------------------------------------------------------------------
+Code added by the author to the pretty printing of an XSchema based on a 
+PADS specification file:
+-----------------------------------------------------------------------------
+File: pads/padsc/comp/ckit/src/ast/pp/extensions/pads/pp-ast-xschema-fn.sml
+
+If padsc is called with a '-x' flag, a XSchema is generated and stored
+in a .xsd file (see function generateXschema in padsc/main.sml).
+
+Functions added to pp-ast-xschema-fn.sml:
+
+* Auxiliary functions that given a type identifier (tid) and a table with 
+  information about type identifiers (tidtab) return information associated 
+  with the type identifier:
+
+  structInfo tidtab tid ---> (structure name, [(field type, field name)])
+			it returns a pair containing the structure name and 
+			a list of pairs (type, name) of each field.
+
+  unionInfo tidtab tid ---> (union name, [(member type, member name)])
+			it returns a pair containing the union name and a 
+			list of pairs (type, name) of each union member.
+
+  unionPdInfo tidtab tid ---> (upd name, [(pdtype,pdname)], [(utype,uname)])
+			it returns a 3-uple containing the union parse 
+			descriptor name, a list of pairs (type, name) of each
+			parse descriptor field, and a list of pairs (type, 
+			name) of each union parse descriptor member.
+
+  enumInfo tidtab tid ---> (enum name, [element name])
+			it returns a pair containing the enumeration name and
+			a list, of element names (this list is UNUSED by now)
+ 
+  typedefInfo tidtab tid ---> (type name, base type)
+			it returns a pair containing the new type name and 
+			the base type.
+
+
+* Auxiliary functions that add strings to the pretty-printing stream (pps):
+
+  ppXMLName pps (Type,Name) ---> [name=Name] [type=Type]
+			it adds name and type, if they exists.
+
+  ppXMLHeader str1 str2 pps (Type,Name) ---> str1 [name=Name][type=Type] str2
+			it adds the string str1, name and type, and the 
+			string str2 in that order. It's useful to be applied
+			to each element of a list in ppXMLList.
+
+  ppXMLList pps [field1,..,fieldN] ---> <element field1/>...<element fieldN/>
+			given a list of pairs (type, name) adds each field as
+			an element.
+
+  ppXMLSequence pps Fields ---> <sequence> Fields </sequence>
+			it adds the tags of a "sequence" and creates a list 
+			of elements from the Fields.
+
+  ppXMLRestriction pps Base ---> <restriction base=Base />
+			it adds a "restriction" with base type Base.
+
+  ppXMLComplex pps (Name,Fields) ---> <complexType [name=Name]> 
+				      <sequence> Fields </sequence>
+				      </complexType>
+			it creates a complex type with name Name and the 
+			sequence of elements Fields.
+
+  ppXMLElemList pps (Name, Fields) ---> <element name=Name> 
+					<complexType> 
+					<sequence> Fields </sequence> 
+					</complex> 
+					</element>
+			it adds an element with name Name and a complex type
+			with the sequence of elements Fields.
+
+  ppXMLChoiceFields pps Fields ---> <choice> Fields </choice>
+			it adds a choice type with the list of members Fields
+
+  ppXMLChoice pps (Name, Fields) ---> <complexType name=Name> 
+				      <choice> Fields </choice> 
+				      </complexType>
+			it adds a complex type with name Name and a list of 
+			choice members form Fields.
+
+  ppTopElemIfPfile pps (ptyInfo,Type) ---> <element name="PFile" type=Type /> 
+			If the Pfile modifier is present, then it adds the 
+			root element with name "PFile" and type Type.
+
+  
+* Functions that given a PADS type specification, use the previous functions
+  to obtain the information associated with the type and add the 
+  corresponding XSchema types to the pretty-printing stream (pps):
+
+  ppPStruct  ---> in-memory representation and parse descriptor of a Pstruct.
+
+  ppPUnion   ---> in-memory representation, parse descriptor, parse 
+		  descriptor of members, and selected (_tag) branch of a 
+		  Punion. 
+
+  ppPArray   ---> in-memory representation and parse descriptor of a Parray.
+
+  ppPEnum    ---> simple type "xsd:int" for Penum.
+
+  ppPTypedef ---> simple type with restriction to the base type of a Ptypedef
+		  definition.
+
+  ppPKind    ---> checks the PADS specification type and calls the 
+		  corresponding function.
+
+NOTE:
+ The root element of a Xschema file is created when a PADS type with the 
+ 'Pfile' modifier is found. But not all the PADS files contain a type with 
+ the 'Pfile' modifier, and some of the files can have more than one type with
+ such modifier. 
+ When using PADS we need to know which element is the root to boot-strap the 
+ compilation, then any PADS file that we want to query must have exactly one 
+ 'Pfile' type.
+
+NOTE 2:
+ An XSchema was generated for each of the example files in directory 
+ padsc/examples/p/ using this program, the .xsd files were checked using the
+ script test_xschema.sh, and all of them passed without error.
+ 
+END README.
+

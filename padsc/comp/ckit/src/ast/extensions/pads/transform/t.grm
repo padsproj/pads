@@ -1,0 +1,120 @@
+open TParseTree 
+
+fun markExternalDecl srcMap (d,left,right) = 
+    MARKexternalDecl(SourceMap.location srcMap (left,right), d)
+
+abstype 'a seq = SEQ of 'a list
+with val emptySeq = SEQ nil
+     fun singletonSeq x = SEQ[x]
+     fun addToSeq(x, SEQ yl) = SEQ(x :: yl)  (* add to end of sequence! *)
+  (* fun addListToEnd(xl, yl) = SEQ((List.rev xl) @ yl) *)
+     fun addToEnd(x, SEQ yl) = SEQ(x :: yl)
+     fun seqToList(SEQ yl) = List.rev yl
+end
+
+%%
+
+%header (functor TLrValsFun(structure Token : TOKEN ))
+
+%term 
+ 	  EOF 
+	| COLON | SEMICOLON | LPAREN | RPAREN | LCURLY | RCURLY 
+	| LBRACE | RBRACE | DOT 
+        | ELIPSIS
+	| COMMA | QUESTION | PERCENT | AMP | BAR | TILDE | DIVIDE | PLUS
+	| MINUS | HAT | BANG | TIMES
+	| INC | DEC | ARROW
+	| ID of string  
+	| EQUALS | PLUSEQUALS | MINUSEQUALS | XOREQUALS | MODEQUALS 
+	| TIMESEQUALS | DIVEQUALS | OREQUALS  | ANDEQUALS | LSHIFTEQUALS 
+	| RSHIFTEQUALS
+	| LTE | GTE | LT | GT | EQ | NEQ | OR | AND | LSHIFT | RSHIFT
+	| DECNUM of IntInf.int
+        | REALNUM of real 
+	| STRING of string 
+	| CCONST of IntInf.int
+        | LCOLON | RCOLON | DOTDOT | COLONCOLON | EQGT 
+        | OUTPUT | TRANSFORM |TYDECL | TYNAME | STR | IO 
+        | PCOMMENT of string
+        | BEGIN | END | PRE | EACH | POST
+        | PARRAY | PALTERNATE | PSTRUCT | PENUM | PTYPEDEF | PUNION
+        
+
+%nonterm 
+	translationUnit of externalDecl list
+	| tu of externalDecl seq
+        | externalDeclaration of externalDecl
+        | output of externalDecl
+        | transformTy of externalDecl
+        | transform of externalDecl
+	| targ of targ
+	| body of body
+        | preOpt of string option
+        | commentOpt of string option
+        | eachOpt of (string * string * string option * string) option
+        | postOpt of string option
+        | domain of sTy
+        | range  of dTy
+
+%pos int
+%verbose
+%pure
+%start translationUnit
+%eop EOF 
+%noshift EOF
+
+%arg (srcMap) : SourceMap.sourcemap
+
+%name T
+%left LBRACE LPAREN 
+
+%%
+
+translationUnit:
+        tu                             (seqToList tu)
+
+tu:                                    (emptySeq)
+  | tu externalDeclaration SEMICOLON   (addToEnd(externalDeclaration, tu))
+
+externalDeclaration: 
+      output                           (markExternalDecl srcMap ( output,     outputleft, outputright))
+  |   transformTy                      (markExternalDecl srcMap ( transformTy,transformTyleft, transformTyright))
+  |   transform                        (markExternalDecl srcMap ( transform,  transformleft, transformright))
+
+output:
+	OUTPUT LPAREN STRING RPAREN    (Output STRING)	
+
+domain: TYNAME                         (TyName)
+   | TYDECL                            (TyDecl)
+
+range: STR                             (Str)
+   | IO                                (IO)
+
+transformTy:
+        TRANSFORM ID COLON domain ARROW range (TransformTy (ID, domain, range))
+
+transform:
+        ID LPAREN targ RPAREN body      (Transform (ID, targ, body))
+
+targ: ID                              (ArgS ID)
+   | PARRAY ID                        (ArgC (Parray, ID))
+   | PALTERNATE ID                    (ArgC (Palternate, ID))
+   | PENUM ID                         (ArgC (Penum, ID))
+   | PSTRUCT ID                       (ArgC (Pstruct, ID))
+   | PTYPEDEF ID                      (ArgC (Ptypedef, ID))
+   | PUNION ID                        (ArgC (Punion, ID))
+
+body: EQUALS STRING                       (Bsimple STRING)
+   | BEGIN preOpt eachOpt postOpt END (Bstruct {pre=preOpt, each = eachOpt, post=postOpt})
+
+preOpt:                               (NONE)
+   | PRE COLON ARROW STRING           (SOME STRING)
+
+commentOpt:			      (NONE)
+   | ID				      (SOME ID)
+
+eachOpt:                              (NONE)
+   | EACH COLON ID ID commentOpt ARROW STRING    (SOME (ID1,ID2,commentOpt, STRING))
+
+postOpt:                              (NONE)
+   | POST COLON ARROW STRING          (SOME STRING)

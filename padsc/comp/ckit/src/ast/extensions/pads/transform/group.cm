@@ -1,0 +1,48 @@
+Group 
+is
+
+#if defined(NEW_CM)
+#if (SMLNJ_VERSION * 100 + SMLNJ_MINOR_VERSION >= 11029)
+        (* standard basis *)
+        $/basis.cm
+
+	(* standard library *)
+	$/smlnj-lib.cm
+
+	(* ml-yacc *)
+	$/ml-yacc-lib.cm
+
+	(* pretty printer library *)
+	$/pp-lib.cm
+#else
+        (* standard basis *)
+	basis.cm
+
+	(* standard library *)
+	smlnj-lib.cm
+
+	(* ml-yacc *)
+	ml-yacc-lib.cm
+
+	(* pretty printer library *)
+        pp-lib.cm
+#endif 
+#else
+	smlnj-lib.cm
+	ml-yacc-lib.cm
+	pp-lib.cm
+#endif
+
+        ../../../../parser/util/group.cm
+	(* lexer and parser *)
+        ttokentable.sml
+        t.lex
+
+	tparser-sig.sml
+        tparser.sml
+	tparse-tree-sig.sml	
+	tparse-tree.sml
+
+
+	t.grm
+
