@@ -1,0 +1,10 @@
+mod.tar contains this README file as well as any source modifications
+that are not currently part of a proper package (packages are found
+under ast-ast/lib/package/tgz).
+
+Current source mods:
+
+To allow compilation under gcc 4.0, we delete the _sfdscan prototype
+from ast-ast/src/lib/libast/sfiosfhdr.h
+
+
