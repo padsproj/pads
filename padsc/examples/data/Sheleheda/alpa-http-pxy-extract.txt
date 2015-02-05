@@ -1,0 +1,83 @@
+#Software: NetCache NetApp/6.0.1
+#Version: 1.0
+#Start-Date: 2007-02-11 23:26:29
+#Remark: http
+#Fields: x-timestamp time-taken c-ip x-transaction bytes cs-method cs-uri x-username x-hiercode rs(Content-Type) x-note
+1171254389.917 0.180 135.186.252.198 TCP_MISS_PRIVATE_ON_STOP_LIST/200 511 GET http://www.hittail.com/mlt.png?http%3A//www.carricksolutions.com/broadbandlinks.php - DIRECT/168.75.66.156 "image/GIF" - 
+1171254389.917 0.001 135.210.210.101 TCP_HIT_IMS_NOTMOD/304 147 GET http://i.cnn.net/cnn/.element/ssi/js/1.4/video/domain.js - - "application/x-javascript" - 
+1171254389.957 0.059 135.210.40.254 TCP_MISS_PRIVATE_COOKIE/200 1427 GET http://servedby.advertising.com/site=290986/size=728090/bnum=01557750/optn=1 - DIRECT/209.225.0.34 "application/x-javascript" - 
+1171254390.068 0.010 135.210.210.101 TCP_MISS_PRIVATE_CCTRL/200 1311 GET http://www.cnn.com/video/slate/relateds.exclude.html - DIRECT/64.236.24.28 "text/html" - 
+1171254390.088 0.020 135.210.210.101 TCP_MISS_PRIVATE_CCTRL/200 4051 GET http://www.cnn.com/video/showbiz/2007/02/11/anderson.mary.blige.intv.cnn/content.html - DIRECT/64.236.24.28 "text/html" - 
+1171254390.098 0.050 135.186.252.198 TCP_MISS_PRIVATE_STATUS_CODE/302 418 GET http://ad.doubleclick.net/ad/sponsorships.cbsnews.com/;adid=69917273;sz=1x1 - DIRECT/65.205.8.52 "-" - 
+1171254390.138 24.504 135.186.252.198 TCP_MISS_PRIVATE_ON_STOP_LIST/200 798 GET http://b.mail.google.com/mail/channel/bind?at=7345edba69f8206f-110a26543a3&RID=rpc&SID=45D270ECDFF64AAE&CI=1&AID=5314&TYPE=html&zx=wtqoxu-gkhjkp&DOMAIN=mail.google.com&t=1 - DIRECT/64.233.163.189 "text/html; charset=utf-8" - 
+1171254390.138 0.050 135.186.252.198 TCP_MISS_PRIVATE_STATUS_CODE/302 409 GET http://ad.doubleclick.net/ad/sponsorships.cbsnews.com/cbsnews;page=homepage;sec=100;dcopt=;pop=off;tile=1;sz=163x40;ord=123456789? - DIRECT/65.205.8.52 "-" - 
+1171254390.158 5.580 135.138.87.129 TCP_MISS_PRIVATE_METHOD/200 1550 CONNECT 64.68.125.242:443 - DIRECT/64.68.125.242 "-" - 
+1171254390.180 0.112 135.186.252.198 TCP_MISS_VERIFY/200 1749 GET http://www.cbsnews.com/common/css/blue_box.css - DIRECT/207.40.194.23 "text/css" - 
+1171254390.180 0.163 135.186.252.198 TCP_MISS_VERIFY/200 13574 GET http://www.cbsnews.com/common/css/v2_main.css - DIRECT/204.2.240.24 "text/css" - 
+1171254390.261 0.001 135.186.252.198 TCP_HIT_IMS_NOTMOD/304 183 GET http://www.cbsnews.com/common/js/triggerParams.js - - "application/x-javascript" - 
+1171254390.312 0.112 135.186.252.198 TCP_MISS_VERIFY/200 6155 GET http://www.cbsnews.com/common/js/newVlaunch.js - DIRECT/204.2.240.24 "application/x-javascript" - 
+1171254390.342 0.955 135.186.252.198 TCP_MISS_VERIFY/200 145896 GET http://www.cbsnews.com/ - DIRECT/207.40.194.23 "text/html; charset=ISO-8859-1" - 
+1171254390.342 0.051 135.186.252.198 TCP_MISS_PRIVATE_STATUS_CODE/302 213 GET http://ad.doubleclick.net/ad/imus.cbsnews.com/cbsnews;page=homepage;sec=100;dcopt=;pop=off;tile=2;sz=300x250;ord=123456789? - DIRECT/65.205.8.52 "-" - 
+1171254390.353 58.297 135.210.112.116 TCP_MISS_PRIVATE_METHOD/200 33544 CONNECT o9863637.da-us.citibank.com:443 - DIRECT/192.193.187.38 "-" - 
+1171254390.444 0.060 135.186.252.198 TCP_MISS_PRIVATE_STATUS_CODE/302 409 GET http://ad.doubleclick.net/ad/sponsorships.cbsnews.com/;adid=68062792;sz=1x1 - DIRECT/65.205.8.52 "-" - 
+1171254390.454 0.112 135.186.252.198 TCP_MISS_VERIFY/200 10794 GET http://www.cbsnews.com/common/js/stdLauncher.js - DIRECT/207.40.194.23 "application/x-javascript" - 
+1171254390.474 0.001 135.210.210.101 TCP_HIT/200 25793 GET http://i.a.cnn.net/cnn/.element/ssi/css/1.4/videoplayer.css - - "text/css" - 
+1171254390.474 0.366 135.186.252.198 TCP_MISS_VERIFY/200 37332 GET http://www.cbsnews.com/common/js/nav.js - DIRECT/207.40.194.23 "application/x-javascript" - 
+1171254390.484 0.001 135.210.210.101 TCP_HIT/200 3788 GET http://i.a.cnn.net/cnn/.element/ssi/css/1.4/video/playlist.css - - "text/css" - 
+1171254390.484 0.223 135.210.40.254 TCP_MISS_PRIVATE_STATUS_CODE/302 254 GET http://view.atdmt.com/TRU/view/dvrtmtru0010004528tru/direct;at.trutru00004844/01/ - DIRECT/194.129.79.7 "-" - 
+1171254390.494 204.542 135.186.252.198 TCP_MISS_PRIVATE_CCTRL/200 17803 GET http://www.uwbadgers.com/graphics/buttons/podcast_main.gif - DIRECT/128.104.127.254 "text/html; charset=utf-8" CLIENT_CLOSE/702775.0 
+1171254390.534 0.110 135.186.252.198 TCP_MISS_VERIFY/200 8162 GET http://www.cbsnews.com/common/includes/flashFcn.js - DIRECT/207.40.194.23 "application/x-javascript" - 
+1171254390.576 0.152 135.186.252.198 TCP_MISS_PRIVATE_STATUS_CODE/302 655 GET http://cbscom.112.2o7.net/b/ss/cbscom/1/H.1--NS/0 - DIRECT/66.151.152.125 "text/plain" - 
+1171254390.596 0.112 135.186.252.198 TCP_MISS_VERIFY/200 746 GET http://www.cbsnews.com/common/includes/flash_script.vbs - DIRECT/207.40.194.23 "text/plain; charset=ISO-8859-1" - 
+1171254390.636 0.001 135.210.210.101 TCP_HIT_IMS_NOTMOD/304 148 GET http://i.cnn.net/cnn/.element/ssi/css/1.3/videoplayer.css - - "text/css" - 
+1171254390.646 0.010 135.210.210.101 TCP_HIT_IMS_NOTMOD/304 171 GET http://i.cnn.net/cnn/.element/ssi/js/1.4/videoplayer.js - DIRECT/64.236.24.137 "application/x-javascript" - 
+1171254390.717 0.283 135.186.252.198 TCP_MISS/200 20131 GET http://m.2mdn.net/viewad/924422/rewind300x250.gif - DIRECT/216.73.86.91 "image/gif" - 
+1171254390.747 0.001 135.210.210.101 TCP_HIT/200 3116 GET http://i.a.cnn.net/cnn/.element/ssi/js/1.4/video/contextual.js - - "application/x-javascript" - 
+1171254390.767 0.181 135.210.40.254 TCP_MISS/200 18695 GET http://mir.atdmt.com/b/TUTRU1234TRU/brownyellowsuit_728x90.jpg - DIRECT/63.111.30.114 "image/jpeg;charset=ISO-8859-1" - 
+1171254390.787 0.001 135.210.210.101 TCP_HIT/200 1061 GET http://i.a.cnn.net/cnn/.element/img/1.3/video/broadband/player/lcd_bg.gif - - "image/gif" - 
+1171254390.837 0.001 135.186.252.198 TCP_HIT_IMS_NOTMOD/304 158 GET http://www.courttv.com/graphics/home_primetime/new250s/redgcar-300x250pt.swf - - "application/x-shockwave-flash" - 
+1171254390.847 0.001 135.210.210.101 TCP_HIT/200 419 GET http://i.a.cnn.net/cnn/.element/img/1.3/video/broadband/player/bottom_lcd.gif - - "image/gif" - 
+1171254390.887 0.001 135.210.210.101 TCP_HIT/200 381 GET http://i.a.cnn.net/cnn/.element/img/1.3/video/broadband/controls/progress_bar.gif - - "image/gif" - 
+1171254390.887 0.020 135.89.19.174 TCP_MISS_PRIVATE_CCTRL/200 3087 GET http://ads.cnn.com/html.ng/site=cnn&cnn_pagetype=article&cnn_position=728x90_top&cnn_rollup=world&params.styles=fs&tile=1171254393463&page.allowcompete=yes&domId=76999 - DIRECT/64.236.29.63 "text/html" - 
+1171254390.927 0.001 135.210.96.142 TCP_HIT_IMS_NOTMOD/304 120 GET http://ax.phobos.apple.com.edgesuite.net/WebObjects/MZStore.woa/wa/com.apple.jingle.appserver.MZDirectAction/fontStyles - - "text/xml" - 
+1171254390.937 0.001 135.186.252.198 TCP_HIT_IMS_NOTMOD/304 160 GET http://wwwimage.cbsnews.com/common/images/CCCCCC.gif - - "image/gif" - 
+1171254390.937 0.001 135.210.210.101 TCP_HIT/200 876 GET http://i.a.cnn.net/cnn/.element/img/1.3/video/broadband/controls/soundbars_overlay.gif - - "image/gif" - 
+1171254390.967 0.001 135.210.210.101 TCP_HIT/200 4270 GET http://i.a.cnn.net/cnn/.element/img/1.3/video/broadband/controls/2.0/control_bg.gif - - "image/gif" - 
+1171254390.967 4.249 135.58.64.172 TCP_MISS_PRIVATE_ON_STOP_LIST/200 60193 GET http://telephones.att.com/telephones_ui/phone_store/dsp_product.cfm?itemID=1697&parent=21820 - DIRECT/207.189.100.76 "text/html; charset=UTF-8" - 
+1171254390.978 0.001 135.186.252.198 TCP_HIT_IMS_NOTMOD/304 161 GET http://wwwimage.cbsnews.com/common/images/v2/misc_search.gif - - "image/gif" - 
+1171254391.008 0.001 135.186.252.198 TCP_HIT_IMS_NOTMOD/304 161 GET http://wwwimage.cbsnews.com/common/images/v2/button_search.gif - - "image/gif" - 
+1171254391.028 0.151 135.210.96.142 TCP_MISS_PRIVATE_ON_STOP_LIST/200 439 GET http://metrics.apple.com/b/ss/applesuperglobal/1/G.6--NS?pageName=Custom+Page-US+-+Grammy+2007&pccr=true&h5=appleuswwwitms%2Cappleitmsna%2Cappleitmsus&ch=Grammy+2007&g=http%3A%2F%2Fax.phobos.apple.com.edgesuite.net%2FWebObjects%2FMZStore.woa%2Fwa%2FviewCustomPage%3Fname%3DpageGrammy2007 - DIRECT/70.42.134.12 "image/gif" - 
+1171254391.038 2.981 135.210.32.242 TCP_MISS_PRIVATE_METHOD/200 12784 CONNECT www.accountonline.com:443 - DIRECT/192.193.222.22 "-" - 
+1171254391.058 0.001 135.186.252.198 TCP_HIT_IMS_NOTMOD/304 159 GET http://wwwimage.cbsnews.com/common/images/v2/misc_bg_nav_new.gif - - "image/gif" - 
+1171254391.078 0.111 135.186.252.198 TCP_MISS_VERIFY/200 3964 GET http://wwwimage.cbsnews.com/common/images/v2/logo_cbsnews.gif - DIRECT/204.2.240.24 "image/gif" - 
+1171254391.078 0.020 135.89.19.174 TCP_MISS_PRIVATE_ON_STOP_LIST/200 2664 GET http://cl.cnn.com/ctxtlink/jsp/cnn/cl/1.5/cnn-story-ls-main.jsp?domId=storyCLLinkSpots&id=cnnworld&origin=cnnsafe&site=cnn_world_dyn_ctxt&nkw=3?domId=storyCLLinkSpots&time=1171254393679 - DIRECT/64.236.22.12 "text/html" - 
+1171254391.098 0.001 135.210.210.101 TCP_HIT/200 900 GET http://i.a.cnn.net/cnn/.element/img/1.3/video/broadband/controls/rwd.gif - - "image/gif" - 
+1171254391.108 0.001 135.186.252.198 TCP_HIT_IMS_NOTMOD/304 159 GET http://wwwimage.cbsnews.com/common/images/transp.gif - - "image/gif" - 
+1171254391.118 0.001 135.210.210.101 TCP_HIT/200 660 GET http://i.a.cnn.net/cnn/.element/img/1.3/video/broadband/controls/return.gif - - "image/gif" - 
+1171254391.128 0.110 135.186.252.198 TCP_MISS_VERIFY/200 1164 GET http://wwwimage.cbsnews.com/common/images/v2/misc_yahoo.gif - DIRECT/204.2.240.24 "image/gif" - 
+1171254391.158 0.060 135.186.252.198 TCP_MISS_PRIVATE_STATUS_CODE/302 191 GET http://ad.doubleclick.net/ad/sponsorships.cbsnews.com/;adid=69917273;sz=1x1 - DIRECT/65.205.8.52 "-" - 
+1171254391.158 0.010 135.186.252.198 TCP_HIT_IMS_NOTMOD/304 115 GET http://www.showbuzz.cbsnews.com/images/2007/02/05/image2435966.gif - - "image/gif" - 
+1171254391.168 0.110 135.186.252.198 TCP_MISS_VERIFY/200 2622 GET http://wwwimage.cbsnews.com/images/2007/01/11/image2351241.gif - DIRECT/204.2.240.24 "image/gif" - 
+1171254391.178 0.001 135.210.210.101 TCP_HIT/200 871 GET http://i.a.cnn.net/cnn/.element/img/1.3/video/broadband/controls/ffwd.gif - - "image/gif" - 
+1171254391.188 0.001 135.186.252.198 TCP_HIT_IMS_NOTMOD/304 160 GET http://wwwimage.cbsnews.com/common/images/bug_popup.gif - - "image/gif" - 
+1171254391.208 0.001 135.210.210.101 TCP_HIT/200 4143 GET http://i.a.cnn.net/cnn/.element/img/1.3/video/broadband/controls/play_combined.gif - - "image/gif" - 
+1171254391.258 0.160 135.89.19.174 TCP_MISS_PRIVATE_ON_STOP_LIST/200 3553 GET http://cl.cnn.com/ctxtlink/jsp/cnn/cl/1.5/cnn-story-cl.jsp?domId=storyCLSponsoredLinks&time=1171254393679&category=cnnworld&url=http://robots.cnn.com/2007/WORLD/meast/02/10/iraq.main/index.html&site=cnn_world_dyn_ctxt&maxCount=3 - DIRECT/64.236.22.12 "text/html" - 
+1171254391.268 11.441 135.210.32.242 TCP_MISS_PRIVATE_METHOD/200 4233 CONNECT vendorweb.citibank.com:443 - DIRECT/64.154.81.209 "-" - 
+1171254391.268 0.001 135.210.210.101 TCP_HIT/200 1554 GET http://i.a.cnn.net/cnn/.element/img/1.3/video/broadband/controls/mute_combined.gif - - "image/gif" - 
+1171254391.278 0.001 135.186.252.198 TCP_HIT_IMS_NOTMOD/304 160 GET http://wwwimage.cbsnews.com/common/images/bug_story.gif - - "image/gif" - 
+1171254391.288 0.001 135.210.210.101 TCP_HIT/200 1131 GET http://i.a.cnn.net/cnn/.element/img/1.3/video/broadband/controls/vol_bg.gif - - "image/gif" - 
+1171254391.298 0.020 135.89.19.174 TCP_MISS_PRIVATE_CCTRL/200 3366 GET http://ads.cnn.com/html.ng/site=cnn&cnn_pagetype=article&cnn_position=160x600_rgt&cnn_rollup=world&params.styles=fs&tile=1171254393463&page.allowcompete=yes&domId=687301 - DIRECT/64.236.29.63 "text/html" - 
+1171254391.298 0.060 135.186.252.198 TCP_MISS_PRIVATE_STATUS_CODE/304 261 GET http://www.cbsnews.com/images/2005/09/19/image858082.gif - DIRECT/207.40.194.23 "image/gif" - 
+1171254391.318 0.001 135.186.252.198 TCP_HIT_IMS_NOTMOD/304 181 GET http://www.cbsnews.com/images/2006/11/13/image2177067.jpg - - "image/jpeg" - 
+1171254391.365 0.197 135.210.32.242 TCP_MISS_PRIVATE_METHOD/200 951 CONNECT www.accountonline.com:443 - DIRECT/192.193.222.22 "-" - 
+1171254391.365 0.001 135.186.252.198 TCP_HIT_IMS_NOTMOD/304 183 GET http://www.cbsnews.com/images/2005/09/19/image858073.gif - - "image/gif" - 
+1171254391.385 0.057 135.186.252.198 TCP_MISS_PRIVATE_STATUS_CODE/304 260 GET http://wwwimage.cbsnews.com/common/images/bug_audio.gif - DIRECT/204.2.240.24 "image/gif" - 
+1171254391.385 0.001 135.210.210.101 TCP_HIT/200 640 GET http://i.a.cnn.net/cnn/.element/img/1.3/video/broadband/controls/vol_dn.gif - - "image/gif" - 
+1171254391.385 0.177 135.210.32.242 TCP_MISS_PRIVATE_METHOD/200 3699 CONNECT www.accountonline.com:443 - DIRECT/192.193.222.22 "-" - 
+1171254391.405 0.010 135.210.210.101 TCP_MISS_PRIVATE_STATUS_CODE/302 301 GET http://ads.cnn.com/event.ng/Type=count&ClientType=2&AdID=56084&FlightID=43317&TargetID=2687&SiteID=215&EntityDefResetFlag=0&Segments=9,19,101,424,431,2210,2236,2539,2743,2746,3285,4008,4960,5516,6298,6520,6582&Targets=3227,2687,1515,2684&Values=34,46,51,63,77,80,93,101,110,215,236,276,682,685,917,1060,1231,1242,1285,1601,1678,1690,1715,1794,4404,4413,4418,4452,28733,47118,47182,47457,49554&RawValues=TLD%2Ccom%2CZIP%2C55401&random=bsApfyd,bcNWIdyfiNit - DIRECT/64.236.29.63 "text/html" - 
+1171254391.415 0.307 135.37.255.49 TCP_MISS_PRIVATE_STATUS_CODE/304 190 GET http://www.sznb.com/ad_link/ad468_sznb.swf - DIRECT/61.152.245.88 "-" - 
+1171254391.415 0.001 135.186.252.198 TCP_HIT_IMS_NOTMOD/304 160 GET http://wwwimage.cbsnews.com/common/images/bug_video.gif - - "image/gif" - 
+1171254391.425 0.087 135.89.19.174 TCP_MISS_PRIVATE_NO_LAST_MOD/200 181 GET http://cnn.dyn.cnn.com/cookie.crumb - DIRECT/64.236.29.21 "image/gif" - 
+1171254391.476 0.268 135.210.32.242 TCP_MISS_PRIVATE_METHOD/200 16275 CONNECT www.accountonline.com:443 - DIRECT/192.193.222.22 "-" - 
+1171254391.476 0.001 135.210.210.101 TCP_HIT/200 652 GET http://i.a.cnn.net/cnn/.element/img/1.3/video/broadband/controls/vol_up.gif - - "image/gif" - 
+1171254391.488 0.033 135.89.19.174 TCP_MISS_PRIVATE_ON_STOP_LIST/200 479 GET http://cnn.122.2o7.net/b/ss/cnnglobal/1/H.1-Pdv-2/s9463716087481?[AQB]&ndh=1&t=11/1/2007%2023%3A26%3A33%200%20300&ns=cnn&pageName=/2007/WORLD/meast/02/10/iraq.main/index.html&g=http%3A//www.cnn.com/2007/WORLD/meast/02/10/iraq.main/index.html&ch=Story%3A%20/WORLD/meast&c2=www.cnn.com&c3=sprj.iraq05&v3=non-member&c4=02/10/2007&c5=3%20U.S.%20troops%20killed%20hunting%20weapons%20cache&c6=non-member&c7=23&c9=8&s=1280x960&c=32&j=1.3&v=Y&k=Y&bw=1012&bh=591&ct=lan&hp=N&[AQE] - DIRECT/66.151.244.166 "image/gif" - 

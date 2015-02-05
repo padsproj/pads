@@ -1,0 +1,262 @@
+Apr 24 04:02:24 srv7 snortd: snort shutdown succeeded
+Apr 24 04:02:24 srv7 snortd: snort startup succeeded
+Apr 24 14:44:28 srv7 yum: Disabling nightly yum update: 
+Apr 24 14:44:28 srv7 yum:  succeeded
+Apr 24 14:44:28 srv7 yum: [60G
+Apr 24 14:44:28 srv7 yum: 
+Apr 24 14:44:28 srv7 rc: Stopping yum:  succeeded
+Apr 24 14:44:29 srv7 cups-config-daemon: cups-config-daemon -TERM succeeded
+Apr 24 14:44:29 srv7 haldaemon: haldaemon -TERM succeeded
+Apr 24 14:44:29 srv7 messagebus: messagebus -TERM succeeded
+Apr 24 14:44:29 srv7 atd: atd shutdown succeeded
+Apr 24 14:44:29 srv7 cups: cupsd shutdown succeeded
+Apr 24 14:44:29 srv7 webmin: Stopping Webmin server in /usr/libexec/webmin
+Apr 24 14:44:29 srv7 rc: Stopping webmin:  succeeded
+Apr 24 14:44:29 srv7 xfs: xfs shutdown succeeded
+Apr 24 14:44:30 srv7 gpm: gpm shutdown succeeded
+Apr 24 14:44:30 srv7 squid: Stopping squid: 
+Apr 24 14:44:32 srv7 squid: .
+Apr 24 14:45:02 srv7 last message repeated 15 times
+Apr 24 14:45:02 srv7 squid: 
+Apr 24 14:45:02 srv7 rc: Stopping squid:  succeeded
+Apr 24 14:45:02 srv7 sshd: sshd -TERM succeeded
+Apr 24 14:45:02 srv7 dhcpd: dhcpd shutdown succeeded
+Apr 24 14:45:02 srv7 smb: smbd shutdown succeeded
+Apr 24 14:45:02 srv7 smb: nmbd shutdown succeeded
+Apr 24 14:45:02 srv7 smartd: smartd shutdown failed
+Apr 24 14:45:03 srv7 snmpd: snmpd shutdown succeeded
+Apr 24 14:45:03 srv7 xinetd: xinetd shutdown succeeded
+Apr 24 14:45:03 srv7 acpid: acpid shutdown succeeded
+Apr 24 14:45:03 srv7 crond: crond shutdown succeeded
+Apr 24 14:45:03 srv7 mDNSResponder: mDNSResponder shutdown succeeded
+Apr 24 14:45:03 srv7 nifd: nifd shutdown succeeded
+Apr 24 14:45:04 srv7 nfslock: lockd shutdown failed
+Apr 24 14:45:04 srv7 nfslock: rpc.statd shutdown succeeded
+Apr 24 14:45:04 srv7 portmap: portmap shutdown succeeded
+Apr 24 14:46:55 srv7 syslog: syslogd startup succeeded
+Apr 24 14:46:55 srv7 syslog: klogd startup succeeded
+Apr 24 14:46:55 srv7 irqbalance: irqbalance startup succeeded
+Apr 24 14:46:55 srv7 portmap: portmap startup succeeded
+Apr 24 14:46:56 srv7 nfslock: rpc.statd startup succeeded
+Apr 24 14:46:56 srv7 rpcidmapd: rpc.idmapd startup succeeded
+Apr 24 14:46:57 srv7 mount: mount: LABEL=/boot duplicate - not mounted
+Apr 24 14:46:57 srv7 netfs: Mounting other filesystems:  failed
+Apr 24 14:46:57 srv7 rc: Starting lm_sensors:  succeeded
+Apr 24 14:46:57 srv7 autofs: automount startup succeeded
+Apr 24 14:46:57 srv7 mDNSResponder:  startup succeeded
+Apr 24 14:46:58 srv7 smartd: smartd startup failed
+Apr 24 20:15:47 srv7 rc.sysinit: -e 
+Apr 24 20:15:49 srv7 start_udev: Starting udev:  succeeded 
+Apr 24 14:46:58 srv7 snortd: snort startup succeeded
+Apr 24 14:46:58 srv7 acpid: acpid startup succeeded
+Apr 24 20:15:54 srv7 rc.sysinit: -e 
+Apr 24 20:15:56 srv7 sysctl: kernel.sysrq = 0 
+Apr 24 14:46:58 srv7 snmpd: snmpd startup succeeded
+Apr 24 20:15:56 srv7 sysctl: net.ipv4.ip_forward = 1 
+Apr 24 20:15:56 srv7 sysctl: net.ipv4.conf.default.accept_source_route = 0 
+Apr 24 14:46:59 srv7 yum:  succeeded
+Apr 24 20:15:56 srv7 sysctl: net.ipv4.conf.default.rp_filter = 1 
+Apr 24 20:15:56 srv7 sysctl: kernel.core_uses_pid = 1 
+Apr 24 20:15:56 srv7 rc.sysinit: Configuring kernel parameters:  succeeded 
+Apr 24 14:45:56 srv7 date: Mon Apr 24 14:45:56 IST 2006 
+Apr 24 14:45:56 srv7 rc.sysinit: Setting clock  (localtime): Mon Apr 24 14:45:56 IST 2006 succeeded 
+Apr 24 14:45:56 srv7 rc.sysinit: Loading default keymap succeeded 
+Apr 24 14:45:56 srv7 rc.sysinit: Setting hostname srv7.grmtech.com:  succeeded 
+Apr 24 14:45:56 srv7 fsck: /dev/VolGroup00/LogVol00: clean, 2299759/14499840 files, 25743361/28999680 blocks 
+Apr 24 14:45:56 srv7 rc.sysinit: Checking root filesystem succeeded 
+Apr 24 14:47:01 srv7 cups: cupsd startup succeeded
+Apr 24 14:45:56 srv7 rc.sysinit: Remounting root filesystem in read-write mode:  succeeded 
+Apr 24 14:45:57 srv7 lvm.static:   2 logical volume(s) in volume group VolGroup00 now active 
+Apr 24 14:47:01 srv7 sshd:  succeeded
+Apr 24 14:45:57 srv7 rc.sysinit: Setting up Logical Volume Management: succeeded 
+Apr 24 14:45:57 srv7 fsck: /boot: clean, 38/128520 files, 32252/514048 blocks 
+Apr 24 14:45:57 srv7 rc.sysinit: Checking filesystems succeeded 
+Apr 24 14:47:01 srv7 xinetd: xinetd startup succeeded
+Apr 24 14:45:57 srv7 mount: mount: LABEL=/boot duplicate - not mounted 
+Apr 24 14:45:57 srv7 rc.sysinit: Mounting local filesystems:  failed 
+Apr 24 14:47:01 srv7 dhcpd: Internet Systems Consortium DHCP Server V3.0.1
+Apr 24 14:45:57 srv7 rc.sysinit: Enabling local filesystem quotas:  succeeded 
+Apr 24 14:47:01 srv7 dhcpd: 
+Apr 24 14:45:57 srv7 rc.sysinit: Enabling swap space:  succeeded 
+Apr 24 14:47:01 srv7 dhcpd: Copyright 2004 Internet Systems Consortium.
+Apr 24 14:47:02 srv7 dhcpd: All rights reserved.
+Apr 24 14:46:40 srv7 kudzu:  failed 
+Apr 24 14:47:02 srv7 dhcpd: For info, please visit http://www.isc.org/sw/dhcp/
+Apr 24 14:46:40 srv7 kudzu: Hardware configuration timed out. 
+Apr 24 14:47:02 srv7 dhcpd: Wrote 0 deleted host decls to leases file.
+Apr 24 14:46:40 srv7 kudzu: Run '/usr/sbin/kudzu' from the command line to re-detect. 
+Apr 24 14:47:02 srv7 dhcpd: Wrote 0 new dynamic host decls to leases file.
+Apr 24 14:46:40 srv7 rc: Starting pcmcia:  succeeded 
+Apr 24 14:47:02 srv7 dhcpd: Wrote 17 leases to leases file.
+Apr 24 14:46:40 srv7 sysctl: kernel.sysrq = 0 
+Apr 24 14:47:02 srv7 dhcpd: Listening on LPF/eth0/00:0c:f1:d4:6e:44/10.0.1/24
+Apr 24 14:46:40 srv7 sysctl: net.ipv4.ip_forward = 1 
+Apr 24 14:47:02 srv7 dhcpd: Sending on   LPF/eth0/00:0c:f1:d4:6e:44/10.0.1/24
+Apr 24 14:46:40 srv7 sysctl: net.ipv4.conf.default.accept_source_route = 0 
+Apr 24 14:47:02 srv7 dhcpd: Sending on   Socket/fallback/fallback-net
+Apr 24 14:46:40 srv7 sysctl: net.ipv4.conf.default.rp_filter = 1 
+Apr 24 14:47:02 srv7 dhcpd: dhcpd startup succeeded
+Apr 24 14:46:40 srv7 sysctl: kernel.core_uses_pid = 1 
+Apr 24 14:46:40 srv7 network: Setting network parameters:  succeeded 
+Apr 24 14:46:41 srv7 network: Bringing up loopback interface:  succeeded 
+Apr 24 14:46:43 srv7 network: Bringing up interface eth0:  succeeded 
+Apr 24 14:46:45 srv7 network: Bringing up interface eth1:  succeeded 
+Apr 24 14:46:48 srv7 network: Bringing up interface eth2:  succeeded 
+Apr 24 14:46:50 srv7 network: Bringing up interface eth3:  succeeded 
+Apr 24 14:46:52 srv7 network: Bringing up interface eth4:  succeeded 
+Apr 24 14:46:54 srv7 network: Bringing up interface eth5:  succeeded 
+Apr 24 14:46:55 srv7 named: named startup succeeded 
+Apr 24 14:47:03 srv7 gpm: gpm startup succeeded
+Apr 24 14:47:03 srv7 crond: crond startup succeeded
+Apr 24 14:47:03 srv7 squid: Starting squid: 
+Apr 24 14:47:04 srv7 squid: /etc/rc3.d/S90squid: line 53:  4459 Aborted                 $SQUID $SQUID_OPTS >>/var/log/squid/squid.out 2>&1
+Apr 24 14:47:04 srv7 squid: 
+Apr 24 14:47:04 srv7 rc: Starting squid:  failed
+Apr 24 14:47:04 srv7 xfs: xfs startup succeeded
+Apr 24 14:47:05 srv7 smb: smbd startup succeeded
+Apr 24 14:47:05 srv7 smb: nmbd startup succeeded
+Apr 24 14:47:06 srv7 ntop:    Processing file /etc/ntop.conf for parameters...
+Apr 24 14:47:06 srv7 ntop: Mon Apr 24 14:47:06 2006  NOTE: Interface merge enabled by default
+Apr 24 14:47:06 srv7 ntop: Mon Apr 24 14:47:06 2006  Initializing gdbm databases
+Apr 24 14:47:06 srv7 ntop: Mon Apr 24 14:47:06 2006  NOTE: Interface merge disabled from prefs file
+Apr 24 14:47:07 srv7 ntop: NOTE: --use-syslog, no facility specified, using default value.  Did you forget the =?
+Apr 24 14:47:07 srv7 ntop: NOTE: --use-syslog, no facility specified, using default value.  Did you forget the =?
+Apr 24 14:47:07 srv7 ntop: ntop startup succeeded
+Apr 24 14:47:07 srv7 anacron: anacron startup succeeded
+Apr 24 14:47:07 srv7 atd: atd startup succeeded
+Apr 24 14:47:07 srv7 messagebus: messagebus startup succeeded
+Apr 24 14:47:07 srv7 cups-config-daemon: cups-config-daemon startup succeeded
+Apr 24 14:47:08 srv7 haldaemon: haldaemon startup succeeded
+Apr 24 14:47:11 srv7 rc: Starting webmin:  succeeded
+Apr 24 20:49:40 srv7 yum: Disabling nightly yum update: 
+Apr 24 20:49:40 srv7 yum:  succeeded
+Apr 24 20:49:40 srv7 yum: [60G
+Apr 24 20:49:40 srv7 yum: 
+Apr 24 20:49:40 srv7 rc: Stopping yum:  succeeded
+Apr 24 20:49:40 srv7 cups-config-daemon: cups-config-daemon -TERM succeeded
+Apr 24 20:49:40 srv7 haldaemon: haldaemon -TERM succeeded
+Apr 24 20:49:40 srv7 messagebus: messagebus -TERM succeeded
+Apr 24 20:49:40 srv7 atd: atd shutdown succeeded
+Apr 24 20:49:40 srv7 cups: cupsd shutdown succeeded
+Apr 24 20:49:40 srv7 webmin: Stopping Webmin server in /usr/libexec/webmin
+Apr 24 20:49:40 srv7 rc: Stopping webmin:  succeeded
+Apr 24 20:49:40 srv7 xfs: xfs shutdown succeeded
+Apr 24 20:49:40 srv7 gpm: gpm shutdown succeeded
+Apr 24 20:49:41 srv7 squid: Stopping squid: 
+Apr 24 20:49:43 srv7 squid: .
+Apr 24 21:08:12 srv7 syslog: syslogd startup succeeded
+Apr 24 21:08:12 srv7 syslog: klogd startup succeeded
+Apr 24 21:08:12 srv7 irqbalance: irqbalance startup succeeded
+Apr 24 21:08:12 srv7 portmap: portmap startup succeeded
+Apr 24 21:08:12 srv7 nfslock: rpc.statd startup succeeded
+Apr 24 21:08:13 srv7 rpcidmapd: rpc.idmapd startup succeeded
+Apr 24 21:08:13 srv7 mount: mount: LABEL=/boot duplicate - not mounted
+Apr 24 21:08:13 srv7 netfs: Mounting other filesystems:  failed
+Apr 24 21:08:13 srv7 rc: Starting lm_sensors:  succeeded
+Apr 24 21:08:13 srv7 autofs: automount startup succeeded
+Apr 24 21:08:14 srv7 mDNSResponder:  startup succeeded
+Apr 25 02:37:10 srv7 rc.sysinit: -e 
+Apr 25 02:37:12 srv7 start_udev: Starting udev:  succeeded 
+Apr 24 21:08:14 srv7 smartd: smartd startup failed
+Apr 25 02:37:18 srv7 rc.sysinit: -e 
+Apr 25 02:37:20 srv7 sysctl: kernel.sysrq = 0 
+Apr 25 02:37:20 srv7 sysctl: net.ipv4.ip_forward = 1 
+Apr 25 02:37:20 srv7 sysctl: net.ipv4.conf.default.accept_source_route = 0 
+Apr 25 02:37:20 srv7 sysctl: net.ipv4.conf.default.rp_filter = 1 
+Apr 24 21:08:15 srv7 snortd: snort startup succeeded
+Apr 25 02:37:20 srv7 sysctl: kernel.core_uses_pid = 1 
+Apr 24 21:08:15 srv7 acpid: acpid startup succeeded
+Apr 25 02:37:20 srv7 rc.sysinit: Configuring kernel parameters:  succeeded 
+Apr 24 21:07:20 srv7 date: Mon Apr 24 21:07:20 IST 2006 
+Apr 24 21:08:15 srv7 snmpd: snmpd startup succeeded
+Apr 24 21:07:20 srv7 rc.sysinit: Setting clock  (localtime): Mon Apr 24 21:07:20 IST 2006 succeeded 
+Apr 24 21:08:15 srv7 yum:  succeeded
+Apr 24 21:07:20 srv7 rc.sysinit: Loading default keymap succeeded 
+Apr 24 21:07:20 srv7 rc.sysinit: Setting hostname srv7.grmtech.com:  succeeded 
+Apr 24 21:07:25 srv7 fsck: /dev/VolGroup00/LogVol00: clean, 2299728/14499840 files, 25751252/28999680 blocks 
+Apr 24 21:07:25 srv7 rc.sysinit: Checking root filesystem succeeded 
+Apr 24 21:07:25 srv7 rc.sysinit: Remounting root filesystem in read-write mode:  succeeded 
+Apr 24 21:07:26 srv7 lvm.static:   2 logical volume(s) in volume group VolGroup00 now active 
+Apr 24 21:07:26 srv7 rc.sysinit: Setting up Logical Volume Management: succeeded 
+Apr 24 21:07:26 srv7 fsck: /boot: clean, 38/128520 files, 32252/514048 blocks 
+Apr 24 21:07:26 srv7 rc.sysinit: Checking filesystems succeeded 
+Apr 24 21:08:17 srv7 cups: cupsd startup succeeded
+Apr 24 21:07:26 srv7 mount: mount: LABEL=/boot duplicate - not mounted 
+Apr 24 21:07:26 srv7 rc.sysinit: Mounting local filesystems:  failed 
+Apr 24 21:08:17 srv7 sshd:  succeeded
+Apr 24 21:07:26 srv7 rc.sysinit: Enabling local filesystem quotas:  succeeded 
+Apr 24 21:07:27 srv7 rc.sysinit: Enabling swap space:  succeeded 
+Apr 24 21:08:18 srv7 xinetd: xinetd startup succeeded
+Apr 24 21:08:09 srv7 kudzu:  failed 
+Apr 24 21:08:09 srv7 kudzu: Hardware configuration timed out. 
+Apr 24 21:08:18 srv7 dhcpd: Internet Systems Consortium DHCP Server V3.0.1
+Apr 24 21:08:09 srv7 kudzu: Run '/usr/sbin/kudzu' from the command line to re-detect. 
+Apr 24 21:08:18 srv7 dhcpd: Copyright 2004 Internet Systems Consortium.
+Apr 24 21:08:18 srv7 dhcpd: All rights reserved.
+Apr 24 21:08:10 srv7 rc: Starting pcmcia:  succeeded 
+Apr 24 21:08:18 srv7 dhcpd: For info, please visit http://www.isc.org/sw/dhcp/
+Apr 24 21:08:10 srv7 sysctl: kernel.sysrq = 0 
+Apr 24 21:08:18 srv7 dhcpd: Wrote 0 deleted host decls to leases file.
+Apr 24 21:08:10 srv7 sysctl: net.ipv4.ip_forward = 1 
+Apr 24 21:08:18 srv7 dhcpd: Wrote 0 new dynamic host decls to leases file.
+Apr 24 21:08:10 srv7 sysctl: net.ipv4.conf.default.accept_source_route = 0 
+Apr 24 21:08:18 srv7 dhcpd: Wrote 17 leases to leases file.
+Apr 24 21:08:10 srv7 sysctl: net.ipv4.conf.default.rp_filter = 1 
+Apr 24 21:08:18 srv7 dhcpd: Listening on LPF/eth0/00:0c:f1:d4:6e:44/10.0.1/24
+Apr 24 21:08:10 srv7 sysctl: kernel.core_uses_pid = 1 
+Apr 24 21:08:18 srv7 dhcpd: Sending on   LPF/eth0/00:0c:f1:d4:6e:44/10.0.1/24
+Apr 24 21:08:10 srv7 network: Setting network parameters:  succeeded 
+Apr 24 21:08:18 srv7 dhcpd: Sending on   Socket/fallback/fallback-net
+Apr 24 21:08:10 srv7 network: Bringing up loopback interface:  succeeded 
+Apr 24 21:08:18 srv7 dhcpd: dhcpd startup succeeded
+Apr 24 21:08:10 srv7 ifup: Error, some other host already uses address 10.0.1.1. 
+Apr 24 21:08:10 srv7 network: Bringing up interface eth0:  failed 
+Apr 24 21:08:10 srv7 ifup: Error, some other host already uses address 192.168.1.1. 
+Apr 24 21:08:10 srv7 network: Bringing up interface eth1:  failed 
+Apr 24 21:08:10 srv7 ifup: Error, some other host already uses address 192.168.2.1. 
+Apr 24 21:08:10 srv7 network: Bringing up interface eth2:  failed 
+Apr 24 21:08:10 srv7 ifup: Error, some other host already uses address 192.168.3.1. 
+Apr 24 21:08:10 srv7 network: Bringing up interface eth3:  failed 
+Apr 24 21:08:11 srv7 ifup: Error, some other host already uses address 192.168.4.1. 
+Apr 24 21:08:11 srv7 network: Bringing up interface eth4:  failed 
+Apr 24 21:08:11 srv7 ifup: Error, some other host already uses address 192.168.5.1. 
+Apr 24 21:08:11 srv7 network: Bringing up interface eth5:  failed 
+Apr 24 21:08:19 srv7 gpm: gpm startup succeeded
+Apr 24 21:08:12 srv7 named: named startup succeeded 
+Apr 24 21:08:19 srv7 crond: crond startup succeeded
+Apr 24 21:08:20 srv7 squid: Starting squid: 
+Apr 24 21:08:20 srv7 squid: /etc/rc3.d/S90squid: line 53:  4858 Aborted                 $SQUID $SQUID_OPTS >>/var/log/squid/squid.out 2>&1
+Apr 24 21:08:20 srv7 squid: 
+Apr 24 21:08:20 srv7 rc: Starting squid:  failed
+Apr 24 21:08:21 srv7 xfs: xfs startup succeeded
+Apr 24 21:08:21 srv7 smb: smbd startup succeeded
+Apr 24 21:08:22 srv7 smb: nmbd startup succeeded
+Apr 24 21:08:22 srv7 ntop:    Processing file /etc/ntop.conf for parameters...
+Apr 24 21:08:22 srv7 ntop: Mon Apr 24 21:08:22 2006  NOTE: Interface merge enabled by default
+Apr 24 21:08:22 srv7 ntop: Mon Apr 24 21:08:22 2006  Initializing gdbm databases
+Apr 24 21:08:23 srv7 ntop: Mon Apr 24 21:08:22 2006  NOTE: Interface merge disabled from prefs file
+Apr 24 21:08:23 srv7 ntop: NOTE: --use-syslog, no facility specified, using default value.  Did you forget the =?
+Apr 24 21:08:23 srv7 ntop: NOTE: --use-syslog, no facility specified, using default value.  Did you forget the =?
+Apr 24 21:08:23 srv7 ntop: ntop startup succeeded
+Apr 24 21:08:24 srv7 anacron: anacron startup succeeded
+Apr 24 21:08:24 srv7 atd: atd startup succeeded
+Apr 24 21:08:24 srv7 messagebus: messagebus startup succeeded
+Apr 24 21:08:24 srv7 cups-config-daemon: cups-config-daemon startup succeeded
+Apr 24 21:08:24 srv7 haldaemon: haldaemon startup succeeded
+Apr 24 21:08:28 srv7 rc: Starting webmin:  succeeded
+Apr 25 04:02:31 srv7 snortd: snort shutdown succeeded
+Apr 25 04:02:31 srv7 snortd: snort startup succeeded
+Apr 26 04:02:27 srv7 snortd: snort shutdown succeeded
+Apr 26 04:02:28 srv7 snortd: snort startup succeeded
+Apr 27 04:02:27 srv7 snortd: snort shutdown succeeded
+Apr 27 04:02:27 srv7 snortd: snort startup succeeded
+Apr 28 04:02:28 srv7 snortd: snort shutdown succeeded
+Apr 28 04:02:28 srv7 snortd: snort startup succeeded
+Apr 29 04:02:29 srv7 snortd: snort shutdown succeeded
+Apr 29 04:02:29 srv7 snortd: snort startup succeeded
+Apr 30 04:02:29 srv7 cups: cupsd shutdown succeeded
+Apr 30 04:02:31 srv7 cups: cupsd startup succeeded
+Apr 30 04:02:31 srv7 snmpd: snmpd shutdown succeeded
+Apr 30 04:02:31 srv7 snmpd: snmpd startup succeeded
+Apr 30 04:02:33 srv7 snortd: snort shutdown succeeded
+Apr 30 04:02:33 srv7 snortd: snort startup succeeded

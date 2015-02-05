@@ -1,0 +1,761 @@
+/*******************************************************************************
+ AT&T Internet Firewall log parser for NSM 
+
+ James Yang at AT&T ; 5/10/2003
+ 
+  5/10:  
+  5/18: correlate IP address to user_id
+  6/12: adding more checking for format validity.
+        Modify the "UPDATE" to include more parsing information
+  6/13: move action_list to method field
+  6/27: in msg field, replace ',' with ';' - to fix NSM DB load problem
+  8/14: add socket feature 
+  11/04: add facility_ip to the aggregate equation.
+  11/04: replace input string '\t' with ' ' 
+  11/09: add t_count length check for fields less that 16
+  11/10: add debug to hide #- errors 
+  11/10: add skipped records to EOF totals, show better skipped numbers this job/total in update message 
+   11/10: adj efficieny to the total-skipped for calc
+
+  Usage: java vpnparser aggregate_record_count dump_time min_aggregate_count
+  Usage: tail -f log | java vpnparser [-d] 200000(rec) 300(sec) 1(agg) | send2nsm
+
+  VPN log entries do not have fixed format.  Therefore, it is done by each type
+  of the entries.
+  In the version, a special correlation is done in the script to collect client
+  logon information - client IP and assigned UGN ip.  This is because the 
+  client remote IP address and the assigned UGN IP address do NOT show at 
+  the the same record line. 
+
+ examples of VPN Log :
+
+May  6 11:25:46 ckivpn2m.vpn.att.com  10365 05/06/2003 11:17:10 tEvtLgMgr 0 : Se
+curity [12] Session: IPSEC[sydurr]:14579 assigned IP address 135.210.18.30, mask
+ 0.0.0.0
+
+May  6 11:25:46 ckivpn2m.vpn.att.com  10365 05/06/2003 11:17:10 tEvtLgMgr 0 : Se
+curity [12] Session: IPSEC[sydurr]:14579 physical addresses: remote 32.103.69.15
+ local 12.20.58.40
+
+May  6 11:25:46 ckivpn2m.vpn.att.com  10365 05/06/2003 11:17:01 tEvtLgMgr 0 : CS
+FW [12] Rule[OVERRIDE  2] Firewall:  [135.210.16.122:1629-135.43.246.60:1434, ud
+p], action: Drop
+
+May  6 11:25:46 ckivpn2m.vpn.att.com  10365 05/06/2003 11:16:57 tIsakmp 0 : Fail
+ed Login Attempt: Username=attvpn1: Date/Time=05/06/2003 11:16:57
+
+May  6 11:25:46 ckivpn2m.vpn.att.com  10365 05/06/2003 11:16:57 tEvtLgMgr 0 : IS
+AKMP [13] No proposal chosen in message from 68.37.61.100 
+
+*******************************************************************************/
+
+PARSER_BEGIN(vpnparser) 
+
+import java.util.Enumeration;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.*;
+import java.lang.String;
+import java.lang.Object;
+import java.text.*;
+import java.io.*;
+import java.net.*;
+import java.util.Timer;
+import java.util.TimerTask;  
+
+class pub_data{
+   public static boolean debug = false ;
+   public static boolean dumping = false ;
+   public static int max_rec = 200000 ;
+   public static int max_rec_static = 200000 ;
+   public static int dotimer = 5 * 60 ;
+   public static int min_agg = 1 ;
+   public static int tot_agg_count = 0;
+   public static int tot_rec_count = 0;
+   public static int adj_count = 0;
+   public static int tot_skip_count = 0 ;
+   public static int tot_bad_count = 0 ;
+   public static int timer_rec_count = 0 ;
+   public static PrintWriter out_put;
+   public static Socket socket = null ;
+   public static String sock_server = "127.0.0.1" ; /* local */
+   public static int sock_port = 0  ;  
+   public static String assigned_ip[] ;
+   public static String assigned_uid[] ;
+   public void alloc_pub_data_array() {
+     assigned_ip = new String[1000] ; 
+     assigned_uid = new String[1000] ; 
+   } 
+}
+
+class generic_class {
+
+  //public static String buffer ;
+  //pub_data_class pub = new pub_data_class();
+
+  public boolean IsInteger(String str) {
+     int leng, i, j ;
+     char ch ;
+     String digits = "0123456789";
+     if ( (leng=str.length() ) == 0 )  return(false); 
+     j=0 ;
+     // while ( str.charAt(j) == ' ' ||  str.charAt(j) == '	' )
+     //   { j++; if ( j >= leng )  return(false); }
+     // while ( str.charAt(leng-1) == ' ' ||  str.charAt(leng-1) == '	' )
+     //   { leng--; if ( leng == 0 )  return(false); }
+     if ( str.charAt(j) == '+' || str.charAt(j) == '-' )
+        {
+        if ( leng == 1 ) return(false);
+        j++ ; 
+        }
+     for  ( i=j ; i<leng ; i++)
+       {
+       if ( digits.indexOf(str.charAt(i)) < 0 )  return(false);
+       } 
+     return(true);  
+  }
+
+  public boolean IsReal(String str) {
+     int leng, i, j;
+     boolean dot ;
+     char ch ;
+     String digits = "0123456789.";
+     if ( (leng=str.length() ) == 0 )  return(false); 
+     j=0 ;
+     if ( str.charAt(j) == '+' || str.charAt(j) == '-' )
+        {
+        if ( leng == 1 ) return(false);
+        j++ ; 
+        }
+     dot = false ;
+     for  ( i=j ; i<leng ; i++)
+       {
+       if ( ( ch = str.charAt(i) ) == '.' ) 
+          {
+          if ( dot == true ) return(false);
+          dot = true ; 
+          }
+       if ( digits.indexOf(ch) < 0 )  return(false);
+       } 
+     return(true);  
+  }
+
+} // end of generic_class
+
+class P_Line {
+      public static	String d_date ;
+      public static	String d_time ;
+      public static	String proto ;
+      public static	String type ;
+      public static	String s_ip ;
+      public static	String t_ip ;
+      public static	String s_port ;
+      public static	String t_port ;
+      public static	String method ;
+      public static	String action ;
+      public static	String direction ;
+      public static	String facility_ip ;
+      public static	String user_id ;
+      public static	String msg ;
+  
+      public static	String agg_index = "";
+      public static	String agg_index1 = "";
+      public static     String agg_string = "" ;
+      public static     String level1 = "";  // level 1 function
+      public static     String level2 = "";
+
+      public static String month_arr[] = {"Jan","Feb","Mar","Apr","May",
+                           "Jun","Jul","Aug", "Sep","Oct","Nov","dec"};
+
+      public static int process_line(String buf_line, Map aggregates) {
+         //System.err.println("proc=" + buf_line); 
+         StringTokenizer token_line = new StringTokenizer(buf_line," ");
+         int t_count = 0 ; 
+         int maxtokens = 50 ;
+         int ic, tmp, tmp1, sess_id ;
+         String digits = "0123456789"; 
+         String tmp_token1 ;
+         String tokens[] ;
+         tokens = new String[maxtokens];
+         pub_data pub = new pub_data() ;  
+ 	 generic_class gen = new generic_class(); 
+
+         //System.err.println("line length = " + buf_line.length() ); 
+         if ( buf_line.length() < 60  ) return(-1);
+         while ( token_line.hasMoreTokens() ) {
+            tmp_token1 = (String)(token_line.nextToken()) ;
+            tokens[++t_count] = tmp_token1.replace('\t',' ') ;
+            //System.err.println("token " + t_count + " =[" + tokens[t_count] + "]" ); 
+            if ( t_count >= maxtokens -1 ) return(-5) ;
+         }
+	 if ( t_count < 11 ) return(-1000); /* ignore the entry */
+         /*
+         if ( level1.equals("repeated") )
+           { // level1: useless repeated message
+           return(-1000) ; 
+           }
+         */
+         proto = level1 = tokens[8] ;
+         // Let's assign variables ....
+         tmp_token1 = tokens[4];
+         if ( ( tmp = tokens[4].length() ) <= 2 ) return(-10) ;
+         if ( tokens[4].charAt(0) == '[' ) 
+            { /* with [...] */
+            if ( tokens[4].charAt(tmp-1) != ']' ) return(-11); 
+            tmp_token1 = tokens[4].substring(1,tmp-1) ;
+            tmp -= 2 ;
+            }
+         if ( digits.indexOf(tmp_token1.charAt(0)) >= 0 )
+            { /* IP */
+               ic = 0 ; tmp1 = 0 ;
+               while (  ic <= tmp - 1 && tmp1 < 4 )
+                  {
+                  if ( tmp_token1.charAt(ic) == '.' ) tmp1++;
+                  ic++;
+                  }
+               if ( tmp1 == 4 ) 
+                  ic--;
+               else if ( tmp1 != 3 ) 
+                  return(-12);
+               facility_ip = tmp_token1.substring(0,ic) ;
+            } 
+         else if ( ( ic=tmp_token1.indexOf(".") ) > 0 ) 
+            facility_ip = tmp_token1.substring(0,ic) ;
+         else
+            facility_ip = tmp_token1;
+         
+         // date field  05/06/2003  09:23:43
+         if ( tokens[6].length() != 10 || tokens[7].length() != 8 ) return( -11 ) ;
+	 d_date = tokens[6].substring(6,10)
+                  + "-" + tokens[6].substring(0,2) 
+                  + "-" + tokens[6].substring(3,5)
+                  + " " + tokens[7] ; 
+         type = level2 = tokens[11] ;
+         //System.err.println("level1 " + level1 + "; level2 = " + level2 ); 
+
+	 s_ip = t_ip = s_port = t_port = action = msg = user_id = method = "" ;
+         if ( level1.equals("tEvtLgMgr") )
+           { // Evt at level1
+	   if ( t_count < 14 ) return(-20); /* ill formed entry */
+           if ( level2.equals("ISAKMP") )
+              { // Evt.ISAKMP
+	      if ( t_count < 13 ) return(-25); /* ill formed entry */
+              if ( tokens[13].indexOf(".") > 0 ) 
+                 s_ip = tokens[13] ; /* the client IP */ 
+              else if ( tokens[t_count].indexOf(".") > 0 )
+                 s_ip = tokens[t_count] ; /* the last token is client IP */ 
+              // else
+              //   { return( -30 ) ; } /* ??? */
+              for ( ic=13; ic <= t_count ; ic++ )
+                 msg = msg + tokens[ic] + " " ;
+              //System.err.println("msg = " + msg ); 
+              }
+           else if ( level2.equals("CSFW") )
+              { // Evt.CSFW 
+	      if ( t_count < 19 ) return(-35); /* ill formed entry */
+              if ( (tmp=tokens[16].indexOf(":") ) >= 1 )
+                 { s_ip=tokens[16].substring(1,tmp); }
+              else 
+                 { return(-40); }
+              if ( (tmp1=tokens[16].indexOf("-") ) > tmp+1 )
+                 { s_port=tokens[16].substring(tmp+1,tmp1); }
+              else 
+                 { return(-45); }
+
+              tmp = tokens[16].length();
+	      if ( tokens[16].charAt(tmp-1) != ',' ) return(-50);
+              tmp_token1=tokens[16].substring(tmp1,tmp-1);
+
+              if ( (tmp=tmp_token1.indexOf(":") ) >= 1 )
+                 { t_ip=tmp_token1.substring(1,tmp); }
+              else 
+                 { return(-55); }
+
+              if ( ( tmp1 = tmp_token1.length() ) <= tmp+1 ) return(-56);
+              t_port=tmp_token1.substring(tmp+1,tmp1);
+
+              tmp = tokens[17].length();
+	      if ( tokens[17].charAt(tmp-1) != ',' ) return(-60);
+              proto=tokens[17].substring(0,tmp-2);
+
+              action = tokens[t_count] ; /* the last token is drop */ 
+              for ( ic=13; ic <= t_count ; ic++ )
+                 msg = msg + tokens[ic] + " " ;
+              }
+           else if ( (tokens[13].indexOf("Alert")) != -1 )
+              { // Security.Alert:
+              method = "Alert" ;
+              action = "Alert" ;
+              for ( ic=13; ic <= t_count ; ic++ )
+                  msg = msg + tokens[ic] + " " ;
+              }
+           else if ( (tokens[13].indexOf("Management")) != -1 )
+              { // Security.Management:
+              method = "Management" ;
+              for ( ic=13; ic <= t_count ; ic++ )
+                  msg = msg + tokens[ic] + " " ;
+              }
+           else if ( (tokens[13].indexOf("Radius")) != -1 )
+              { // Security.Radius:
+              method = "Radius" ;
+              for ( ic=13; ic <= t_count ; ic++ )
+                  msg = msg + tokens[ic] + " " ;
+              }
+           else if ( (tokens[13].indexOf("RADIUS")) != -1 )
+              { // Security.RADIUS:
+	      if ( t_count < 14 ) return(-65); /* ill formed entry */
+              method = "RADIUS"; 
+              if ( ( tmp = tokens[14].length() ) <= 1 ) return(-66); 
+              user_id = tokens[14].substring(1,tmp-1); 
+	      if ( t_count < 16 ) return(-65); /* ill formed entry */
+              if ( (tokens[16].indexOf("DENIED")) != -1 )
+                  action = "denied" ;
+              for ( ic=13; ic <= t_count ; ic++ )
+                  msg = msg + tokens[ic] + " " ;
+              }
+           else if ( (tokens[14].indexOf("IPSEC")) != -1 )
+              { // Security.Session:.IPSEC
+               if ( (tmp=tokens[14].indexOf("[") ) >= 1 &&
+                    (tmp1=tokens[14].indexOf("]") ) > tmp+1  )
+                 { 
+                 user_id=tokens[14].substring(tmp+1,tmp1); 
+                 if ( tokens[14].length() > tmp1+2 )
+                   {
+                   tmp_token1=tokens[14].substring(tmp1+2,tokens[14].length()); 
+		   if ( !gen.IsInteger(tmp_token1) ) return(-68);
+ 		   sess_id = Integer.parseInt( tmp_token1 ) ;
+                   }
+                 else
+                   return(-70) ;
+                 }
+               else
+                 { return(-75); } 
+
+               method = "IPSEC" ;
+
+               for ( ic=13; ic <= t_count ; ic++ )
+                  msg = msg + tokens[ic] + " " ;
+
+	       if ( t_count < 16 ) return(-65); /* ill formed entry */
+  	       if ( (tokens[16].indexOf("out")) != -1 )
+                  { // user log out
+                  action = "logoff" ;
+                  }
+  	       else if ( (tokens[16].indexOf("response")) != -1 )
+                  { // user log out due to no response
+                  action = "logoff forced" ;
+                  }
+  	       else if ( (tokens[15].indexOf("physical")) != -1 )
+                  {
+	          if ( t_count < 18 ) return(-65); /* ill formed entry */
+                  if ( (tmp=tokens[18].indexOf(".") ) != -1 )
+                    { 
+                    s_ip=tokens[18]; 
+                    tmp1 = sess_id % 1000 ;
+                    if ( ( pub.assigned_uid[tmp1] != null ) && 
+                         ( pub.assigned_uid[tmp1].equals(user_id) )  )
+                       {
+                       t_ip = pub.assigned_ip[tmp1];
+		       action = "logon" ; 
+                       //System.err.println("found : uid = " + user_id + " t_ip = " + t_ip ); 
+                       pub.assigned_uid[tmp1] = " ";
+                       }
+                    else
+                      { /* not found : which is OK */
+                      return(-1001) ; 
+                      }
+                    }
+                  else
+                    { return(-80); } 
+                  }
+  	       else if ( (tokens[15].indexOf("assigned")) != -1 )
+                  {
+	          if ( t_count < 18 ) return(-65); /* ill formed entry */
+                  if ( (tmp=tokens[18].indexOf(",") ) > 0 )
+                    { 
+                    //t_ip=tokens[18].substring(0,tmp); 
+                    tmp1 = sess_id % 1000 ;
+                    pub.assigned_ip[tmp1] = tokens[18].substring(0,tmp); 
+                    pub.assigned_uid[tmp1] = user_id ;
+                    return(1) ; 
+                    }
+                  else
+                    { return(-85); } 
+                  }
+              }
+           else if ( (tmp=tokens[14].indexOf("LOCAL") ) != -1 )
+              { // Security.Session:.LOCAL
+               if ( (tmp=tokens[14].indexOf("[") ) >= 1 &&
+                    (tmp1=tokens[14].indexOf("]") ) > tmp+1  )
+                 { 
+                 method = tokens[14].substring(0,tmp) ;
+                 user_id=tokens[14].substring(tmp+1,tmp1); 
+                 }
+               else
+                 { return(-90) ; } 
+
+	       method = "LOCAL" ;
+
+               for ( ic=14; ic <= t_count ; ic++ )
+                  msg = msg + tokens[ic] + " " ;
+              }
+           else if ( level2.equals("FTP") )
+             { // level2: FTP backup in synchronize local Pri and Bck disks
+             return(-1000) ; /* ignore it */
+             }
+           else
+              { /* unknown level 2/3/4 ??? */
+              return(-95);  
+              }
+           } 
+         else if ( level1.equals("tHttpdTask") || 
+                   level1.equals("tObjMgr")  )
+           { // tHttpdTask or tObjMgr
+           method = "Management" ;
+           for ( ic=11; ic <= t_count ; ic++ )
+               msg = msg + tokens[ic] + " " ;
+           }
+         else if ( level1.equals("tIsakmp") )
+           { // tIsakmp at level1
+	   if ( t_count < 14 ) return(-20); /* ill formed entry */
+           if ( ( tokens[14].indexOf("Username=") ) == 0 &&
+                ( tmp=tokens[14].length() ) > 10    )
+              { 
+              method = "Authentication" ;
+              action = level2 ;
+	      level2 = "KeyExchange" ;
+              user_id = tokens[14].substring(9,tmp-1) ;
+              for ( ic=11; ic <= t_count ; ic++ )
+                  msg = msg + tokens[ic] + " " ;
+              }
+           else
+              return(-96);    
+           } 
+         else if ( level1.equals("tSessAsync") )
+           { // tSessAsync at level1 
+	   if ( t_count < 14 ) return(-20); /* ill formed entry */
+           if ( (tmp=tokens[14].indexOf("Username=") ) == 0 )
+              { 
+              return(-1010); /* this is logon fail; duplicate report */
+	      /*
+              method = "Authentication" ;
+              action = level2 ;
+	      level2 = "LogonSession" ;
+              user_id = tokens[14].substring(tmp+9,tokens[14].length()-1) ;
+              for ( ic=11; ic <= t_count ; ic++ )
+                  msg = msg + tokens[ic] + " " ;
+	      */
+              }
+           else
+              return(-97);    
+           } 
+         else if ( level1.equals("tSnmpd") )
+           { // level1: SNMP connection
+           for ( ic=11; ic <= t_count ; ic++ )
+               msg = msg + tokens[ic] + " " ;
+           }
+         else
+           { // unknown level1 
+           return(-500) ; /* ???? */
+           } 
+ 
+         do_agg_line( aggregates );
+	 return(1);
+      } // end of process_line 
+
+      public static void do_agg_line( Map aggregates )
+      {
+	{
+	   /* Aggregate is defined here */
+	   if ( type.indexOf("pass") != -1 ) {
+              type = "vpn.allow" ;
+           } else if ( type.indexOf("block") != -1 ) {
+              type = "vpn.deny" ;
+           }  
+
+           //msg = msg.replace(',' , ';') ; // fix NSM problem 
+           if ( msg.length() > 510 ) msg = msg.substring(0,510); 
+
+           //System.err.println("here 0"); 
+	   agg_index = s_ip + facility_ip + t_ip + user_id + type + action ;
+	   agg_index1 = 
+"\ttype\n" + type +  
+"\tfacility_ip\n"+facility_ip + "\tfacility\nvpn" +
+"\tmessage\n" + msg ;
+
+  	   if ( proto.length() != 0 )  
+		{ agg_index1 = agg_index1 + "\tproto\n" + proto ; }
+  	   if ( s_ip.length() != 0 )  
+		{ agg_index1 = agg_index1 + "\ts_ip\n" + s_ip ; }
+  	   if ( t_ip.length() != 0 )  
+		{ agg_index1 = agg_index1 + "\tt_ip\n" + t_ip ; }
+  	   if ( s_port.length() != 0 )  
+		{ agg_index1 = agg_index1 + "\ts_port\n" + s_port ; }
+  	   if ( t_port.length() != 0 )  
+		{ agg_index1 = agg_index1 + "\tt_port\n" + t_port ; }
+  	   if ( action.length() != 0 )  
+		{ agg_index1 = agg_index1 + "\tmethod\n" + action ; }
+  	   if ( user_id.length() != 0 )  
+		{ agg_index1 = agg_index1 + "\tuser_id\n" + user_id ; }
+  	   // if ( method.length() != 0 )    //no value; not in key pair
+  	   // { agg_index1 = agg_index1 + "\tmethod\n" + method ; }
+
+	   //System.err.println("agg_index1=[" + agg_index1 + "]");
+	   Object tmp_agg = aggregates.get(agg_index) ;
+	   //System.err.println("t1: " + tmp_agg );
+	   if ( tmp_agg == null ) { 
+               agg_string = "1" +  
+               "\tbatch_start\n"+d_date + "\tbatch_end\n"+d_date + //nodate
+               agg_index1 ;
+	       aggregates.put( agg_index, agg_string );
+
+	   } else {
+	       StringTokenizer agg_tokstring = new StringTokenizer( (String)tmp_agg, "\t" );
+               String s_count = (String)(agg_tokstring.nextToken());
+               Integer count = new Integer( Integer.parseInt(s_count) + 1 ) ;  
+               String s_value1 = (String)(agg_tokstring.nextToken()); //nodate
+               agg_string = count.toString() + 
+                            "\t"+s_value1 +  "\tbatch_end\n"+d_date + //nodate
+	                    agg_index1 ;
+	       aggregates.put( agg_index, agg_string );
+	   }
+	}
+      } //end of do_agg_line
+
+} // end of class P_Line 
+
+class Parse_input {
+   public static String buffer ;
+   public static int agcount = 0 ;
+
+   public static void write_out(String data)
+   {
+      pub_data pub = new pub_data() ;
+      if ( pub.sock_port != 0 )
+         { pub.out_put.println( data ); }
+      else
+         { System.out.println( data ); }
+   }
+
+   /* Dumps the aggregate */
+   public static void dump( Map aggregates, int min_aggregate_dump ) throws Exception {
+	Iterator hashit = aggregates.keySet().iterator();
+        pub_data pub = new pub_data() ;
+
+        /* reconnect to the server if necessary */
+        if ( pub.sock_port != 0 )
+        {
+        connect_svr_class consvr = new connect_svr_class();
+        while ( consvr.connect_svr() < 0 )
+           {
+           System.err.println("Tap Parser will retry in 5 seconds... " );
+           Thread.sleep(5000);    //for debug socket
+           }
+        //System.err.println("-- socket Connected!" );
+        }
+        //agcount += 1000000 ; 
+
+	while (hashit.hasNext()) {
+	   String nor_rec = (String)hashit.next();
+	   StringTokenizer parser = new StringTokenizer((String)aggregates.get(nor_rec),"\t" ) ;
+	   String s_count = (String)(parser.nextToken());
+	   Integer count = new Integer( Integer.parseInt(s_count) );
+	   if ( count.intValue() >= min_aggregate_dump ) {
+		write_out( "vpnagg" );
+		while ( parser.hasMoreTokens() ) {
+	  	   StringTokenizer interior_parser = new StringTokenizer ( parser.nextToken(), "\n" );
+		   String key = (String)(interior_parser.nextToken()); 
+		   String val = (String)(interior_parser.nextToken()); 
+		   //System.err.println("-key=[" + key + "] value=[" + val + "]" );
+                   if ( ! val.equals(";") )
+		       write_out( " " + key + " " + val );
+		}
+		write_out( " agg_count " + count );
+		write_out( "endvpnagg" );
+	   }
+        } // end of while
+        if ( pub.sock_port != 0 )
+           {
+           try { pub.socket.close(); }
+           catch (IOException e) { System.err.println(e); }
+           //System.err.println("-- socket disconnected!" );
+           Thread.sleep(3000);    //let remote settle down....
+           }
+
+   } // end of dump
+
+   public void r_input() throws Exception {
+      Map aggregates = new HashMap();
+      int record_count = 0;
+      int skipped_count = 0;
+      int adjusted_count = 0;
+      int rc ;
+      Calendar start_date = new GregorianCalendar(); 
+      // DateFormat start_date = DateFormat.getDateInstance();
+      long start = System.currentTimeMillis();
+      pub_data pub = new pub_data() ;  
+
+      InputStreamReader inreader = new InputStreamReader(System.in);
+      BufferedReader bufreader = new BufferedReader( inreader );
+      P_Line proc_line = new P_Line();
+
+      while ( ( buffer = bufreader.readLine()) != null ) 
+      {
+    	 //System.err.println(buffer); 
+         if ( ( rc = P_Line.process_line(buffer, aggregates) ) < 0 )
+            {
+		if ( rc < 0  &&  rc > -1000 )
+		{
+			pub.tot_bad_count++; skipped_count++;
+			if ( pub.debug )
+			{
+				System.err.println("-Error returns from log entry # " + rc ); 
+				System.err.println("[" + buffer + "]\n" ); 
+              		}
+             	}
+		else
+			{
+			// pub.tot_skip_count++;
+			record_count++;  pub.tot_rec_count++;
+			}
+            continue;
+            }
+         record_count++;  pub.tot_rec_count++;
+	adjusted_count = record_count - skipped_count;
+	pub.adj_count = pub.tot_rec_count - pub.tot_bad_count;
+         if ( record_count >= pub.max_rec ) {
+	    System.err.println("UPDATE: " + new GregorianCalendar().getTime() + "(dump interval " + pub.dotimer + " sec or " + pub.max_rec_static + " entries)" + "\n" + record_count + "/" + pub.tot_rec_count + " records processed, total " + skipped_count + "/" + pub.tot_bad_count + " records skipped (bad format), " + aggregates.size() + " aggregates, efficiency " + (float)aggregates.size()/(float)adjusted_count  + "\n" ) ;
+	    dump(aggregates, pub.min_agg);
+	    pub.max_rec = pub.max_rec_static ;
+            pub.tot_agg_count = pub.tot_agg_count + aggregates.size();    
+	    aggregates = new HashMap();
+	    record_count = 0;
+	    skipped_count = 0;
+	    adjusted_count = 0;
+	 } // end if
+      } // end while reading the input file
+      pub.tot_agg_count = pub.tot_agg_count + aggregates.size();    
+      System.err.println("UPDATE(EOF): " + new GregorianCalendar().getTime() + "(dump interval " + pub.dotimer + " sec or " + pub.max_rec_static + " entries)" + "\n" + record_count + "/" + pub.tot_rec_count + " records processed, total " + skipped_count + "/" + pub.tot_bad_count + " records skipped (bad format), " + aggregates.size() + "/" + pub.tot_agg_count + " aggregates, efficiency " + (float)aggregates.size()/(float)record_count + "/" + (float)pub.tot_agg_count/(float)pub.tot_bad_count + "\n" ) ;
+      dump(aggregates, pub.min_agg); 
+      long elapsedTimeMillis = System.currentTimeMillis()-start;
+      float recordsPerSecond = record_count / elapsedTimeMillis * 1000F ;
+      write_out( "vpnagg" );
+
+      write_out( " processing_start " + start_date.getTime() );
+      write_out( " processing_end " + new GregorianCalendar().getTime() );
+
+      write_out( " raw_record_count " + pub.tot_rec_count );
+      write_out( " skipped_record_count " + pub.tot_bad_count );
+      write_out( " agg_record_count " + pub.tot_agg_count );
+      write_out( " agg_compression " + (float)pub.tot_agg_count/(float)pub.tot_rec_count );
+      write_out( " records_per_second " + recordsPerSecond );
+      write_out( " records_per_minute " + recordsPerSecond * 60 );
+      write_out( " records_per_hour " + recordsPerSecond * 60 * 60 );
+      write_out( " records_per_day " + recordsPerSecond * 60 * 60 * 24 );
+      write_out( "endvpnagg\n" );
+
+   } // end of r_input
+
+} // end of class Parse_input
+
+class dmp_timer {
+  static Timer timer ;
+  static int timercount = 0 ;
+    public void dmp_timer(int seconds) {
+        timer = new Timer();
+        timer.schedule(new RemindTask(), seconds*1000);
+    }
+    class RemindTask extends TimerTask {
+        public void run() {
+            pub_data pub = new pub_data() ; 
+            if ( pub.tot_rec_count-pub.timer_rec_count<pub.max_rec_static/2)
+               { pub.max_rec = 1 ; }
+            if ( pub.tot_rec_count > 999999999 )  pub.tot_rec_count = 0 ; 
+            pub.timer_rec_count = pub.tot_rec_count;
+	    //System.err.println( "-timer cnt=" + timercount++ );
+            timer.cancel();	    
+            dmp_timer calltimer= new dmp_timer();
+            calltimer.dmp_timer( pub.dotimer );
+        }
+    }
+} //end of dmp_timer
+
+class connect_svr_class
+{
+     public static int connect_svr() throws Exception
+     {
+        pub_data pub = new pub_data() ; 
+
+        // connect to NSM listner port
+        try {
+            pub.socket = new Socket(pub.sock_server, pub.sock_port);
+            //System.err.println("Connected with server " +
+            //   pub.socket.getInetAddress() + ":" + pub.socket.getPort());
+            }
+        catch (UnknownHostException e) {
+            System.err.println("-Err Socket Err: " + e);
+            return(-1);
+     	    }
+	catch (IOException e) {
+      	    System.err.println("-Error, Fail to send NSM : " + e);
+      	    System.err.println(" Need to Check NSM Listner for Proxy... \n");
+  	    return(-1);
+   	    }
+        // setup output to NSM
+	pub.out_put = new PrintWriter(pub.socket.getOutputStream(),true);
+	return(1);
+    }
+
+} // end of connect_svr 
+
+public class vpnparser {
+	//public static void main(String args[]) throws ParseException {
+	public static void main(String args[]) throws Exception {
+        pub_data pub = new pub_data() ; 
+        pub.alloc_pub_data_array() ;
+
+        int icc ; int iargs = args.length ;
+        for ( icc=0 ; icc < args.length; icc++ ) {
+           if ( args[icc].equals("-d") ) {
+             System.err.println("-Info- debug enabled!" );
+             pub.debug = true ; iargs -= 1 ;
+           }
+           else if ( pub.debug ) { args[icc-1] = args[icc]; }
+        }
+	if ( pub.debug )
+	{
+        	System.err.println("args # = " + iargs )  ;
+        	for ( icc=0 ; icc < iargs; icc++ ) {
+           		System.err.println("args " + icc + " = " + args[icc] )  ;
+		}
+	}
+
+	//System.out.println( "argsleng=" + args.length );
+        if ( iargs != 4 )  {
+	   System.err.println("usage: vpnparser aggregate_cnt(20000) timer(sec) aggregate_min_bucket_size(1) NSM_port(1300 or 0 for no-socket)" ); return;
+	}
+	else {
+	   pub.max_rec_static = pub.max_rec = Integer.parseInt(args[0]) ;
+           pub.dotimer = Integer.parseInt(args[1] ) ;
+           pub.min_agg = Integer.parseInt(args[2]) ;
+           pub.sock_port = Integer.parseInt(args[3]);
+        }
+
+        if ( pub.dotimer != 0 )
+        { /* enable timer */  
+           dmp_timer dmp_tmr1= new dmp_timer();
+           dmp_tmr1.dmp_timer(pub.dotimer);
+        }
+
+	Parse_input readinput = new Parse_input();
+        readinput.r_input();  
+	} // end of main 
+}
+
+PARSER_END(vpnparser)
+
+void voidInput() : { } { (" "   { })+ } 
+
+/**************************************************************************
+**********************************  end  **********************************
+**************************************************************************/

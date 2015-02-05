@@ -1,0 +1,121 @@
+Copyright Notice
+Copyright C2002 Mount Sinai Hospital, Toronto, Canada. All Rights Reserved.
+
+Disclaimer
+Permission to use, copy, and modify this document for educational, research, and not-for-profit purposes, without fee and without a signed licensing agreement, is hereby granted, provided that the above copyright notice, this paragraph and the following paragraphs appear in all copies, modifications, and distributions.
+
+Contact Terry Donaghue, Technology Transfer & Industrial Liaison, Mount Sinai Hospital, & The Samuel Lunenfeld Research Institute, 600 University Avenue, Toronto, ON Canada M5G 1X5, Tel. (416) 586-8225, Fax (416) 586-3110, E-mail: donaghue@mshri.on.ca, for commercial licensing opportunities. 
+
+IN NO EVENT SHALL MOUNT SINAI HOSPITAL BE LIABLE TO ANY PARTY FOR DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, INCLUDING LOST PROFITS, ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN IF MOUNT SINAI HOSPITAL HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+MOUNT SINAI HOSPITAL SPECIFICALLY DISCLAIMS ANY IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+THE SOFTWARE AND ACCOMPANYING DOCUMENTATION, IF ANY, PROVIDED HEREUNDER IS PROVIDED "AS IS". MOUNT SINAI HOSPITAL HAS NO
+OBLIGATION TO PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
+
+Published research assisted by this document should cite:
+
+Breitkreutz, BJ., Stark, C., Tyers M. "The GRID: the General Repository for Interaction Datasets." Genome Biology 2003 4(3):R23
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Brief description of the columns:
+
+A.) INTERACTOR_A			(Unique ID for geneA)
+B.) INTERACTOR_B			(Unique ID for geneB)
+C.) ALIASES_FOR_A			(List of common names for geneA, separated by ';')
+D.) ALIASES_FOR_B			(List of common names for geneB, separated by ';')
+E.) EXPERIMENTAL_SYSTEM			(System in which the interaction was shown)
+F.) SOURCE			(Author/s of the interaction)
+G.) DIRECTION			(Direction is shown by default as going from GeneA to GeneB, if however the same source also demonstrates this interaction in the opposite direction then the "AB" will be replaced with a "BOTH")
+H.) PUBMED_ID			(PubMed_ID of the paper)
+
+------------------------------------------------------------------------------------------------------------------------------
+
+INTERACTOR_A	INTERACTOR_B	ALIASES_FOR_A	ALIASES_FOR_B	EXPERIMENTAL_SYSTEM	SOURCE	DIRECTION	PUBMED_ID
+YMR300C	YAL012W	;ADE4;	;CYS3;CYI1;FUN35;STR1;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YDL140C	YBR154C	;RPO21;RPB1;RPB220;SUA8;	;RPB5;	Two Hybrid	BIND	AB	;2496296;9207794;10393904;
+YER006W	YPL211W	;NUG1;	;NIP7;	Affinity Precipitation	Bassler et al	AB	;11583615;
+YER006W	YKL009W	;NUG1;	;MRT4;	Affinity Precipitation	Bassler et al	AB	;11583615;
+YER006W	YNL002C	;NUG1;	;RLP7;RPL7;	Affinity Precipitation	Bassler et al	AB	;11583615;
+YER006W	YHR052W	;NUG1;	;CIC1;NSA3;	Affinity Precipitation	Bassler et al	AB	;11583615;
+YER006W	YCR072C	;NUG1;	NONE	Affinity Precipitation	Bassler et al	AB	;11583615;
+YER006W	YMR290C	;NUG1;	;HAS1;	Affinity Precipitation	Bassler et al	AB	;11583615;
+YER006W	YPL146C	;NUG1;	NONE	Affinity Precipitation	Bassler et al	AB	;11583615;
+YER006W	YDR101C	;NUG1;	;ARX1;	Affinity Precipitation	Bassler et al	AB	;11583615;
+YER006W	YPL093W	;NUG1;	;NOG1;	Affinity Precipitation	Bassler et al	AB	;11583615;
+YER006W	YGR103W	;NUG1;	;NOP7;YPH1;	Affinity Precipitation	Bassler et al	AB	;11583615;
+YER006W	YLR002C	;NUG1;	;NOC3;	Affinity Precipitation	Bassler et al	AB	;11583615;
+YER006W	YNL061W	;NUG1;	;NOP2;YNA1;	Affinity Precipitation	Bassler et al	AB	;11583615;
+YBR236C	YOR151C	;ABD1;	;RPB2;RPB150;RPO22;SIT2;SOH2;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YBR236C	YML010W	;ABD1;	;SPT5;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YNR016C	YJR064W	;ACC1;ABP2;FAS3;	;CCT5;TCP5;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YNR016C	YDL047W	;ACC1;ABP2;FAS3;	;SIT4;LGN4;	Affinity Precipitation	Gavin et al	BOTH	;11805826;
+YNR016C	YLR386W	;ACC1;ABP2;FAS3;	;VAC14;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YLR359W	YOR361C	;ADE13;BRA1;BRA8;	;PRT1;CDC63;DNA26;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YMR300C	YAL012W	;ADE4;	;CYS3;CYI1;FUN35;STR1;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YMR300C	YMR235C	;ADE4;	;RNA1;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YPR180W	YOL086C	;AOS1;	;ADH1;ADC1;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YPR180W	YDR390C	;AOS1;	;UBA2;UAL1;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YPR180W	YLR249W	;AOS1;	;YEF3;TEF3;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YLR127C	YNL172W	;APC2;RSI1;	;APC1;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YLR127C	YKL022C	;APC2;RSI1;	;CDC16;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YLR127C	YHR166C	;APC2;RSI1;	;CDC23;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YLR127C	YBL084C	;APC2;RSI1;	;CDC27;APC3;SNB1;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YBR128C	YDL185W	;APG14;	;TFP1;CLS8;VMA1;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YBR128C	YPL120W	;APG14;	;VPS30;APG6;VPT30;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YKL135C	YPR029C	;APL2;	;APL4;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YKL135C	YPL259C	;APL2;	;APM1;YAP54;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YKL135C	YHL019C	;APL2;	;APM2;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YKL135C	YLR170C	;APL2;	;APS1;YAP19;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YKL135C	YBR084W	;APL2;	;MIS1;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YKL135C	YPR010C	;APL2;	;RPA135;RRN2;SRP3;RPA2;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YBL037W	YJR005W	;APL3;	;APL1;YAP80;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YBL037W	YOL062C	;APL3;	;APM4;AMP1;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YBL037W	YJR058C	;APL3;	;APS2;YAP17;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YPL195W	YGR261C	;APL5;YKS4;	;APL6;YKS5;	Affinity Precipitation	Gavin et al	BOTH	;11805826;
+YPL195W	YBR288C	;APL5;YKS4;	;APM3;YKS6;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YPL195W	YJL024C	;APL5;YKS4;	;APS3;YKS7;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YPL195W	YGL019W	;APL5;YKS4;	;CKB1;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YGR261C	YBR288C	;APL6;YKS5;	;APM3;YKS6;	Affinity Precipitation	Gavin et al	BOTH	;11805826;
+YGR261C	YHR174W	;APL6;YKS5;	;ENO2;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YIL062C	YLR370C	;ARC15;	;ARC18;	Affinity Precipitation	Gavin et al	BOTH	;11805826;
+YIL062C	YKL013C	;ARC15;	;ARC19;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YIL062C	YNR035C	;ARC15;	;ARC35;END9;	Affinity Precipitation	Gavin et al	BOTH	;11805826;
+YIL062C	YJR065C	;ARC15;	;ARP3;ACT4;	Affinity Precipitation	Gavin et al	BOTH	;11805826;
+YLR370C	YKL013C	;ARC18;	;ARC19;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YLR370C	YNR035C	;ARC18;	;ARC35;END9;	Affinity Precipitation	Gavin et al	BOTH	;11805826;
+YLR370C	YDL029W	;ARC18;	;ARP2;ACT2;	Affinity Precipitation	Gavin et al	BOTH	;11805826;
+YLR370C	YJR065C	;ARC18;	;ARP3;ACT4;	Affinity Precipitation	Gavin et al	BOTH	;11805826;
+YLR370C	YGR240C	;ARC18;	;PFK1;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YLR370C	YOR361C	;ARC18;	;PRT1;CDC63;DNA26;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YNR035C	YKL013C	;ARC35;END9;	;ARC19;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YNR035C	YBR234C	;ARC35;END9;	;ARC40;	Affinity Precipitation	Gavin et al	BOTH	;11805826;
+YNR035C	YDL029W	;ARC35;END9;	;ARP2;ACT2;	Affinity Precipitation	Gavin et al	BOTH	;11805826;
+YNR035C	YJR065C	;ARC35;END9;	;ARP3;ACT4;	Affinity Precipitation	Gavin et al	BOTH	;11805826;
+YBR234C	YIL062C	;ARC40;	;ARC15;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YBR234C	YLR370C	;ARC40;	;ARC18;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YBR234C	YKL013C	;ARC40;	;ARC19;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YBR234C	YJR065C	;ARC40;	;ARP3;ACT4;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YHR013C	YMR116C	;ARD1;	;ASC1;CPC2;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YHR013C	YGR254W	;ARD1;	;ENO1;HSP48;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YHR013C	YBR084W	;ARD1;	;MIS1;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YHR013C	YHR023W	;ARD1;	;MYO1;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YHR013C	YDL040C	;ARD1;	;NAT1;AAA1;	Affinity Precipitation	Gavin et al	BOTH	;11805826;
+YHR013C	YGR090W	;ARD1;	;UTP22;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YDR127W	YJL008C	;ARO1;	;CCT8;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YDR127W	YKL104C	;ARO1;	;GFA1;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YDR127W	YMR186W	;ARO1;	;HSC82;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YDR127W	YOR136W	;ARO1;	;IDH2;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YDR127W	YGR240C	;ARO1;	;PFK1;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YDR127W	YDR427W	;ARO1;	;RPN9;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YDR127W	YGL048C	;ARO1;	;RPT6;CIM3;CRL3;SCB68;SUG1;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YDR127W	YPL235W	;ARO1;	;RVB2;TIH2;TIP49B;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YDR127W	YGR234W	;ARO1;	;YHB1;YHB4;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YDL029W	YIL062C	;ARP2;ACT2;	;ARC15;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YDL029W	YKL013C	;ARP2;ACT2;	;ARC19;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YDL029W	YBR234C	;ARP2;ACT2;	;ARC40;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YDL029W	YJR065C	;ARP2;ACT2;	;ARP3;ACT4;	Affinity Precipitation	Gavin et al	BOTH	;11805826;
+YDL029W	YJR064W	;ARP2;ACT2;	;CCT5;TCP5;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YDL029W	YJL008C	;ARP2;ACT2;	;CCT8;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YJR065C	YKL013C	;ARP3;ACT4;	;ARC19;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YJR065C	YNR053C	;ARP3;ACT4;	;NOG2;	Affinity Precipitation	Gavin et al	AB	;11805826;
+YJL115W	YJR140C	;ASF1;	;HIR3;HPC1;	Affinity Precipitation	Gavin et al	AB	;11805826;

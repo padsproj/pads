@@ -1,0 +1,225 @@
+event
+raw_event_category 9
+raw_computer_name ALPRGAEDDC03
+raw_event_id 675
+raw_event_type Audit Failure
+raw_source_name Security
+raw_time_generated 2/12/2007 8:49:20 AM
+raw_time_written 2/12/2007 8:49:20 AM
+raw_local_time_generated 2/12/2007 3:49:20 AM
+raw_local_time_written 2/12/2007 3:49:20 AM
+raw_user_name \SYSTEM
+raw_description OCFE02$,%{S-1-5-21-2009805145-1893945487-1460495795-92130},krbtgt/UGD.ATT.COM,0x2,0x18,135.38.164.17
+aquire_ip 135.37.94.10
+g_facility event monitor service
+endevent
+event
+raw_event_category 9
+raw_computer_name ALPRGAEDDC03
+raw_event_id 675
+raw_event_type Audit Failure
+raw_source_name Security
+raw_time_generated 2/12/2007 8:49:20 AM
+raw_time_written 2/12/2007 8:49:20 AM
+raw_local_time_generated 2/12/2007 3:49:20 AM
+raw_local_time_written 2/12/2007 3:49:20 AM
+raw_user_name \SYSTEM
+raw_description OCFE02$,%{S-1-5-21-2009805145-1893945487-1460495795-92130},krbtgt/UGD.ATT.COM,0x2,0x18,135.38.164.17
+aquire_ip 135.37.94.10
+g_facility event monitor service
+endevent
+event
+raw_event_category 9
+raw_computer_name ALPRGAEDDC03
+raw_event_id 675
+raw_event_type Audit Failure
+raw_source_name Security
+raw_time_generated 2/12/2007 8:49:20 AM
+raw_time_written 2/12/2007 8:49:20 AM
+raw_local_time_generated 2/12/2007 3:49:20 AM
+raw_local_time_written 2/12/2007 3:49:20 AM
+raw_user_name \SYSTEM
+raw_description OCFE02$,%{S-1-5-21-2009805145-1893945487-1460495795-92130},krbtgt/UGD.ATT.COM,0x2,0x18,135.38.164.17
+aquire_ip 135.37.94.10
+g_facility event monitor service
+endevent
+event
+raw_event_category 9
+raw_computer_name ALPRGAEDDC03
+raw_event_id 675
+raw_event_type Audit Failure
+raw_source_name Security
+raw_time_generated 2/12/2007 8:49:20 AM
+raw_time_written 2/12/2007 8:49:20 AM
+raw_local_time_generated 2/12/2007 3:49:20 AM
+raw_local_time_written 2/12/2007 3:49:20 AM
+raw_user_name \SYSTEM
+raw_description OCFE02$,%{S-1-5-21-2009805145-1893945487-1460495795-92130},krbtgt/UGD.ATT.COM,0x2,0x18,135.38.164.17
+aquire_ip 135.37.94.10
+g_facility event monitor service
+endevent
+event
+raw_event_category 9
+raw_computer_name ALPRGAEDDC03
+raw_event_id 672
+raw_event_type Audit Failure
+raw_source_name Security
+raw_time_generated 2/12/2007 8:49:33 AM
+raw_time_written 2/12/2007 8:49:33 AM
+raw_local_time_generated 2/12/2007 3:49:33 AM
+raw_local_time_written 2/12/2007 3:49:33 AM
+raw_user_name \SYSTEM
+raw_description ncfsstage9000b$,UGD.ATT.COM,-,krbtgt/UGD.ATT.COM,-,0x40810010,0x6,-,-,135.44.6.62,,,
+aquire_ip 135.37.94.10
+g_facility event monitor service
+endevent
+event
+raw_event_category 9
+raw_computer_name ALPRGAEDDC03
+raw_event_id 672
+raw_event_type Audit Failure
+raw_source_name Security
+raw_time_generated 2/12/2007 8:49:33 AM
+raw_time_written 2/12/2007 8:49:33 AM
+raw_local_time_generated 2/12/2007 3:49:33 AM
+raw_local_time_written 2/12/2007 3:49:33 AM
+raw_user_name \SYSTEM
+raw_description ncfsstage9000b$,UGD.ATT.COM,-,krbtgt/UGD.ATT.COM,-,0x40810010,0x6,-,-,135.44.6.62,,,
+aquire_ip 135.37.94.10
+g_facility event monitor service
+endevent
+event
+raw_event_category 9
+raw_computer_name ALPRGAEDDC03
+raw_event_id 672
+raw_event_type Audit Failure
+raw_source_name Security
+raw_time_generated 2/12/2007 8:49:33 AM
+raw_time_written 2/12/2007 8:49:33 AM
+raw_local_time_generated 2/12/2007 3:49:33 AM
+raw_local_time_written 2/12/2007 3:49:33 AM
+raw_user_name \SYSTEM
+raw_description ncfsstage9000b$,UGD.ATT.COM,-,krbtgt/UGD.ATT.COM,-,0x40810010,0x6,-,-,135.44.6.62,,,
+aquire_ip 135.37.94.10
+g_facility event monitor service
+endevent
+event
+raw_event_category 9
+raw_computer_name ALPRGAEDDC03
+raw_event_id 672
+raw_event_type Audit Failure
+raw_source_name Security
+raw_time_generated 2/12/2007 8:49:33 AM
+raw_time_written 2/12/2007 8:49:33 AM
+raw_local_time_generated 2/12/2007 3:49:33 AM
+raw_local_time_written 2/12/2007 3:49:33 AM
+raw_user_name \SYSTEM
+raw_description ncfsstage9000b$,UGD.ATT.COM,-,krbtgt/UGD.ATT.COM,-,0x40810010,0x6,-,-,135.44.6.62,,,
+aquire_ip 135.37.94.10
+g_facility event monitor service
+endevent
+event
+raw_event_category 9
+raw_computer_name ALPRGAEDDC03
+raw_event_id 675
+raw_event_type Audit Failure
+raw_source_name Security
+raw_time_generated 2/12/2007 8:49:38 AM
+raw_time_written 2/12/2007 8:49:38 AM
+raw_local_time_generated 2/12/2007 3:49:38 AM
+raw_local_time_written 2/12/2007 3:49:38 AM
+raw_user_name \SYSTEM
+raw_description OCFE02$,%{S-1-5-21-2009805145-1893945487-1460495795-92130},krbtgt/UGD.ATT.COM,0x2,0x18,135.38.164.17
+aquire_ip 135.37.94.10
+g_facility event monitor service
+endevent
+event
+raw_event_category 9
+raw_computer_name ALPRGAEDDC03
+raw_event_id 675
+raw_event_type Audit Failure
+raw_source_name Security
+raw_time_generated 2/12/2007 8:49:38 AM
+raw_time_written 2/12/2007 8:49:38 AM
+raw_local_time_generated 2/12/2007 3:49:38 AM
+raw_local_time_written 2/12/2007 3:49:38 AM
+raw_user_name \SYSTEM
+raw_description OCFE02$,%{S-1-5-21-2009805145-1893945487-1460495795-92130},krbtgt/UGD.ATT.COM,0x2,0x18,135.38.164.17
+aquire_ip 135.37.94.10
+g_facility event monitor service
+endevent
+event
+raw_event_category 9
+raw_computer_name ALPRGAEDDC03
+raw_event_id 675
+raw_event_type Audit Failure
+raw_source_name Security
+raw_time_generated 2/12/2007 8:49:55 AM
+raw_time_written 2/12/2007 8:49:55 AM
+raw_local_time_generated 2/12/2007 3:49:55 AM
+raw_local_time_written 2/12/2007 3:49:55 AM
+raw_user_name \SYSTEM
+raw_description OCFE02$,%{S-1-5-21-2009805145-1893945487-1460495795-92130},krbtgt/UGD.ATT.COM,0x2,0x18,135.38.164.17
+aquire_ip 135.37.94.10
+g_facility event monitor service
+endevent
+event
+raw_event_category 9
+raw_computer_name ALPRGAEDDC03
+raw_event_id 673
+raw_event_type Audit Failure
+raw_source_name Security
+raw_time_generated 2/12/2007 8:50:00 AM
+raw_time_written 2/12/2007 8:50:00 AM
+raw_local_time_generated 2/12/2007 3:50:00 AM
+raw_local_time_written 2/12/2007 3:50:00 AM
+raw_user_name \SYSTEM
+raw_description mosssvc@UGD.ATT.COM,UGD.ATT.COM,mosssvc@UGD.ATT.COM,-,0x40810000,-,135.38.133.92,0x1B,-,-
+aquire_ip 135.37.94.10
+g_facility event monitor service
+endevent
+event
+raw_event_category 9
+raw_computer_name ALPRGAEDDC03
+raw_event_id 675
+raw_event_type Audit Failure
+raw_source_name Security
+raw_time_generated 2/12/2007 8:50:06 AM
+raw_time_written 2/12/2007 8:50:06 AM
+raw_local_time_generated 2/12/2007 3:50:06 AM
+raw_local_time_written 2/12/2007 3:50:06 AM
+raw_user_name \SYSTEM
+raw_description OCFE02$,%{S-1-5-21-2009805145-1893945487-1460495795-92130},krbtgt/UGD.ATT.COM,0x2,0x18,135.38.164.17
+aquire_ip 135.37.94.10
+g_facility event monitor service
+endevent
+event
+raw_event_category 9
+raw_computer_name ALPRGAEDDC03
+raw_event_id 675
+raw_event_type Audit Failure
+raw_source_name Security
+raw_time_generated 2/12/2007 8:50:08 AM
+raw_time_written 2/12/2007 8:50:08 AM
+raw_local_time_generated 2/12/2007 3:50:08 AM
+raw_local_time_written 2/12/2007 3:50:08 AM
+raw_user_name \SYSTEM
+raw_description OCFE02$,%{S-1-5-21-2009805145-1893945487-1460495795-92130},krbtgt/UGD.ATT.COM,0x2,0x18,135.38.164.17
+aquire_ip 135.37.94.10
+g_facility event monitor service
+endevent
+event
+raw_event_category 9
+raw_computer_name ALPRGAEDDC03
+raw_event_id 675
+raw_event_type Audit Failure
+raw_source_name Security
+raw_time_generated 2/12/2007 8:50:08 AM
+raw_time_written 2/12/2007 8:50:08 AM
+raw_local_time_generated 2/12/2007 3:50:08 AM
+raw_local_time_written 2/12/2007 3:50:08 AM
+raw_user_name \SYSTEM
+raw_description OCFE02$,%{S-1-5-21-2009805145-1893945487-1460495795-92130},krbtgt/UGD.ATT.COM,0x2,0x18,135.38.164.17
+aquire_ip 135.37.94.10
+g_facility event monitor service
+endevent

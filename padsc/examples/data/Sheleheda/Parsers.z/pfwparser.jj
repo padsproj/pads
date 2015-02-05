@@ -1,0 +1,395 @@
+/*******************************************************************************
+ AT&T Partner Firewall log parser for NSM 
+
+ James Yang at AT&T ; 4/10/2003
+
+  05/04/2003 - revise input data checking mechanism 
+  05/30/2003 - add timer code
+  06/10/2003 - add UPDATE information at EOF 
+  06/13/2003 - modify timer to allow "0" for no-timer and add some debug code 
+  06/17/2003 - add d_date checking
+  08/19/2003 - add socket feature
+
+  Usage: java pfwparser aggregate_record_count dump_time min_aggregate_count
+  Usage: tail -f log | java pfwarser 200000(rec) 300(sec) 1(agg) 40000(socknum)
+
+*******************************************************************************/
+
+PARSER_BEGIN(pfwparser) 
+
+import java.util.Enumeration;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.*;
+import java.lang.String;
+import java.lang.Object;
+import java.text.*;
+import java.io.*;
+import java.net.*;
+import java.util.Timer;
+import java.util.TimerTask;  
+
+class pub_data{
+   public static boolean dumping = false ;
+   public static int max_rec = 200000 ;
+   public static int max_rec_static = 200000 ;
+   public static int dotimer = 5 * 60 ;
+   public static int min_agg = 1 ;
+   public static int tot_agg_count = 0; 
+   public static int tot_rec_count = 0;
+   public static int tot_skip_count = 0 ;
+   public static int timer_rec_count = 0 ;
+   public static PrintWriter out_put;
+   public static Socket socket = null ;
+   public static String sock_server = "127.0.0.1" ; /* local */
+   public static int sock_port = 0  ; 
+}
+
+class P_Line {
+      public static	String xd_date ;
+      public static	String d_date ;
+      public static	String d_time ;
+      public static	String s_ip ;
+      public static	String t_ip ;
+      public static	String rule ;
+      public static	String type ;
+      public static	String direction ;
+      public static	String facility = "p_firewall";
+      public static	String facility_ip ;
+      public static	String s_port ;
+      public static	String t_port ;
+      public static	String proto ;
+      public static	String iface ;
+      public static     String x_s_ip ;
+      public static     String x_t_ip ;
+      public static     String x_s_port ;
+      public static     String x_t_port ;
+      public static     String message ; 
+
+      public static	String agg_index = "";
+      public static	String agg_index1 = "";
+      public static     String agg_string = "" ;
+
+      public static int process_line(String buf_line, Map aggregates) {
+
+         //System.err.println("proc=" + buf_line); 
+         StringTokenizer token_line = new StringTokenizer(buf_line,";",true);
+         int t_count = 0 ; 
+         int maxtokens = 26 ;  // total 26 fields
+         int ic ;
+         String monthlist = "JanFebMarAprMayJunJulAugSepOctNovDec" ;
+         String tokens[] ;
+         tokens = new String[maxtokens+1]; 
+
+         //--------------------------------------------------------------
+         if ( buf_line.length() < 120  ) return(-1);
+         while ( token_line.hasMoreTokens() ) {
+            if ( t_count >= maxtokens ) break ;  /* tailing stuff/blanks */
+            tokens[++t_count] = (String)(token_line.nextToken()) ;
+            if ( ! tokens[t_count].equals(";") )
+               {
+               if ( token_line.hasMoreTokens() )
+                 { token_line.nextToken(); }  
+               else
+                 break ;
+               }
+            //System.err.println("token " + t_count + " =[" + tokens[t_count] + "]" );
+         }
+         if ( t_count != maxtokens ) return(-10); /* ill formed entry */
+
+         xd_date = tokens[2] ;
+         if ( xd_date.equals("date") ) return(10) ; /* special header line */
+         d_time = tokens[3] ;
+         iface = tokens[4] ;
+         direction = tokens[5] ;
+         facility_ip = tokens[6] ;
+         type = "fw." + tokens[8] ;
+         t_port = tokens[10] ;
+         s_ip = tokens[11] ;
+         t_ip = tokens[12] ;
+         proto = tokens[13] ;
+         s_port = tokens[15] ;
+         x_s_ip = tokens[21] ;
+         x_t_ip = tokens[22] ;
+         x_s_port = tokens[23] ;
+         x_t_port = tokens[24] ;
+         message = tokens[26] ;
+
+	 //------------------------------------------------------------
+	 ic = xd_date.length() ;
+	 if ( ic == 9 )
+              { 
+              if ( (ic=monthlist.indexOf(xd_date.substring(2,5)) ) == -1 )
+                 { return(-50) ; }
+              ic = ic/3 + 1 ;
+              if ( ic < 10 ) 
+                 { d_date = xd_date.substring(5,9) + "-0" + ic + "-" + xd_date.substring(0,2); }
+              else
+                 { d_date = xd_date.substring(5,9) + "-" + ic + "-" + xd_date.substring(0,2); }
+              //DD-MON-YEAR d_date = xd_date.substring(0,2) +  "-" + xd_date.substring(2,5) + "-" + xd_date.substring(5,9); 
+              }
+         else if ( ic == 8 ) 
+              { 
+              //System.err.println("month=" + xd_date.substring(1,4) );
+              if ( (ic=monthlist.indexOf(xd_date.substring(1,4)) ) == -1 )
+                 { return(-51) ; }
+              ic = ic/3 + 1 ;
+              if ( ic < 10 ) 
+                 { d_date = xd_date.substring(4,8) + "-0" + ic + "-0" + xd_date.substring(0,1); }
+              else
+                 { d_date = xd_date.substring(4,8) + "-" + ic + "-0" + xd_date.substring(0,1); }
+              //DD-MON-YEAR d_date = "0" + xd_date.substring(0,1) +  "-" + xd_date.substring(1,4) + "-" + xd_date.substring(4,8); 
+              }
+         else
+              { 
+	      return(-52) ;
+              }
+
+         agg_index = s_ip + t_ip + t_port ;
+         do_agg_line( aggregates );
+	 return(1);
+      } // end of process_line 
+
+      public static void do_agg_line( Map aggregates )
+      {
+	{
+	 /* Aggregate is defined here */
+	   agg_index = s_ip + t_ip + t_port + type ;
+
+	   agg_index1 = 
+"\ttype\n" + type + "\tinterface\n" + iface + "\tdirection\n" + direction +
+"\tfacility_ip\n" + facility_ip + "\tfacility\n" + facility +
+"\ts_ip\n"+s_ip + "\tt_ip\n"+t_ip + "\tproto\n"+proto + 
+"\ts_port\n"+s_port + "\tt_port\n"+t_port +
+//"\tfacility_version\n" + d_date + " " + d_time +  
+"\tx_s_ip\n" + x_s_ip + "\tx_t_ip\n" + x_t_ip + "\tx_s_port\n" + x_s_port + 
+"\tx_t_port\n" + x_t_port + "\tmessage\n" + message ;
+
+	   //System.err.println("msg:[" + message + "]" );
+	   Object tmp_agg = aggregates.get(agg_index) ;
+	   //System.err.println("t1: " + tmp_agg );
+	   if ( tmp_agg == null ) { 
+               agg_string = "1" +  
+                  "\tbatch_start\n" + d_date + " " + d_time +  //nodate
+                  "\tbatch_end\n" + d_date +  " " + d_time +  //nodate
+                            agg_index1 ;
+	       aggregates.put( agg_index, agg_string );
+
+	   } else {
+	       StringTokenizer agg_tokstring = new StringTokenizer( (String)tmp_agg, "\t" );
+               String s_count = (String)(agg_tokstring.nextToken());
+               Integer count = new Integer( Integer.parseInt(s_count) + 1 ) ;  
+               String s_value1 = (String)(agg_tokstring.nextToken()); //nodate
+               agg_string = count.toString() + 
+                         "\t" + s_value1 +   //nodate
+                         "\tbatch_end\n" + d_date +  " " + d_time + //nodate
+                         agg_index1 ; 
+	       // System.err.println("-t11: x = " + agg_string ); 
+	       aggregates.put( agg_index, agg_string );
+	   }
+
+	}
+
+      } //end of do_agg_line
+
+} // end of class P_Line 
+
+class Parse_input {
+   public static String buffer ;
+   public static int agcount = 0 ;  
+
+   public static void write_out(String data)
+   {
+      pub_data pub = new pub_data() ;  
+
+      if ( pub.sock_port != 0 )
+         { pub.out_put.println( data ); }
+      else
+         { System.out.println( data ); }
+   } 
+
+   /* Dumps the aggregate */
+   public static void dump( Map aggregates, int min_aggregate_dump ) throws Exception {
+	Iterator hashit = aggregates.keySet().iterator();
+        pub_data pub = new pub_data() ;  
+
+        /* reconnect to the server if necessary */
+        if ( pub.sock_port != 0 )
+        {
+        connect_svr_class consvr = new connect_svr_class();
+        while ( consvr.connect_svr() < 0 ) 
+           {
+	   System.err.println("Tap Parser will retry in 10 seconds... " );
+	   Thread.sleep(10000);    //for debug socket
+           } 
+	//System.err.println("-- socket Connected!" );
+        }
+        //agcount += 1000000 ;
+
+	while (hashit.hasNext()) {
+	   String nor_rec = (String)hashit.next();
+	   StringTokenizer parser = new StringTokenizer((String)aggregates.get(nor_rec),"\t" ) ;
+	   String s_count = (String)(parser.nextToken());
+	   Integer count = new Integer( Integer.parseInt(s_count) );
+	   if ( count.intValue() >= min_aggregate_dump ) {
+		write_out( "aggregate" );
+		while ( parser.hasMoreTokens() ) {
+	  	   StringTokenizer interior_parser = new StringTokenizer ( parser.nextToken(), "\n" );
+		   String key = (String)(interior_parser.nextToken()); 
+		   String val = (String)(interior_parser.nextToken()); 
+		   //System.err.println("-key=[" + key + "] value=[" + val + "]" );
+                   if ( ! val.equals(";") )
+		       write_out( " " + key + " " + val );
+		}
+		write_out( " agg_count " + count );
+		write_out( "endaggregate" );
+	   }
+        } // end of while
+        if ( pub.sock_port != 0 )
+           {
+           try { pub.socket.close(); }
+           catch (IOException e) { System.err.println(e); }
+           //System.err.println("-- socket disconnected!" );
+           Thread.sleep(3000);    //let remote settle down....
+           } 
+
+   } // end of dump
+
+   public void r_input() throws Exception {
+      Map aggregates = new HashMap();
+      int record_count = 0;
+      int rc ;
+      Calendar start_date = new GregorianCalendar(); 
+      // DateFormat start_date = DateFormat.getDateInstance();
+      long start = System.currentTimeMillis();
+      pub_data pub = new pub_data() ;  
+
+      InputStreamReader inreader = new InputStreamReader(System.in);
+      BufferedReader bufreader = new BufferedReader( inreader );
+      P_Line proc_line = new P_Line();
+
+      while ( ( buffer = bufreader.readLine()) != null ) 
+      {
+    	 //System.err.println(buffer); 
+         if ( ( rc = P_Line.process_line(buffer, aggregates) ) < 0 )
+            {
+            System.err.println("-Bad Entry(" + pub.tot_rec_count + ") code #" +rc+ " :[" + buffer + "]" ); 
+            pub.tot_skip_count++;
+            continue;
+            }
+         //System.err.println("return form proc line - " + pub.tot_rec_count ); 
+         record_count++;  pub.tot_rec_count++;
+         if ( record_count >= pub.max_rec ) {
+	    System.err.println("UPDATE: " + new GregorianCalendar().getTime() + "(dump interval " + pub.dotimer + " sec or " + pub.max_rec_static + " entries)" + "\n" + record_count + "/" + pub.tot_rec_count + " records processed, total " + pub.tot_skip_count + " records skipped (bad format), " + aggregates.size() + " aggregates, efficiency " + (float)aggregates.size()/(float)record_count  + "\n" ) ;
+	    dump(aggregates, pub.min_agg);
+	    pub.max_rec = pub.max_rec_static ;
+            pub.tot_agg_count = pub.tot_agg_count + aggregates.size();   
+	    aggregates = new HashMap();
+	    record_count = 0;
+	 } // end if
+      } // end while reading the input file
+      pub.tot_agg_count = pub.tot_agg_count + aggregates.size();       
+      System.err.println("UPDATE(EOF): " + new GregorianCalendar().getTime() + "(dump interval " + pub.max_rec_static + " entries)" + "\nTotal " + record_count + "/" + pub.tot_rec_count + " records processed, total " + pub.tot_skip_count + " records skipped (bad format), " + aggregates.size() + "/" + pub.tot_agg_count + " aggregates, efficiency " + (float)aggregates.size()/(float)record_count + "/" + (float)pub.tot_agg_count/(float)pub.tot_rec_count + "\n" ) ;
+      dump(aggregates, pub.min_agg); 
+      long elapsedTimeMillis = System.currentTimeMillis()-start;
+      float recordsPerSecond = record_count / elapsedTimeMillis * 1000F ;
+      write_out( "aggregates" );
+
+      write_out( " processing_start " + start_date.getTime() );
+      write_out( " processing_end " + new GregorianCalendar().getTime() );
+      write_out( " raw_record_count " + pub.tot_rec_count );
+      write_out( " agg_record_count " + pub.tot_agg_count ); 
+      write_out( " agg_compression " + (float)pub.tot_agg_count/(float)pub.tot_rec_count );
+      write_out( " records_per_second " + recordsPerSecond );
+      write_out( " records_per_minute " + recordsPerSecond * 60 );
+      write_out( " records_per_hour " + recordsPerSecond * 60 * 60 );
+      write_out( " records_per_day " + recordsPerSecond * 60 * 60 * 24 );
+      write_out( "endaggregate\n" );
+
+   } // end of r_input
+
+} // end of class Parse_input
+
+class dmp_timer {
+  static Timer timer ;
+  static int timercount = 0 ;
+    public void dmp_timer(int seconds) {
+        timer = new Timer();
+        timer.schedule(new RemindTask(), seconds*1000);
+    }
+    class RemindTask extends TimerTask {
+        public void run() {
+            pub_data pub = new pub_data() ; 
+            if ( pub.tot_rec_count-pub.timer_rec_count<pub.max_rec_static)
+               { pub.max_rec = 1 ; }
+            if ( pub.tot_rec_count > 999999999 )  pub.tot_rec_count = 0 ; 
+            pub.timer_rec_count = pub.tot_rec_count;
+	    //System.err.println( "-timer cnt=" + timercount++ );
+            timer.cancel();	    
+            dmp_timer calltimer= new dmp_timer();
+            calltimer.dmp_timer( pub.dotimer );
+        }
+    }
+} // end of dmp_timer
+
+class connect_svr_class
+{
+     public static int connect_svr() throws Exception
+     {
+        pub_data pub = new pub_data() ; 
+
+        // connect to NSM listner port
+        try {
+            pub.socket = new Socket(pub.sock_server, pub.sock_port);
+            //System.err.println("Connected with server " +
+            //   pub.socket.getInetAddress() + ":" + pub.socket.getPort());
+            }
+        catch (UnknownHostException e) {
+            System.err.println("-Err Socket Err: " + e);
+            return(-1);
+     	    }
+	catch (IOException e) {
+      	    System.err.println( new GregorianCalendar().getTime() + " - Error, Fail to send NSM : " + e + "(Check NSM Listner for pfw...)\n");
+  	    return(-1);
+   	    }
+        // setup output to NSM
+	pub.out_put = new PrintWriter(pub.socket.getOutputStream(),true);
+	return(1);
+    }
+
+} // end of connect_svr 
+
+public class pfwparser {
+	//public static void main(String args[]) throws ParseException {
+	public static void main(String args[]) throws Exception {
+        pub_data pub = new pub_data() ; 
+
+	   //System.out.println( "argsleng=" + args.length );
+        if ( args.length != 4 )  {
+	   System.err.println("usage: pfwparser aggregate_cnt(20000) timer(300 sec) aggregate_min_bucket_size(1) NSM_port(1300 or 0 for no-socket)" ); return;
+	}
+	else {
+	   pub.max_rec_static = pub.max_rec = Integer.parseInt(args[0]) ;
+           pub.dotimer = Integer.parseInt(args[1] ) ;
+           pub.min_agg = Integer.parseInt(args[2]) ;
+           pub.sock_port = Integer.parseInt(args[3]); 
+        }
+
+        if ( pub.dotimer != 0 )
+        { /* enable timer */ 
+           dmp_timer dmp_tmr1= new dmp_timer();
+           dmp_tmr1.dmp_timer(pub.dotimer);
+        }
+
+	Parse_input readinput = new Parse_input();
+        readinput.r_input();  
+	} // end of main 
+}
+
+PARSER_END(pfwparser)
+
+void voidInput() : { } { (" "   { })+ } 
+
+/**************************************************************************
+**********************************  end  **********************************
+**************************************************************************/

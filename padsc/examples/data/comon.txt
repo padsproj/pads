@@ -1,0 +1,355 @@
+Start: 1177560002 Thu Apr 26 00:00:02 2007
+Node: 200-102-209-151.paemt7001.t.brasiltelecom.net.br
+(null)
+
+Start: 1177560002 Thu Apr 26 00:00:02 2007
+Node: 200-102-209-152.paemt7001.t.brasiltelecom.net.br
+(null)
+
+Start: 1177560002 Thu Apr 26 00:00:02 2007
+Node: 75-130-96-12.static.oxfr.ma.charter.com
+(null)
+
+Start: 1177560002 Thu Apr 26 00:00:02 2007
+Node: 75-130-96-13.static.oxfr.ma.charter.com
+ 565    1    1    3    3  65  139.6  261.8  0.0 13.7       4      90 princeton_comon
+ 520    0    0    0    0  27   86.4  208.4  0.0  8.5       2       5 pl_netflow
+ 566  143   96  121   41  37   70.6  173.5  0.0  6.9       1      29 hplabs_oasis
+ 523    2    1    1    1  20   52.2  127.2 94.7  5.1      15      41 arizona_stork2
+ 569    2    2    2    2  10   48.7  731.8  0.0  4.8     161     179 harvard_nc
+   0    0    0    0    0  41   47.3  219.7  0.0  4.6      11      17 root
+ 513    2    2    2    4  35   27.8   67.0  0.0  2.7       7       8 princeton_codeen
+ 538    2    2    3    2  34   27.8   68.0  0.0  2.7       6      15 princeton_coblitz
+ 609    0    0    0    0   9   22.4   41.5  0.0  2.2       8      10 utah_svc_slice
+ 563    0    0    0    0   7    6.9   15.4  0.0  0.7       3       3 umd_scriptroute
+ 592    0    0    0    0   4    6.5   18.1  0.0  0.6       0       0 wpi_game_server
+ 551    1    2    1    1   8    6.4   15.6  0.0  0.6       1      83 princeton_slicestat
+ 509    0    0    0    0   1    6.2    7.3  0.0  0.6      16      19 stony_chainsaw
+ 516    0    0    0    0   1    4.7    8.1  0.0  0.5       1       2 princeton_sirius
+  38    0    0    0    0   1    4.0    3.9  0.0  0.4       0       0 ntp
+  51    0    0    0    0   1    2.6    6.8  0.0  0.3       0       0 smmsp
+ 521    4    4    1    1   1    1.5    4.3  0.0  0.1       3       3 princeton_probe
+ 550    0    0    0    0   2    1.3    3.2  0.0  0.1       0       0 uw_arvind
+ 541    0    0    0    0   2    1.3    3.2  0.0  0.1       0       0 uw_ah
+ 576    0    0    0    0   1    1.3    4.2  0.0  0.1       5       5 tsinghua_lgh
+  29    0    0    0    0   1    0.8    1.7  0.0  0.1       0       0 rpcuser
+  32    0    0    0    0   1    0.6    1.7  0.0  0.1       0       0 rpc
+
+Start: 1177560002 Thu Apr 26 00:00:02 2007
+Node: adam.ee.ntu.edu.tw
+(null)
+
+Start: 1177560002 Thu Apr 26 00:00:02 2007
+Node: agni.iitd.ernet.in
+(null)
+
+Start: 1177560002 Thu Apr 26 00:00:02 2007
+Node: ait05.us.es
+ 642    1    1    3    3  63  137.4  256.8  0.0 13.5       5      73 princeton_comon
+ 528   63  100   63   95  45   89.3  137.6  3.8  8.8     150     246 princeton_codeen
+ 550  536  246  548  202  45   85.2  135.8  0.0  8.4     405     618 princeton_coblitz
+ 503    0    0    0    0  15   80.6  179.8  0.0  8.0       2       3 pl_netflow
+ 716   30   31   44   49 102   56.0  130.6  1.9  5.4       0     259 umn_hopper
+ 606    2    2    2    2   8   52.6  723.8  0.0  5.2       7      23 harvard_nc
+ 549    5    1    1    0  17   44.4  108.3  0.0  4.4       7      17 arizona_stork2
+ 631    0   27    0   32  13   26.5   49.6  0.0  2.6       1      10 hplabs_oasis
+   0    0    0    0    0  38   26.1   70.5  0.0  2.5     569     588 root
+ 718    0    0    0    0   8   23.5   38.2  0.0  2.3       6       6 utah_elab_24927
+ 548    4    5    4    2  37   22.6   46.2  0.0  2.2       0      57 ucin_ping
+ 731    0    0    0    0   9   22.5   41.5  0.0  2.2       8       9 utah_svc_slice
+ 698    0    0    0    0   3   20.7  261.5  0.0  2.0       3       3 uppsala_bamboo
+ 664  519  367   13   59   4   15.2   22.2  0.0  1.5       6       8 nyu_d
+ 592    2    3    1    1   8    6.5   15.6  0.0  0.6       2     103 princeton_slicestat
+ 513    0    0    0    0   7    6.4   14.5  0.0  0.6       4      22 nyu_oasis
+ 505    0    0    0    0   2    6.2    9.8  0.0  0.6       0       1 ucla_libra
+ 521    0    0    0    0   1    5.4    6.7  0.0  0.5      14      20 stony_chainsaw
+ 557    0    0    0    0   5    4.9   11.6  0.0  0.5       0       0 ucb_oceanstore_storage
+ 555    0    0    0    0   5    4.8   11.7  0.0  0.5       0       0 arizona_stork
+ 621    0    0    0    0   5    4.8   11.7  0.0  0.5       0       5 ucb_bamboo
+ 665    0    0    0    0   6    4.3    8.9  0.0  0.4       3       3 umd_scriptroute
+  38    0    0    0    0   1    4.0    3.9  0.0  0.4       0       0 ntp
+ 700    0    0    0    0   1    3.8    6.5  0.0  0.4       1       1 byu_btscout
+ 661   12   12   22   22   2    2.8   36.1  1.9  0.3       4       4 northwestern_probing
+  51    0    0    0    0   1    2.6    6.8  0.0  0.3       0       0 smmsp
+ 539    4    4    5    5   1    1.8    4.5  0.0  0.2       3       3 princeton_probe
+ 614    0    0    0    0   1    1.3    4.2  0.0  0.1       5       5 tsinghua_lgh
+ 696    0    0    0    0   3    1.1    2.5  0.0  0.1       0       0 stanford_solm
+ 533    0    0    0    0   3    1.1    2.5  0.0  0.1       0       0 ufl_ipop
+  29    0    0    0    0   1    0.8    1.7  0.0  0.1       0       0 rpcuser
+ 564    0    0    0    0   1    0.7    1.6  0.0  0.1       0       0 uw_arvind
+ 589    0    0    0    0   1    0.7    1.6  0.0  0.1       0       0 uw_ah
+  32    0    0    0    0   1    0.6    1.6  0.0  0.1       0       0 rpc
+
+Start: 1177560002 Thu Apr 26 00:00:02 2007
+Node: aladdin.planetlab.extranet.uni-passau.de
+ 584    4    4    3    5  12  157.1 1030.9 82.8 15.5      20      24 passau_crawler2
+ 654    2    2    3    4  72  138.6  259.2  0.0 13.6       4      94 princeton_comon
+ 537    0    0    0    0  28  108.1  234.8  1.9 10.7       2       4 pl_netflow
+ 530  391  248  376  254  45   96.2  144.5  1.9  9.5      59     248 princeton_codeen
+   0    0    0    0    0  44   57.2  425.8  0.0  5.6      13      28 root
+ 602    3    3    3    3  44   51.0  128.2  0.0  5.0      25      88 princeton_coblitz
+ 614    4    2    4    2   9   47.6  726.3  1.9  4.7     393     414 harvard_nc
+ 555    0    0    0    0  21   45.5  114.3  0.0  4.5       5      32 arizona_stork2
+ 644  487  134    2   52  19   33.8   65.3  0.0  3.3       1      28 hplabs_oasis
+ 531    1    0    0    0   1   23.3  267.0  0.0  2.3       3       4 waseda_ow
+ 542    0    0    0    0   5   22.8  266.4  0.0  2.2       3       3 uppsala_bamboo
+ 684  425  275  183   75  10   20.6   35.3  1.9  2.0       8      15 nyu_d
+ 623    0    0    0    0   8    7.2   17.3  0.0  0.7       0       1 upenn_dharma
+ 560    3    3    1    1   8    6.5   15.6  0.0  0.6       2     101 princeton_slicestat
+ 515    6    6    6    6   7    6.4   14.6  0.0  0.6       4      21 nyu_oasis
+ 685    0    0    0    0   6    5.9   13.0  0.0  0.6       3       3 umd_scriptroute
+ 658    1    1    0    1   2    5.1   24.4  0.0  0.5       5       5 cornell_meridian
+ 557    0    0    0    0   5    4.9   11.6  0.0  0.5       0       0 ucb_oceanstore_storage
+ 597    0    0    0    0   5    4.8   11.6  0.0  0.5       0       0 arizona_stork
+ 720    0    0    0    0   1    4.7    8.1  0.0  0.5       1       2 princeton_sirius
+ 711    0    0    0    0   3    4.5   14.4  0.0  0.4       1       1 epfl_luis
+ 524    0    0    0    0   1    4.3    5.5  0.0  0.4      17      24 stony_chainsaw
+  38    0    0    0    0   1    4.0    3.9  0.0  0.4       0       0 ntp
+ 706    0    0    0    0   1    3.8    6.5  0.0  0.4       1       1 byu_btscout
+ 566    0    0    0    0   4    3.3    8.1  0.0  0.3       0       0 upenn_maoy
+  51    0    0    0    0   1    2.6    6.8  0.0  0.3       0       0 smmsp
+ 726    0    0    0    0   2    2.5    5.7  0.0  0.2       0       0 hiit_p2pfusion
+ 704    0    0    0    0   2    2.1    4.9  0.0  0.2       0       0 cmu_japan
+ 703    0    0    0    0   2    1.3    3.2  0.0  0.1       0       0 uw_arvind
+ 622    0    0    0    0   2    1.3    3.3  0.0  0.1       0       0 uw_ah
+ 625    0    0    0    0   1    1.0    2.5  0.0  0.1       0       0 ucb_bamboo
+ 652    0    0    0    0   1    1.0   12.6  0.0  0.1       1       1 northwestern_probing
+  29    0    0    0    0   1    0.8    1.7  0.0  0.1       0       0 rpcuser
+ 532    0    0    0    0   1    0.7    1.6  0.0  0.1       0       0 uw_geoloc
+ 550    0    0    0    0   1    0.6    3.9  0.0  0.1       3       3 princeton_probe
+  32    0    0    0    0   1    0.6    1.6  0.0  0.1       0       0 rpc
+
+Start: 1177560002 Thu Apr 26 00:00:02 2007
+Node: alice.cs.princeton.edu
+ 600    1    2    3    3  64  138.4  259.4  0.0 13.6       4      42 princeton_comon
+ 528  255  264  309  279  45   84.7  134.0  3.8  8.3      25     194 princeton_codeen
+ 537    0    0    0    0  15   74.0  167.1  0.0  7.3       2       2 pl_netflow
+   0    0    0    0    0  37   49.3  429.6  0.0  4.8      11     100 root
+ 582    2    3    2    3  44   49.2  128.2  0.0  4.8      24      99 princeton_coblitz
+ 553    0    1    0    1  16   33.8   89.5  0.0  3.3       0       7 arizona_stork2
+ 529    1    0    0    0   1   20.3  265.0  0.0  2.0       0       6 waseda_ow
+ 564  173  145   64   54   8   15.2   28.0  0.0  1.5       6      32 nyu_d
+ 596    2    2    1    1   8    6.5   15.5  0.0  0.6       2      86 princeton_slicestat
+ 643    0    0    0    0   1    5.5    8.2  0.0  0.5       0       2 arizona_client2
+ 651    0    0    0    0   6    5.5   13.2  0.0  0.5       0       0 upenn_dharma
+ 513    0    0    0    0   5    4.9   11.7  0.0  0.5       0       0 nyu_oasis
+ 602    0    0    0    0   5    4.9   11.6  0.0  0.5       0       0 arizona_stork
+ 532    0    0    0    0   1    4.8    8.2  0.0  0.5       1       3 princeton_sirius
+  38    0    0    0    0   1    4.0    3.9  0.0  0.4       0       0 ntp
+  51    0    0    0    0   1    2.7    6.8  0.0  0.3       0       0 smmsp
+ 580    0    0    0    0   2    1.7    4.0  0.0  0.2       0       0 upenn_maoy
+ 675    0    0    0    0   1    1.0    2.5  0.0  0.1       0       0 cmu_japan
+  29    0    0    0    0   1    0.9    1.8  0.0  0.1       0       0 rpcuser
+ 550    0    0    0    0   1    0.7    4.0  0.0  0.1       3       3 princeton_probe
+  32    0    0    0    0   1    0.6    1.6  0.0  0.1       0       0 rpc
+
+Start: 1177560002 Thu Apr 26 00:00:02 2007
+Node: arari.snu.ac.kr
+(null)
+
+Start: 1177560002 Thu Apr 26 00:00:02 2007
+Node: blast.uwaterloo.ca
+(null)
+
+Start: 1177560002 Thu Apr 26 00:00:02 2007
+Node: buaa1.6planetlab.edu.cn
+(null)
+
+Start: 1177560002 Thu Apr 26 00:00:02 2007
+Node: buaa2.6planetlab.edu.cn
+ 635    1    1    3    3  65  123.9  261.7  0.0 10.8       4      49 princeton_comon
+ 621  263  166  856  138  34   61.6  159.1  0.0  5.4       2      34 hplabs_oasis
+ 566    5    1    3    1  19   39.1  177.2 46.2  3.4      16      16 arizona_stork2
+ 547    3    3    3    3  44   31.0  128.2  0.0  2.7      25      74 princeton_coblitz
+ 524    3    3    3    3  45   31.0  127.0  1.9  2.7      25      96 princeton_codeen
+ 533    0    0    0    0  22   28.8  171.9  0.0  2.5       2       2 pl_netflow
+   0    0    0    0    0  37   28.3  271.2  0.0  2.4      11      67 root
+ 592    2    2    2    2   5   24.9  720.1  0.0  2.2      12      32 harvard_nc
+ 676    0    0    0    0   9   13.1   41.5  0.0  1.1       8       9 utah_svc_slice
+ 671    2    2    1    1   8    5.5   15.6  0.0  0.5       2      99 princeton_slicestat
+ 646    0    0    0    0   7    5.1   15.4  0.0  0.4       3       3 umd_scriptroute
+  38    0    0    0    0   1    4.0    3.9  0.0  0.3       0       0 ntp
+ 528    0    0    0    0   1    3.9    8.1  0.0  0.3       1       3 princeton_sirius
+ 505    0    0    0    0   1    2.3   26.7 46.2  0.2       0       0 tsinghua_zxh
+ 652    1    1    1    1   2    1.5   24.4  0.0  0.1       5       5 cornell_meridian
+  51    0    0    0    0   1    1.4    6.8  0.0  0.1       0       0 smmsp
+ 582    0    0    0    0   2    1.2    3.3  0.0  0.1       0       0 uw_ah
+ 584    0    0    0    0   2    1.2    3.3  0.0  0.1       0       0 uw_arvind
+ 527    0    0    0    0   1    1.1   10.3  0.0  0.1       0       0 uw_geoloc
+ 596    0    0    0    0   1    1.0    2.5  0.0  0.1       0       0 ucb_bamboo
+ 600    0    0    0    0   1    0.9    4.2  0.0  0.1       5       5 tsinghua_lgh
+ 519    0    0    0    0   1    0.8    6.6  0.0  0.1      15      19 stony_chainsaw
+ 563    0    0    0    0   1    0.6    3.9  0.0  0.1       3       3 princeton_probe
+  29    0    0    0    0   1    0.6    1.7  0.0  0.0       0       0 rpcuser
+  32    0    0    0    0   1    0.4    1.7  0.0  0.0       0       0 rpc
+
+Start: 1177560002 Thu Apr 26 00:00:02 2007
+Node: bupt1.6planetlab.edu.cn
+(null)
+
+Start: 1177560002 Thu Apr 26 00:00:02 2007
+Node: bupt2.6planetlab.edu.cn
+(null)
+
+Start: 1177560002 Thu Apr 26 00:00:02 2007
+Node: chronos.disy.inf.uni-konstanz.de
+(null)
+
+Start: 1177560002 Thu Apr 26 00:00:02 2007
+Node: cloudburst.uwaterloo.ca
+(null)
+
+Start: 1177560002 Thu Apr 26 00:00:02 2007
+Node: cqu1.6planetlab.edu.cn
+(null)
+
+Start: 1177560002 Thu Apr 26 00:00:02 2007
+Node: cqu2.6planetlab.edu.cn
+(null)
+
+Start: 1177560002 Thu Apr 26 00:00:02 2007
+Node: crt1.planetlab.umontreal.ca
+(null)
+
+Start: 1177560002 Thu Apr 26 00:00:02 2007
+Node: crt3.planetlab.umontreal.ca
+ 506    6    6    7    8  48  177.0  407.6 30.8  8.7      68      68 tsinghua_zxh
+ 672    2    2    3    4  63  137.4  256.7  0.0  6.7       4      75 princeton_comon
+ 572  129  151   78  138  52   96.2  156.5  0.0  4.7     227     436 princeton_coblitz
+ 564    0    1    2    2   6   94.8 1401.6  0.0  4.7       2       7 utoronto_jacobsen_lb
+ 531   39   72   40   72  45   94.4  142.2  3.4  4.6     584     763 princeton_codeen
+ 646    0    0    0    0  20   92.0  128.0  0.0  4.5      10      10 arizona_prodeva_ebay
+ 537    0    0    0    0  15   81.8  171.1  0.0  4.0       2       3 pl_netflow
+ 682  179  961   49  242   7   59.9   77.9  0.0  3.0      17      26 nyu_d
+ 644   40  110  178   68  27   52.8  137.1  8.5  2.6       1      51 hplabs_oasis
+ 733   31   31   60   58 100   48.9  112.2  0.0  2.4       0     410 umn_hopper
+   0    0    0    0    0  47   42.6  254.8  0.0  2.1      12      58 root
+ 548    0    0    0    0  15   41.5  107.8  0.0  2.0      15      16 arizona_stork2
+ 534    0    1    0    1   3   38.5   57.0  0.0  1.9       1       1 ufl_ipop
+ 655   26   21   27   25   6   36.9   45.0  1.7  1.8       0     109 ucsd_skype
+ 735    0    1    1    1  14   28.5   49.8 10.3  1.4       6      34 utah_elab_24927
+ 734    0    0    0    0   9   22.5   41.5  0.0  1.1       8       9 utah_svc_slice
+ 707    0    0    0    0   4   21.7  263.9  0.0  1.1       3       3 uppsala_bamboo
+ 711   54   54   31   31  18   10.5   22.4  0.0  0.5       2      58 purdue_6
+ 561    2    3    1    1   8    6.4   15.6  0.0  0.3       2     121 princeton_slicestat
+ 726  559  579    0    0   7    5.9   55.1  0.0  0.3       3       5 caltech_david
+ 525    0    0    0    0   1    5.1    6.1  0.0  0.2      13      16 stony_chainsaw
+ 697    4    3    2    2   5    5.0   68.7  0.0  0.2       0       1 uw_geoloc
+ 514    0    0    0    0   5    4.9   11.7  0.0  0.2       0       1 nyu_oasis
+ 551    0    0    0    0   5    4.9   11.7  0.0  0.2       0       1 ucb_oceanstore_storage
+ 598    0    0    0    0   5    4.8   11.7  0.0  0.2       0       0 arizona_stork
+ 716    0    0    0    0   1    4.6   17.3  0.0  0.2       1       1 byu_btscout
+  38    0    0    0    0   1    4.0    3.9  0.0  0.2       0       0 ntp
+ 683    0    0    0    0   3    3.7    7.4  0.0  0.2       5       5 umd_scriptroute
+ 601    1    0    1    0   1    3.7    6.2  0.0  0.2       4       7 tsinghua_zzb
+ 664   16   16   11   11   2    2.7   36.0  0.0  0.1       1       4 northwestern_probing
+  51    0    0    0    0   1    2.5    6.8  0.0  0.1       0       0 smmsp
+ 539    0    0    0    0   2    2.2    5.3  0.0  0.1       2       2 uiuc_mon
+ 547    4    4    4    5   1    1.8    4.5  0.0  0.1       3       3 princeton_probe
+ 732    0    0    0    0   1    1.3    4.2  0.0  0.1       5       5 tsinghua_lgh
+ 704    0    0    0    0   1    1.0    2.5  0.0  0.1       0       3 ucb_bamboo
+ 706    0    0    0    0   1    1.0    2.5  0.0  0.1       0       0 stanford_solm
+ 688    0    0    0    0   1    1.0    2.4  0.0  0.1       0       0 cmu_japan
+ 582    0    0    0    0   1    1.0    2.5  0.0  0.0       0       0 harvard_azureus
+  29    0    0    0    0   1    0.8    1.7  0.0  0.0       0       0 rpcuser
+ 596    0    0    0    0   1    0.7    1.6  0.0  0.0       0       0 uw_ah
+ 583    0    0    0    0   1    0.7    1.6  0.0  0.0       0       0 uw_arvind
+  32    0    0    0    0   1    0.6    1.6  0.0  0.0       0       0 rpc
+
+Start: 1177560002 Thu Apr 26 00:00:02 2007
+Node: cs-planetlab1.cs.surrey.sfu.ca
+ 556    7    7    3    4   6  122.7 1408.6 11.5 24.4       3      14 utoronto_jacobsen_lb
+ 634    1    2    2    3  63  114.4  256.8  0.0 22.6       4      48 princeton_comon
+ 669  130   91  127   91  45   81.3  144.4  1.9 16.1     185     388 princeton_codeen
+ 535    0    0    0    0  18   52.3  201.1  1.9 10.4       2       3 pl_netflow
+ 577    3    3    4    3  44   36.4  128.3  0.0  7.1     113     188 princeton_coblitz
+ 595    1    1    1    1   8   26.0  726.9  0.0  5.2       4      19 harvard_nc
+   0    0    0    0    0  44   18.9   72.1  0.0  3.7      36      84 root
+ 662  356  333    8   63   7   18.0   46.6  0.0  3.6      41      53 nyu_d
+ 546    1    0    0    0  17   17.4  142.7  0.0  3.4      14      14 arizona_stork2
+ 619    2    2    2    2   1   17.3  266.0  0.0  3.4       2       2 ntua_atlas
+ 623    1   31    0   28   9   15.4   42.0  0.0  3.0       1       5 hplabs_oasis
+ 527    0    0    0    0   1   14.3  266.0  0.0  2.8       4       4 waseda_ow
+ 675    0    0    0    0   9   13.1   41.5  0.0  2.6       8       9 utah_svc_slice
+ 508    0    0    0    0  10    9.3  136.7  0.0  1.8       3       3 epfl_luis
+ 548    0    0    0    0   7    6.8   16.0  0.0  1.3       0       1 ucb_oceanstore_storage
+ 650    2    3    1    1   8    5.4   15.5  0.0  1.1       2     105 princeton_slicestat
+ 552    0    0    0    0   5    4.6   11.7  0.0  0.9       0       0 arizona_stork
+ 594    0    0    0    0   5    4.2   11.6  0.0  0.8       0       0 ucb_bamboo
+ 512    0    0    0    0   5    4.2   11.7  0.0  0.8       0       0 nyu_oasis
+  38    0    0    0    0   1    3.9    3.8  0.0  0.8       0       0 ntp
+ 663    0    0    0    0   3    2.9    7.4  0.0  0.6       3       3 umd_scriptroute
+ 521    0    0    0    0   1    2.6    7.2  0.0  0.5      15      19 stony_chainsaw
+  51    0    0    0    0   1    1.4    6.8  0.0  0.3       0       0 smmsp
+ 608    0    0    0    0   2    1.0   24.4  0.0  0.2       5       5 cornell_meridian
+ 603    0    0    0    0   1    0.9    4.2  0.0  0.2       5       5 tsinghua_lgh
+ 670    0    0    0    0   1    0.7    2.5  0.0  0.1       0       0 stanford_solm
+ 544    0    0    0    0   1    0.7    4.0  0.0  0.1       3       3 princeton_probe
+ 551    0    0    0    0   1    0.6    1.6  0.0  0.1       0       0 uw_ah
+ 553    0    0    0    0   1    0.6    1.6  0.0  0.1       0       0 uw_arvind
+  29    0    0    0    0   1    0.6    1.8  0.0  0.1       0       0 rpcuser
+  32    0    0    0    0   1    0.6    1.6  0.0  0.1       0       0 rpc
+
+Start: 1177560002 Thu Apr 26 00:00:02 2007
+Node: cs-planetlab2.cs.surrey.sfu.ca
+ 549    0    0    0    0 142  144.7  785.2  0.0 28.4       0       0 arizona_stork2
+ 641    1    2    5    3  63  113.7  256.7  0.0 22.5       4      47 princeton_comon
+ 557    9   10    3    4   6   90.7 1409.6  0.0 18.0       2      10 utoronto_jacobsen_lb
+ 527  135  100  137  104  45   77.5  141.9  5.7 15.3     260     461 princeton_codeen
+ 536    1    0    0    0  19   50.5  190.7  1.9 10.0       2       2 pl_netflow
+   0    0    0    0    0  56   38.4  155.0  0.0  7.5      28      75 root
+ 591    3    4    4    5  44   31.8  128.2  0.0  6.2      47     136 princeton_coblitz
+ 585    1    1    1    1   8   27.1  726.9  0.0  5.4       4      22 harvard_nc
+ 649  265  302   20   37   7   24.3   70.2  1.9  4.8      36      44 nyu_d
+ 547    2    5    4    1  37   19.9   41.0  0.0  3.9       0       0 ucin_ping
+ 620    2    2    2    2   1   17.3  266.0  0.0  3.4       2       2 ntua_atlas
+ 627    0   38   12   59  10   15.9   43.6  0.0  3.1       1      13 hplabs_oasis
+ 678    0    0    0    0   9   13.0   41.5  0.0  2.6       8       9 utah_svc_slice
+ 540    0    0    0    0   4   11.8  263.9  0.0  2.3       3       3 uppsala_bamboo
+ 528    0    0    0    0   1   11.3  266.0  0.0  2.2       5       5 waseda_ow
+ 669    4    3    1    1   8    5.5   15.6  0.0  1.1       2      95 princeton_slicestat
+ 513    0    0    0    0   5    4.3   11.7  0.0  0.8       0       0 nyu_oasis
+ 570    0    0    0    0   5    4.3   11.7  0.0  0.8       0       0 arizona_stork
+ 551    0    0    0    0   5    4.0   11.7  0.0  0.8       0       3 ucb_oceanstore_storage
+  38    0    0    0    0   1    3.9    3.8  0.0  0.8       0       0 ntp
+ 504    0    0    0    0   2    3.1    9.8  0.0  0.6       0       3 ucla_libra
+ 650    0    0    0    0   3    2.9    7.4  0.0  0.6       4       4 umd_scriptroute
+ 546    3    4    6    7   1    1.6    4.6  0.0  0.3       3       3 princeton_probe
+  51    0    0    0    0   1    1.4    6.8  0.0  0.3       0       0 smmsp
+ 612    0    0    0    0   1    1.0    2.5  0.0  0.2       0       0 ucb_bamboo
+ 593    0    0    0    0   1    0.9    4.2  0.0  0.2       5       5 tsinghua_lgh
+ 643    0    0    0    0   2    0.9   24.5  0.0  0.2       5       5 cornell_meridian
+ 521    0    0    0    0   1    0.8    6.5  0.0  0.2      14      17 stony_chainsaw
+ 611    0    0    0    0   1    0.7    2.5  0.0  0.1       0       0 stanford_solm
+ 646    0    0    0    0   1    0.7    2.5  0.0  0.1       0       0 cmu_japan
+ 571    0    0    0    0   1    0.6    1.6  0.0  0.1       0       0 uw_arvind
+  29    0    0    0    0   1    0.6    1.8  0.0  0.1       0       0 rpcuser
+  32    0    0    0    0   1    0.6    1.6  0.0  0.1       0       0 rpc
+
+Start: 1177560002 Thu Apr 26 00:00:02 2007
+Node: csplanet1.ncat.edu
+(null)
+
+Start: 1177560002 Thu Apr 26 00:00:02 2007
+Node: csplanet2.ncat.edu
+(null)
+
+Start: 1177560002 Thu Apr 26 00:00:02 2007
+Node: csplanetlab1.kaist.ac.kr
+(null)
+
+Start: 1177560002 Thu Apr 26 00:00:02 2007
+Node: csplanetlab2.kaist.ac.kr
+(null)
+
+Start: 1177560002 Thu Apr 26 00:00:02 2007
+Node: csplanetlab3.kaist.ac.kr
+(null)
+
+Start: 1177560002 Thu Apr 26 00:00:02 2007
+Node: csplanetlab4.kaist.ac.kr
+(null)
+
+Start: 1177560002 Thu Apr 26 00:00:02 2007
+Node: csu1.6planetlab.edu.cn
+(null)

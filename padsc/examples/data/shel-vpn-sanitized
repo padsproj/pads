@@ -1,0 +1,91 @@
+Feb 12 05:58:31 umsfzx8  10373 02/12/2007 10:58:15 tEvtLgMgr 0 : CSFW [12] Rule[OVERRIDE  2] Firewall:  [15.164.163.222:3911-15.160.11.36:1434, proto:udp], action: Drop\n
+Feb 12 05:58:31 umsfzx8  10373 02/12/2007 10:58:18 tEvtLgMgr 0 : CSFW [12] Rule[OVERRIDE  2] Firewall:  [15.164.163.222:3912-15.160.11.36:1434, proto:udp], action: Drop\n
+Feb 12 05:58:31 umsfzx8  10373 02/12/2007 10:58:22 tEvtLgMgr 0 : CSFW [12] Rule[OVERRIDE  2] Firewall:  [15.164.163.222:3913-15.160.11.36:1434, proto:udp], action: Drop\n
+Feb 12 05:58:31 umsfzx8  10373 02/12/2007 10:58:25 tEvtLgMgr 0 : CSFW [12] Rule[OVERRIDE  2] Firewall:  [15.164.163.222:3914-15.160.11.36:1434, proto:udp], action: Drop\n
+Feb 12 05:58:31 umsfzx8  10373 02/12/2007 10:58:28 tEvtLgMgr 0 : CSFW [12] Rule[OVERRIDE  2] Firewall:  [15.164.163.222:3918-15.160.11.36:1434, proto:udp], action: Drop\n
+Feb 12 05:58:38 kvsfzx4  16699 02/12/2007 10:58:34 tEvtLgMgr 0 : ISAKMP [13] No proposal chosen in message from 136.35.254.50
+Feb 12 05:58:38 kvsfzx4  16699 02/12/2007 10:58:34 tIsakmp 0 : Failed Login Attempt: Username=kqxmfzx4: Date/Time=02/12/2007 10:58:34
+Feb 12 05:58:38 kvsfzx4  16699 02/12/2007 10:58:35 tEvtLgMgr 0 : ISAKMP [13] Client Version Information: AT&amp;T NetClient 6.3.0.3000 
+Feb 12 05:58:38 kvsfzx4  16699 02/12/2007 10:58:36 tPoolTask5 0 : Session: IPSEC[pr5953]:492385 Incoming client version (unknown), minimum version (unknown) push action (none), action not needed
+Feb 12 05:58:38 kvsfzx4  16699 02/12/2007 10:58:36 tEvtLgMgr 0 : Security [13] Session: IPSEC[No Access Network]:Access Network Passed - 68.17.255.25
+Feb 12 05:58:38 kvsfzx4  16699 02/12/2007 10:58:36 tEvtLgMgr 0 : Security [12] Session: IPSEC[pr5953]:492385 physical addresses: remote 136.35.254.50 local 129.1.76.78
+Feb 12 05:58:38 kvsfzx4  16699 02/12/2007 10:58:36 tEvtLgMgr 0 : Security [12] Session: IPSEC[pr5953]:492385 assigned IP address 15.164.65.46, mask 0.0.0.0
+Feb 12 05:58:38 eufzx6  16883 02/12/2007 10:53:03 tEvtLgMgr 0 : ISAKMP [13] No proposal chosen in message from 172.185.66.112
+Feb 12 05:58:38 eufzx6  16883 02/12/2007 10:53:03 tIsakmp 0 : Failed Login Attempt: Username=kddfzx4: Date/Time=02/12/2007 10:53:03
+Feb 12 05:58:38 eufzx6  16883 02/12/2007 10:53:03 tEvtLgMgr 0 : ISAKMP [13] Client Version Information: AT&amp;T NetClient 6.8.0.3005 
+Feb 12 05:58:39 kvsfzx5  16701 02/12/2007 10:58:26 tEvtLgMgr 0 : CSFW [12] Rule[OVERRIDE  2] Firewall:  [15.164.80.204:2028-14.117.252.12:1434, proto:udp], action: Drop\n
+Feb 12 05:58:39 kvsfzx5  16701 02/12/2007 10:58:30 tEvtLgMgr 0 : CSFW [12] Rule[OVERRIDE  2] Firewall:  [15.164.80.204:2032-14.127.214.32:1434, proto:udp], action: Drop\n
+Feb 12 05:58:39 kvsfzx5  16701 02/12/2007 10:58:33 tEvtLgMgr 0 : CSFW [12] Rule[OVERRIDE  2] Firewall:  [15.164.80.204:2033-14.127.214.32:1434, proto:udp], action: Drop\n
+Feb 12 05:58:39 kvsfzx5  16701 02/12/2007 10:58:37 tEvtLgMgr 0 : CSFW [12] Rule[OVERRIDE  2] Firewall:  [15.164.80.204:2034-14.117.252.12:1434, proto:udp], action: Drop\n
+Feb 12 05:58:41 umsfzx6  23637 02/12/2007 10:59:22 tEvtLgMgr 0 : Security [12] Session: IPSEC[177.168.1.234]:7844000 physical addresses: remote 177.168.1.234 local 129.1.10.82
+Feb 12 05:58:41 umsfzx6  23637 02/12/2007 10:59:22 tEvtLgMgr 0 : Security [12] Session: IPSEC[-]:7870591 physical addresses: remote 177.168.1.234 local 129.1.10.82
+Feb 12 05:58:41 umsfzx6  23637 02/12/2007 10:59:23 tEvtLgMgr 0 : Security [12] Session: IPSEC[129.223.53.132]:7861675 physical addresses: remote 129.223.53.132 local 129.1.10.82
+Feb 12 05:58:41 umsfzx6  23637 02/12/2007 10:59:23 tEvtLgMgr 0 : Security [12] Session: IPSEC[-]:7870592 physical addresses: remote 129.223.53.132 local 129.1.10.82
+Feb 12 05:58:41 umsfzx6  23637 02/12/2007 10:59:28 tEvtLgMgr 0 : Security [12] Session: IPSEC[-]:7870527 logged out
+Feb 12 05:58:41 umsfzx6  23637 02/12/2007 10:59:31 tEvtLgMgr 0 : ISAKMP [13] invalid id! quickmode.cpp:line 2719
+Feb 12 05:58:41 umsfzx6  23637 02/12/2007 10:59:31 tEvtLgMgr 0 : Security [12] Session: IPSEC[-]:7870593 logged out
+Feb 12 05:58:41 umsfzx6  23637 02/12/2007 10:59:31 tEvtLgMgr 0 : ISAKMP [13] Invalid ID information in message from 127.226.0.60
+Feb 12 05:58:41 umsfzx6  23637 02/12/2007 10:59:32 tEvtLgMgr 0 : Security [12] Session: IPSEC[24.77.78.90]:7866572 physical addresses: remote 24.77.78.90 local 129.1.10.82
+Feb 12 05:58:41 umsfzx6  23637 02/12/2007 10:59:32 tEvtLgMgr 0 : Security [12] Session: IPSEC[-]:7870595 physical addresses: remote 24.77.78.90 local 129.1.10.82
+Feb 12 05:58:41 umsfzx6  23637 02/12/2007 10:59:33 tEvtLgMgr 0 : Security [12] Session: IPSEC[128.85.184.220]:7859636 physical addresses: remote 128.85.184.220 local 129.1.10.82
+Feb 12 05:58:41 umsfzx6  23637 02/12/2007 10:59:33 tEvtLgMgr 0 : Security [12] Session: IPSEC[-]:7870594 physical addresses: remote 128.85.184.220 local 129.1.10.82
+Feb 12 05:58:41 umsfzx6  23637 02/12/2007 10:59:33 tEvtLgMgr 0 : Security [12] Session: IPSEC[-]:7870530 logged out
+Feb 12 05:58:41 umsfzx6  23637 02/12/2007 10:59:33 tEvtLgMgr 0 : ISAKMP [13] No proposal chosen in message from 119.69.5.90
+Feb 12 05:58:41 umsfzx6  23637 02/12/2007 10:59:33 tIsakmp 0 : Failed Login Attempt: Username=slwfzx4: Date/Time=02/12/2007 10:59:33
+Feb 12 05:58:41 umsfzx6  23637 02/12/2007 10:59:34 tEvtLgMgr 0 : ISAKMP [13] No proposal chosen in message from 118.185.48.86
+Feb 12 05:58:41 umsfzx6  23637 02/12/2007 10:59:34 tIsakmp 0 : Failed Login Attempt: Username=zkbdxobc-s: Date/Time=02/12/2007 10:59:34
+Feb 12 05:58:43 umsfzx5  16694 02/12/2007 10:58:39 tEvtLgMgr 0 : SNMPTraps [12] 1.3.6.1.4.1.2505.1.2.7 3007 3 SNMP Servers: Server(s) Unavailable; \n
+Feb 12 05:58:44 kvsfzx9  16696 02/12/2007 10:58:29 tEvtLgMgr 0 : CSFW [12] Rule[OVERRIDE  3] Firewall:  [15.164.224.214:2182-14.102.26.76:1434, proto:udp], action: Drop\n
+Feb 12 05:58:44 kvsfzx9  16696 02/12/2007 10:58:32 tEvtLgMgr 0 : CSFW [12] Rule[OVERRIDE  3] Firewall:  [15.164.224.214:2186-14.102.26.44:1434, proto:udp], action: Drop\n
+Feb 12 05:58:44 kvsfzx9  16696 02/12/2007 10:58:35 tEvtLgMgr 0 : CSFW [12] Rule[OVERRIDE  3] Firewall:  [15.164.224.214:2187-14.102.211.52:1434, proto:udp], action: Drop\n
+Feb 12 05:58:44 kvsfzx9  16696 02/12/2007 10:58:38 tEvtLgMgr 0 : CSFW [12] Rule[OVERRIDE  3] Firewall:  [15.164.224.214:2191-14.102.26.92:1434, proto:udp], action: Drop\n
+Feb 12 05:58:44 kvsfzx9  16696 02/12/2007 10:58:41 tEvtLgMgr 0 : CSFW [12] Rule[OVERRIDE  3] Firewall:  [15.164.224.214:2195-14.102.26.92:1434, proto:udp], action: Drop\n
+Feb 12 05:58:44 kvsfzx9  16696 02/12/2007 10:58:44 tEvtLgMgr 0 : CSFW [12] Rule[OVERRIDE  3] Firewall:  [15.164.224.214:2196-14.102.26.92:1434, proto:udp], action: Drop\n
+Feb 12 05:58:47 umsfzx7  16690 02/12/2007 10:58:33 tEvtLgMgr 0 : CSFW [12] Rule[OVERRIDE  2] Firewall:  [15.164.147.42:1259-14.87.249.156:1434, proto:udp], action: Drop\n
+Feb 12 05:58:47 umsfzx7  16690 02/12/2007 10:58:37 tEvtLgMgr 0 : CSFW [12] Rule[OVERRIDE  2] Firewall:  [15.164.147.42:1260-14.87.249.156:1434, proto:udp], action: Drop\n
+Feb 12 05:58:47 umsfzx7  16690 02/12/2007 10:58:40 tEvtLgMgr 0 : CSFW [12] Rule[OVERRIDE  2] Firewall:  [15.164.147.42:1261-14.87.248.174:1434, proto:udp], action: Drop\n
+Feb 12 05:58:47 umsfzx7  16690 02/12/2007 10:58:43 tEvtLgMgr 0 : CSFW [12] Rule[OVERRIDE  2] Firewall:  [15.164.147.42:1262-14.87.249.152:1434, proto:udp], action: Drop\n
+Feb 12 05:58:47 kvsfzx6  21377 02/12/2007 10:58:40 tPoolTask8 0 : Session: IPSEC[kqonnkns]:1014374 Incoming client version (V04_15), minimum version (unknown) push action (none), action not needed
+Feb 12 05:58:47 kvsfzx6  21377 02/12/2007 10:58:40 tEvtLgMgr 0 : Security [13] Session: IPSEC[No Access Network]:Access Network Passed - 59.92.152.43
+Feb 12 05:58:47 kvsfzx6  21377 02/12/2007 10:58:40 tEvtLgMgr 0 : Security [12] Session: IPSEC[kqonnkns]:1014374 physical addresses: remote 118.185.48.86 local 129.1.76.82
+Feb 12 05:58:47 kvsfzx6  21377 02/12/2007 10:58:40 tEvtLgMgr 0 : Security [12] Session: IPSEC[kqonnkns]:1014374 assigned IP address 15.164.189.142, mask 0.0.0.0
+Feb 12 05:58:47 kvsfzx6  21377 02/12/2007 10:58:41 tEvtLgMgr 0 : Security [12] Session: IPSEC[kqonnkns]:1014374 physical addresses: remote 118.185.48.86 local 129.1.76.82
+Feb 12 05:58:47 kvsfzx6 last message repeated 1 time
+Feb 12 05:58:48 umsfzx8  10373 02/12/2007 10:58:32 tEvtLgMgr 0 : CSFW [12] Rule[OVERRIDE  2] Firewall:  [15.164.163.222:3919-15.160.11.36:1434, proto:udp], action: Drop\n
+Feb 12 05:58:48 umsfzx8  10373 02/12/2007 10:58:33 tEvtLgMgr 0 : Security [12] Alert: IP OPTIONS RECEIVED from 135.210.81.55 (possible source route attack)
+Feb 12 05:58:48 umsfzx8  10373 02/12/2007 10:58:33 tEvtLgMgr 0 : ISAKMP [13] No proposal chosen in message from 159.89.122.64
+Feb 12 05:58:48 umsfzx8  10373 02/12/2007 10:58:33 tIsakmp 0 : Failed Login Attempt: Username=kqxmfzx4: Date/Time=02/12/2007 10:58:33
+Feb 12 05:58:48 umsfzx8  10373 02/12/2007 10:58:33 tEvtLgMgr 0 : ISAKMP [13] Client Version Information: AT&amp;T NetClient 6.3.0.3000 
+Feb 12 05:58:48 umsfzx8  10373 02/12/2007 10:58:35 tEvtLgMgr 0 : CSFW [12] Rule[OVERRIDE  2] Firewall:  [15.164.163.222:3920-15.160.11.36:1434, proto:udp], action: Drop\n
+Feb 12 05:58:48 umsfzx8  10373 02/12/2007 10:58:35 tPoolTask28 0 : Session: IPSEC[nqbsvvy]:493006 Incoming client version (unknown), minimum version (unknown) push action (none), action not needed
+Feb 12 05:58:48 umsfzx8  10373 02/12/2007 10:58:35 tEvtLgMgr 0 : Security [13] Session: IPSEC[No Access Network]:Access Network Passed - 207.172.189.32
+Feb 12 05:58:48 umsfzx8  10373 02/12/2007 10:58:35 tEvtLgMgr 0 : Security [12] Session: IPSEC[nqbsvvy]:493006 physical addresses: remote 159.89.122.64 local 129.1.10.86
+Feb 12 05:58:48 umsfzx8  10373 02/12/2007 10:58:35 tEvtLgMgr 0 : Security [12] Session: IPSEC[nqbsvvy]:493006 assigned IP address 15.164.162.190, mask 0.0.0.0
+Feb 12 05:58:48 umsfzx8  10373 02/12/2007 10:58:35 tEvtLgMgr 0 : Security [12] Session: IPSEC[nqbsvvy]:493006 physical addresses: remote 159.89.122.64 local 129.1.10.86
+Feb 12 05:58:48 umsfzx8 last message repeated 1 time
+Feb 12 05:58:48 umsfzx8  10373 02/12/2007 10:58:38 tEvtLgMgr 0 : CSFW [12] Rule[OVERRIDE  2] Firewall:  [15.164.163.222:3921-15.160.11.36:1434, proto:udp], action: Drop\n
+Feb 12 05:58:48 umsfzx8  10373 02/12/2007 10:58:42 tEvtLgMgr 0 : CSFW [12] Rule[OVERRIDE  2] Firewall:  [15.164.163.222:3925-15.160.11.36:1434, proto:udp], action: Drop\n
+Feb 12 05:58:48 umsfzx8  10373 02/12/2007 10:58:45 tEvtLgMgr 0 : CSFW [12] Rule[OVERRIDE  2] Firewall:  [15.164.163.222:3926-15.160.11.36:1434, proto:udp], action: Drop\n
+Feb 12 05:58:56 kvsfzx5  16701 02/12/2007 10:58:41 tEvtLgMgr 0 : CSFW [12] Rule[OVERRIDE  2] Firewall:  [15.164.80.204:2035-14.117.252.12:1434, proto:udp], action: Drop\n
+Feb 12 05:58:56 kvsfzx5  16701 02/12/2007 10:58:44 tEvtLgMgr 0 : CSFW [12] Rule[OVERRIDE  2] Firewall:  [15.164.80.204:2036-14.127.214.32:1434, proto:udp], action: Drop\n
+Feb 12 05:58:56 kvsfzx5  16701 02/12/2007 10:58:48 tEvtLgMgr 0 : CSFW [12] Rule[OVERRIDE  2] Firewall:  [15.164.80.204:2037-14.89.93.206:1434, proto:udp], action: Drop\n
+Feb 12 05:58:56 kvsfzx5  16701 02/12/2007 10:58:52 tEvtLgMgr 0 : CSFW [12] Rule[OVERRIDE  2] Firewall:  [15.164.80.204:2041-14.117.252.12:1434, proto:udp], action: Drop\n
+Feb 12 05:58:56 kvsfzx5  16701 02/12/2007 10:58:55 tEvtLgMgr 0 : CSFW [12] Rule[OVERRIDE  2] Firewall:  [15.164.80.204:2042-14.127.214.32:1434, proto:udp], action: Drop\n
+Feb 12 05:58:58 umsfzx6  23637 02/12/2007 10:59:38 tPoolTask25 0 : Session: IPSEC[qywodrkqkfove]:7870599 Incoming client version (V04_15), minimum version (unknown) push action (none), action not needed
+Feb 12 05:58:58 umsfzx6  23637 02/12/2007 10:59:38 tEvtLgMgr 0 : Security [13] Session: IPSEC[No Access Network]:Access Network Passed - 59.162.130.173
+Feb 12 05:58:58 umsfzx6  23637 02/12/2007 10:59:38 tEvtLgMgr 0 : Security [12] Session: IPSEC[qywodrkqkfove]:7870599 physical addresses: remote 119.69.5.90 local 129.1.10.82
+Feb 12 05:58:58 umsfzx6  23637 02/12/2007 10:59:38 tEvtLgMgr 0 : Security [12] Session: IPSEC[qywodrkqkfove]:7870599 assigned IP address 15.164.142.26, mask 0.0.0.0
+Feb 12 05:58:58 umsfzx6  23637 02/12/2007 10:59:39 tEvtLgMgr 0 : Security [12] Session: IPSEC[qywodrkqkfove]:7870599 physical addresses: remote 119.69.5.90 local 129.1.10.82
+Feb 12 05:58:58 umsfzx6 last message repeated 1 time
+Feb 12 05:58:58 umsfzx6  23637 02/12/2007 10:59:42 tEvtLgMgr 0 : Security [12] Session: IPSEC[-]:7870524 logged out
+Feb 12 05:58:58 umsfzx6  23637 02/12/2007 10:59:42 tEvtLgMgr 0 : Security [12] Session: IPSEC[-]:7870485 logged out
+Feb 12 05:58:58 umsfzx6  23637 02/12/2007 10:59:42 tEvtLgMgr 0 : Security [12] Session: IPSEC[130.147.152.88]:7848470 physical addresses: remote 130.147.152.88 local 129.1.10.82
+Feb 12 05:58:58 umsfzx6  23637 02/12/2007 10:59:42 tEvtLgMgr 0 : Security [12] Session: IPSEC[-]:7870600 physical addresses: remote 130.147.152.88 local 129.1.10.82
+Feb 12 05:58:58 umsfzx6  23637 02/12/2007 10:59:42 tEvtLgMgr 0 : Security [12] Session: IPSEC[127.247.83.36]:7869572 physical addresses: remote 127.247.83.36 local 129.1.10.82
+Feb 12 05:58:58 umsfzx6  23637 02/12/2007 10:59:42 tEvtLgMgr 0 : Security [12] Session: IPSEC[-]:7870601 physical addresses: remote 127.247.83.36 local 129.1.10.82
+Feb 12 05:58:58 umsfzx6  23637 02/12/2007 10:59:46 tIsakmp 0 : Failed Login Attempt: Username=96.573.433.34: Date/Time=02/12/2007 10:59:46
+Feb 12 05:58:58 umsfzx6  23637 02/12/2007 10:59:52 tEvtLgMgr 0 : Security [12] Session: IPSEC[-]:7870528 logged out
+Feb 12 05:58:58 umsfzx6  23637 02/12/2007 10:59:52 tEvtLgMgr 0 : Security [12] Session: IPSEC[129.232.90.4]:7853889 physical addresses: remote 129.232.90.4 local 129.1.10.82
+Feb 12 05:58:58 umsfzx6  23637 02/12/2007 10:59:52 tEvtLgMgr 0 : Security [12] Session: IPSEC[-]:7870619 physical addresses: remote 129.232.90.4 local 129.1.10.82
+Feb 12 05:58:59 kvsfzx8  10699 02/12/2007 10:58:55 tEvtLgMgr 0 : ISAKMP [13] No proposal chosen in message from 24.129.48.80
+Feb 12 05:58:59 kvsfzx8  10699 02/12/2007 10:58:55 tIsakmp 0 : Failed Login Attempt: Username=kqxmfzx4: Date/Time=02/12/2007 10:58:55

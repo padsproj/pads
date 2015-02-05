@@ -1,0 +1,5 @@
+_sysctl({{CTL_KERN, KERN_VERSION}, 2, 0x7fbfffefe0, 34, 0}) = 0 <0.000011>
+_sysctl({{CTL_KERN, KERN_VERSION}, 2, 0x7fbfffefe0, 34, (nil), 0}) = 0 <0.000009>
+_sysctl({{CTL_KERN, KERN_VERSION}, 2, 0x7fbfffefe0, 34, (nil), 0}) = 0 <0.000008>
+_sysctl({{CTL_KERN, KERN_VERSION}, 2, 0x7fbfffefe0, 34, (nil), 0}) = 0 <0.000008>
+_sysctl({{CTL_KERN, KERN_VERSION}, 2, 0x7fbfffefe0, 34, (nil), 0}) = 0 <0.000008>

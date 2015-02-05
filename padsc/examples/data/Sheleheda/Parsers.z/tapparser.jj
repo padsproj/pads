@@ -1,0 +1,537 @@
+/*******************************************************************************
+ AT&T TAP netflow log parser for NSM 
+
+ James Yang at AT&T ; 6/25/2003
+  6/27: process countable fields for aggregation
+  6/27: adding aggregation on s_ip when appropriate
+  6/28: add type=flow
+  6/28: add decode tcp_flag(CODE)
+  6/28: add iface and oface to interface
+  7/2 : change field 21(lf) from integer to float
+??   bytes packets to long
+  10/14: two fields added to data. #1 and #28 #1 not used yet #28=prob of sampling
+  10/16: use new formula for actual bytes and packets 
+  10/17: sleep for a minute between agg dumps to give nsm a break
+  6/18/04: add a blank second field due to format change
+
+  Usage: java tapparser aggregate_record_count min_aggregate_count nsm_port
+  Usage: tail -f log | java tapparser 200000(rec) 1(agg) NSM_port|0
+
+  ************  log samples  *********************
+
+1086831600,,oden,GigabitEthernet9/0/0,FastEthernet4/0/0,135.207.26.46,20,22,0,135.207.1.20,24,37213,0,6,24,16,3544584,10910,1086829520,784,1086831319,328,1,1282356,1,sessions,sessions,135.207.1.20,1
+1086831600,,oden,GigabitEthernet9/0/0,FastEthernet1/1/0,135.207.30.101,20,143,0,135.207.50.243,20,3606,0,6,24,0,185617,139,1086831566,812,1086831568,316,1,1282356,1,mail,mail,135.207.11.10,0.1447468566
+1086831600,,oden,GigabitEthernet9/0/0,FastEthernet1/0/0,135.207.18.18,20,1021,0,135.33.55.12,8,514,0,6,27,0,1874396,1266,1086831028,360,1086831033,344,1,1282356,1,sessions,rsh,135.207.0.1,1
+
+*******************************************************************************/
+
+PARSER_BEGIN(tapparser) 
+
+import java.util.Enumeration;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.*;
+import java.lang.String;
+import java.lang.Object;
+import java.text.*;
+import java.io.*;
+import java.net.*;
+import java.util.Timer;
+import java.util.TimerTask;  
+
+class pub_data{
+   public static boolean dumping = false ;
+   public static int max_rec = 200000 ;
+   public static int max_rec_static = 200000 ;
+   public static int dotimer = 5 * 60 ;
+   public static int min_agg = 1 ;
+   public static int tot_agg_count = 0; 
+   public static int tot_rec_count = 0;
+   public static int tot_skip_count = 0 ;
+   public static int timer_rec_count = 0 ;
+   public static PrintWriter out_put;
+   public static Socket socket = null ;
+   public static String sock_server = "127.0.0.1" ; /* local */
+   public static int sock_port = 0  ; 
+}
+
+class generic_class {
+
+  //public static String buffer ;
+  //pub_data_class pub = new pub_data_class();
+
+  public boolean IsInteger(String str) {
+     int leng, i, j ;
+     char ch ;
+     String digits = "0123456789";
+     if ( (leng=str.length() ) == 0 )  return(false); 
+     j=0 ;
+     // while ( str.charAt(j) == ' ' ||  str.charAt(j) == '	' )
+     //   { j++; if ( j >= leng )  return(false); }
+     // while ( str.charAt(leng-1) == ' ' ||  str.charAt(leng-1) == '	' )
+     //   { leng--; if ( leng == 0 )  return(false); }
+     if ( str.charAt(j) == '+' || str.charAt(j) == '-' )
+        {
+        if ( leng == 1 ) return(false);
+        j++ ; 
+        }
+     for  ( i=j ; i<leng ; i++)
+       {
+       if ( digits.indexOf(str.charAt(i)) < 0 )  return(false);
+       } 
+     return(true);  
+  }
+
+  public boolean IsReal(String str) {
+     int leng, i, j;
+     boolean dot ;
+     char ch ;
+     String digits = "0123456789.";
+     if ( (leng=str.length() ) == 0 )  return(false); 
+     j=0 ;
+     if ( str.charAt(j) == '+' || str.charAt(j) == '-' )
+        {
+        if ( leng == 1 ) return(false);
+        j++ ; 
+        }
+     dot = false ;
+     for  ( i=j ; i<leng ; i++)
+       {
+       if ( ( ch = str.charAt(i) ) == '.' ) 
+          {
+          if ( dot == true ) return(false);
+          dot = true ; 
+          }
+       if ( digits.indexOf(ch) < 0 )  return(false);
+       } 
+     return(true);  
+  }
+
+} // end of generic_class
+
+class P_Line {
+      public static	String xd_date ;
+      public static	String d_date ;
+      public static	String d_time ;
+      public static	String facility = "tap_flow";
+      public static	String facility_zone ;
+      public static	String facility_ip ;
+      public static	String iface ; 
+      public static	String oface ; 
+      public static	String s_ip ;
+      public static	String s_netmask ; 
+      public static	String t_ip ;
+      public static	String type ;
+      public static	String s_port ;
+      public static	String t_port ;
+      public static	String proto ;
+      public static	String tcp_flag ;
+      public static	long t_packets ;
+      public static	long t_bytes ;
+      public static	String metrics ;
+      public static     String message ; 
+
+      public static	String agg_index = "";
+      public static	String agg_index1 = "";
+      public static     String agg_string = "" ;
+
+      public static int process_line(String buf_line, Map aggregates) {
+
+         //System.err.println("proc=" + buf_line); 
+         int t_count = 0 ; 
+         int maxtokens = 30 ;  // total 29 fields
+         int ic, itmp1 ;
+         Date   date_obj = new Date() ;  
+         Long longtime ;  
+         long atime ; 
+         SimpleDateFormat formatter ;
+         String monthlist = "JanFebMarAprMayJunJulAugSepOctNovDec" ;
+         String tokens[] ;
+         tokens = new String[maxtokens+1]; 
+         generic_class gen = new generic_class(); 
+
+         StringTokenizer token_line = new StringTokenizer(buf_line,",",true);
+
+         //--------------------------------------------------------------
+         while ( token_line.hasMoreTokens() ) {
+            if ( t_count >= maxtokens ) {  return(-10) ; }
+            tokens[++t_count] = (String)(token_line.nextToken()) ;
+            if ( ! tokens[t_count].equals(",") )
+               {
+               if ( token_line.hasMoreTokens() )
+                 { token_line.nextToken(); }
+               else
+                 break ;
+               } 
+            //System.err.println("token " + t_count + " =[" + tokens[t_count] + "]" );
+         }
+         if ( t_count != maxtokens-1 ) return(-11); /* bad formed entry */
+
+         facility_ip = tokens[3] ;
+         iface = tokens[4] ;
+         oface = tokens[5] ;
+         s_ip = tokens[6] ;
+         t_ip = tokens[10] ;
+         message = "s_netmask=" + tokens[7] ;
+         s_port = tokens[8] ;
+         t_port = tokens[12] ;
+
+         boolean agg_source = false ;
+         if ( !gen.IsInteger(tokens[12])||tokens[12].length()>6 ) return(-15) ;
+         if ( ( Integer.parseInt(tokens[12]) ) > 1024 )
+           {
+           if ( !gen.IsInteger(tokens[8])||tokens[8].length()>6 ) return(-20) ;
+           if ( Integer.parseInt(tokens[8]) < 1024 ) agg_source = true ;
+           }
+
+         message = message + " t_netmask=" + tokens[11] ;
+         proto = tokens[14] ;
+
+         type = "flow" ;
+         tcp_flag = "";  // tokens[15] ;
+         if ( !gen.IsInteger(tokens[15])|| tokens[15].length()>3 ) return(-30) ;
+ 	 itmp1 = Integer.parseInt(tokens[15]);
+
+         if ( ( itmp1 & 1 << 0 ) != 0 ) tcp_flag += " FIN" ; 
+         if ( ( itmp1 & 1 << 1 ) != 0 ) tcp_flag += " SYN" ; 
+         if ( ( itmp1 & 1 << 2 ) != 0 ) tcp_flag += " RST" ; 
+         if ( ( itmp1 & 1 << 3 ) != 0 ) tcp_flag += " PSH" ; 
+         if ( ( itmp1 & 1 << 4 ) != 0 ) tcp_flag += " ACK" ; 
+         if ( ( itmp1 & 1 << 5 ) != 0 ) tcp_flag += " URG" ; 
+
+
+         //t_bytes = tokens[17] ;
+         //t_packets = tokens[18] ;
+
+	 if ( !gen.IsInteger(tokens[19]) ) return(-40) ;
+	 if ( tokens[19].length() != 10 ) return(-45) ;
+         d_date = tokens[19] + "000" ;
+         //System.err.println("date=" + d_date );
+         longtime = new Long(d_date);    
+         atime = longtime.longValue() ; 
+         date_obj.setTime(atime);      
+         formatter = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
+         xd_date = formatter.format(date_obj);  
+
+	 if ( !gen.IsInteger(tokens[21]) ) return(-50) ;
+	 if ( tokens[21].length() != 10 ) return(-55) ;
+         d_date = tokens[21] + "000" ;
+         longtime = new Long(d_date); 
+         atime = longtime.longValue() ; 
+         date_obj.setTime(atime);     
+         formatter = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
+         d_date = formatter.format(date_obj);  
+
+         if ( !gen.IsInteger(tokens[17])|| tokens[17].length()>14) return(-60); 
+         if ( !gen.IsInteger(tokens[18])|| tokens[18].length()>10) return(-65); 
+         if ( !gen.IsReal(tokens[23])|| tokens[23].length()>10 ) return(-70); 
+         if ( !gen.IsInteger(tokens[24])|| tokens[24].length()>10) return(-75); 
+         if ( !gen.IsInteger(tokens[25])|| tokens[25].length()>10) return(-80); 
+
+	 long  lic, ltmp1, ltmp2, ltmp3, ltmp4, ltmp5 ;
+         // ab = lf * max(sf,(pf*sb))
+	// new ab = sb*lf*pf/ps
+         if ( ( ltmp1 = Long.parseLong(tokens[25])) <= 0) ltmp1 = 1 ; //pf
+         if ( ( ltmp2 = Long.parseLong(tokens[17])) <= 0) return(-85); //sb
+         ltmp3 = Long.parseLong(tokens[24]);   //sf
+         float ftmp4 = Float.parseFloat(tokens[23]);   //lf
+         float ftmp3 = Float.parseFloat(tokens[29]);   //ps
+         //lic = ltmp1 * ltmp2 ;
+         //if ( ltmp3 > lic ) lic = ltmp3 ;
+         //t_bytes = (long)(ftmp4 * lic) ;
+         t_bytes = (long)(ftmp4 * ltmp2 * ltmp1 /  ftmp3) ;
+
+         // ap = lf * sp * pf * max(1,sf/(pf*sb))
+	// new ap = sp*lf*pf/ps
+         ltmp5 = Long.parseLong(tokens[18]);   //sp t_packets
+         //lic = ltmp3 / (ltmp1 * ltmp2) ;
+         //if ( lic < 1 ) lic = 1 ;
+         t_packets = (int)(ftmp4 * ltmp5 *  ltmp1 / ftmp3 );
+
+	 /*
+         message = message + " t_bytes=" + tokens[17] ;
+         message = message + " t_packets=" + tokens[18] ;
+         message = message + " loss_factor.22=" + tokens[23] ;
+         message = message + " sample_factor.23=" + tokens[24] ;
+         message = message + " p_sample_rate.24=" + tokens[25] ;
+	 */
+
+         message = message + " application=" + tokens[26] + ";" + tokens[27] ;
+
+	 //------------------------------------------------------------
+
+         if ( agg_source )
+            agg_index = s_ip + t_ip + s_port + proto ;
+         else
+            agg_index = s_ip + t_ip + t_port + proto ;
+
+         return ( do_agg_line( aggregates ) ) ;
+
+      } // end of process_line 
+
+      public static int do_agg_line( Map aggregates )
+      {
+	{
+	 /* Aggregate is defined here */
+
+	   agg_index1 = 
+"\ttype\n" + type +  
+"\tfacility_ip\n" + facility_ip + "\tfacility\n" + facility +
+"\ts_ip\n"+s_ip + "\tt_ip\n"+t_ip + "\tproto\n"+proto + 
+"\ts_port\n" + s_port + "\tt_port\n"+t_port +
+"\tinterface\n" + iface + "(in); " + oface + "(out)" + 
+"\tmessage\n" + message ;
+
+           if ( tcp_flag != "" )
+               agg_index1 += "\ttcp_flag\n" + tcp_flag ;
+
+	   //System.err.println("msg:[" + message + "]" );
+	   Object tmp_agg = aggregates.get(agg_index) ;
+	   //System.err.println("t1: " + tmp_agg );
+	   if ( tmp_agg == null ) { 
+               agg_string = "1" +  
+                  "\tbatch_start\n" + xd_date  +  //nodate
+                  "\tbatch_end\n" + d_date +  //nodate
+                  "\tt_packets\n" + t_packets + "\tt_bytes\n" + t_bytes +
+                  agg_index1 ;
+	       aggregates.put( agg_index, agg_string );
+
+	   } else {
+	       StringTokenizer agg_tokstring = new StringTokenizer( (String)tmp_agg, "\t" );
+               String s_count = (String)(agg_tokstring.nextToken());
+               Integer count = new Integer( Integer.parseInt(s_count) + 1 ) ;  
+               String s_value1 = (String)(agg_tokstring.nextToken()); //nodate
+               String s_value2 = (String)(agg_tokstring.nextToken()); 
+               String c_value1 = (String)(agg_tokstring.nextToken()); 
+	       int tmp ;
+               long v_t_packets, v_t_bytes ;
+ 	       if ( (tmp=c_value1.indexOf('\n')) <= 1 ) return(-100);
+               String c_value2 = c_value1.substring(tmp+1, c_value1.length()); 
+	       //System.err.println("c_v2:[" + c_value2 + "]" );
+               v_t_packets = Long.parseLong(c_value2) + t_packets ;  
+               c_value1 = (String)(agg_tokstring.nextToken()); 
+ 	       if ( (tmp=c_value1.indexOf('\n')) <= 1 ) return(-101);
+               c_value2 = c_value1.substring(tmp+1, c_value1.length()); 
+               v_t_bytes = Long.parseLong(c_value2) + t_bytes ;  
+
+               agg_string = count.toString() + 
+                   "\t" + s_value1 +   //nodate
+                   "\tbatch_end\n" + d_date + //nodate
+                   "\tt_packets\n" + v_t_packets + "\tt_bytes\n" + v_t_bytes +
+                   agg_index1 ; 
+
+	       // System.err.println("-t11: x = " + agg_string ); 
+	       aggregates.put( agg_index, agg_string );
+	   }
+
+	}
+      return(1);
+      } //end of do_agg_line
+
+} // end of class P_Line 
+
+class Parse_input {
+   public static String buffer ;
+   public static int agcount = 0 ;  
+
+   public static void write_out(String data)
+   {
+      pub_data pub = new pub_data() ;  
+
+      if ( pub.sock_port != 0 )
+         { pub.out_put.println( data ); }
+      else
+         { System.out.println( data ); }
+   } 
+
+   /* Dumps the aggregate */
+   public static void dump( Map aggregates, int min_aggregate_dump ) throws Exception {
+	Iterator hashit = aggregates.keySet().iterator();
+        pub_data pub = new pub_data() ;  
+
+        /* reconnect to the server if necessary */
+        if ( pub.sock_port != 0 )
+        {
+        connect_svr_class consvr = new connect_svr_class();
+        while ( consvr.connect_svr() < 0 ) 
+           {
+	   System.err.println("Proxy Parser will retry in 5 seconds... " );
+	   Thread.sleep(5000);    //for debug socket
+           } 
+	//System.err.println("-- socket Connected!" );
+        }
+        //agcount += 1000000 ;
+
+	while (hashit.hasNext()) {
+           //System.err.println("agg_count " + ++agcount );  
+	   String nor_rec = (String)hashit.next();
+	   StringTokenizer parser = new StringTokenizer((String)aggregates.get(nor_rec),"\t" ) ;
+	   String s_count = (String)(parser.nextToken());
+	   Integer count = new Integer( Integer.parseInt(s_count) );
+	   if ( count.intValue() >= min_aggregate_dump ) {
+		write_out( "tapagg" );
+		while ( parser.hasMoreTokens() ) {
+	  	   StringTokenizer interior_parser = new StringTokenizer ( parser.nextToken(), "\n" );
+		   String key = (String)(interior_parser.nextToken()); 
+		   String val = (String)(interior_parser.nextToken()); 
+		   //System.err.println("-key=[" + key + "] value=[" + val + "]" );
+                   if ( ! val.equals(";") )
+		       write_out( " " + key + " " + val );
+		}
+		write_out( " agg_count " + count );
+		write_out( "endtapagg" );
+	   }
+        } // end of while
+        if ( pub.sock_port != 0 )
+           {
+           try { pub.socket.close(); }
+           catch (IOException e) { System.err.println(e); }
+	   //System.err.println("-- socket disconnected!" );
+	   Thread.sleep(60000);    //Sleep a minute between agg dumps let remote settle down....
+           }
+
+   } // end of dump
+
+   public void r_input() throws Exception {
+      Map aggregates = new HashMap();
+      int record_count = 0;
+      int rc ;
+      Calendar start_date = new GregorianCalendar(); 
+      // DateFormat start_date = DateFormat.getDateInstance();
+      long start = System.currentTimeMillis();
+      pub_data pub = new pub_data() ;  
+
+      InputStreamReader inreader = new InputStreamReader(System.in);
+      BufferedReader bufreader = new BufferedReader( inreader );
+      P_Line proc_line = new P_Line();
+
+      while ( ( buffer = bufreader.readLine()) != null ) 
+      {
+    	 //System.err.println(buffer); 
+         if ( ( rc = P_Line.process_line(buffer, aggregates) ) < 0 )
+            {
+            System.err.println("-Bad Entry code #" +rc+ " :[" + buffer + "]" ); 
+            pub.tot_skip_count++;
+            continue;
+            }
+         //System.err.println("return form proc line" ); 
+         record_count++;  pub.tot_rec_count++;
+         if ( record_count >= pub.max_rec ) {
+	    System.err.println("UPDATE: " + new GregorianCalendar().getTime() + "(dump interval " + pub.dotimer + " sec or " + pub.max_rec_static + " entries)" + "\n" + record_count + "/" + pub.tot_rec_count + " records processed, total " + pub.tot_skip_count + " records skipped (bad format), " + aggregates.size() + " aggregates, efficiency " + (float)aggregates.size()/(float)record_count  + "\n" ) ;
+	    dump(aggregates, pub.min_agg);
+	    pub.max_rec = pub.max_rec_static ;
+            pub.tot_agg_count = pub.tot_agg_count + aggregates.size();   
+	    aggregates = new HashMap();
+	    record_count = 0;
+	 } // end if
+         //  Thread.sleep(3000);    //for debug socket     
+      } // end while reading the input file
+      pub.tot_agg_count = pub.tot_agg_count + aggregates.size();       
+      System.err.println("UPDATE(EOF): " + new GregorianCalendar().getTime() + "(dump interval " + pub.max_rec_static + " entries)" + "\nTotal " + record_count + "/" + pub.tot_rec_count + " records processed, total " + pub.tot_skip_count + " records skipped (bad format), " + aggregates.size() + "/" + pub.tot_agg_count + " aggregates, efficiency " + (float)aggregates.size()/(float)record_count + "/" + (float)pub.tot_agg_count/(float)pub.tot_rec_count +  "\n" ) ;
+      dump(aggregates, pub.min_agg); 
+      /*  not needed 
+      long elapsedTimeMillis = System.currentTimeMillis()-start;
+      float recordsPerSecond = record_count / elapsedTimeMillis * 1000F ;
+      write_out( "tapagg" );
+
+      write_out( " processing_start " + start_date.getTime() );
+      write_out( " processing_end " + new GregorianCalendar().getTime() );
+
+      write_out( " raw_record_count " + pub.tot_rec_count );
+      write_out( " agg_record_count " + pub.tot_agg_count ); 
+      write_out( " agg_compression " + (float)pub.tot_agg_count/(float)pub.tot_rec_count );
+      write_out( " records_per_second " + recordsPerSecond );
+      write_out( " records_per_minute " + recordsPerSecond * 60 );
+      write_out( " records_per_hour " + recordsPerSecond * 60 * 60 );
+      write_out( " records_per_day " + recordsPerSecond * 60 * 60 * 24 );
+      write_out( "endtapagg" );
+      */
+
+   } // end of r_input
+
+} // end of class Parse_input
+
+class dmp_timer {
+  static Timer timer ;
+  static int timercount = 0 ;
+    public void dmp_timer(int seconds) {
+        timer = new Timer();
+        timer.schedule(new RemindTask(), seconds*1000);
+    }
+    class RemindTask extends TimerTask {
+        public void run() {
+            pub_data pub = new pub_data() ; 
+            if ( pub.tot_rec_count-pub.timer_rec_count<pub.max_rec_static)
+               { pub.max_rec = 1 ; }
+            if ( pub.tot_rec_count > 999999999 )  pub.tot_rec_count = 0 ; 
+            pub.timer_rec_count = pub.tot_rec_count;
+	    //System.err.println( "-timer cnt=" + timercount++ );
+            timer.cancel();	    
+            dmp_timer calltimer= new dmp_timer();
+            calltimer.dmp_timer( pub.dotimer );
+        }
+    }
+}
+
+class connect_svr_class
+{
+     public static int connect_svr() throws Exception
+     {
+        pub_data pub = new pub_data() ; 
+
+        // connect to NSM listner port
+        try {
+            pub.socket = new Socket(pub.sock_server, pub.sock_port);
+            //System.err.println("Connected with server " +
+            //   pub.socket.getInetAddress() + ":" + pub.socket.getPort());
+            }
+        catch (UnknownHostException e) {
+            System.err.println("-Err Socket Err: " + e);
+            return(-1);
+     	    }
+	catch (IOException e) {
+      	    System.err.println("-Error, Fail to send NSM : " + e);
+      	    System.err.println(" Need to Check NSM Listner for Proxy... \n");
+  	    return(-1);
+   	    }
+        // setup output to NSM
+	pub.out_put = new PrintWriter(pub.socket.getOutputStream(),true);
+	return(1);
+    }
+
+} // end of connect_svr 
+
+public class tapparser {
+	//public static void main(String args[]) throws ParseException {
+	public static void main(String args[]) throws Exception {
+        pub_data pub = new pub_data() ; 
+
+	   //System.err.println( "argsleng=" + args.length );
+        if ( args.length != 3 )  {
+	   System.err.println("usage: tapparser aggregate_cnt(20000) aggregate_min_bucket_size(1) NSM_port(1300 or 0 for no-socket)" ); return;
+	}
+	else {
+	   pub.max_rec_static = pub.max_rec = Integer.parseInt(args[0]) ;
+           pub.dotimer = 0 ;   /* not used */
+           pub.min_agg = Integer.parseInt(args[1]) ;
+           pub.sock_port = Integer.parseInt(args[2]);     
+        }
+
+        if ( pub.dotimer != 0 )
+        { /* enable timer */ 
+           dmp_timer dmp_tmr1= new dmp_timer();
+           dmp_tmr1.dmp_timer(pub.dotimer);
+        }
+
+	Parse_input readinput = new Parse_input();
+        readinput.r_input();  
+	} // end of main 
+}
+
+PARSER_END(tapparser)
+
+void voidInput() : { } { (" "   { })+ } 
+
+/**************************************************************************
+**********************************  end  **********************************
+**************************************************************************/

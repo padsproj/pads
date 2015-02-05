@@ -1,0 +1,5 @@
+7704  1189131112.172739 _sysctl({{CTL_KERN, KERN_VERSION}, 2, 0x7fbfffefe0, 34, (nil), 0}) = 0 <0.000011>
+14310 1189131112.512045 _sysctl({{CTL_KERN, KERN_VERSION}, 2, 0x7fbfffefe0, 34, (nil), 0}) = 0 <0.000009>
+14307 1189131112.340513 _sysctl({{CTL_KERN, KERN_VERSION}, 2, 0x7fbfffefe0, 34, (nil), 0}) = 0 <0.000008>
+14742 1189131112.907215 _sysctl({{CTL_KERN, KERN_VERSION}, 2, 0x7fbfffefe0, 34, (nil), 0}) = 0 <0.000008>
+14739 1189131112.789162 _sysctl({{CTL_KERN, KERN_VERSION}, 2, 0x7fbfffefe0, 34, (nil), 0}) = 0 <0.000008>

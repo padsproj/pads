@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SecurityEventRequest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="C:\home\Ruby\XML\SecurityEventResquest-2005-09-27.xsd">
+    <WSHeader>
+        <WSCredentials>
+            <UserName>RubyUser</UserName>
+            <Token>RUBYPassword</Token>
+            <EndUserToken>password</EndUserToken>
+            <EndUserTokenType>String</EndUserTokenType>
+        </WSCredentials>
+        <WSMessageData>
+            <MessageId>RUBYStorm0026488</MessageId>
+        </WSMessageData>
+    </WSHeader>
+    <SecurityEventList>
+        <SecurityEvent>
+            <MessageID>268614</MessageID>
+            <AlarmSource>TMAS</AlarmSource><CLLI>ABLNTXR0010</CLLI><Date>2007/02/11 23:43:51</Date><DeviceType>Door Alarm</DeviceType><Event>Physical security event</Event><EventCorrelationId>.sec_expert.tmas_oc 49729</EventCorrelationId><Message>L9203|ABILENE</Message><RuleId>STORMTMAS_010</RuleId><Severity>Warning</Severity><WmsTicketNumber>721101544</WmsTicketNumber>        </SecurityEvent>
+        <SecurityEvent>
+            <MessageID>268615</MessageID>
+            <AlarmSource>TMAS</AlarmSource><CLLI>ABLNTXR0010</CLLI><Date>2007/02/11 23:43:51</Date><DeviceType>Door Alarm</DeviceType><Event>Physical security event</Event><EventCorrelationId>.sec_expert.tmas_oc 49725</EventCorrelationId><Message>L9203|ABILENE</Message><RuleId>STORMTMAS_010</RuleId><Severity>Warning</Severity><WmsTicketNumber>721101544</WmsTicketNumber>        </SecurityEvent>
+    </SecurityEventList>
+</SecurityEventRequest>

@@ -1,0 +1,67 @@
+Table 1-9:  ADA-Accessible Rail Transit Stations by Agency,,,,,,,,,,,,,,,
+Type of rail transit / agency,Primary city served,Number of stations,,,,,,,Number of ADA-accessible stations,,,,,,
+,,1996,1997,1998,1999,2000,2001,2002,1996,1997,1998,1999,2000,2001,2002
+Heavy rail,,,,,,,,,,,,,,,
+Bay Area Rapid Transit,"San Francisco, CA",36,39,39,39,39,39,39,36,39,39,39,39,39,39
+Los Angeles County Metropolitan Transportation Authority ,"Los Angeles, CA",5,8,8,13,16,16,16,5,8,8,13,16,16,16
+Washington Metropolitan Area Transit Authority,"Washington, DC",74,75,75,76,78,83,83,74,75,75,76,78,83,54
+Miami-Dade Transit Agency,"Miami, FL",21,21,21,21,21,21,21,0,0,0,0,0,0,21
+Metropolitan Atlanta Rapid Transit Authority,"Atlanta, GA",36,36,36,36,36,38,38,36,36,36,36,36,38,38
+Chicago Transit Authority,"Chicago, IL",140,141,141,142,142,144,144,0,0,0,14,54,64,64
+Massachusetts Bay Transportation Authority,"Boston, MA",53,53,53,53,53,53,53,33,33,33,37,37,38,40
+Mass Transit Administration - Maryland DOT,"Baltimore, MD",14,14,14,14,14,14,14,14,14,14,14,14,14,14
+Metropolitan Transportation Authority New York City Transit,"New York, NY",468,468,468,468,468,468,468,28,30,30,31,41,41,44
+Port Authority Trans-Hudson Corporation (PATH),"New York, NY",13,13,13,13,13,13,11,6,6,6,6,6,6,5
+Metropolitan Transit Authority Staten Island Railway,"New York, NY",22,22,22,22,22,23,23,2,2,2,2,2,3,4
+Greater Cleveland Regional Transit Authority,"Cleveland, OH",18,18,18,18,18,18,18,4,6,6,7,8,8,9
+Southeastern Pennsylvania Transportation Authority,"Philadelphia, PA",76,76,76,76,76,76,53,4,4,4,4,4,4,13
+Port Authority Transit Corporation (PATCO),"Philadelphia, PA",13,13,13,13,13,13,13,3,3,5,5,5,5,5
+Commuter rail,,,,,,,,,,,,,,,
+Altamont Commuter Express Authority,"San Jose, CA",U,U,U,U,U,U,10,U,U,U,U,U,U,10
+North San Diego County Transit Development Board ,"San Diego, CA",U,U,U,U,U,U,8,U,U,U,U,U,U,8
+Peninsula Corridor Joint Powers Board ,"San Francisco, CA",U,U,U,U,U,U,34,U,U,U,U,U,U,22
+Southern California Regional Railroad Authority,"Los Angeles, CA",U,45,46,46,47,49,51,U,45,46,46,47,49,51
+Connecticut Department of Transportation ,"New Haven, CT",U,U,U,U,U,U,8,U,U,U,U,U,U,8
+Tri-County Commuter Rail Authority ,"Miami, FL",U,U,U,U,U,U,18,U,U,U,U,U,U,18
+Northeast Illinois Regional Commuter Railroad Corporation,"Chicago, IL",226,226,226,227,227,227,227,91,104,104,111,115,125,131
+Northern Indiana Commuter Transportation District,"Chicago, IL",18,18,18,18,18,18,20,7,7,7,7,7,7,11
+Massachusetts Bay Transportation Authority,"Boston, MA",U,U,117,119,120,121,124,U,U,67,69,74,75,78
+Mass Transit Administration - Maryland DOT ,"Baltimore, MD",U,U,U,U,U,U,42,U,U,U,U,U,U,22
+New Jersey Transit Corporation ,"New York, NY",158,158,158,162,162,162,167,22,22,41,46,46,46,51
+Metropolitan Transportation Authority Long Island Railroad,"New York, NY",134,134,124,124,124,124,124,15,15,88,97,97,97,99
+Metropolitan Transportation Authority Metro-North Railroad Company,"New York, NY",106,106,106,106,108,108,109,17,19,20,20,20,28,29
+Pennsylvania Department of Transportation,"Pennslyvania, PA",U,U,U,U,U,U,4,U,U,U,U,U,U,3
+Southeastern Pennsylvania Transportation Authority ,"Philadelphia, PA",181,177,177,177,177,177,153,25,30,30,30,30,30,48
+Dallas Area Rapid Transit ,"Dallas, TX",U,U,U,U,U,U,4,U,U,U,U,U,U,4
+Fort Worth Transportation Authority ,"Fort Worth,TX",U,U,U,U,U,U,5,U,U,U,U,U,U,5
+Virginia Railway Express ,"Washington, DC",U,U,U,U,U,U,18,U,U,U,U,U,U,18
+Central Puget Sound Regional Transit Authority,"Seattle, WA",U,U,U,U,U,U,7,U,U,U,U,U,U,7
+Light rail,,,,,,,,,,,,,,,
+Los Angeles County Metropolitan Transportation Authority ,"Los Angeles, CA",36,36,36,36,36,36,36,36,36,36,36,36,36,36
+San Francisco Municipal Railway ,"San Francisco, CA",11,11,11,11,11,11,9,0,0,0,0,0,0,9
+Sacramento Regional Transit District,"Sacramento, CA",28,28,28,29,29,29,29,0,0,0,29,29,29,29
+"San Diego Trolley, Inc.","San Diego, CA",38,41,49,49,49,49,49,38,41,49,49,49,49,48
+Santa Clara Valley Transit Authority,"San Jose, CA",33,34,34,34,47,49,44,5,5,5,5,21,23,44
+Regional Transportation District,"Denver, CO",15,15,15,15,20,20,20,15,15,15,15,20,20,20
+Regional Transit Authority of Orleans and Jefferson,"New Orleans, LA",2,9,9,9,9,9,9,2,9,9,9,9,9,9
+Massachusetts Bay Transportation Authority,"Boston, MA",95,95,95,95,95,78,78,9,9,9,12,12,16,16
+Mass Transit Administration - Maryland DOT,"Baltimore, MD",24,24,32,32,32,32,32,24,24,32,32,32,32,32
+City of Detroit Department of Transportation ,"Detroit, MI",NA,NA,NA,NA,NA,8,8,NA,NA,NA,NA,NA,0,0
+Bi-State Development Agency,"St. Louis, MO",18,18,18,18,18,26,26,18,18,18,18,18,26,26
+New Jersey Transit Corporation ,"Newark, NJ",11,11,11,11,11,11,26,0,0,0,0,0,0,15
+"Niagara Frontier Transit Metro System, Inc.","Buffalo, NY",14,14,14,14,14,14,15,7,7,7,7,7,7,7
+Greater Cleveland Regional Transit Authority,"Cleveland, OH",33,33,33,34,34,34,34,2,5,5,7,7,8,8
+Tri-County Metropolitan Transportation District of Oregon,"Portland, OR",27,27,29,47,47,47,52,26,26,28,46,46,46,52
+Port Authority of Allegheny County,"Pittsburgh, PA",13,13,13,13,13,13,14,0,13,13,13,13,13,14
+Southeastern Pennsylvania Transportation Authority ,"Philadelphia, PA",64,64,64,64,64,64,68,0,0,0,0,0,0,3
+Memphis Area Transit Authority,"Memphis, TN",20,20,27,28,28,28,1,20,20,27,28,28,28,1
+Dallas Area Rail Transit Authority,"Dallas, TX",14,20,20,20,20,22,29,14,20,20,20,20,22,29
+Galveston-Island Transit,"Galveston, TX",3,3,3,U,U,U,3,3,3,3,U,U,U,3
+Utah Transit Authority,"Salt Lake City, UT",NA,NA,NA,16,16,20,20,NA,NA,NA,16,16,20,20
+King County Department of Transportation ,"Seattle, WA",14,14,14,9,9,9,U,14,14,14,9,9,9,U
+Kenosha Transit,"Kenosha, WI",NA,NA,NA,NA,1,1,2,NA,NA,NA,NA,0,0,1
+KEY:  ADA = Americans with Disabilities Act of 1992; NA = not applicable; U = data are not available,,,,,,,,,,,,,,,
+NOTE,,,,,,,,,,,,,,,
+"Rail transit data for 2002 includes both directly operated and purchased.  Prior to 2002,  the data include directly operated service only.  ",,,,,,,,,,,,,,,
+SOURCE,,,,,,,,,,,,,,,
+"U.S. Department of Transportation, Federal Transit Administration, National Transit Database (Washington, DC: Annual Issues), table 21, Internet site http://www.ntdprogram.com/NTD/ntdhome.nsf?OpenDatabase as of February 2004.",,,,,,,,,,,,,,,
