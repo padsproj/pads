@@ -1,0 +1,7 @@
+padsc/comp/*.sml
+padsc/comp/*.cm
+padsc/comp/util/*
+padsc/comp/ckit/src/parser/extensions/pads/*
+padsc/comp/ckit/src/ast/pp/extensions/pads/*
+padsc/comp/ckit/src/ast/extensions/pads/*.sml
+padsc/comp/ckit/src/ast/extensions/pads/transform/*

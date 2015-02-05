@@ -1,0 +1,4 @@
+padsc/libpglx/*.c
+padsc/pads-glx/*.c
+padsc/pads-glx/*.idl
+padsc/pads-glx/*.h

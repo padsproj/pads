@@ -1,0 +1,43 @@
+#!/bin/tcsh
+foreach x (*.trim)
+set y = `basename $x .trim`
+echo $y `cat $x | awk '{ sum +=  $1 } END { print sum/NR }'`
+end
+
+set perl1   = `cat Eq21.trim | awk '{ sum +=  $1 } END { print sum/NR }'`
+set perl2   = `cat Eq21_split.trim | awk '{ sum +=  $1 } END { print sum/NR }'`
+
+set pads1   = `cat test_fast_dib.trim | awk '{ sum +=  $1 } END { print sum/NR }'`
+set pads1m  = `cat test_fast_dib_mod.trim | awk '{ sum +=  $1 } END { print sum/NR }'`
+
+set pads2   =  `cat test_dibbler1.trim | awk '{ sum +=  $1 } END { print sum/NR }'`
+set pads2m  =  `cat test_dibbler1_mod.trim | awk '{ sum +=  $1 } END { print sum/NR }'`
+
+set diff1   = `echo $perl1 $pads1  | awk '{ print (100.0 * ($1 - $2))/$2 }'`
+set diff1m  = `echo $perl1 $pads1m | awk '{ print (100.0 * ($1 - $2))/$2 }'`
+
+set diff2   = `echo $perl2 $pads2  | awk '{ print (100.0 * ($1 - $2))/$2 }'`
+set diff2m  = `echo $perl2 $pads2m | awk '{ print (100.0 * ($1 - $2))/$2 }'`
+
+echo " "
+echo " "
+echo "perl-match        $perl1"
+echo "pads-prefix       $pads1"
+echo "%diff             $diff1"
+echo " "
+
+echo "perl-match        $perl1"
+echo "pads-prefix-mod   $pads1m"
+echo "%diff             $diff1m"
+echo " "
+
+echo "perl-split        $perl2"
+echo "pads-record       $pads2"
+echo "%diff             $diff2"
+echo " "
+
+echo "perl-split        $perl2"
+echo "pads-record-mod   $pads2m"
+echo "%diff             $diff2m"
+echo " "
+

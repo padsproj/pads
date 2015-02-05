@@ -1,0 +1,169 @@
+// This file is included by other transform files
+
+Transform Ty : TyName -> String;
+
+Ty(Pstring) = "String";
+Ty(Pa_string) = "String";
+Ty(Pe_string) = "String";
+Ty(Pstring_FW) = "String";
+Ty(Pa_string_FW) = "String";
+Ty(Pe_string_FW) = "String";
+Ty(Pstring_ME) = "String";
+Ty(Pa_string_ME) = "String";
+Ty(Pe_string_ME) = "String";
+Ty(Pstring_CME) = "String";
+Ty(Pa_string_CME) = "String";
+Ty(Pe_string_CME) = "String";
+Ty(Pstring_SE) = "String";
+Ty(Pa_string_SE) = "String";
+Ty(Pe_string_SE) = "String";
+Ty(Pstring_CSE) = "String";
+Ty(Pa_string_CSE) = "String";
+Ty(Pe_string_CSE) = "String";
+
+Ty(Pchar)   = "short";
+Ty(Pa_char) = "short";
+Ty(Pe_char) = "short";
+
+Ty(Pip)         = "IP";
+Ty(Pa_ip)       = "IP";
+Ty(Pe_ip)       = "IP";
+Ty(ipaddrtype)  = "IP";
+Ty(Pipaddr)     = "IP";
+Ty(Pa_ipaddr)   = "IP";
+Ty(Pe_ipaddr)   = "IP";
+
+Ty(Pdate)     = "uint";
+Ty(Pa_date)   = "uint";
+Ty(Pe_date)   = "uint";
+
+Ty(Pint8)     = "short";
+Ty(Pint16)    = "short";
+Ty(Pint32)    = "int";
+Ty(Pint64)    = "llong";
+Ty(Puint8)    = "ushort";
+Ty(Puint16)   = "ushort";
+Ty(Puint32)   = "uint";
+Ty(Puint64)   = "ullong";
+
+Ty(Pa_int8)     = "short";
+Ty(Pa_int16)    = "short";
+Ty(Pa_int32)    = "int";
+Ty(Pa_int64)    = "llong";
+Ty(Pa_uint8)    = "ushort";
+Ty(Pa_uint16)   = "ushort";
+Ty(Pa_uint32)   = "uint";
+Ty(Pa_uint64)   = "ullong";
+
+Ty(Pe_int8)     = "short";
+Ty(Pe_int16)    = "short";
+Ty(Pe_int32)    = "int";
+Ty(Pe_int64)    = "llong";
+Ty(Pe_uint8)    = "ushort";
+Ty(Pe_uint16)   = "ushort";
+Ty(Pe_uint32)   = "uint";
+Ty(Pe_uint64)   = "ullong";
+
+Ty(Pint8_FW)     = "short";
+Ty(Pint16_FW)    = "short";
+Ty(Pint32_FW)    = "int";
+Ty(Pint64_FW)    = "llong";
+Ty(Puint8_FW)    = "ushort";
+Ty(Puint16_FW)   = "ushort";
+Ty(Puint32_FW)   = "uint";
+Ty(Puint64_FW)   = "ullong";
+
+Ty(Pa_int8_FW)     = "short";
+Ty(Pa_int16_FW)    = "short";
+Ty(Pa_int32_FW)    = "int";
+Ty(Pa_int64_FW)    = "llong";
+Ty(Pa_uint8_FW)    = "ushort";
+Ty(Pa_uint16_FW)   = "ushort";
+Ty(Pa_uint32_FW)   = "uint";
+Ty(Pa_uint64_FW)   = "ullong";
+
+Ty(Pe_int8_FW)     = "short";
+Ty(Pe_int16_FW)    = "short";
+Ty(Pe_int32_FW)    = "int";
+Ty(Pe_int64_FW)    = "llong";
+Ty(Pe_uint8_FW)    = "ushort";
+Ty(Pe_uint16_FW)   = "ushort";
+Ty(Pe_uint32_FW)   = "uint";
+Ty(Pe_uint64_FW)   = "ullong";
+
+Ty(Pb_int8)     = "short";
+Ty(Pb_int16)    = "short";
+Ty(Pb_int32)    = "int";
+Ty(Pb_int64)    = "llong";
+Ty(Pb_uint8)    = "ushort";
+Ty(Pb_uint16)   = "ushort";
+Ty(Pb_uint32)   = "uint";
+Ty(Pb_uint64)   = "ullong";
+
+Ty(Pbl_int8)     = "short";
+Ty(Pbl_int16)    = "short";
+Ty(Pbl_int32)    = "int";
+Ty(Pbl_int64)    = "llong";
+Ty(Pbl_uint8)    = "ushort";
+Ty(Pbl_uint16)   = "ushort";
+Ty(Pbl_uint32)   = "uint";
+Ty(Pbl_uint64)   = "ullong";
+
+Ty(Pbh_int8)     = "short";
+Ty(Pbh_int16)    = "short";
+Ty(Pbh_int32)    = "int";
+Ty(Pbh_int64)    = "llong";
+Ty(Pbh_uint8)    = "ushort";
+Ty(Pbh_uint16)   = "ushort";
+Ty(Pbh_uint32)   = "uint";
+Ty(Pbh_uint64)   = "ullong";
+
+Ty(Pebc_int8)     = "short";
+Ty(Pebc_int16)    = "short";
+Ty(Pebc_int32)    = "int";
+Ty(Pebc_int64)    = "llong";
+Ty(Pebc_uint8)    = "ushort";
+Ty(Pebc_uint16)   = "ushort";
+Ty(Pebc_uint32)   = "uint";
+Ty(Pebc_uint64)   = "ullong";
+
+Ty(Pbcd_int8)     = "short";
+Ty(Pbcd_int16)    = "short";
+Ty(Pbcd_int32)    = "int";
+Ty(Pbcd_int64)    = "llong";
+Ty(Pbcd_uint8)    = "ushort";
+Ty(Pbcd_uint16)   = "ushort";
+Ty(Pbcd_uint32)   = "uint";
+Ty(Pbcd_uint64)   = "ullong";
+
+Ty(Psbl_int8)     = "short";
+Ty(Psbl_int16)    = "short";
+Ty(Psbl_int32)    = "int";
+Ty(Psbl_int64)    = "llong";
+Ty(Psbl_uint8)    = "ushort";
+Ty(Psbl_uint16)   = "ushort";
+Ty(Psbl_uint32)   = "uint";
+Ty(Psbl_uint64)   = "ullong";
+
+Ty(Psbh_int8)     = "short";
+Ty(Psbh_int16)    = "short";
+Ty(Psbh_int32)    = "int";
+Ty(Psbh_int64)    = "llong";
+Ty(Psbh_uint8)    = "ushort";
+Ty(Psbh_uint16)   = "ushort";
+Ty(Psbh_uint32)   = "uint";
+Ty(Psbh_uint64)   = "ullong";
+
+Ty(Pfloat32)       = "float";
+Ty(Pfloat32_FW)    = "float";
+Ty(Pfloat64)       = "float";
+Ty(Pfloat64_FW)    = "float";
+Ty(Pa_float32)     = "float";
+Ty(Pa_float32_FW)  = "float";
+Ty(Pa_float64)     = "float";
+Ty(Pa_float64_FW)  = "float";
+Ty(Pe_float32)     = "float";
+Ty(Pe_float32_FW)  = "float";
+Ty(Pe_float64)     = "float";
+Ty(Pe_float64_FW)  = "float";
+

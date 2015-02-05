@@ -1,0 +1,5 @@
+
+ # This is a GNUmakefile fragment, should be included
+ # by a primary GNUmakefile
+
+PADS_LIBS = =LIB_TARGET= =PADS_LIB_DIR=/libpads.a =PADS_LIB_DIR=/libast.a

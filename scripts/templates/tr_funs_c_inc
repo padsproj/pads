@@ -1,0 +1,170 @@
+// This file is included by other transform files
+
+Transform PickMacro : TyName -> String;
+
+PickMacro(Pstring) = "GET_STR_FN";
+PickMacro(Pa_string) = "GET_STR_FN";
+PickMacro(Pe_string) = "GET_STR_FN";
+PickMacro(Pstring_FW) = "GET_STR_FN";
+PickMacro(Pa_string_FW) = "GET_STR_FN";
+PickMacro(Pe_string_FW) = "GET_STR_FN";
+PickMacro(Pstring_ME) = "GET_STR_FN";
+PickMacro(Pa_string_ME) = "GET_STR_FN";
+PickMacro(Pe_string_ME) = "GET_STR_FN";
+PickMacro(Pstring_CME) = "GET_STR_FN";
+PickMacro(Pa_string_CME) = "GET_STR_FN";
+PickMacro(Pe_string_CME) = "GET_STR_FN";
+PickMacro(Pstring_SE) = "GET_STR_FN";
+PickMacro(Pa_string_SE) = "GET_STR_FN";
+PickMacro(Pe_string_SE) = "GET_STR_FN";
+PickMacro(Pstring_CSE) = "GET_STR_FN";
+PickMacro(Pa_string_CSE) = "GET_STR_FN";
+PickMacro(Pe_string_CSE) = "GET_STR_FN";
+
+PickMacro(Pdate)     = "GET_FN";
+PickMacro(Pa_date)   = "GET_FN";
+PickMacro(Pe_date)   = "GET_FN";
+
+PickMacro(Pchar)   = "GET_FN";
+PickMacro(Pa_char) = "GET_FN";
+PickMacro(Pe_char) = "GET_FN";
+
+PickMacro(Pip)         = "GET_FN";
+PickMacro(Pa_ip)       = "GET_FN";
+PickMacro(Pe_ip)       = "GET_FN";
+
+PickMacro(ipaddrtype)  = "GET_FN";
+PickMacro(Pipaddr)     = "GET_FN";
+PickMacro(Pa_ipaddr)   = "GET_FN";
+PickMacro(Pe_ipaddr)   = "GET_FN";
+
+PickMacro(Pint8)     = "GET_FN";
+PickMacro(Pint16)    = "GET_FN";
+PickMacro(Pint32)    = "GET_FN";
+PickMacro(Pint64)    = "GET_FN";
+PickMacro(Puint8)    = "GET_FN";
+PickMacro(Puint16)   = "GET_FN";
+PickMacro(Puint32)   = "GET_FN";
+PickMacro(Puint64)   = "GET_FN";
+
+PickMacro(Pa_int8)     = "GET_FN";
+PickMacro(Pa_int16)    = "GET_FN";
+PickMacro(Pa_int32)    = "GET_FN";
+PickMacro(Pa_int64)    = "GET_FN";
+PickMacro(Pa_uint8)    = "GET_FN";
+PickMacro(Pa_uint16)   = "GET_FN";
+PickMacro(Pa_uint32)   = "GET_FN";
+PickMacro(Pa_uint64)   = "GET_FN";
+
+PickMacro(Pe_int8)     = "GET_FN";
+PickMacro(Pe_int16)    = "GET_FN";
+PickMacro(Pe_int32)    = "GET_FN";
+PickMacro(Pe_int64)    = "GET_FN";
+PickMacro(Pe_uint8)    = "GET_FN";
+PickMacro(Pe_uint16)   = "GET_FN";
+PickMacro(Pe_uint32)   = "GET_FN";
+PickMacro(Pe_uint64)   = "GET_FN";
+
+PickMacro(Pint8_FW)     = "GET_FN";
+PickMacro(Pint16_FW)    = "GET_FN";
+PickMacro(Pint32_FW)    = "GET_FN";
+PickMacro(Pint64_FW)    = "GET_FN";
+PickMacro(Puint8_FW)    = "GET_FN";
+PickMacro(Puint16_FW)   = "GET_FN";
+PickMacro(Puint32_FW)   = "GET_FN";
+PickMacro(Puint64_FW)   = "GET_FN";
+
+PickMacro(Pa_int8_FW)     = "GET_FN";
+PickMacro(Pa_int16_FW)    = "GET_FN";
+PickMacro(Pa_int32_FW)    = "GET_FN";
+PickMacro(Pa_int64_FW)    = "GET_FN";
+PickMacro(Pa_uint8_FW)    = "GET_FN";
+PickMacro(Pa_uint16_FW)   = "GET_FN";
+PickMacro(Pa_uint32_FW)   = "GET_FN";
+PickMacro(Pa_uint64_FW)   = "GET_FN";
+
+PickMacro(Pe_int8_FW)     = "GET_FN";
+PickMacro(Pe_int16_FW)    = "GET_FN";
+PickMacro(Pe_int32_FW)    = "GET_FN";
+PickMacro(Pe_int64_FW)    = "GET_FN";
+PickMacro(Pe_uint8_FW)    = "GET_FN";
+PickMacro(Pe_uint16_FW)   = "GET_FN";
+PickMacro(Pe_uint32_FW)   = "GET_FN";
+PickMacro(Pe_uint64_FW)   = "GET_FN";
+
+PickMacro(Pb_int8)     = "GET_FN";
+PickMacro(Pb_int16)    = "GET_FN";
+PickMacro(Pb_int32)    = "GET_FN";
+PickMacro(Pb_int64)    = "GET_FN";
+PickMacro(Pb_uint8)    = "GET_FN";
+PickMacro(Pb_uint16)   = "GET_FN";
+PickMacro(Pb_uint32)   = "GET_FN";
+PickMacro(Pb_uint64)   = "GET_FN";
+
+PickMacro(Pbl_int8)     = "GET_FN";
+PickMacro(Pbl_int16)    = "GET_FN";
+PickMacro(Pbl_int32)    = "GET_FN";
+PickMacro(Pbl_int64)    = "GET_FN";
+PickMacro(Pbl_uint8)    = "GET_FN";
+PickMacro(Pbl_uint16)   = "GET_FN";
+PickMacro(Pbl_uint32)   = "GET_FN";
+PickMacro(Pbl_uint64)   = "GET_FN";
+
+PickMacro(Pbh_int8)     = "GET_FN";
+PickMacro(Pbh_int16)    = "GET_FN";
+PickMacro(Pbh_int32)    = "GET_FN";
+PickMacro(Pbh_int64)    = "GET_FN";
+PickMacro(Pbh_uint8)    = "GET_FN";
+PickMacro(Pbh_uint16)   = "GET_FN";
+PickMacro(Pbh_uint32)   = "GET_FN";
+PickMacro(Pbh_uint64)   = "GET_FN";
+
+PickMacro(Pebc_int8)     = "GET_FN";
+PickMacro(Pebc_int16)    = "GET_FN";
+PickMacro(Pebc_int32)    = "GET_FN";
+PickMacro(Pebc_int64)    = "GET_FN";
+PickMacro(Pebc_uint8)    = "GET_FN";
+PickMacro(Pebc_uint16)   = "GET_FN";
+PickMacro(Pebc_uint32)   = "GET_FN";
+PickMacro(Pebc_uint64)   = "GET_FN";
+
+PickMacro(Pbcd_int8)     = "GET_FN";
+PickMacro(Pbcd_int16)    = "GET_FN";
+PickMacro(Pbcd_int32)    = "GET_FN";
+PickMacro(Pbcd_int64)    = "GET_FN";
+PickMacro(Pbcd_uint8)    = "GET_FN";
+PickMacro(Pbcd_uint16)   = "GET_FN";
+PickMacro(Pbcd_uint32)   = "GET_FN";
+PickMacro(Pbcd_uint64)   = "GET_FN";
+
+PickMacro(Psbl_int8)     = "GET_FN";
+PickMacro(Psbl_int16)    = "GET_FN";
+PickMacro(Psbl_int32)    = "GET_FN";
+PickMacro(Psbl_int64)    = "GET_FN";
+PickMacro(Psbl_uint8)    = "GET_FN";
+PickMacro(Psbl_uint16)   = "GET_FN";
+PickMacro(Psbl_uint32)   = "GET_FN";
+PickMacro(Psbl_uint64)   = "GET_FN";
+
+PickMacro(Psbh_int8)     = "GET_FN";
+PickMacro(Psbh_int16)    = "GET_FN";
+PickMacro(Psbh_int32)    = "GET_FN";
+PickMacro(Psbh_int64)    = "GET_FN";
+PickMacro(Psbh_uint8)    = "GET_FN";
+PickMacro(Psbh_uint16)   = "GET_FN";
+PickMacro(Psbh_uint32)   = "GET_FN";
+PickMacro(Psbh_uint64)   = "GET_FN";
+
+PickMacro(Pfloat32)       = "GET_FN";
+PickMacro(Pfloat32_FW)    = "GET_FN";
+PickMacro(Pfloat64)       = "GET_FN";
+PickMacro(Pfloat64_FW)    = "GET_FN";
+PickMacro(Pa_float32)     = "GET_FN";
+PickMacro(Pa_float32_FW)  = "GET_FN";
+PickMacro(Pa_float64)     = "GET_FN";
+PickMacro(Pa_float64_FW)  = "GET_FN";
+PickMacro(Pe_float32)     = "GET_FN";
+PickMacro(Pe_float32_FW)  = "GET_FN";
+PickMacro(Pe_float64)     = "GET_FN";
+PickMacro(Pe_float64_FW)  = "GET_FN";
+

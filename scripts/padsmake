@@ -1,0 +1,21 @@
+#!/bin/tcsh
+set tmpfile = /tmp/padsmake.$$
+/bin/rm -f $tmpfile
+if (! -e Makefile.nmake) then 
+  echo "padsmake only works in a dir with a Makefile.nmake that defines PADS_HOME"
+  exit -1
+endif
+set pads_home = `grep PADS_HOME Makefile.nmake | sed -e "s/PADS_HOME//" -e "s/=//g" -e "s/ //g"`
+if ("$pads_home" == "") then
+  echo "padsmake only works in a dir with a Makefile.nmake that defines PADS_HOME"
+  exit -1
+endif
+source $pads_home/DO_SETENV
+nmake -f Makefile.nmake $* |& $pads_home/scripts/ignore_pragma_warnings.pl $tmpfile
+if (-e $tmpfile) then
+  echo " "
+  echo "==> Removing Makefile.?? and Trying Again <=="
+  echo " "
+  /bin/rm -f Makefile.??
+  nmake -f Makefile.nmake $* |& $pads_home/scripts/ignore_pragma_warnings.pl
+endif

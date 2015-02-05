@@ -1,0 +1,8 @@
+#pragma GCC set_debug_pwd "/Users/kfisher/pads/padsc/examples/tests/darwin.ppc"
+
+extern int opterr;
+extern int optind;
+extern int optopt;
+extern char* optarg;
+if (0 != RMM_free_rbuf_dbg(rep->_internal, "../../gen/bio.c", 178)) {
+}

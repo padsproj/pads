@@ -1,0 +1,8 @@
+#!/bin/tcsh
+set pads_home = `grep PADS_HOME Makefile | grep = | sed -e "s/PADS_HOME//" -e "s/=//g" -e "s/ //g"`
+if ("$pads_home" == "") then
+  echo "bmake only works in a dir with a Makefile that defines PADS_HOME"
+  exit -1
+endif
+source $pads_home/DO_SETENV
+gmake $*

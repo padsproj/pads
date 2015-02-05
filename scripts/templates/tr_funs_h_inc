@@ -1,0 +1,170 @@
+// This file is included by other transform files
+
+Transform Ty : TyName -> String;
+
+Ty(Pstring) = "struct string";
+Ty(Pa_string) = "struct string";
+Ty(Pe_string) = "struct string";
+Ty(Pstring_FW) = "struct string";
+Ty(Pa_string_FW) = "struct string";
+Ty(Pe_string_FW) = "struct string";
+Ty(Pstring_ME) = "struct string";
+Ty(Pa_string_ME) = "struct string";
+Ty(Pe_string_ME) = "struct string";
+Ty(Pstring_CME) = "struct string";
+Ty(Pa_string_CME) = "struct string";
+Ty(Pe_string_CME) = "struct string";
+Ty(Pstring_SE) = "struct string";
+Ty(Pa_string_SE) = "struct string";
+Ty(Pe_string_SE) = "struct string";
+Ty(Pstring_CSE) = "struct string";
+Ty(Pa_string_CSE) = "struct string";
+Ty(Pe_string_CSE) = "struct string";
+
+Ty(Pchar)   = "short";
+Ty(Pa_char) = "short";
+Ty(Pe_char) = "short";
+
+Ty(Pip)       = "unsigned int";
+Ty(Pa_ip)     = "unsigned int";
+Ty(Pe_ip)     = "unsigned int";
+
+Ty(ipaddrtype)  = "unsigned int";
+Ty(Pipaddr)     = "unsigned int";
+Ty(Pa_ipaddr)   = "unsigned int";
+Ty(Pe_ipaddr)   = "unsigned int";
+
+Ty(Pdate)     = "unsigned int";
+Ty(Pa_date)   = "unsigned int";
+Ty(Pe_date)   = "unsigned int";
+
+Ty(Pint8)     = "short";
+Ty(Pint16)    = "short";
+Ty(Pint32)    = "int";
+Ty(Pint64)    = "long long";
+Ty(Puint8)    = "unsigned short";
+Ty(Puint16)   = "unsigned short";
+Ty(Puint32)   = "unsigned int";
+Ty(Puint64)   = "unsigned long long";
+
+Ty(Pa_int8)     = "short";
+Ty(Pa_int16)    = "short";
+Ty(Pa_int32)    = "int";
+Ty(Pa_int64)    = "long long";
+Ty(Pa_uint8)    = "unsigned short";
+Ty(Pa_uint16)   = "unsigned short";
+Ty(Pa_uint32)   = "unsigned int";
+Ty(Pa_uint64)   = "unsigned long long";
+
+Ty(Pe_int8)     = "short";
+Ty(Pe_int16)    = "short";
+Ty(Pe_int32)    = "int";
+Ty(Pe_int64)    = "long long";
+Ty(Pe_uint8)    = "unsigned short";
+Ty(Pe_uint16)   = "unsigned short";
+Ty(Pe_uint32)   = "unsigned int";
+Ty(Pe_uint64)   = "unsigned long long";
+
+Ty(Pint8_FW)     = "short";
+Ty(Pint16_FW)    = "short";
+Ty(Pint32_FW)    = "int";
+Ty(Pint64_FW)    = "long long";
+Ty(Puint8_FW)    = "unsigned short";
+Ty(Puint16_FW)   = "unsigned short";
+Ty(Puint32_FW)   = "unsigned int";
+Ty(Puint64_FW)   = "unsigned long long";
+
+Ty(Pa_int8_FW)     = "short";
+Ty(Pa_int16_FW)    = "short";
+Ty(Pa_int32_FW)    = "int";
+Ty(Pa_int64_FW)    = "long long";
+Ty(Pa_uint8_FW)    = "unsigned short";
+Ty(Pa_uint16_FW)   = "unsigned short";
+Ty(Pa_uint32_FW)   = "unsigned int";
+Ty(Pa_uint64_FW)   = "unsigned long long";
+
+Ty(Pe_int8_FW)     = "short";
+Ty(Pe_int16_FW)    = "short";
+Ty(Pe_int32_FW)    = "int";
+Ty(Pe_int64_FW)    = "long long";
+Ty(Pe_uint8_FW)    = "unsigned short";
+Ty(Pe_uint16_FW)   = "unsigned short";
+Ty(Pe_uint32_FW)   = "unsigned int";
+Ty(Pe_uint64_FW)   = "unsigned long long";
+
+Ty(Pb_int8)     = "short";
+Ty(Pb_int16)    = "short";
+Ty(Pb_int32)    = "int";
+Ty(Pb_int64)    = "long long";
+Ty(Pb_uint8)    = "unsigned short";
+Ty(Pb_uint16)   = "unsigned short";
+Ty(Pb_uint32)   = "unsigned int";
+Ty(Pb_uint64)   = "unsigned long long";
+
+Ty(Pbl_int8)     = "short";
+Ty(Pbl_int16)    = "short";
+Ty(Pbl_int32)    = "int";
+Ty(Pbl_int64)    = "long long";
+Ty(Pbl_uint8)    = "unsigned short";
+Ty(Pbl_uint16)   = "unsigned short";
+Ty(Pbl_uint32)   = "unsigned int";
+Ty(Pbl_uint64)   = "unsigned long long";
+
+Ty(Pbh_int8)     = "short";
+Ty(Pbh_int16)    = "short";
+Ty(Pbh_int32)    = "int";
+Ty(Pbh_int64)    = "long long";
+Ty(Pbh_uint8)    = "unsigned short";
+Ty(Pbh_uint16)   = "unsigned short";
+Ty(Pbh_uint32)   = "unsigned int";
+Ty(Pbh_uint64)   = "unsigned long long";
+
+Ty(Pebc_int8)     = "short";
+Ty(Pebc_int16)    = "short";
+Ty(Pebc_int32)    = "int";
+Ty(Pebc_int64)    = "long long";
+Ty(Pebc_uint8)    = "unsigned short";
+Ty(Pebc_uint16)   = "unsigned short";
+Ty(Pebc_uint32)   = "unsigned int";
+Ty(Pebc_uint64)   = "unsigned long long";
+
+Ty(Pbcd_int8)     = "short";
+Ty(Pbcd_int16)    = "short";
+Ty(Pbcd_int32)    = "int";
+Ty(Pbcd_int64)    = "long long";
+Ty(Pbcd_uint8)    = "unsigned short";
+Ty(Pbcd_uint16)   = "unsigned short";
+Ty(Pbcd_uint32)   = "unsigned int";
+Ty(Pbcd_uint64)   = "unsigned long long";
+
+Ty(Psbl_int8)     = "short";
+Ty(Psbl_int16)    = "short";
+Ty(Psbl_int32)    = "int";
+Ty(Psbl_int64)    = "long long";
+Ty(Psbl_uint8)    = "unsigned short";
+Ty(Psbl_uint16)   = "unsigned short";
+Ty(Psbl_uint32)   = "unsigned int";
+Ty(Psbl_uint64)   = "unsigned long long";
+
+Ty(Psbh_int8)     = "short";
+Ty(Psbh_int16)    = "short";
+Ty(Psbh_int32)    = "int";
+Ty(Psbh_int64)    = "long long";
+Ty(Psbh_uint8)    = "unsigned short";
+Ty(Psbh_uint16)   = "unsigned short";
+Ty(Psbh_uint32)   = "unsigned int";
+Ty(Psbh_uint64)   = "unsigned long long";
+
+Ty(Pfloat32)       = "double";
+Ty(Pfloat32_FW)    = "double";
+Ty(Pfloat64)       = "double";
+Ty(Pfloat64_FW)    = "double";
+Ty(Pa_float32)     = "double";
+Ty(Pa_float32_FW)  = "double";
+Ty(Pa_float64)     = "double";
+Ty(Pa_float64_FW)  = "double";
+Ty(Pe_float32)     = "double";
+Ty(Pe_float32_FW)  = "double";
+Ty(Pe_float64)     = "double";
+Ty(Pe_float64_FW)  = "double";
+

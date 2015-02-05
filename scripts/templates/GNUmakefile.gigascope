@@ -1,0 +1,28 @@
+
+ # This is a GNU makefile.
+
+PADS_HOME = =PADS_HOME=
+
+include $(PADS_HOME)/mk/rules.mk
+
+COMPILE_O += =MAKE_INCLUDES=
+
+LIB_TARGET = $(mam_cc_PREFIX_ARCHIVE)pads_=PSPEC_NOPATH=$(mam_cc_SUFFIX_ARCHIVE)
+LIB_TARGET_OBJS = =PSPEC_NOPATH=.o =PSPEC_NOPATH=_funs.o 
+RULES_TARGET = pads_=PSPEC_NOPATH=_rules.mk
+
+all: $(LIB_TARGET) $(RULES_TARGET)
+
+$(LIB_TARGET): $(LIB_TARGET_OBJS)
+	$(STATIC_LIBTOOL) $(LIB_TARGET) $(STATIC_LIBTOOL_OPTS) $(LIB_TARGET_OBJS)
+
+$(RULES_TARGET):
+	$(RM) $(RULES_TARGET) > /dev/null 2>&1
+	(echo " " ; \
+	 echo " # this is a GNUmakefile fragment"; \
+	 echo " "; \
+	 echo "PADS_LIBS = $(LIB_TARGET) $(STATIC_PADSLIB_O) $(STATIC_ASTLIB_O)"; \
+	 echo " ") > $(RULES_TARGET)
+
+clean:
+	$(RM) $(LIB_TARGET) $(LIB_TARGET_OBJS)

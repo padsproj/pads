@@ -1,0 +1,19 @@
+// Transform file, generated from =PSPEC_FILE= by gigascope_make.pl
+// Generates schema file =SCHEMA_FILE=
+
+Output("=SCHEMA_FILE=");
+
+#include "tr_schema_inc"
+
+Transform Schema : TyDecl -> IO;
+
+Schema(Pstruct =REC_TYPE=)
+Begin
+ Pre:        -> "\n\
+PROTOCOL file_pads {\n\
+  string padsFilename file_pads_filename;\n\
+}\n\
+PROTOCOL pads_=REC_TYPE= (file_pads) { "
+ Each:  ty f c -> "^Ty(^ty) pads_^f\tget_pads_^f^c;"
+ Post:       -> "}"
+End;

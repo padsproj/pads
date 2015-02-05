@@ -1,0 +1,56 @@
+
+#add_include "pads-internal.h"
+#add_include "=FUNS_H_FILE_NOPATH="
+#add_include "=PSPEC_H_FILE="
+#add_include "pads_gigascope.h"
+#add_include "pads_gigascope_macros.h"
+
+=PADS_TY_DEFINE=
+=PADS_HDR_TY_DEFINE=
+=IO_DISC_MK_DEFINE=
+=MAX_RECS_DEFINE=
+=WSPACE_OK_DEFINE=
+
+=TEMPLATE_DEFINE=
+
+#ifdef TEMPLATE_hdr_recs_repeat
+   // set up multi-hdr read (hdr-rec-rec-rec-hdr-rec-rec-rec)
+   int       global_rec_remain = 0;
+#  define PADS_DO_READ_HEADER   (global_rec_remain == 0)
+#  define PADS_HEADER_READ      do { global_rec_remain =  =NREC_EXPR= ; } while (0)
+#  define PADS_REC_READ         do { global_rec_remain--; } while (0)
+#  define PADS_RESET_HEADER     do { global_rec_remain = 0; } while (0)
+#endif
+
+#ifdef TEMPLATE_hdr_recs
+   // sets up single hdr read (hdr-rec-rec-rec...)
+   int       global_do_read_hdr = 1;
+#  define PADS_DO_READ_HEADER   (global_do_read_hdr)
+#  define PADS_HEADER_READ      do { global_do_read_hdr = 0; } while (0)
+#  define PADS_REC_READ         do { } while (0)
+#  define PADS_RESET_HEADER     do { global_do_read_hdr = 1; } while (0)
+#endif
+
+#ifdef TEMPLATE_recs
+   // set up simple rec-only reads (rec-rec-rec...)
+#  define PADS_REC_READ         do { } while (0)
+#  define PADS_RESET_HEADER     do { } while (0)
+#endif
+
+// global decls, these are generic, need to come before get_pads_ functions
+
+Sfio_t          *global_io_in   = 0;
+P_t             *global_pads;
+Pdisc_t          global_disc;
+Pio_disc_t      *global_io_disc = 0;
+PADS_TY( )       global_rec;
+PADS_TY(_pd)     global_rec_pd;
+PADS_TY(_m)      global_rec_m;
+#ifdef PADS_HDR_TY
+PADS_HDR_TY( )   global_hdr;
+PADS_HDR_TY(_pd) global_hdr_pd;
+PADS_HDR_TY(_m)  global_hdr_m;
+#endif
+Puint64          global_num_recs                   = 0;
+Puint64          global_bytes_parsed_current_input = 0;
+int              global_fuzzy_boundary             = 0;

@@ -1,0 +1,35 @@
+// Transform file, generated from =PSPEC_FILE= by gigascope_make.pl
+// Generates schema file =SCHEMA_FILE=
+
+Output("=SCHEMA_FILE=");
+
+#include "tr_schema_inc"
+
+Transform Schema : TyDecl -> IO;
+
+Schema(Pstruct =HDR_TYPE=)
+Begin
+ Pre:        -> "\n\
+PROTOCOL base {\n\
+  uint    time           get_time        (required, increasing, snap_len 0);\n\
+  ullong  timestamp      get_timestamp   (required, increasing, snap_len 0);\n\
+  uint    len            get_len         (required, snap_len 0);\n\
+}\n\
+\n\
+PROTOCOL udp_pads (base) {\n\
+  IP      remoteIP       udp_pads_remoteIP;\n\
+  uint    remotePort     udp_pads_remotePort;\n\
+  uint    localPort      udp_pads_localPort;\n\
+}\n\
+\n\
+PROTOCOL pads_=HDR_TYPE= (udp_pads) { "
+ Each:  ty f c -> "^Ty(^ty) pads_^f\tget_pads_^f^c;"
+ Post:       -> "}"
+End;
+
+Schema(Pstruct =REC_TYPE=)
+Begin
+ Pre:        -> "PROTOCOL pads_=REC_TYPE= (pads_=HDR_TYPE=) { "
+ Each:  ty f c -> "^Ty(^ty) pads_^f\tget_pads_^f^c;"
+ Post:       -> "}"
+End;

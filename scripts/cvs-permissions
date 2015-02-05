@@ -1,0 +1,10 @@
+#!/bin/csh
+# Recursively change the permissions of the CVS directories beneath the directory <dir>
+# Usage: fixcvsdirs <dir>
+
+foreach cvsdir (`find $2 -name CVS`)
+  if (-e ${cvsdir}/Entries) then
+    echo changing permissions of ${cvsdir}.
+    chmod g+w ${cvsdir}
+  endif
+end

@@ -1,0 +1,6 @@
+padsc/include/*.h
+padsc/include/template/*.h
+padsc/libpads/default_io_disc.c	
+padsc/libpads/rbuf.c
+padsc/libpads/pads.c
+padsc/libpads/tests/*.c

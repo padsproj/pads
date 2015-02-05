@@ -1,0 +1,72 @@
+
+  Usage:  gigascope_make.pl [options]
+
+    where options are:
+     -u/--usage             : output this usage message
+     -d/--demodir           : directory to write output files (default is current working dir)
+     -g/--gigdir            : gigascope top level directory (default is <demodir>/../..) 
+     -p/--pspec <file>      : specify PADS spec file (required)
+     -b/--base <base>       : specify a schema base, choices are: udp, file
+     -t/--template <name>   : specify template name (required), see template descriptions below
+     -r/--rectype <type>    : specify main record type (required)
+     -h/--hdrtype <type>    : specify header type (may be required, depends on template)
+     -n/--nrec <expr>       : expression giving # of records following a header
+                              (may be required, depends on template). Use variable global_hdr
+                              in the expression, as in: --nrec=global_hdr.count
+     -m/--maxrecs <#>       : specify max # of record to process (optional)
+     -i/--iodisc <iodisc>   : specify IO discipline (optional)
+                              default is norec, other choices: nlrec, ...
+     -w/--wspace_ok         : set WSPACE_OK flag
+
+    Template Descriptions
+    =====================
+
+         recs
+         ----
+         Input just contains a sequence of one or more records of type rectype,
+         terminated by end of input.
+
+         hdr_recs
+         --------
+         Input contains a single header of type hdrtype, followed by a sequence of one
+         or more records of type rectype.  If an nrec expression is given, it
+         should give the number of records which follow the header.  Use
+         variable global_hdr (of type hdrtype), as in: --nrec=global_hdr.count
+
+         If no nrec expression is given, the series of records following the
+         header is terminated by end of input.
+
+        hdr_recs_repeat
+        ---------------
+        Input contains one or more groupings, where each grouping consists of
+        a header followed by a sequence of records.  In other words, the input
+        pattern is  
+
+           <header><rec><rec> ... <header><rec><rec> ... <header><rec><rec> ... 
+
+        For this template, the -n/nrec option is required, so that the generated
+        code will know when it is time to read the next header.  Use
+        variable global_hdr (of type hdrtype), as in: --nrec=global_hdr.count
+
+    Output Files
+    ============
+
+        If pspec is foo.p, then the output files are:
+
+           foo.schema    : schema file
+           foo_funs.h    : C declarations of the get functions specified in foo.schema
+           foo_funs.c    : C implementations of the get functions specified in foo.schema
+                           plus the top-level driver functions PADS_INIT, PADS_INPUT_FILE,
+                           PADS_INPUT_BUF, PADS_CLEANUP, PADS_NEXT
+           foo.mk        : a GNUmakefile that builds libpads_foo.a
+
+    Limitations, Known Problems
+    ===========================
+
+        1. Currently, rectype and hdrtype must both be Pstruct types.
+
+        2. The only fields that are reflected in the schema are
+           simple base type fields.  In the future, we should expand
+           nested types and reflect all 'leaf' base type fields
+           as top-level fields in the schema.
+

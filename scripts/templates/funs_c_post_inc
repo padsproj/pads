@@ -1,0 +1,214 @@
+
+#ifndef READ_MASK
+#  define READ_MASK P_CheckAndSet
+#endif
+
+#ifndef EXTRA_READ_ARGS
+#  define EXTRA_READ_ARGS
+#endif
+
+#ifndef EXTRA_HDR_READ_ARGS
+#  define EXTRA_HDR_READ_ARGS
+#endif
+
+// see documentation in pads_gigascope.h
+int PADS_INIT() {
+  char *erep_env;
+
+  global_num_recs                   = 0;
+  global_bytes_parsed_current_input = 0;
+  global_fuzzy_boundary             = 0;
+  global_disc                       = Pdefault_disc;
+#ifdef WSPACE_OK
+  global_disc.flags |= (Pflags_t)P_WSPACE_OK;
+#endif
+#ifdef COPY_STRINGS
+  global_disc.copy_strings = 1;
+#endif
+  // is this the default for network data?
+  global_disc.d_endian = PbigEndian;
+  // do not report errors; PADS_E_REP overrides
+  global_disc.e_rep = PerrorRep_None;
+  erep_env = getenv("PADS_E_REP");
+  if (erep_env) {
+    if (strcmp(erep_env, "Min") == 0) {
+      global_disc.e_rep = PerrorRep_Min;
+    } else 
+    if (strcmp(erep_env, "Med") == 0) {
+      global_disc.e_rep = PerrorRep_Med;
+    } else 
+    if (strcmp(erep_env, "Max") == 0) {
+      global_disc.e_rep = PerrorRep_Max;
+    }
+  }
+
+  if (!(global_io_disc = IO_DISC_MK)) {
+    error(0, "IO discipline make call [ " PDCI_MacroArg2String(IO_DISC_MK) " ] failed");
+    return PADS_RET_ERR;
+  } else { 
+    error(0, "Installed " PDCI_MacroArg2String(IO_DISC_MK) );
+  }
+
+  if (P_ERR == P_open(&global_pads, &global_disc, global_io_disc)) {
+    error(0, "*** P_open failed ***");
+    return PADS_RET_ERR;
+  }
+  if (P_ERR == PADS_TY(_init)(global_pads, &global_rec)) {
+    error(0, "*** representation initialization failed ***");
+    return PADS_RET_ERR;
+  }
+  if (P_ERR == PADS_TY(_pd_init)(global_pads, &global_rec_pd)) {
+    error(0, "*** parse description initialization failed ***");
+    return PADS_RET_ERR;
+  }
+  /* init mask -- must do this! */
+  PADS_TY(_m_init)(global_pads, &global_rec_m, READ_MASK);
+#ifdef PADS_HDR_TY
+  if (P_ERR == PADS_HDR_TY(_init)(global_pads, &global_hdr)) {
+    error(0, "*** header representation initialization failed ***");
+    return PADS_RET_ERR;
+  }
+  if (P_ERR == PADS_HDR_TY(_pd_init)(global_pads, &global_hdr_pd)) {
+    error(0, "*** header parse description initialization failed ***");
+    return PADS_RET_ERR;
+  }
+  /* init mask -- must do this! */
+  PADS_HDR_TY(_m_init)(global_pads, &global_hdr_m, P_CheckAndSet);
+#endif /* PADS_HDR_TY */
+
+  return PADS_RET_OK;
+}
+
+// see documentation in pads_gigascope.h
+int PADS_INPUT_FILE(const char *inName, int continuation, int fuzzy_boundary) {
+  global_fuzzy_boundary              = fuzzy_boundary;
+  global_bytes_parsed_current_input  = 0;
+  if (continuation == 0) {
+    PADS_RESET_HEADER;
+  }
+  if (P_ERR == P_io_fopen(global_pads, inName)) {
+    error(0, "*** P_io_fopen failed ***");
+    return PADS_RET_ERR;
+  }
+  return PADS_RET_OK;
+}
+
+// see documentation in pads_gigascope.h
+int PADS_INPUT_BUF(char *buf, size_t buf_len, int continuation, int fuzzy_boundary) {
+  global_fuzzy_boundary              = fuzzy_boundary;
+  global_bytes_parsed_current_input  = 0;
+  if (continuation == 0) {
+    PADS_RESET_HEADER;
+  }
+  if (!(global_io_in = sfnew(global_io_in, (Void_t*)buf, buf_len, -1, SF_STRING|SF_READ))) {
+    error(0, "*** sfnew failed ***");
+    return PADS_RET_ERR;
+  }
+  if (P_ERR == P_io_set(global_pads, global_io_in)) {
+    error(0, "*** P_io_set failed ***");
+    return PADS_RET_ERR;
+  }
+  if (P_io_at_eof(global_pads)) { /* XXX_REMOVE */
+    error(0, "*** XXX_REMOVE P_io_set succeeded but P_io_at_eof !! ***");
+    return PADS_RET_ERR;
+  }
+  return PADS_RET_OK;
+}
+
+// see documentation in pads_gigascope.h
+int PADS_CLEANUP() {
+  if (P_ERR == P_io_close(global_pads)) {
+    error(0, "*** P_io_close failed ***");
+    return PADS_RET_ERR;
+  }
+  if (P_ERR == PADS_TY(_cleanup)(global_pads, &global_rec)) {
+    error(0, "** representation cleanup failed **");
+    return PADS_RET_ERR;
+  }
+  if (P_ERR == PADS_TY(_pd_cleanup)(global_pads, &global_rec_pd)) {
+    error(0, "** parse descriptor cleanup failed **");
+    return PADS_RET_ERR;
+  }
+#ifdef PADS_HDR_TY
+  if (P_ERR == PADS_HDR_TY(_cleanup)(global_pads, &global_hdr)) {
+    error(0, "** representation cleanup failed **");
+    return PADS_RET_ERR;
+  }
+  if (P_ERR == PADS_HDR_TY(_pd_cleanup)(global_pads, &global_hdr_pd)) {
+    error(0, "** parse descriptor cleanup failed **");
+    return PADS_RET_ERR;
+  }
+#endif
+  if (P_ERR == P_close(global_pads)) {
+    error(0, "*** P_close failed ***");
+    return PADS_RET_ERR;
+  }
+
+  return PADS_RET_OK;
+}
+
+// see documentation in pads_gigascope.h
+int PADS_NEXT(int *done) {
+  Ppos_t            bpos, epos;
+  int               res = 0;
+  Perror_t          read_error;
+
+  *done = 0;
+  if (P_io_at_eof(global_pads)) {
+    if (global_fuzzy_boundary) {
+      //error(2, "<note>PADS : EOF on entry and fuzzy_boundary, returning PADS_RET_NEED_MORE_BYTES, *done = 0</note>");
+      return PADS_RET_NEED_MORE_BYTES;
+    }
+    //error(2, "<note>PADS : stopping due to EOF, NOT fuzzy_boundary, returning PADS_RET_ERR, *done = 1</note>");
+    *done = 1;
+    return PADS_RET_ERR;
+  }
+  if (MAX_RECS && ++global_num_recs > MAX_RECS) {
+    //error(2, "<note>PADS : stopping due to MAX_RECS, returning PADS_RET_ERR, *done = 1</note>");
+    *done = 1;
+    return PADS_RET_ERR;
+  }
+
+#ifdef PADS_HDR_TY
+  if (PADS_DO_READ_HEADER) {
+    P_io_getPos(global_pads, &bpos, 0);
+    read_error = PADS_HDR_TY(_read)(global_pads, &global_hdr_m, EXTRA_HDR_READ_ARGS &global_hdr_pd, &global_hdr);
+    if (P_io_at_eof(global_pads) && global_fuzzy_boundary) {
+      //error(2, "<note>PADS : EOF after header read and fuzzy_boundary, returning PADS_RET_NEED_MORE_BYTES, *done = 0</note>");
+      return PADS_RET_NEED_MORE_BYTES;
+    }
+    P_io_getPos(global_pads, &epos, 0);
+    global_bytes_parsed_current_input += (epos.offset - bpos.offset);
+    if (read_error != P_OK) {
+      //error(2, "<note>PADS header read: error, returning PADS_RET_ERR, *done = 1</note>");
+      *done = 1;
+      return PADS_RET_ERR;
+    } else {
+      //error(2, "<note>PADS header read: OK</note>");
+    }
+    PADS_HEADER_READ;
+  }
+#endif /* PADS_HDR_TY */
+
+  P_io_getPos(global_pads, &bpos, 0);
+  read_error = PADS_TY(_read)(global_pads, &global_rec_m, EXTRA_READ_ARGS &global_rec_pd, &global_rec);
+  if (P_io_at_eof(global_pads) && global_fuzzy_boundary) {
+    //error(2, "<note>PADS : EOF after rec read and fuzzy_boundary, returning PADS_RET_NEED_MORE_BYTES, *done = 0</note>");
+    return PADS_RET_NEED_MORE_BYTES;
+  }
+  P_io_getPos(global_pads, &epos, 0);
+  global_bytes_parsed_current_input += (epos.offset - bpos.offset);
+  if (read_error != P_OK) {
+    //error(2, "<note>PADS rec read: error, returning PADS_RET_ERR, *done = 0</note>");
+    res = PADS_RET_ERR;
+  } else {
+    //error(2, "<note>PADS rec read: OK</note>");
+  }
+  PADS_REC_READ;
+  return res;
+}
+
+// see documentation in pads_gigascope.h
+int PADS_BYTES_PARSED_CURRENT_INPUT() {
+  return global_bytes_parsed_current_input;
+}

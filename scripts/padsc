@@ -1,0 +1,362 @@
+#!/usr/bin/env perl
+#                                                                        -*- mode: perl; -*-
+use Getopt::Long;
+
+# file paths will be filled in by install script
+
+# padsc : front-end script to PADS compiler
+#
+# features of this front-end script:
+
+sub ScriptHelp {
+print STDERR <<ENDHELP;
+
+Help for the padsc wrapper script:
+
+  1. Retargeting of generated files.
+       PRECONDITIONS for retargeting are:
+           + all .p files are in the same dir P
+           + an explicit -p option is used
+       When these conditions are met, the following retargeting
+       rules are applied, with rule A having higher precedence:
+           A. if P/gen is a directory, it is used as the target dir
+           B. if P/../gen is a directory, it is used as the target dir
+
+  2. The script needs to determine $pads_home, the location of the
+     PADS installation, so that it can find $pads_home/padsc/include
+     and $pads_home/padsc/lib.  If environment variable PADS_HOME is
+     not set, or if the path to the script does not help us find
+     pads_home, the script fails and reports an error.
+
+ENDHELP
+}
+
+# =========================
+sub cleanupStr
+{
+    my( $txt ) = @_;
+    chomp($txt);
+    $txt =~ s/\s//g;
+    return $txt;
+}
+
+# =========================
+# main program
+
+my $dbg=0;
+
+my $pads_home = $ENV{"PADS_HOME"};
+if ($pads_home eq "") {
+  # try to find pads_home from script path
+  if ($0 =~ m|/padsc(?:.pl)?$|) {
+    my $path = $0;
+    $path =~ s|/padsc(?:.pl)?$||;
+    $path .= "/..";
+    $pads_home = `(cd $path; pwd)` || "";
+    $pads_home = &cleanupStr($pads_home);
+    print "\n*** Guessing pads_home = [$pads_home]\n\n" if ($dbg);
+  }
+}
+if ($pads_home eq "") {
+  print "\n    Error: either env variable PADS_HOME must be set
+           OR the invocation of this script must have a path component
+           so that the script can figure out where PADS is
+
+    Set PADS_HOME or use a relative or absolute path to the script and try again\n\n";
+  exit -1;
+}
+
+my $ast_arch = `$pads_home/ast-ast/bin/package.cvs` || "";
+$ast_arch = &cleanupStr($ast_arch);
+my $arch_n_opsys = `$pads_home/scripts/arch-n-opsys` || "";
+$arch_n_opsys = &cleanupStr($arch_n_opsys);
+
+my $image  = "$pads_home/lib/padsc";
+
+my $lua = "";
+my $lda = "";
+my $archmk = "$pads_home/mk/rules.arch.$ast_arch.mk";
+
+# undefine __GNUC__ in case a GNU compiler is being used, ckit does not handle certain special GNU features
+$lua = "-U__GNUC__";
+
+my $cc = "";
+my $gnutst = "";
+if (-e $archmk) {
+  $gnutst = `grep -l GNU $archmk`;
+  $gnutst = &cleanupStr($gnutst);
+  if ($gnutst ne "") {
+    $lda = "-D__LINUX_PREPROCESSOR_FIXES";
+  }
+  my $ccline = `grep mam_cc_CC= $archmk`;
+  chomp($ccline);
+  $ccline =~ s/mam_cc_CC=//;
+  $cc = $ccline if (length($ccline));
+}
+
+if ($ast_arch =~ /linux.x86_64/){
+    $lda = $lda . " -DHAVE_VA_LIST";
+}
+
+if ($ast_arch =~ /linux.i386-64/){
+    $lda = $lda . " -DHAVE_VA_LIST";
+}
+
+if ($ast_arch =~ /cygwin/) {
+  # For cygwin, we do not need lua/lda fixes -- we use ckit-replace.h instead
+  $lua = "";
+  $lda = "";
+}
+
+if (length($cc) == 0) {
+  chomp($cc = $ENV{'CC'});
+}
+if (length($cc) == 0) {
+  chomp($cc = `type gcc 2>/dev/null`);
+  $cc =~ s/gcc is//;
+  $cc = "" if ($cc =~ /not/);
+}
+if (length($cc) == 0) {
+  chomp($cc = `type cc 2>/dev/null`);
+  $cc =~ s/cc is//;
+  $cc = "" if ($cc =~ /not/);
+}
+if (length($cc) == 0) {
+  print "\n** No environment variable CC, and no gcc or cc in your path.\n";
+  exit -1;
+}
+
+my @std_incs = ();
+if ( $gnutst ne "" ) {
+  open(PIPE, "$cc -v -E $pads_home/scripts/dummy.c 2>&1 |")
+    or die ("Strange, cannot exec $cc\n");
+  my $looking = 0;
+  while ( <PIPE> ) {
+    chomp (my $line = $_);
+    if ($line =~ /search starts here/) {
+      $looking = 1 ;
+      next;
+    }
+    last if ($line =~ /End of search/);
+    next if ($looking == 0);
+    $line =~ s/^\s+//;  # strip leading spaces
+    $line =~ s/\s+$//;  # strip trailing spaces
+    if ($line =~ /^\S+$/) {
+      push(@std_incs, $line);
+    }
+  }
+  close(PIPE);
+} else {
+  push(@std_incs, "/usr/include");
+}
+
+my $sml;
+my $sml_from = "environment variable SML";
+chomp($sml = $ENV{'SML'});
+if (length($sml) == 0) {
+  chomp($sml = `type sml 2>/dev/null`);
+  $sml =~ s/sml is[ ]?//;
+  $sml = "" if ($sml =~ /not/);
+  $sml_from = "your path";
+}
+$sml =~ s/^\s+//;  # remove leading spaces
+if (length($sml) == 0) {
+  print "\n** No environment variable SML, and no sml in your path.\n";
+  exit -1;
+}
+my $sml_executable = $sml;
+$sml_executable =~ s/\s.*//;
+my $sml_resolved;
+chomp($sml_resolved = `readlink -f $sml_executable 2>/dev/null`);
+if ($sml_resolved eq "") {
+  $sml_resolved = $sml_executable;
+}
+if (! (-x $sml_resolved)) {
+  print "\n** sml program '$sml' (from $sml_from)"
+    . "\n   does not appear to be an executable.\n";
+  exit -1;
+}
+my $smltest;
+chomp($smltest = `$sml \@SMLversion 2>&1`);
+if ($smltest !~ /^sml [\d.]+$/i) {
+  print "\n** sml program '$sml' (from $sml_from)"
+    . "\n   does not appear to be an sml interpreter --"
+    . "\n   it is failing the simple test '$sml \@SMLversion'\n";
+  # exit -1;
+  print "... Trying to us it anyway...\n"
+}
+
+my $opts = "";       # all options other than pfiles
+my @pfiles = ();     # all pfiles
+my $retarg = "";     # detected gen dir, if found
+my $retarg_OK = 1;   # OK to use retarg
+my $multi_dir = 0;   # true if pfiles found in multiple dirs
+my $any_has_gen = 0; # true if any pfile dir has gen or ../gen
+my $pfile_dir = "";  # if $multi_dir is 0, this is the single dir containing
+                     #   all pfiles; it may be "." or a more complex path
+my $help = 0;        # -h/--help option used
+my $optx = 0;        # -x option used
+my $nocheck = 0;     # -nocheck/--nocheck option used
+
+my $full_args = join(" ", @ARGV);
+foreach $x (@ARGV) {
+  if ($x eq "-r") {
+    $retarg_OK = 0;
+    $opts = "$opts $x";
+  } elsif  ($x eq "-h" || $x eq "--help") {
+    $help = 1;
+  } elsif  ($x eq "-nocheck" || $x eq "--nocheck") {
+    $nocheck = 1;
+  } elsif ($x eq "-x") {
+    $optx = 1;
+    $opts = "$opts $x";
+  } elsif ($x !~ /^-/ && $x =~ /[.]p$/) {
+    # not an option of some kind, ends in .p, ergo a .p file
+    push(@pfiles, $x);
+    if ($retarg_OK) {
+      # figure out if this new $x is in same dir as prior $x
+      my $pdir = ".";  # default dir is "." unless we find a /
+      if ($x =~ m|^(.*)/[^/]+$|) {
+	# $x has a path component
+	$pdir = $1;
+      }
+      if (-d $pdir) {
+	my $canonical_pdir = `(cd $pdir; pwd)` || "oops";
+	$canonical_pdir = &cleanupStr($canonical_pdir);
+	# update $any_has_gen
+	if (!$any_has_gen &&
+	    (-d "$canonical_pdir/gen" || -d "$canonical_pdir/../gen")) {
+	  $any_has_gen = 1;
+	}
+	# update $pfile_dir/$multi_dir
+	if ($pfile_dir eq "") {	# first pfile
+	  $pfile_dir = $canonical_pdir;
+	} elsif ($pfile_dir ne $canonical_pdir) {
+	  # pfiles in different dirs
+	  $multi_dir = 1;
+	} # else $pfile_dir equals $canonical_pdir
+      }
+    }
+  } else {
+    $opts = "$opts $x";
+  }
+}
+
+# check for auto-retarget
+if ($retarg_OK && $pfile_dir ne "" && $any_has_gen) {
+  my $trydir = "";
+  if ($multi_dir) {
+    print STDERR "\n*** Your .p files are located in different dirs,"
+      . " so auto-retargeting to 'gen'\n     dir(s) will not occur,"
+      . " even though some gen dir(s) exist.  See --help for more info. ***\n\n";
+  } elsif (-d "$pfile_dir/gen") {
+    $trydir = "$pfile_dir/gen";
+  } elsif (-d "$pfile_dir/../gen") {
+    $trydir = "$pfile_dir/../gen";
+  }
+  if ($trydir ne "") {
+    my $possible_retarg = `(cd $trydir; pwd)` || "oops";
+    $possible_retarg = &cleanupStr($possible_retarg);
+    if (-d $possible_retarg) {
+      $retarg = $possible_retarg;
+    } # else possible_retarg not a dir
+  }
+}
+
+my $pfiles_str = join(" ", @pfiles);
+if ($dbg) {
+  print "full_args   = $full_args\n";
+  print "pfiles      = $pfiles_str\n";
+  print "opts        = $opts\n";
+  print "retarg_OK   = $retarg_OK\n";
+  print "any_has_gen = $any_has_gen\n";
+  print "multi_dir   = $multi_dir\n";
+  print "pfile_dir   = $pfile_dir\n";
+  print "retarg      = $retarg\n";
+  print "\n";
+}
+
+my $cmd = "$sml \@SMLload=$image $pads_home $cc";
+if ($help) {
+  $cmd .= " -help";
+  ScriptHelp();
+} else {
+  if ($pfiles_str eq "") {
+    print "\nNo .p files specified.  Usage:  $0 <options> <.p files>\n\tUse --help for all available options.\n\n";
+    exit -1;
+  }
+  my $args = $full_args;
+  if ($retarg ne "") {
+    $args = "-r $retarg $opts $pfiles_str";
+    print "\nAuto-selecting target dir $retarg\n\n";
+  }
+  my @incs = ();
+  push(@incs, "$pads_home/padsc/include");
+  push(@incs, "$pads_home/ast-ast/arch/$ast_arch/include/ast");
+  if ($optx) {
+    my $ocaml_lib_dir = $ENV{"OCAML_LIB_DIR"};
+    if ($ocaml_lib_dir eq "") {
+      $ocaml_lib_dir = "/usr/common/lib/ocaml";
+    }
+    $ocaml_lib_dir =~ s|/$||;
+    if (-d $ocaml_lib_dir) {
+      push(@incs, "$ocaml_lib_dir");
+    } else {
+      print "\nWarning: expected dir $ocaml_lib_dir not found, check your OCAML_LIB_DIR env var setting\n";
+      print "   (you are likely to get errors due to missing .h files below)\n\n";
+    }
+
+    my $galax_home = $ENV{"GALAX_HOME"};
+    if ($galax_home eq "") {
+      print "\nWarning: env variable GALAX_HOME should be set when using the -x option\n";
+      print "   (you are likely to get errors due to missing .h files below)\n\n";
+    } else {
+      if ($galax_home !~ m|/$|) {
+	$galax_home .= "/";
+      }
+      my $galax_lib_dir = $galax_home . "lib/c";
+      $galax_lib_dir =~ s|/$||;
+      if (-d $galax_lib_dir) {
+	push(@incs, "$galax_lib_dir");
+      } else {
+	print "\nWarning: expected dir $galax_lib_dir not found, check your GALAX_HOME env var setting\n";
+	print "   (you are likely to get errors due to missing .h files below)\n\n";
+      }
+    }
+  }
+  push(@std_incs, @incs);
+  my $pfile_errors = 0;
+  PFILE: foreach my $p ( @pfiles ) {
+      $p =~ s|.*[/]||;  # remove any path component
+      my $h_file = $p;
+      $h_file =~ s/[.]p$/.h/;
+      foreach my $i ( @std_incs ) {
+	if ( -e "$i/$h_file") {
+	  if ( $nocheck ) {
+	    print STDERR "*** WARNING: we suggest not using $p: standard include $i/$h_file is in the way\n";
+	  } else {
+	    print STDERR "*** Do not use name $p: standard include $i/$h_file is in the way\n";
+	    $pfile_errors++;
+	    next PFILE;
+	  }
+	}
+      }
+    }
+  if ( $pfile_errors > 0 ) {
+    print STDERR "*** (You can force padsc to compile your .p files using the --nocheck option)\n\n";
+    exit -1;
+  }
+
+  my $add_incs = "";
+  foreach my $i ( @incs ) {
+    $add_incs .= "-I $i ";
+  }
+  $cmd .= " $args $lua $lda $add_incs";
+}
+
+while ($cmd =~ /\s\s/) {
+  $cmd =~ s/\s\s/ /g;
+}
+
+print "\nexec $cmd\n\n" if ($dbg);
+exec $cmd;

@@ -1,0 +1,30 @@
+#!/bin/tcsh
+set logfile = $1
+set calcdir = $2
+echo "logfile = $logfile  calcdir = $calcdir"
+if (!(-e $logfile)) then
+  echo "$logfile does not exist"
+  exit 0
+endif
+if (!(-d $calcdir)) then
+  echo "$calcdir not a dirt"
+  exit 0
+endif
+echo "hit return to continue"
+if ($< != "") then
+  exit 0
+endif 
+echo " "
+set echo
+/bin/rm -f $calcdir/Eq21 $calcdir/Eq21_nums $calcdir/Eq21_split $calcdir/test_fast_dib_mod $calcdir/test_fast_dib $calcdir/test_dibbler1 $calcdir/test_dibbler1_mod
+grep Eq21: $logfile | grep ': 999999' | awk '{print $9" "$0}' | cat > $calcdir/Eq21
+grep Eq21_nums: $logfile | grep ': 999999'  | awk '{print $9" "$0}' | cat > $calcdir/Eq21_nums
+grep Eq21_split: $logfile | grep ': 999999'  | awk '{print $9" "$0}' | cat > $calcdir/Eq21_split
+grep test_fast_dib_mod: $logfile | grep ': 999999'  | awk '{print $9" "$0}' | cat > $calcdir/test_fast_dib_mod
+grep test_fast_dib: $logfile | grep ': 999999'  | awk '{print $9" "$0}' | cat > $calcdir/test_fast_dib
+grep test_dibbler1: $logfile | grep ': 999999'  | awk '{print $9" "$0}' | cat > $calcdir/test_dibbler1
+grep test_dibbler1_mod: $logfile | grep ': 999999'  | awk '{print $9" "$0}' | cat > $calcdir/test_dibbler1_mod
+unset echo
+echo " "
+wc -l $calcdir/Eq21 $calcdir/Eq21_nums $calcdir/Eq21_split $calcdir/test_fast_dib_mod $calcdir/test_fast_dib $calcdir/test_dibbler1 $calcdir/test_dibbler1_mod
+echo " "
