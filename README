@@ -1,0 +1,191 @@
+=========================================
+  Building, Intalling, and Testing
+   the PADSC Compiler and Library
+=========================================
+
+  Note: these instructions use GNU make (often called gmake or make).
+  Be sure that the make program you are using is GNU make before
+  proceeding.  All of the gmake commands below are issued from directory
+  $PADS_HOME.
+
+  Once you have done the first two steps below, all the build
+  steps can be done with one command.
+
+    * NB: Make sure you do *not* have an 'nmake' program in your path.
+      If you do, you should temporarily modify your PATH environment
+      variable to remove the dir(s) that have nmake.  After performing
+      an initial gmake you can restore your PATH to its previous setting.
+  
+  > gmake
+
+  and all of the test steps can be done with one command,
+
+  > gmake regress
+
+  The detailed build and test instructions (steps 3-7)
+  show you how to to build and test the library and compiler
+  separately.
+
+STEP 1: ENVIRONMENT SETUP
+
+  Suppose you checked out the pads module in /home/fred/pads.  You must
+  arrange to have env variable PADS_HOME set to this location before
+  doing other steps.  Once PADS_HOME is set, you can source a DO_SETENV
+  script that will set the other env variables that you will need
+  (INSTALLROOT,  PATH, LD_LIBRARY_PATH, etc.).  DO_SETENV will also make
+  your installation directories (rooted at INSTALLROOT) if they do not
+  exist yet.
+
+  To control the C-compiler used, do 
+  > setenv CC path-to-desired-compiler
+  
+  Below are instructions for different kinds of shells.  You could do
+  the following by hand, or add them to your shell init script.  Note:
+  Use DO_SETENV rather than Q_DO_SETENV when running from the command
+  line to see how the env variables that are set up.
+  
+  Example for csh/tcsh users:
+    setenv PADS_HOME /home/fred/pads
+    source $PADS_HOME/scripts/Q_DO_SETENV.tcsh
+  
+  Example for sh/ksh/bash users:
+    export PADS_HOME=/home/fred/pads
+    . $PADS_HOME/scripts/Q_DO_SETENV.sh
+
+[OPTIONAL]: For the PADS-Galax project only, you may wish to set
+   the following env variables to override their default values.
+
+   Example for csh/tcsh users:
+     setenv GALAX_HOME    /home/fred/Galax
+     setenv PADSGLX_HOME  /home/fred/pads-glx/api
+     setenv OCAML_LIB_DIR /home/fred/ocaml
+     setenv PCRE_LIB_DIR  <location of libpcre.so version 4.5>
+     setenv USE_GALAX     1
+
+   Example for sh/ksh/bash users:
+     export GALAX_HOME=/home/fred/Galax
+     export PADSGLX_HOME=/home/fred/pads-glx/api
+     export OCAML_LIB_DIR=/home/fred/ocaml
+     export PCRE_LIB_DIR=<location of libpcre.so version 4.5>
+     export USE_GALAX=1
+
+STEP 2: INSTALL SML / SML RUNTIME
+
+  To build the padsc compile, you need the Standard ML of NJ
+  compiler (sml), version 110.59 or later.
+
+  One the padsc compiler is built, you only require the SML runtime 
+  to execute padsc.
+  
+  (a) Install SML
+
+  The sml compiler and directions on how to install it are
+  available from the SMLNJ installation notes page:
+     http://smlnj.sourceforge.net/install/index.html.
+  The SMLNJ home page may be found at:
+     http://smlnj.sourceforge.net/index.html.
+
+  The simplest thing to do is to install the entire SML.  (Advanced users
+  may decide to only install the runtime and the sml startup script
+  once padsc has been built.)
+
+  (b) Put the sml startup script in your path, or
+      set the environment variable SML to the
+      location of this script.
+  
+  Example for csh/tcsh users:
+    setenv SML /usr/common/sml/bin/sml
+  
+  Example for sh/ksh/bash users:
+    export SML=/usr/common/sml/bin/sml
+
+STEP 3: BUILD AND INSTALL libast.a
+
+  Folks at AT&T Labs Research collect many useful C routines in a single
+  library called libast.  PADS uses this library.
+  
+  IMPORTANT: BEFORE you issue the gmake command for libast you must:
+  
+    * Make sure INSTALLROOT has been set -- see step 1 above.
+  
+    * Make sure you do *not* have an 'nmake' program in your path.
+      If you do, you should temporarily modify your PATH environment
+      variable to remove the dir(s) that have nmake.  After performing
+      this step, restore your PATH to its previous setting.
+  
+  Now issue the following gmake command:
+  
+  > gmake ast_lib
+  
+  If everything goes as planned, the following file will be installed:
+  
+    $PADS_HOME/ast-ast/arch/$AST_ARCH/lib/libast.a
+  
+  (or the equivalent library name for your architecture).
+
+STEP 4: BUILD AND INSTALL THE PADSC LIBRARY
+
+  > gmake padsc_lib
+
+STEP 4B [OPTIONAL]: BUILD AND INSTALL THE PGLX LIBRARY
+
+  For the PADS-Galax project only, you need to do:
+
+  > gmake USE_GALAX=1 pglx_lib
+
+STEP 5: TEST THE PADSC LIBRARY
+
+  > gmake test_libpads
+
+  This causes a set of regression tests for the library to be built and
+  run.  If you see a message of the form
+
+      test_foo DIFFERS
+
+  then there is a problem with the test_foo test.
+
+STEP 6: BUILD THE COMPILER
+
+  > gmake padsc_comp
+
+STEP 7: TEST THE COMPILER
+
+  > gmake test_comp
+
+  This causes a set of regression tests for the compiler/library to be
+  built and run. If you see a message of the form
+
+      test_foo DIFFERS
+
+  then there is a problem with the test_foo test.
+
+=========================================
+  Rebuilding the Compiler and Libraries
+=========================================
+
+  As mentioned at the start, all of the build steps can be done
+  together using:
+  
+  > gmake
+  
+  and all of the test steps can be done together using:
+  
+  > gmake regress
+
+  [OPTIONAL]: Or, for the PADS-Galax project only, use
+
+  > gmake USE_GALAX=1
+  
+
+  If you install a major upgrade to the source, you may need to do:
+  
+  > gmake veryclean
+  
+  before you do a new build.
+  
+=========================================
+  Using the PADSC Compiler and Library
+=========================================
+
+  The padsc script is in $PADS_HOME/scripts.
+  The compiler regression is a good place to look for simple examples.
