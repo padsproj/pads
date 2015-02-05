@@ -1,0 +1,273 @@
+#########################################################################
+#                                                                       #
+#                                PADS                                   #
+#                   Processing Ad Hoc Data Engine                       #
+#                                                                       #
+#   Copyright 2006, AT&T Labs Research                                  #
+#   Distributed only by permission.                                     #
+#                                                                       #
+#########################################################################
+
+ARCH=$(shell $(PADS_SRC)/scripts/arch-n-opsys)
+
+#########################################################################
+# Author:   Pamela L. Dragosh (AT&T Labs Research)
+# Descripton:
+#		This Makefile is included in the toplevel PADS Makefile and any
+#		component Makefiles beneath the toplevel.
+# History:
+#
+#########################################################################
+
+$(PADS_SRC)/config/Makefile.conf.$(ARCH):
+	@echo
+	@echo "You must run the configure script before attempting to build PADS!"
+	@echo "  e.g. $(PADS_SRC)/configure"
+	@echo
+	@echo "Read the INSTALL file for more details!"
+	@echo
+
+include $(PADS_SRC)/config/Makefile.conf.$(ARCH)
+
+#########################################################################
+# Section:	Variables
+# Description:
+#		These are variables used by all Makefiles
+#
+#	PADS_INCLUDES:		All of the directories to search for PADS files
+#
+#########################################################################
+PADS_PACKAGE_SRC=$(CONF_PACKAGE_SRC)
+PADS_PROFILING=$(CONF_PROFILING)
+PADS_SHARED=$(CONF_SHARED)
+PADS_HOSTNAME=$(CONF_HOSTNAME)
+PADS_HOME=$(PADS_SRC)
+HERE := $(shell pwd)
+VPATH=.:..:$(ARCH)
+PADS_INCLUDE_BASE=$(PADS_SRC)/padsc/include
+PADS_INCLUDE_BASE_ARCH=$(PADS_INCLUDE_BASE)/$(ARCH)
+
+#########################################################################
+# Section:	Scripts
+# Description:
+#		These are variables used to reference scripts that are used
+#		during building the lib, compiler and regression tests.
+#
+#########################################################################
+
+PADS_SCRIPT_MAKESRC = $(PADS_SRC)/scripts/mksrc.pl
+PADS_SCRIPT_PADSC = $(PADS_SRC)/scripts/padsc
+PADS_SCRIPT_PADSC_PARMS = $(CONF_PADSC_EXTRA) 
+
+#########################################################################
+# Section:	Generated files
+# Description:
+#		These are variables used by various Makefiles
+#
+#########################################################################
+PADS_INCLUDES=\
+	-I$(PADS_INCLUDE_BASE)\
+	-I$(PADS_INCLUDE_BASE)/$(ARCH)\
+	-I$(CONF_AST_HOME)/arch/$(shell $(CONF_AST_BIN)/package)/include/ast\
+	-I.\
+	-I..\
+	-I$(ARCH)
+	
+PADS_LIBDIRS=\
+	-L$(PADS_SRC)/padsc/libpads/$(ARCH) \
+	-L$(CONF_AST_HOME)/arch/$(shell $(CONF_AST_BIN)/package)/lib
+
+PADS_AST_LIB=$(CONF_AST_HOME)/arch/$(shell $(CONF_AST_BIN)/package)/lib/libast.a
+
+PADS_PCGEN_IN = $(PADS_INCLUDE_BASE)/pcgen-macros.h
+PADS_PCGEN_OUT = $(PADS_INCLUDE_BASE_ARCH)/pcgen-macros-gen.h
+
+PADS_PCGEN_TARGETS=$(PADS_PCGEN_OUT)
+
+#########################################################################
+# Section:	Object files
+# Description:
+#
+#
+#########################################################################
+
+#LIBPADS_OBJS_O = \
+#	default_io_disc.o \
+#	pads-gen.o \
+#	pads-acc-gen.o \
+#	pads-read-gen.o \
+#	pads-write-gen.o \
+#	pads-misc-gen.o \
+#	rbuf.o \
+#	pads-hist.o \
+#	pads-cluster.o
+
+#LIBPADS_OBJS_D = $(LIBPADS_OBJS_O:%.o=%_d.o)
+
+#########################################################################
+# Section:	Target library names
+# Description:
+#		These are the libraries that are generated from padsc/libpads
+#
+#########################################################################
+
+PADS_NAME_OPT=$(LIB_PREFIX)pads-$(ARCH)$(LIB_SUFFIX)
+PADS_NAME_DBG=$(LIB_PREFIX)pads-$(ARCH)-g$(LIB_SUFFIX)
+
+ifeq ($(CONF_PROFILING),false)
+PADS_TARGETS=$(PADS_NAME_OPT)
+else
+PADS_TARGETS=$(PADS_NAME_DBG)
+endif
+
+PADS_SHARED_NAME_OPT=$(LIB_PREFIX)pads-$(ARCH)$(DLL)
+PADS_SHARED_NAME_DBG=$(LIB_PREFIX)pads-$(ARCH)-g$(DLL)
+
+ifeq ($(CONF_SHARED),true)
+ifeq ($(CONF_PROFILING),false)
+PADS_TARGETS+=$(PADS_SHARED_NAME_OPT)
+else
+PADS_TARGETS+=$(PADS_SHARED_NAME_DBG)
+endif
+endif
+
+#########################################################################
+# Section:	Target output names
+# Description:
+#	Defines the compiler output file. NOTE: The SML engine does NOT
+#	use this, it determines the name of the output. Therefore, we must
+#	make sure that this target name is in synch with that output. That
+#	should be changed in the future.
+#
+#########################################################################
+
+PADS_PADSC_TARGET=$(PADS_SRC)/lib/padsc.$(ARCH)
+
+#########################################################################
+# Section:	installation directory targets
+# Description:
+#########################################################################
+ALL_PADS_DIRS=\
+$(CONF_PADS_BIN) \
+$(CONF_PADS_LIB) \
+$(CONF_PADS_MAN)
+
+$(ALL_PADS_DIRS):
+	$(MKDIR) $@
+
+#########################################################################
+# Section:	Regression Testing Definitions
+# Description:
+#########################################################################
+define RegressPre
+echo "Performing $@"; \
+  if [ ! -e tmp ]; then mkdir tmp; fi; \
+  $(RM) tmp/tmp.$<$$suf;
+endef
+
+define RegressPost
+echo diff tmp/tmp.$<$$suf $$regfile; \
+  diff tmp/tmp.$<$$suf $$regfile || echo "**********" $<$$suf DIFFERS; \
+  echo " "; 
+endef
+
+define PerfRegressPre
+$(RegressPre)
+endef
+
+###
+# PERF_DELTA_THRESHOLD is the percentage difference between a current
+# measurement and a baseline measurement before is SIGNIFICANT*.  I.e.
+# if CURRENT is PERF_DELTA_THRESHOLD % greater than BASELINE, then a
+# "DIFFERS" message is issued and counted.
+# ---
+# * assumes PERF_DELTA_THRESHOLD exceeds estimate of error in measurement
+
+PERF_DELTA_THRESHOLD = 10	# in percent.  (+/- PERF_TOLERANCE %)
+
+define PerfRegressPost
+echo $(PADS_SRC)/scripts/check_performance.pl $$regfile tmp/tmp.$<$$suf $(PERF_DELTA_THRESHOLD); \
+  $(PADS_SRC)/scripts/check_performance.pl $$regfile tmp/tmp.$<$$suf $(PERF_DELTA_THRESHOLD) ||  echo "**********" $@$$suf DIFFERS; \
+  echo " "; 
+endef
+
+define RegressDef
+($(RegressPre) \
+  regfile=`echo ../../regress/$<.regress$$suf | sed -e 's|_d[.]regress|.regress|'`; \
+  echo "(./$< $$args 2>&1) | $(PADS_SRC)/scripts/remove_junk.pl | cat > tmp/tmp.$<$$suf"; \
+  (./$< $$args 2>&1) | $(PADS_SRC)/scripts/remove_junk.pl | cat > tmp/tmp.$<$$suf; \
+  $(RegressPost) )
+endef
+
+define RegressInput
+($(RegressPre) \
+  regfile=`echo ../../regress/$<.regress$$suf | sed -e 's|_d[.]regress|.regress|'`; \
+  echo "(./$< $$args < $$input 2>&1) | $(PADS_SRC)/scripts/remove_junk.pl | cat > tmp/tmp.$<$$suf"; \
+  (./$< $$args < $$input 2>&1) | $(PADS_SRC)/scripts/remove_junk.pl | cat > tmp/tmp.$<$$suf; \
+  $(RegressPost) )
+endef
+
+define RegressInputPP
+($(RegressPre) \
+  regfile=`echo ../../regress/$<.regress$$suf | sed -e 's|_d[.]regress|.regress|'`; \
+  echo "(cat $$input | $$pp | ./$< $$args 2>&1) | $(PADS_SRC)/scripts/remove_junk.pl | cat > tmp/tmp.$<$$suf"; \
+  (cat $$input | $$pp | ./$< $$args 2>&1) | $(PADS_SRC)/scripts/remove_junk.pl | cat > tmp/tmp.$<$$suf; \
+  $(RegressPost) )
+endef
+
+define RegressFilter
+($(RegressPre) \
+  regfile=`echo ../../regress/$<.regress$$suf | sed -e 's|_d[.]regress|.regress|'`; \
+  echo "(./$< $$args 2>&1) | $(PADS_SRC)/scripts/remove_junk.pl | grep $$filter | cat > tmp/tmp.$<$$suf"; \
+  (./$< $$args 2>&1) | $(PADS_SRC)/scripts/remove_junk.pl | grep $$filter | cat > tmp/tmp.$<$$suf; \
+  $(RegressPost) )
+endef
+
+define RegressRW
+($(RegressPre) \
+  echo "./$< $$args < $$input > tmp/tmp.$<$$suf 2>/dev/null"; \
+  ./$< $$args < $$input > tmp/tmp.$<$$suf 2>/dev/null; \
+  echo cmp tmp/tmp.$<$$suf $$input; cmp tmp/tmp.$<$$suf $$input || echo "**********" $<$$suf DIFFERS; \
+  echo " "; )
+endef
+
+define PerfRegressDef
+($(RegressPre) \
+  regfile="../../regress/$<.perf_regress$$suf.$(PADS_HOSTNAME)"; \
+  echo "$(PADS_SRC)/scripts/time_execution.pl ./$< $$args > tmp/tmp.$<$$suf"; \
+  $(PADS_SRC)/scripts/time_execution.pl ./$< $$args > tmp/tmp.$<$$suf; \
+  $(PerfRegressPost) )
+endef
+
+define PerfRegressRW
+($(RegressPre) \
+  regfile="../../regress/$<.perf_regress$$suf.$(PADS_HOSTNAME)"; \
+  echo "$(PADS_SRC)/scripts/time_execution.pl ./$< $$args $$input > tmp/tmp.$<$$suf"; \
+  $(PADS_SRC)/scripts/time_execution.pl ./$< $$args $$input > tmp/tmp.$<$$suf; \
+  $(PerfRegressPost) )
+endef
+
+define PerfRegressInput
+$(PerfRegressRW)
+endef
+
+
+#########################################################################
+# Section:	Default Make rules
+# Description:
+#		
+#########################################################################
+
+.SUFFIXES:
+.SUFFIXES: .c .o
+
+%.o : %.c
+	$(CC) -O2 -DNDEBUG -Wall $(CFLAGS) $(CPPFLAGS) $(PADS_INCLUDES) -c $< -o $@
+
+%_d.o : %.c
+	$(CC) -O -g -DDEBUG -Wall $(CFLAGS) $(CPPFLAGS) $(PADS_INCLUDES) -c $< -o $@
+
+updatedepend::
+
+clobber::	clean
+

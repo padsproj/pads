@@ -1,0 +1,26 @@
+#! /bin/sh
+#########################################################################
+#                                                                       #
+#                                PADS                                   #
+#                 Processing Ad Hoc Data System Engine                  #
+#                                                                       #
+#   Copyright 2006, AT&T                                                #
+#   Distributed only by permission.                                     #
+#                                                                       #
+#########################################################################
+
+IFS=':'
+for dir in $PATH 
+do
+	if [ -z "$dir" ] 
+	then 
+		dir=.
+	fi
+	if [ -f $dir/$1 ]
+	then
+		echo "$dir/$1"
+		exit 0
+	fi
+done
+exit 1
+

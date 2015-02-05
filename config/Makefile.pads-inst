@@ -1,0 +1,241 @@
+#########################################################################
+#                                                                       #
+#                                PADS                                   #
+#                   Processing Ad Hoc Data Engine                       #
+#                                                                       #
+#   Copyright 2006, AT&T Labs Research                                  #
+#   Distributed only by permission.                                     #
+#                                                                       #
+#########################################################################
+
+# $Id: Makefile.pads-inst,v 1.1 2006/08/08 03:47:52 pdragosh Exp $ #
+
+#########################################################################
+# Author:   Pamela L. Dragosh (AT&T Labs Research)
+# Descripton:
+#		This Makefile is included in the toplevel PADS Makefile and any
+#		component Makefiles beneath the toplevel.
+# History:
+#
+#########################################################################
+
+CONF_PADS_CONFIG/Makefile.conf:
+	@echo
+	@echo "Your PADS installation is corrupted."
+	@echo "The file CONF_PADS_CONFIG/Makefile.conf is missing."
+	@echo "Please reinstall PADS."
+	@echo
+
+include CONF_PADS_CONFIG/Makefile.conf
+
+#########################################################################
+# Section:	Variables
+# Description:
+#		These are variables used by various Makefiles
+#########################################################################
+
+#########################################################################
+# Sub-Section:	INCLUDE directory flags
+# Description:
+#		This section sets up the list of directories to search for mli and cmi
+#		files.
+#########################################################################
+
+GALAX_INCLUDES=\
+-I $(CONF_GALAX_OCAMLLIB)
+
+# Note: We may remove LIBPXP_UTF8 and LIBPXP_ISO88591 and make them
+# dependent on WITH_CHARSET_UTF8 and WITH_CHARSET_ISO88591
+#
+OCAML_LIB_INCLUDES=\
+-I $(CONF_OCAML_STDLIB) \
+-I $(CONF_OCAML_LIBPCRE) \
+-I $(CONF_OCAML_LIBNETSTRING) \
+-I $(CONF_OCAML_LIBPXP) \
+-I $(CONF_OCAML_LIBPXP_UTF8) \
+-I $(CONF_OCAML_LIBPXP_ISO88591) \
+-I $(CONF_OCAML_LIBCAMOMILE)
+
+# GALAX_ALL_INCLUDES:	All of the directories to search for MLI files
+#
+GALAX_ALL_INCLUDES=$(GALAX_INCLUDES) $(OCAML_LIB_INCLUDES)
+GALAX_CAPI_INCLUDES=-I $(CONF_GALAX_C_API) $(GALAX_ALL_INCLUDES)
+GALAX_JAVAAPI_INCLUDES=-I $(JAVAINCLUDE) -I $(CONF_GALAX_C_API) -I $(CONF_GALAX_JAVA_API) $(GALAX_ALL_INCLUDES)
+
+ifdef JAVASYSINC
+GALAX_JAVAAPI_INCLUDES+=-I $(JAVASYSINC)
+endif
+
+#########################################################################
+# Sub-Section:	library variables
+# Description:
+#		This section sets up the variables pertaining to libraries
+#########################################################################
+
+#########################################################################
+# Sub-Sub-Section:	library names
+# Description:
+#		Here are the names of the various library files in Galax
+#########################################################################
+GALAX_LIB=galax.cma
+GALAX_OPTLIB=galax.cmxa
+GALAX_CAPI_OPTLIB=libgalaxopt.a
+GALAX_CAPI_OPTSHAREDLIB=libgalaxopt$(DLL)
+GALAX_JAVAAPI_OPTSHAREDLIB=libgalaxoptj$(JNIDLL)
+GALAX_JAVAAPI_ARCHIVE=$(GALAX_JAVA_PACKAGE).jar
+GALAX_JAVA_PACKAGE=galapi
+
+ifeq ($(SUPPORTS_RPATH), true)
+	ifeq ($(CONF_WITH_EXT_JUNGLE), true)
+		GALAX_OCAML_RPATH_OPTIONS=$(OCAML_RPATHFLAGS)$(CONF_C_LIBBDB)
+	endif
+endif
+
+#########################################################################
+# Sub-Sub-Section:	OCaml byte-code libraries
+# Description:
+#		This section contains the command line flags for linking in
+#		OCaml byte-code libraries.
+#########################################################################
+GALAX_LIBS=\
+$(GALAX_LIB)
+
+ifeq ($(CONF_WITH_EXT_JUNGLE), true)
+GALAX_LIBS+=jungle.cma
+endif
+
+OCAML_LIBS=\
+nums.cma \
+unix.cma \
+str.cma \
+bigarray.cma \
+pcre.cma \
+netstring.cma \
+pxp_engine.cma \
+pxp_lex_utf8.cma pxp_lex_link_utf8.cmo \
+pxp_lex_iso88591.cma pxp_lex_link_iso88591.cmo \
+camomile.cma
+
+GALAX_ALL_LIBS=$(OCAML_LIBS) $(GALAX_LIBS) $(GALAX_OCAML_RPATH_OPTIONS)
+
+#########################################################################
+# Sub-Sub-Section:	OCaml native-code libraries
+# Description:
+#		This section contains the command line flags for linking in
+#		OCaml native-code libraries.
+#########################################################################
+GALAX_OPTLIBS=\
+$(GALAX_OPTLIB)
+
+ifeq ($(CONF_WITH_EXT_JUNGLE), true)
+GALAX_OPTLIBS+=jungle.cmxa
+endif
+
+OCAML_OPTLIBS=\
+nums.cmxa \
+unix.cmxa \
+str.cmxa \
+bigarray.cmxa \
+pcre.cmxa \
+netstring.cmxa \
+pxp_engine.cmxa \
+pxp_lex_utf8.cmxa pxp_lex_link_utf8.cmx \
+pxp_lex_iso88591.cmxa pxp_lex_link_iso88591.cmx \
+camomile.cmxa
+
+GALAX_ALL_OPTLIBS=$(OCAML_OPTLIBS) $(GALAX_OPTLIBS) $(GALAX_OCAML_RPATH_OPTIONS)
+
+#########################################################################
+# Sub-Sub-Section:	OCaml C API static libraries
+# Description:
+#		This section contains the command line flags for linking applications
+#		and shared libraries using the Galax C API static libraries.
+#########################################################################
+GALAX_CAPI_OPTLIB_PATHS=\
+-L$(CONF_GALAX_C_API)
+
+GALAX_CAPI_OPTLIBS=\
+-lgalaxopt
+
+ifeq ($(CONF_WITH_EXT_JUNGLE), true)
+GALAX_CAPI_OPTLIB_PATHS+=-L$(CONF_C_LIBBDB) -L$(CONF_GALAX_OCAMLLIB) -L$(CONF_OCAML_IDL)
+GALAX_CAPI_OPTLIBS+=-l$(CONF_C_LIBBDB_NAME) -ljungle -lcamlidl -lm
+endif
+
+OCAML_CAPI_OPTLIB_PATHS=\
+-L$(CONF_OCAML_STDLIB) \
+-L$(CONF_OCAML_LIBPCRE) \
+-L$(CONF_C_LIBPCRE) \
+-L$(CONF_C_LIBASMRUN)
+
+OCAML_CAPI_OPTLIBS=\
+-lnums -lunix -lstr -lbigarray \
+-lpcre_stubs \
+-lpcre \
+-lasmrun
+
+ifeq ($(SUPPORTS_STARTGROUP), true)
+GALAX_ALL_CAPI_OPTLIBS=$(GALAX_CAPI_OPTLIB_PATHS) $(OCAML_CAPI_OPTLIB_PATHS) $(STARTGROUP) $(OCAML_CAPI_OPTLIBS) $(GALAX_CAPI_OPTLIBS) $(ENDGROUP)
+else
+GALAX_ALL_CAPI_OPTLIBS=$(GALAX_CAPI_OPTLIB_PATHS) $(OCAML_CAPI_OPTLIB_PATHS) $(OCAML_CAPI_OPTLIBS) $(GALAX_CAPI_OPTLIBS) $(OCAML_CAPI_OPTLIBS) -lm
+endif
+
+#########################################################################
+# Sub-Sub-Section:	OCaml C API shared libraries
+# Description:
+#		This section contains the command line flags for linking applications
+#		and shared libraries using the Galax C API static libraries.
+#########################################################################
+ifeq ($(SUPPORTS_RPATH), true)
+	_GALAX_RPATH:=$(CONF_GALAX_C_API)
+	ifeq ($(CONF_WITH_EXT_JUNGLE), true)
+		_GALAX_RPATH:=$(_GALAX_RPATH):$(CONF_C_LIBBDB)
+	endif
+	_RPATHOPTIONS=$(RPATHFLAGS)$(_GALAX_RPATH)
+endif
+
+GALAX_CAPI_OPTSHAREDLIBS=\
+-L$(CONF_GALAX_C_API) -lgalaxopt $(_RPATHOPTIONS)
+
+GALAX_ALL_CAPI_OPTSHAREDLIBS=$(GALAX_CAPI_OPTSHAREDLIBS)
+
+#########################################################################
+# Section:	Standard targets for checking Galax results
+# Description:
+#		These are targets that various other Makefiles rely on to
+#		compare results with expected values.
+#########################################################################
+
+check:
+	if [ -f $${T}.xml ]; then cmp $${T}.xml $${E}.expect >$${T}.cmp 2>&1; if [ -s $${T}.cmp ]; then $(MAKE) error  T=$${T};  else $(MAKE) ok T=$${T}; fi; else $(MAKE) error T=$${T}; fi; \
+
+error:
+	@echo "******"
+	@echo "* $${T} failed : $${T}.xml $${E}.expect differ"
+	@echo "******"
+
+ok: 
+	@echo "$${T} passed :-)"
+
+#########################################################################
+# Section:	Make rules
+# Description:
+#		These are the rules for compiling OCaml programs
+#########################################################################
+.SUFFIXES:	.ml .mli .mll .cmo .cmi .cmx .java .class
+
+.mll.ml:
+	$(OCAMLLEX) $<
+
+.ml.cmo:
+	$(OCAMLC) $(OCAMLC_FLAGS) $(GALAX_ALL_INCLUDES) -c $<
+
+.mli.cmi:
+	$(OCAMLC) $(OCAMLC_FLAGS) $(GALAX_ALL_INCLUDES) -c $<
+
+.ml.cmx:
+	$(OCAMLOPT) $(OCAMLOPT_FLAGS) $(GALAX_ALL_INCLUDES) -c $<
+
+.java.class:
+	$(JAVAC) $(JAVAC_FLAGS) $(JAVACLASSPATH) $<
+

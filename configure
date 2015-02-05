@@ -1,0 +1,979 @@
+#! /bin/sh
+#########################################################################
+#                                                                       #
+#                                PADS                                   #
+#                 Processing Ad Hoc Data System Engine                  #
+#                                                                       #
+#   Copyright 2006, AT&T				             					#
+#   Distributed only by permission.                                     #
+#                                                                       #
+#########################################################################
+
+#--- Options ---
+# value	-1:	off by command line ("forced")
+# value	 0:	off by default
+# value	 1:	on by default
+# value	 2:	on by command line ("forced")
+
+version="1.0.1"
+
+# Function:	print_options()
+# Description:
+#		Print the current values of all options
+#
+print_options () {
+	for opt in $eoptions
+	do
+		e="o=\$enable_$opt"
+		eval "$e"
+		uopt=`echo $opt | sed -e 's/_/-/g'`
+		if [ $o -gt 0 ]
+		then
+			echo "    -enable-$uopt"
+		else
+			echo "    -disable-$uopt"
+		fi
+	done
+	for opt in $woptions
+	do
+		e="o=\$with_$opt"
+		eval "$e"
+		uopt=`echo $opt | sed -e 's/_/-/g'`
+		if [ $o -gt 0 ]
+		then
+			echo "    -with-$uopt"
+		else
+			echo "    -without-$uopt"
+		fi
+	done
+	for opt in $boptions
+	do
+		e="o=\$build_$opt"
+		eval "$e"
+		uopt=`echo $opt | sed -e 's/_/-/g'`
+		if [ $o -gt 0 ]
+		then
+			echo "    -build-$uopt"
+		else
+			echo "    -dontbuild-$uopt"
+		fi
+	done
+	for opt in $poptions
+	do
+		e="o=\$$opt"
+		eval "$e"
+		uopt=`echo $opt | sed -e 's/_/-/g'`
+		echo "    -$uopt $o"
+	done
+	for opt in $coptions
+	do
+		e="o=\$copt_$opt"
+		eval "$e"
+		echo "    $opt $o"
+	done
+}
+
+usage() {
+	echo "Configure [options]"
+	echo "[options]"
+	echo "-help          Print this help message"
+	for opt in $eoptions
+	do
+		e="help=\$help_enable_$opt"
+		eval "$e"
+		uopt=`echo $opt | sed -e 's/_/-/g'`
+		echo "-enable-$uopt:"
+		echo "-disable-$uopt:"
+		echo "        $help"
+	done
+	for opt in $woptions
+	do
+		e="help=\$help_with_$opt"
+		eval "$e"
+		uopt=`echo $opt | sed -e 's/_/-/g'`
+		echo "-with-$uopt:"
+		echo "-without-$uopt:"
+		echo "        $help"
+	done
+	for opt in $boptions
+	do
+		e="help=\$help_with_$opt"
+		eval "$e"
+		uopt=`echo $opt | sed -e 's/_/-/g'`
+		echo "-build-$uopt:"
+		echo "-dontbuild-$uopt:"
+		echo "        $help"
+	done
+	for opt in $poptions
+	do
+		e="help=\$help_$opt"
+		eval "$e"
+		uopt=`echo $opt | sed -e 's/_/-/g'`
+		echo "-$uopt arg:"
+		echo "        $help"
+	done
+}
+
+# Set default values for configuration variables
+#		local:				This is the root directory that serves as the default
+#							for dependent libraries and includes, as well as the
+#							default root directory for installing PADS.
+#		local_bin:			This is the local library (default=local/bin)
+#		local_lib:			This is the local library (default=local/lib)
+#		local_inc:			This is the local include (default=local/include)
+#		local_scripts:		This is the local scripts (default=local/scripts)
+#
+#		pads_home:			This is where PADS is installed (default=local)
+#		pads_bin:			This is where PADS binaries will be installed (default=$local/bin)
+#		pads_lib:			This is where PADS libraries will be installed (default=$local/lib)
+#		pads_man:			This is where PADS man pages will be installed (default=$local/man)
+#		pads_config:		This is where PADS configuration files will be installed (default=$local/config)
+#
+#		ast_home:			This is where the architecture build AST library is located (default=$pads_home/ast-ast)
+#		ast_bin:			This is where the AST binaries are located (default=$ast_home/bin)
+#		ast_lib:			This is where the AST installation libraries are located (default=$ast_home/lib)
+#
+#		sml_home:			This is where the SML library is located (default=$pads_home/sml)
+#
+#		package_dir:			The directory to write the source package to (default=..)
+#
+#		{dont}build_ast			Install and build AST library (default build)
+#		{dont}build_sml			Install and build SML library (default build)
+#		with{out}_shared		Compile API libraries with{out} support for shared libraries (default without)
+#		enable_profiling		Enable debug versions to be built (default no)
+#
+#	These variables are automatically set based on the current environment
+#
+config_user=`id -u -nr`
+config_dir=`pwd`
+config_date=`date`
+config_cmd="$0 $*"
+config_out="config/Makefile.conf"
+
+package_dir=".."
+package_src=`pwd`
+
+# These can all be set from the command line
+#
+local=/usr/local
+local_bin=
+local_lib=
+local_inc=
+local_scripts=
+
+pads_home=
+pads_bin=
+pads_lib=
+pads_man=
+pads_config=
+
+ast_home=
+ast_bin=
+ast_lib=
+
+sml_home=
+
+build_ast=1
+build_sml=
+with_shared=1
+enable_profiling=0
+regression=PLEASESET
+host_type="unknown"
+host_name=`hostname -s`
+ccoption=
+arch_opsys=
+
+poptions="local local_bin local_lib local_inc local_scripts"
+poptions="$poptions pads_home pads_bin pads_lib pads_man pads_config"
+poptions="$poptions ast_home ast_bin ast_lib"
+poptions="$poptions sml_home"
+poptions="$poptions regression host_type ccoption"
+poptions="$poptions package_dir"
+
+boptions="ast sml"
+
+woptions="shared"
+
+eoptions="profiling"
+
+coptions="CC CCFLAGS MKSHAREDLIB MKSHAREDLIBFLAGS CCLIBS SUPPORTS_SHARED_LIBRARIES"
+
+help_local="The root directory where PADS is installed and other packages are found"
+help_local_bin="The local bin directory"
+help_local_lib="The local lib directory"
+help_local_inc="The local include directory"
+help_local_scripts="The local scripts directory"
+
+help_pads_home="The root directory where PADS is installed"
+help_pads_bin="The directory where PADS executables are installed"
+help_pads_lib="The directory where PADS libraries are installed"
+help_pads_man="The directory where PADS man pages are installed"
+help_pads_config="The directory where PADS configuration files are installed"
+
+help_ast_home="The root directory where AST is located or will be installed"
+help_ast_bin="The directory where AST executables are installed"
+help_ast_lib="The directory where AST build libraries are installed"
+
+help_sml_home="The root directory where SML will be built and installed if -build-sml=true. (Otherwise environment variable SML is used)"
+
+help_host_type="The type of system PADS is being built for (automatically detected)"
+help_ccoption="The C compiler to use"
+help_package_dir="The directory to write the source package to"
+help_build_ast="Downloads and builds AST library (default=build)"
+help_build_sml="Downloads and builds SML library (default=build if environment variable SML is not set)"
+help_with_shared="Include/exclude support for shared libraries (default with)"
+help_enable_profiling="Enable/disable support for profiling (default disable)"
+
+#
+# These variables determine things that are required
+#
+need_copt=1
+
+#
+# Function:	findpath(prog)
+# Description:
+#		Find the first directory in $PATH containing prog.
+#
+findpath() {
+	OIFS=$IFS
+	IFS=':'
+	for dir in $PATH
+	do
+		if [ -z "$dir" ]
+		then
+			dir=.
+		fi
+		if [ -f $dir/$1 ]
+		then
+			echo $dir
+			IFS=$OIFS
+			return 0
+		fi
+	done
+	IFS=$OIFS
+	return 1
+}
+
+# Function:	check_popt(path-name)
+# Description:
+#		Check to see if the given path-name is one of the supported
+#		paths for configuration purposes
+#
+check_popt() {
+	for x in $poptions
+	do
+		if [ "$x" = "$1" ]
+		then
+			return 0
+		fi
+	done
+	echo "Unknown path option: $1" >&2
+	exit 1
+}
+
+# Function:	check_wopt(opt)
+# Description:
+#		Check to see if the given with{out}-name is one of the supported
+#		with{out} options.
+#
+check_wopt() {
+	for x in $woptions
+	do
+		if [ "$x" = "$1" ]
+		then
+			return 0
+		fi
+	done
+	echo "Unknown with option: $1" >&2
+	exit 1
+}
+
+# Function:	check_eopt(opt)
+# Description:
+#		Check to see if the given {en|dis}able-name is one of the supported
+#		enable options
+#
+check_eopt() {
+	for x in $eoptions
+	do
+		if [ "$x" = "$1" ]
+		then
+			return 0
+		fi
+	done
+	echo "Unknown enable option: $1" >&2
+	exit 1
+}
+
+# Function:	check_bopt(path-name)
+# Description:
+#		Check to see if the given {build|dontbuild)-name is one of the supported
+#		enable options
+#
+check_bopt() {
+	for x in $boptions
+	do
+		if [ "$x" = "$1" ]
+		then
+			return 0
+		fi
+	done
+	echo "Unknown build option: $1" >&2
+	exit 1
+}
+
+if [ -z "$PADS_SRC" ]
+then
+	PADS_SRC=`pwd`
+	echo "WARNING: PADS_SRC not set, using: $PADS_SRC"
+fi
+echo "Configuring PADS $version in: $PADS_SRC" >&2
+# Process command line arguments
+#
+while [ "$#" -gt 0 ]
+do
+	case "$1" in
+		-enable-*)
+			opt=`echo "$1" | sed -e 's/-enable-//' -e 's/-/_/g'`
+			check_eopt "$opt"
+			eval "enable_$opt=2"
+			shift
+			;;
+		-disable-*)
+			opt=`echo "$1" | sed -e 's/-disable-//' -e 's/-/_/g'`
+			check_eopt "$opt"
+			eval "enable_$opt=-1"
+			shift
+			;;
+		-with-*)
+			opt=`echo "$1" | sed -e 's/-with-//' -e 's/-/_/g'`
+			check_wopt "$opt"
+			eval "with_$opt=2"
+			shift
+			;;
+		-without-*)
+			opt=`echo "$1" | sed -e 's/-without-//' -e 's/-/_/g'`
+			check_wopt "$opt"
+			eval "with_$opt=-1"
+			shift
+			;;
+		-build-*)
+			opt=`echo "$1" | sed -e 's/-build-//' -e 's/-/_/g'`
+			check_bopt "$opt"
+			eval "build_$opt=2"
+			shift
+			;;
+		-dontbuild-*)
+			opt=`echo "$1" | sed -e 's/-dontbuild-//' -e 's/-/_/g'`
+			check_bopt "$opt"
+			eval "build_$opt=-1"
+			shift
+			;;
+		-version)
+			echo "$version"
+			exit 0
+			;;
+		-?|-help)
+			usage
+			exit 0
+			;;
+		-*)
+			opt=`echo "$1" | sed -e 's/^-*//' -e 's/-/_/g'`
+			check_popt "$opt"
+			eval "$opt=$2"
+			shift 2
+			;;
+		*)
+			echo "Unknown option: $1"
+			usage
+			exit 1
+			;;
+	esac
+done
+
+# Determine the system type
+#
+if [ "$host_type" = "unknown" ]
+then
+	if ! host_type=`config/config.guess`
+	then
+		echo "Cannot guess host type"
+		echo "You must specify one with the -host-type option"
+		exit 2
+	fi
+fi
+echo "host_name is $host_name"
+echo "host_type is $host_type"
+if ! host=`config/config.sub $host_type`
+then
+	echo "Please specify the correct host type with the -host-type option"
+	exit 2
+fi
+echo "Configuring for a $host ..."
+
+# Set up values based on the command line options
+#
+
+# local, local_bin, local_lib, local_inc
+#
+if [ -z "$local_bin" ]
+then
+	local_bin=$local/bin
+fi
+if [ -z "$local_lib" ]
+then
+	local_lib=$local/lib
+fi
+if [ -z "$local_inc" ]
+then
+	local_inc=$local/include
+fi
+if [ -z "$local_scripts" ]
+then
+	local_scripts=$local/scripts
+fi
+printf "%s" "Getting architecture and operating system ..."
+if ! arch_opsys=`$PADS_SRC/scripts/arch-n-opsys`
+then
+	echo "Failed to determine architecture and operating system!!!"
+	exit 1
+fi
+echo "$arch_opsys"
+config_out=$config_out.$arch_opsys
+
+# pads_*
+#
+if [ -z "$pads_home" ]
+then
+	pads_home=$local/pads
+fi
+if [ -z "$pads_bin" ]
+then
+	pads_bin=$pads_home/bin
+fi
+if [ -z "$pads_lib" ]
+then
+	pads_lib=$pads_home/lib
+fi
+if [ -z "$pads_man" ]
+then
+	pads_man=$pads_home/man
+fi
+if [ -z "$pads_config" ]
+then
+	pads_config=$pads_home/config
+fi
+
+#
+# ast_*
+#
+if [ -z "$ast_home" ]
+then
+	if [ $build_ast -gt 0 ]
+	then
+		#
+		# we are building ast
+		#
+		ast_home=$PADS_SRC/ast-ast
+	else
+		#
+		# we are using a pre-built version of ast
+		#
+		ast_home=$local/ast-ast
+	fi
+fi
+if [ -z "$ast_bin" ]
+then
+	ast_bin=$ast_home/bin
+fi
+if [ -z "$ast_lib" ]
+then
+	ast_lib=$ast_home/lib
+fi
+
+#
+# sml_home
+#
+if [ -z "$build_sml" ]
+then
+	#
+	# Check if we should build SML. Does a SML
+	# environment variable exist?
+	#
+	if [ -z "$SML" ]
+	then
+		#
+		# Doesn't exist, so we need to build
+		#
+		echo "SML variable undefined, -build-sml is set to true"
+		build_sml=1
+	else
+		#
+		# Exists, no need to build
+		#
+		build_sml=0
+	fi
+fi
+if [ -z "$sml_home" ]
+then
+	#
+	# SML home is not specified
+	# Do we build it?
+	#
+	if [ $build_sml -gt 0 ]
+	then
+		#
+		# we are building sml
+		#
+		sml_home=$PADS_SRC/sml
+	else
+		#
+		# User does NOT want us to build SML
+		# Check if it exists
+		#
+		if [ -z "$SML" ]
+		then
+			#
+			# SML is not installed
+			#
+			echo "ERROR: SML is not installed"
+			exit 1
+		else
+			#
+			# SML is installed
+			#
+			echo "Using SML installation: $SML"
+		fi
+	fi
+fi
+
+if [ $need_copt -gt 0 ]
+then
+# Check for C compilation options
+#
+# See if we have gcc and use that if available.
+# otherwise use cc if available.
+#
+	copt_CC=
+	copt_CCFLAGS=
+	copt_MKSHAREDLIB=
+	copt_MKSHAREDLIBFLAGS=
+	copt_RPATHFLAGS=
+	copt_OCAML_RPATHFLAGS=
+	copt_CCLIBS=
+	copt_SUPPORTS_SHARED_LIBRARIES=false
+	copt_SUPPORTS_RPATH=false
+	copt_OCAMLSHARED=
+	copt_LIBDL=
+	copt_NEEDLIBDL=false
+	copt_SUPPORTS_STARTGROUP=false
+	copt_STARTGROUP=
+	copt_ENDGROUP=
+
+	printf "%s" "Checking for C compiler..."
+	if [ -z "$ccoption" ]
+	then
+		if findpath gcc >/dev/null
+		then
+			copt_CC=gcc
+		else
+			copt_CC=cc
+		fi
+	else
+		copt_CC="$ccoption"
+	fi
+	if [ -n "$copt_CC" ]
+	then
+		echo "$copt_CC Found!"
+	else
+		echo "ERROR: No C compiler found.  Please set with -ccoption"
+		exit 1
+	fi
+
+# Get the extra libraries and check for static library search options
+#
+	case "$host" in
+		*linux*|*freebsd*|*osf*|*irix*)
+			copt_SUPPORTS_STARTGROUP=true
+			copt_STARTGROUP="-Wl,--start-group"
+			copt_ENDGROUP="-Wl,--end-group"
+			copt_CCLIBS="-lm -lcurses"
+			;;
+		*darwin*)
+			copt_CCLIBS="-lm -lcurses -liconv"
+			;;
+		*solaris*)
+			copt_CCLIBS="-lm -lcurses -lnsl -lsocket"
+			;;
+		*mingw*|*cygwin*)
+			copt_CCLIBS="-lm -lcurses"
+			copt_SUPPORTS_STARTGROUP=true
+			copt_STARTGROUP=-Wl,--start-group
+			copt_ENDGROUP=-Wl,--end-group
+			;;
+		*)
+			echo "ERROR: Unknown host $host"
+			exit 1
+			;;
+	esac
+
+	if [ "$with_shared" -gt 0 ]
+	then
+# Check for shared library support
+#
+		case "$host" in
+			*-*-linux-gnu|*-*-linux|*-*-freebsd[3-9]*)
+				copt_CCFLAGS="$copt_CCFLAGS -fPIC"
+				copt_MKSHAREDLIB=$copt_CC
+				copt_MKSHAREDLIBFLAGS="-shared"
+				copt_RPATHFLAGS="-Wl,--rpath -Wl,"
+				copt_OCAML_RPATHFLAGS="-ccopt -Wl,--rpath -ccopt -Wl,"
+				copt_SUPPORTS_RPATH=true
+				copt_LD_LIBRARY_PATH_VAR="LD_LIBRARY_PATH"
+				copt_SUPPORTS_SHARED_LIBRARIES=true
+				copt_LIBDL=-ldl
+				copt_NEEDLIBDL=true
+				;;
+			alpha*-*-osf*)
+				case "$copt_CC" in
+					gcc*)
+						copt_CCFLAGS="$copt_CCFLAGS -fPIC"
+						copt_MKSHAREDLIB=$copt_CC
+						copt_MKSHAREDLIBFLAGS="-shared"
+						copt_LD_LIBRARY_PATH_VAR="LD_LIBRARY_PATH"
+						copt_SUPPORTS_SHARED_LIBRARIES=true
+						;;
+					cc*)
+						copt_MKSHAREDLIB=ld
+						copt_MKSHAREDLIBFLAGS="-shared -expect_unresolved '*'"
+						copt_LD_LIBRARY_PATH_VAR="LD_LIBRARY_PATH"
+						copt_SUPPORTS_SHARED_LIBRARIES=true
+						;;
+				esac
+				copt_LIBDL=-ldl
+				copt_NEEDLIBDL=true
+				;;
+			*-*-solaris2*)
+				case "$copt_CC" in
+					gcc*)
+						copt_CCFLAGS="$copt_CCFLAGS -fPIC"
+						copt_MKSHAREDLIB=$ccopt_CC
+						copt_MKSHAREDLIBFLAGS="-shared"
+						copt_LD_LIBRARY_PATH_VAR="LD_LIBRARY_PATH"
+						copt_SUPPORTS_SHARED_LIBRARIES=true
+						;;
+					*)
+						copt_CCFLAGS="$copt_CCFLAGS -KPIC"
+						copt_MKSHAREDLIB=/usr/ccs/bin/ld
+						copt_MKSHAREDLIBFLAGS="-G"
+						copt_LD_LIBRARY_PATH_VAR="LD_LIBRARY_PATH"
+						copt_SUPPORTS_SHARED_LIBRARIES=true
+						;;
+				esac
+				copt_LIBDL=-ldl
+				copt_NEEDLIBDL=true
+				;;
+			mips*-*-irix[56]*)
+				case "$copt_CC" in
+					gcc*)
+						copt_CCFLAGS="$copt_CCFLAGS -fPIC"
+						;;
+				esac
+				copt_MKSHAREDLIB=ld
+				copt_MKSHAREDLIBFLAGS="-shared -rdata_shared"
+				copt_LD_LIBRARY_PATH_VAR="LD_LIBRARY_PATH"
+				copt_SUPPORTS_SHARED_LIBRARIES=true
+				copt_LIBDL=-ldl
+				copt_NEEDLIBDL=true
+				;;
+			powerpc-apple-darwin*)
+				copt_MKSHAREDLIB=gcc
+				copt_MKSHAREDLIBFLAGS="-dynamiclib -flat_namespace -undefined suppress -read_only_relocs suppress"
+				copt_LD_LIBRARY_PATH_VAR="DYLD_LIBRARY_PATH"
+				copt_SUPPORTS_SHARED_LIBRARIES=false
+				;;
+			*mingw*|*cygwin*)
+				copt_SUPPORTS_SHARED_LIBRARIES=false
+				;;
+		esac
+	fi
+fi
+
+if [ "$with_shared" -gt 0 -a "$copt_SUPPORTS_SHARED_LIBRARIES" == "false" ]
+then
+	echo "WARNING: Shared libraries are not supported on this platform. Overriding to without_shared."
+	with_shared=0
+fi
+
+# Configure the arch options here
+#
+arch_name=$host
+if findpath ranlib > /dev/null
+then
+	echo "Found ranlib"
+	arch_RANLIB=ranlib
+else
+	arch_RANLIB=echo
+fi
+if findpath gawk > /dev/null
+then
+	arch_AWK=gawk
+elif findpath awk > /dev/null
+then
+	arch_AWK=awk
+else
+	echo "awk not found"
+	exit 2
+fi
+if findpath sed > /dev/null
+then
+	arch_SED=sed
+else
+	echo "sed not found"
+	exit 2
+fi
+
+# Get architecture-specific commands and extensions
+#
+echo "Setting commands for host: $host"
+
+case "$host" in
+	*linux*|*freebsd*|*osf*|*solaris*|*irix*)
+		arch_EXE=
+		arch_LIB_PREFIX=lib
+		arch_LIB_SUFFIX=.a
+		arch_DLL=.so
+		arch_JNIDLL=$arch_DLL
+		arch_OPT=.opt
+		arch_BYTE=.byte
+		arch_CGI=.cgi
+		arch_OPTCGI=opt.cgi
+		arch_ZIPEXT=.tar.gz
+		arch_CP=cp
+		arch_MKDIR="mkdir -p"
+		arch_AR=ar
+		arch_LN="ln -s -f"
+		arch_CAT=cat
+		arch_RM="rm -f"
+		arch_DELTREE="rm -fr"
+		arch_ZIP="tar cvf"
+		arch_ZIPOPT="--gzip"
+		arch_LD_LIBRARY_PATH_VAR=LD_LIBRARY_PATH
+		arch_PADSC_EXTRA=
+		;;
+	*darwin*)
+		arch_EXE=
+		arch_LIB_PREFIX=lib
+		arch_LIB_SUFFIX=.a
+		arch_DLL=.dylib
+		arch_JNIDLL=.jnilib
+		arch_OPT=.opt
+		arch_BYTE=.byte
+		arch_CGI=.cgi
+		arch_OPTCGI=opt.cgi
+		arch_ZIPEXT=.tar.gz
+		arch_CP=cp
+		arch_MKDIR="mkdir -p"
+		arch_AR=ar
+		arch_LN="ln -s -f"
+		arch_CAT=cat
+		arch_RM="rm -f"
+		arch_DELTREE="rm -fr"
+		arch_ZIP="tar cvf"
+		arch_ZIPOPT="--gzip"
+		arch_LD_LIBRARY_PATH_VAR=DYLD_LIBRARY_PATH
+		arch_PADSC_EXTRA=-D__ppc__
+		;;
+	*mingw*|*cygwin*)
+		arch_EXE=.exe
+		arch_LIB_PREFIX=lib
+		arch_LIB_SUFFIX=.a
+		arch_BYTE=byte.exe
+		arch_OPT=opt.exe
+		arch_DLL=.dll
+		arch_CGI=.cgi
+		arch_OPTCGI=opt.cgi
+		arch_ZIPEXT=zip
+		arch_CP=cp
+		arch_MKDIR="mkdir -p"
+		arch_AR=ar
+		arch_LN=cp
+		arch_CAT=cat
+		arch_RM="rm -f"
+		arch_DELTREE="rm -fr"
+		arch_ZIP=zip
+		arch_ZIPOPT=-r
+		arch_LD_LIBRARY_PATH_VAR=LD_LIBRARY_PATH
+		arch_SMLNJ_CYGWIN_RUNTIME=1
+		arch_PADSC_EXTRA=
+		;;
+	*)
+		echo "Unknown host type $host"
+		exit 1
+		;;
+esac
+
+here=`pwd`
+sourcebase=`basename $here`
+
+# Print a summary before we start generating Makefile.conf
+#
+print_options
+
+echo "Writing $config_out"
+
+cat <<_EOF_ > $config_out
+#########################################################################
+#                                                                       #
+#                                PADS                                   #
+#                 Processing Ad Hoc Data System Engine                  #
+#                                                                       #
+#   Copyright 2006, AT&T Labs                                           #
+#   Distributed only by permission.                                     #
+#                                                                       #
+#########################################################################
+
+#########################################################################
+# Generated by:	$config_user
+# Generated on:	$config_date
+# Generated in:	$config_dir
+# Host:		$host
+# Command line:	$config_cmd
+# Descripton:
+#		This is the configuration Makefile that is included by Makefile.pads
+#		in both the build and installation environment.  It is generated
+#		with the Configure script.
+#########################################################################
+
+#########################################################################
+# Section:  Compilation tools
+# Description:
+#     Here are the variables that define the names and paths to tools
+#     used in compiling PADS or applications that use PADS.
+#
+#########################################################################
+
+CC=$copt_CC
+CCFLAGS=$copt_CCFLAGS
+CCLIBS=$copt_CCLIBS
+_EOF_
+
+
+# Install the system tools and options here
+#
+cat <<_EOF_ >> $config_out
+
+#########################################################################
+# Section:  System-dependencies
+# Description:
+#		Here, variables are defined that name system-dependent tools
+#		used in the build process.  The file extensions used by the
+#		system are set here as well.
+#########################################################################
+
+SED=$arch_SED
+CP=$arch_CP
+RM=$arch_RM
+DELTREE=$arch_DELTREE
+LN=$arch_LN
+CAT=$arch_CAT
+MKDIR=$arch_MKDIR
+ZIP=$arch_ZIP
+ZIPOPT=$arch_ZIPOPT
+ZIPEXT=$arch_ZIPEXT
+
+ARCH=$arch_opsys
+CONF_HOSTNAME=$host_name
+LIB_PREFIX=$arch_LIB_PREFIX
+LIB_SUFFIX=$arch_LIB_SUFFIX
+EXE=$arch_EXE
+DLL=$arch_DLL
+
+STATIC_LIBTOOL = ar cr
+STATIC_LIBTOOL_OPTS =
+SHARED_LIBTOOL = $copt_MKSHAREDLIB
+SHARED_LIBTOOL_OPTS = $copt_MKSHAREDLIBFLAGS
+
+#########################################################################
+# Section:  Options
+# Description:
+#		Here, variables are defined that enable or disable various
+#		build-options.
+#########################################################################
+
+CONF_PADSC_EXTRA=$arch_PADSC_EXTRA
+
+_EOF_
+
+#
+# Install the various configuration option variables
+#
+if [ $build_ast -gt 0 ]
+then
+echo "CONF_BUILD_AST=true"
+else
+echo "CONF_BUILD_AST=false"
+fi >> $config_out
+
+if [ $build_sml -gt 0 ]
+then
+echo "CONF_BUILD_SML=true"
+else
+echo "CONF_BUILD_SML=false"
+fi >> $config_out
+
+if [ $with_shared -gt 0 ]
+then
+echo "CONF_SHARED=true"
+else
+echo "CONF_SHARED=false"
+fi >> $config_out
+
+if [ "$enable_profiling" -gt 0 ]
+then
+echo "CONF_PROFILING=true"
+else
+echo "CONF_PROFILING=false"
+fi >> $config_out
+
+# Install the various configurable path variables
+#
+cat <<_EOF_ >> $config_out
+
+#########################################################################
+# Section:  PATHS
+# Description:
+#		Here, variables are defined that point to various directories
+#		used in compilation.
+#########################################################################
+
+# Package location
+#
+CONF_PACKAGE_DIR=$package_dir
+CONF_PACKAGE_SRC=$package_src
+
+#
+# AST library location
+#
+CONF_AST_HOME=$ast_home
+CONF_AST_BIN=$ast_bin
+CONF_AST_LIB=$ast_lib
+
+#
+# SML library build location (if CONF_BUILD_SML is true)
+#
+CONF_SML_HOME=$sml_home
+CONF_SML_CYGWIN=$arch_SMLNJ_CYGWIN_RUNTIME
+
+#
+# PADS Installation directories
+#
+CONF_PADS_HOME=$pads_home
+CONF_PADS_BIN=$pads_bin
+CONF_PADS_LIB=$pads_lib
+CONF_PADS_MAN=$pads_man
+CONF_PADS_CONFIG=$pads_config
+
+_EOF_
+
+exit 0

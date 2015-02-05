@@ -1,0 +1,35 @@
+ # Redirect make to $ARCH directory
+ # $ARCH must be set before including this file.
+
+ifeq ($(ARCH), "")
+%: forceabort
+	@echo "ARCH=$(ARCH) must be defined before including Makefile.redirect"
+	@exit 1
+
+forceabort: ;
+
+else
+
+.SUFFIXES:
+
+MAKETARGET = $(MAKE) --no-print-directory -C $@ -f $(CURDIR)/Makefile $(MAKECMDGOALS)
+
+.PHONY: $(ARCH)
+$(ARCH):
+	+@echo "Making $(MAKECMDGOALS) in $@"
+	+@(if [ ! -d $@ ]; then \
+		mkdir -p $@; \
+		if ( grep "$(ARCH)" .cvsignore ); then \
+		  echo -n ""; \
+		else \
+		  echo "$(ARCH)" >> .cvsignore; \
+		fi; \
+	  fi)
+	+@$(MAKETARGET)
+
+Makefile : ;
+%.mk :: ;
+
+% :: $(ARCH) ;
+
+endif
