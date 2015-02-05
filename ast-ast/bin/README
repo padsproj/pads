@@ -1,0 +1,9 @@
+When you take a new set of tgz files from gsf you should take the
+latest version of the bin/package script (which gets installed when it
+unbundles and builds ast) and copy it to 'bin/package.cvs'
+
+The goal of bin/package.cvs was to avoid having the copyright notice
+cause a change to the CVS repository every time ast is rebuilt.   But
+we do want package.cvs to get updated one time -- when there is a new
+INIT.tgz file.
+
