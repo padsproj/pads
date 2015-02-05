@@ -1,0 +1,34 @@
+Group 
+is
+
+#if defined(NEW_CM)
+#if (SMLNJ_VERSION * 100 + SMLNJ_MINOR_VERSION >= 11029)
+        (* standard basis *)
+        $/basis.cm
+
+	(* standard library *)
+	$/smlnj-lib.cm
+
+	(* pretty printer library *)
+	$/pp-lib.cm
+#else
+        (* standard basis *)
+	basis.cm
+
+	(* standard library *)
+	smlnj-lib.cm
+
+	(* pretty printer library *)
+        pp-lib.cm
+#endif
+#else
+	smlnj-lib.cm
+	pp-lib.cm
+#endif
+        ../../variants/group.cm
+	(* utilitities *) 
+	old-pp.sml
+	sourcemap-sig.sml
+	sourcemap.sml
+	error-sig.sml
+	error.sml

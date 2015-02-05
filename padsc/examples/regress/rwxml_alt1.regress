@@ -1,0 +1,26 @@
+Input file = ../../data/alt1
+Output file = /dev/stdout
+warning: P_open: Installing default IO discipline : newline-terminated records
+<foo>
+  <s1><val>100000</val></s1>
+  <s2><val>1000</val></s2>
+  <i1><val>100000</val></i1>
+</foo>
+<foo>
+  <s1><val>200000</val></s1>
+  <s2><val>2000</val></s2>
+  <i1><val>200000</val></i1>
+</foo>
+<foo>
+  <s1><val>300000</val></s1>
+  <s2><val>3000</val></s2>
+  <i1><val>300000</val></i1>
+</foo>
+warning: Error [in Pstring_FW_read]: at record 4 from byte 1 to byte 4: Specified width not available (EOR/EOF encountered) 
+[record 4]>>>4000<<<
+<foo>
+  <s1><pd><pstate>Normal</pstate><nerr>1</nerr><errCode>P_WIDTH_NOT_AVAILABLE</errCode><loc><b><num>4</num><byte>1</byte></b><e><num>4</num><byte>4</byte></e></loc></pd></s1>
+  <s2><val>4000</val></s2>
+  <i1><val>4000</val></i1>
+  <pd><pstate>Normal</pstate><nerr>1</nerr><errCode>P_STRUCT_FIELD_ERR</errCode><loc><b><num>4</num><byte>1</byte></b><e><num>4</num><byte>4</byte></e></loc></pd>
+</foo>

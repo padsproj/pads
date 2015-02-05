@@ -1,0 +1,59 @@
+Data file = ../../data/struct_regexp
+warning: P_open: Installing default IO discipline : newline-terminated records
+warning: Error [in line_read]: record 1 byte 3 : Extra data before regexp separator Pre "/a+/"
+[record 1]12>>>faaa<<<a13b4cat11AAaa
+read returned error
+*****************************************************************************************************
+<top> : struct line
+*****************************************************************************************************
+good vals:          2    bad vals:          1    pcnt-bad:   33.333
+  Characterizing number of errors PER READ CALL (nerr-per-read) : min 0 max 1 avg 0.333
+    => distribution of top 2 nerr-per-read values out of 2 distinct nerr-per-read values:
+        val:          0 count:          2 pcnt-of-total-vals:   66.667
+        val:          1 count:          1 pcnt-of-total-vals:   33.333
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          3 pcnt-of-total-vals:  100.000
+[Describing each field of <top>]
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.f : int32
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+good vals:          3    bad vals:          0    pcnt-bad:    0.000
+  Characterizing int32 values:  min 12 max 14 avg 13.000
+    => distribution of top 3 values out of 3 distinct values:
+        val:         12 count:          1  pcnt-of-good-vals:   33.333
+        val:         13 count:          1  pcnt-of-good-vals:   33.333
+        val:         14 count:          1  pcnt-of-good-vals:   33.333
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          3  pcnt-of-good-vals:  100.000
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.g : int32
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+good vals:          3    bad vals:          0    pcnt-bad:    0.000
+  Characterizing int32 values:  min 13 max 15 avg 14.000
+    => distribution of top 3 values out of 3 distinct values:
+        val:         13 count:          1  pcnt-of-good-vals:   33.333
+        val:         14 count:          1  pcnt-of-good-vals:   33.333
+        val:         15 count:          1  pcnt-of-good-vals:   33.333
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          3  pcnt-of-good-vals:  100.000
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.h : int32
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+good vals:          3    bad vals:          0    pcnt-bad:    0.000
+  Characterizing int32 values:  min 4 max 16 avg 11.667
+    => distribution of top 3 values out of 3 distinct values:
+        val:          4 count:          1  pcnt-of-good-vals:   33.333
+        val:         15 count:          1  pcnt-of-good-vals:   33.333
+        val:         16 count:          1  pcnt-of-good-vals:   33.333
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          3  pcnt-of-good-vals:  100.000
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.i : int32
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+good vals:          3    bad vals:          0    pcnt-bad:    0.000
+  Characterizing int32 values:  min 11 max 17 avg 13.000
+    => distribution of top 2 values out of 2 distinct values:
+        val:         11 count:          2  pcnt-of-good-vals:   66.667
+        val:         17 count:          1  pcnt-of-good-vals:   33.333
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          3  pcnt-of-good-vals:  100.000

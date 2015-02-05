@@ -1,0 +1,153 @@
+Data file = ../../data/wsl
+*****************************************************************************************************
+<top> : struct entry_t
+*****************************************************************************************************
+good vals:          2    bad vals:          0    pcnt-bad:    0.000
+[Describing each field of <top>]
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.client : union client_t
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Union tag: good vals:          2    bad vals:          0    pcnt-bad:    0.000
+  Characterizing tag values:  min ip (    1)  max host (    2)
+    => distribution of top 2 values out of 2 distinct values:
+        val: ip (    1)     count:          1  pcnt-of-good-vals:   50.000
+        val: host (    2)   count:          1  pcnt-of-good-vals:   50.000
+. .  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING             count:          2  pcnt-of-good-vals:  100.000
+[Describing each tag arm of <top>.client]
+=====================================================================================================
+<top>.client.ip : Pip
+    ** N.B. IPs are reported using the Puint32 internal rep, and are also pretty-printed using the default Pip output format
+=====================================================================================================
+1 Pip values, 100 pcnt good, 100 pcnt identical: 3481821489 (207.136.97.49)
+=====================================================================================================
+<top>.client.host : array Phostname of Pstring_SE
+=====================================================================================================
+Array lengths: 1 array length values, 100 pcnt good, 100 pcnt identical:          3
+-----------------------------------------------------------------------------------------------------
+<top>.client.host.allArrayElts : all array element
+-----------------------------------------------------------------------------------------------------
+String lengths: good vals:          3    bad vals:          0    pcnt-bad:    0.000
+  Characterizing string length values:  min 3 max 4 avg 3.333
+    => distribution of top 2 values out of 2 distinct values:
+        val:          3 count:          2  pcnt-of-good-vals:   66.667
+        val:          4 count:          1  pcnt-of-good-vals:   33.333
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          3  pcnt-of-good-vals:  100.000
+  Characterizing string values:
+    => distribution of top 3 strings out of 3 distinct strings:
+        val: "aol"  count:          1  pcnt-of-good-vals:   33.333
+        val: "com"  count:          1  pcnt-of-good-vals:   33.333
+        val: "tj62" count:          1  pcnt-of-good-vals:   33.333
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING     count:          3  pcnt-of-good-vals:  100.000
+-----------------------------------------------------------------------------------------------------
+<top>.client.host.arrayDetail[0] : array element
+-----------------------------------------------------------------------------------------------------
+1 string values, 100 pcnt good, 100 pcnt identical (length        4): "tj62"
+-----------------------------------------------------------------------------------------------------
+<top>.client.host.arrayDetail[1] : array element
+-----------------------------------------------------------------------------------------------------
+1 string values, 100 pcnt good, 100 pcnt identical (length        3): "aol"
+-----------------------------------------------------------------------------------------------------
+<top>.client.host.arrayDetail[2] : array element
+-----------------------------------------------------------------------------------------------------
+1 string values, 100 pcnt good, 100 pcnt identical (length        3): "com"
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.remoteID : union auth_id_t
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Union tag: 2 tag values, 100 pcnt good, 100 pcnt identical: unauthorized (    1)
+[Describing each tag arm of <top>.remoteID]
+=====================================================================================================
+<top>.remoteID.unauthorized : char
+=====================================================================================================
+2 char values, 100 pcnt good, 100 pcnt identical: '-' (as ASCII)
+=====================================================================================================
+<top>.remoteID.id : string
+=====================================================================================================
+(No string values.)
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.auth : union auth_id_t
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Union tag: 2 tag values, 100 pcnt good, 100 pcnt identical: unauthorized (    1)
+[Describing each tag arm of <top>.auth]
+=====================================================================================================
+<top>.auth.unauthorized : char
+=====================================================================================================
+2 char values, 100 pcnt good, 100 pcnt identical: '-' (as ASCII)
+=====================================================================================================
+<top>.auth.id : string
+=====================================================================================================
+(No string values.)
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.date : date
+    ** N.B. dates are reported in # of seconds since midnight 1-jan-1970, and also as formatted strings (using the default date output format)
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2 date values, 100 pcnt good, 100 pcnt identical:  876960000 (1997-10-16)
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.request : struct request_t
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+good vals:          2    bad vals:          0    pcnt-bad:    0.000
+[Describing each field of <top>.request]
+=====================================================================================================
+<top>.request.meth : enum method_t
+=====================================================================================================
+good vals:          2    bad vals:          0    pcnt-bad:    0.000
+  Characterizing enum method_t values:  min GET (    0)  max POST (    2)
+    => distribution of top 2 values out of 2 distinct values:
+        val: GET (    0)    count:          1  pcnt-of-good-vals:   50.000
+        val: POST (    2)   count:          1  pcnt-of-good-vals:   50.000
+. .  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING             count:          2  pcnt-of-good-vals:  100.000
+=====================================================================================================
+<top>.request.req_uri : string
+=====================================================================================================
+String lengths: good vals:          2    bad vals:          0    pcnt-bad:    0.000
+  Characterizing string length values:  min 9 max 24 avg 16.500
+    => distribution of top 2 values out of 2 distinct values:
+        val:          9 count:          1  pcnt-of-good-vals:   50.000
+        val:         24 count:          1  pcnt-of-good-vals:   50.000
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          2  pcnt-of-good-vals:  100.000
+  Characterizing string values:
+    => distribution of top 2 strings out of 2 distinct strings:
+        val: "/scpt/dd@grp.org/confirm" count:          1  pcnt-of-good-vals:   50.000
+        val: "/tk/p.txt"                count:          1  pcnt-of-good-vals:   50.000
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING                         count:          2  pcnt-of-good-vals:  100.000
+=====================================================================================================
+<top>.request.version : struct version_t
+=====================================================================================================
+good vals:          2    bad vals:          0    pcnt-bad:    0.000
+[Describing each field of <top>.request.version]
+-----------------------------------------------------------------------------------------------------
+<top>.request.version.major : uint8
+-----------------------------------------------------------------------------------------------------
+2 uint8 values, 100 pcnt good, 100 pcnt identical:          1
+-----------------------------------------------------------------------------------------------------
+<top>.request.version.minor : uint8
+-----------------------------------------------------------------------------------------------------
+2 uint8 values, 100 pcnt good, 100 pcnt identical:          0
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.response : typedef response_t [--> Puint16_FW]
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2 typedef response_t [--> Puint16_FW] values, 100 pcnt good, 100 pcnt identical:        200
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.length : union length_t
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Union tag: 2 tag values, 100 pcnt good, 100 pcnt identical: len (    2)
+[Describing each tag arm of <top>.length]
+=====================================================================================================
+<top>.length.unavailable : char
+=====================================================================================================
+(No char values.)
+=====================================================================================================
+<top>.length.len : uint32
+=====================================================================================================
+good vals:          2    bad vals:          0    pcnt-bad:    0.000
+  Characterizing uint32 values:  min 30 max 941 avg 485.500
+    => distribution of top 2 values out of 2 distinct values:
+        val:         30 count:          1  pcnt-of-good-vals:   50.000
+        val:        941 count:          1  pcnt-of-good-vals:   50.000
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          2  pcnt-of-good-vals:  100.000

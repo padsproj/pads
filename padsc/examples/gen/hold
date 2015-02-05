@@ -1,0 +1,15 @@
+          else
+            {
+              // Error reading separator: terminate array
+              {
+                PCGEN_ARRAY_UNSET_PARTIAL ();
+		if (P_ERR==P_io_restore (pads)) 
+		  {
+		    PDCI_report_err (pads,P_LEV_FATAL,0,P_RESTORE_ERR,"Array_10_read",0);
+		  };
+                PCGEN_ARRAY_DO_FINAL_CHECKS ();
+	      }
+	    }
+        }
+      }
+    PCGEN_ARRAY_READ_ELEM (Puint8_read (pads,&(m->element),elt_pd,elt_rep));

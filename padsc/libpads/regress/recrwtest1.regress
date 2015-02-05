@@ -1,0 +1,37 @@
+Installed IO discipline nlrec_noseek
+** Trying buf_len 2
+** write_start set buf_len to 65536
+** Succeeded with try_buf_len 2, actual len 5
+** Trying buf_len 2
+** write_start set buf_len to 65536
+** Succeeded with try_buf_len 2, actual len 4
+** Trying buf_len 2
+** write_start set buf_len to 65536
+** Succeeded with try_buf_len 2, actual len 4
+** Trying buf_len 2
+** write_start set buf_len to 65536
+** Succeeded with try_buf_len 2, actual len 7
+** Trying buf_len 2
+** write_start set buf_len to 65536
+** Succeeded with try_buf_len 2, actual len 6
+** Trying buf_len 2
+** write_start set buf_len to 65536
+** Succeeded with try_buf_len 2, actual len 6
+** Trying buf_len 2
+** write_start set buf_len to 65536
+** Succeeded with try_buf_len 2, actual len 12
+** Trying buf_len 2
+** write_start set buf_len to 65536
+** Succeeded with try_buf_len 2, actual len 11
+** Trying buf_len 2
+** write_start set buf_len to 65536
+** Succeeded with try_buf_len 2, actual len 11
+** Trying buf_len 2
+** write_start set buf_len to 65536
+** Succeeded with try_buf_len 2, actual len 21
+** Trying buf_len 2
+** write_start set buf_len to 65536
+** Succeeded with try_buf_len 2, actual len 20
+** Trying buf_len 2
+** write_start set buf_len to 65536
+** Succeeded with try_buf_len 2, actual len 21

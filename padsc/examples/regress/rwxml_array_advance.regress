@@ -1,0 +1,30 @@
+Input file = ../../data/array_advance
+Output file = /dev/stdout
+warning: P_open: Installing default IO discipline : newline-terminated records
+<entry>
+  <b>
+    <length>0</length>
+    </b>
+</entry>
+<entry>
+  <b>
+    <elt>
+      <some_foo_t><val>a</val></some_foo_t>
+    </elt>
+    <length>1</length>
+    </b>
+</entry>
+<entry>
+  <b>
+    <elt>
+      <some_foo_t><val>a</val></some_foo_t>
+    </elt>
+    <elt>
+      <some_foo_t><val>a</val></some_foo_t>
+    </elt>
+    <elt>
+      <some_foo_t><val>a</val></some_foo_t>
+    </elt>
+    <length>3</length>
+    </b>
+</entry>

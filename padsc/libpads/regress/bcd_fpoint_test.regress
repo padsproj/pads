@@ -1,0 +1,27 @@
+Installed IO discipline fwrec_noseek
+Read bcd fpoint: num 0 denom 1
+next_rec returned bytes_skipped = 18
+Read bcd fpoint: num -128 denom 10
+next_rec returned bytes_skipped = 18
+Read bcd fpoint: num 127 denom 100
+next_rec returned bytes_skipped = 18
+Read bcd ufpoint: num 255 denom 100
+next_rec returned bytes_skipped = 18
+Read bcd fpoint: num -32768 denom 10000
+next_rec returned bytes_skipped = 17
+Read bcd fpoint: num 32767 denom 10000
+next_rec returned bytes_skipped = 17
+Read bcd ufpoint: num 65535 denom 10000
+next_rec returned bytes_skipped = 17
+Read bcd fpoint: num -2147483647 denom 1000000000
+next_rec returned bytes_skipped = 14
+Read bcd fpoint: num 2147483647 denom 1000000000
+next_rec returned bytes_skipped = 14
+Read bcd ufpoint: num 4294967295 denom 1000000000
+next_rec returned bytes_skipped = 14
+Read bcd fpoint: num -9223372036854775807 denom 10000000000000000000
+next_rec returned bytes_skipped = 10
+Read bcd fpoint: num 9223372036854775807 denom 10000000000000000000
+next_rec returned bytes_skipped = 10
+Read bcd ufpoint: num 18446744073709551615 denom 10000000000000000000
+next_rec returned bytes_skipped = 9

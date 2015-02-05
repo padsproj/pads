@@ -1,0 +1,84 @@
+Data file = ../../data/punion
+
+warning: P_open: Installing default IO discipline : newline-terminated records
+test2_read returned: id two
+warning: Error [in test2_read]: record 2 byte 3 : Unexpected data before EOR.
+[record 2]12>>>a<<<
+test2_read returned: id two
+warning: Error [in test2_read]: record 3 byte 1 : Failed to match any branch of union test2.
+[record 3]>>><<<a13
+Note [in test2_read]: record 3 byte 1 : Resynching at EOR
+[record 3]>>>a13<<<
+test2_read returned: error
+warning: Error [in test2_read]: record 4 byte 5 : Unexpected data before EOR.
+[record 4]3|33>>>a<<<
+test2_read returned: id bigger
+test2_read returned: id bigger
+warning: Error [in test2_read]: record 6 byte 1 : Failed to match any branch of union test2.
+[record 6]>>><<<ab
+Note [in test2_read]: record 6 byte 1 : Resynching at EOR
+[record 6]>>>ab<<<
+test2_read returned: error
+warning: Error [in test2_read]: record 7 byte 1 : Pwhere clause violation
+[record 7]>>>-12|-132<<<
+test2_read returned: error
+
+*****************************************************************************************************
+<top> : union test2
+*****************************************************************************************************
+Union tag: good vals:          5    bad vals:          2    pcnt-bad:   28.571
+  Characterizing tag:  min bigger (    1)  max two (    2)
+    => distribution of top 2 values out of 2 distinct values:
+        val: bigger (    1)   count:          3  pcnt-of-good-vals:   60.000
+        val: two (    2)      count:          2  pcnt-of-good-vals:   40.000
+. . .  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING               count:          5  pcnt-of-good-vals:  100.000
+
+[Describing each tag arm of <top>]
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.bigger : struct test
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Errors: total vals:          3
+  Characterizing errors:  min 0 max 0 avg 0.000
+    => distribution of top 1 values out of 1 distinct values:
+        val:          0 count:          3 pcnt-of-total-vals:  100.000
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          3 pcnt-of-total-vals:  100.000
+
+[Describing each field of <top>.bigger]
+
+=====================================================================================================
+<top>.bigger.id : int32
+=====================================================================================================
+good vals:          3    bad vals:          0    pcnt-bad:    0.000
+  Characterizing int32:  min -12 max 4 avg -1.667
+    => distribution of top 3 values out of 3 distinct values:
+        val:        -12 count:          1  pcnt-of-good-vals:   33.333
+        val:          3 count:          1  pcnt-of-good-vals:   33.333
+        val:          4 count:          1  pcnt-of-good-vals:   33.333
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          3  pcnt-of-good-vals:  100.000
+
+=====================================================================================================
+<top>.bigger.ts : int32
+=====================================================================================================
+good vals:          3    bad vals:          0    pcnt-bad:    0.000
+  Characterizing int32:  min -132 max 44 avg -18.333
+    => distribution of top 3 values out of 3 distinct values:
+        val:       -132 count:          1  pcnt-of-good-vals:   33.333
+        val:         33 count:          1  pcnt-of-good-vals:   33.333
+        val:         44 count:          1  pcnt-of-good-vals:   33.333
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          3  pcnt-of-good-vals:  100.000
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.two : int32
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+good vals:          2    bad vals:          0    pcnt-bad:    0.000
+  Characterizing int32:  min 12 max 12 avg 12.000
+    => distribution of top 1 values out of 1 distinct values:
+        val:         12 count:          2  pcnt-of-good-vals:  100.000
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          2  pcnt-of-good-vals:  100.000
+

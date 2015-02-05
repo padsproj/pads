@@ -1,0 +1,4 @@
+GNUmakefile
+include
+libpads
+libpglx

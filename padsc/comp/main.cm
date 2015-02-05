@@ -1,0 +1,22 @@
+Library
+  structure Main
+is
+
+#if defined(NEW_CM)
+  $/basis.cm
+  $/smlnj-lib.cm
+  $/pp-lib.cm
+  $smlnj/compiler/compiler.cm
+#else
+  smlnj-lib.cm
+  pp-lib.cm
+#endif
+
+  ckit/src/ckit-lib.cm
+  util/group.cm
+  main.sml
+
+
+
+
+

@@ -1,0 +1,90 @@
+## Note: the srcgen program has been replaced by the mksrc program.
+
+A srcgen 'input file' contains:
+
+  1. "normal stuff" which is passed through to the default generated
+     file which must be specified using DEFGEN(topgen-filename)
+     at the top of the input file
+
+  2. macro definition regions which have the form
+     /* BEGIN_MACROS(macro-filename) */
+     header stuff -- put in macro-filename unchanged
+     /* END_HEADER */ -- marks end of header section
+     macro definitions which are just like normal macros
+     except multi-line macros are written to macro-filename
+     with backslashes added, so the input file should not
+     use backslashes
+     /* BEGIN_TRAILER */
+     trailer stuff -- put in macro-filename unchanged 
+     /* END_MACROS */
+
+  3. macro-generated regions which have the form
+     /* BEGIN_MACGEN(macrogen-filename) */
+     header stuff -- put in macrogen-filename unchanged
+     /* END_HEADER */ -- marks end of header section
+     macro instantiations : use of macros that when expanded out would
+     normally produce VERY VERY long single lines of code;
+     the srcgen script puts in newlines at various obvious
+     places (such as semicolons) to make the code more
+     readable.  Ideally a C pretty-printer would be used!
+     /* BEGIN_TRAILER */
+     trailer stuff -- put in macrogen-filename unchanged 
+     /* END_MACROGEN */
+
+For example, the file padsc.c has the following form:
+
+/* DEFGEN(padsc-gen.c) target for "normal stuff" */
+some normal stuff
+
+/* BEGIN_MACROS(padsc-read-macros.h) */
+#ifndef __PADSC_READ_MACROS_H__
+#define __PADSC_READ_MACROS_H__
+/* END_HEADER */
+#define PDC_AINT_READ(x, y, z)
+x foobar (y arg1) {
+  return y * z;
+}
+/* BEGIN_TRAILER */
+#endif  /*  __PADSC_READ_MACROS_H__   */
+/* END_MACROS */
+
+/* BEGIN_MACROS(padsc-acc-macros.h) */
+#ifndef __PADSC_ACC_MACROS_H__
+#define __PADSC_ACC_MACROS_H__
+/* END_HEADER */
+#define PDC_INTACCUM(x, y, z)
+x foobar (y arg1) {
+  return y * z;
+}
+/* BEGIN_TRAILER */
+#endif  /*  __PADSC_ACC_MACROS_H__   */
+/* END_MACROS */
+
+some normal stuff
+
+/* BEGIN_MACGEN(padsc-read-gen.c) */
+#include "padsc-read-macros.h"
+/* END_HEADER */
+PDC_READINT(....);
+PDC_READINT(....);
+PDC_READINT(....);
+PDC_READINT(....);
+...
+/* BEGIN_TRAILER */
+/* END_MACGEN */
+
+some normal stuff
+
+/* BEGIN_MACGEN(padsc-acc-gen.c) */
+some header stuff
+#include "padsc-acc-macros.h"
+/* END_HEADER */
+PDC_INTACC(...);
+PDC_INTACC(...);
+PDC_INTACC(...);
+...
+/* BEGIN_TRAILER */
+/* END_MACGEN */
+
+some normal stuff
+

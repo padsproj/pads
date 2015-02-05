@@ -1,0 +1,66 @@
+Data file = ../../data/punion_manifest
+warning: P_open: Installing default IO discipline : newline-terminated records
+*****************************************************************************************************
+<top> : struct str2
+*****************************************************************************************************
+good vals:          4    bad vals:          0    pcnt-bad:    0.000
+[Describing each field of <top>]
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.c : union choice
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Union tag: good vals:          4    bad vals:          0    pcnt-bad:    0.000
+  Characterizing tag values:  min bigger (    1)  max first (    2)
+    => distribution of top 2 values out of 2 distinct values:
+        val: bigger (    1)   count:          2  pcnt-of-good-vals:   50.000
+        val: first (    2)    count:          2  pcnt-of-good-vals:   50.000
+. . .  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING               count:          4  pcnt-of-good-vals:  100.000
+[Describing each tag arm of <top>.c]
+=====================================================================================================
+<top>.c.bigger : struct str1
+=====================================================================================================
+good vals:          2    bad vals:          0    pcnt-bad:    0.000
+[Describing each field of <top>.c.bigger]
+-----------------------------------------------------------------------------------------------------
+<top>.c.bigger.id : int32
+-----------------------------------------------------------------------------------------------------
+good vals:          2    bad vals:          0    pcnt-bad:    0.000
+  Characterizing int32 values:  min 11 max 12 avg 11.500
+    => distribution of top 2 values out of 2 distinct values:
+        val:         11 count:          1  pcnt-of-good-vals:   50.000
+        val:         12 count:          1  pcnt-of-good-vals:   50.000
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          2  pcnt-of-good-vals:  100.000
+-----------------------------------------------------------------------------------------------------
+<top>.c.bigger.ts : int32
+-----------------------------------------------------------------------------------------------------
+good vals:          2    bad vals:          0    pcnt-bad:    0.000
+  Characterizing int32 values:  min 121 max 132 avg 126.500
+    => distribution of top 2 values out of 2 distinct values:
+        val:        121 count:          1  pcnt-of-good-vals:   50.000
+        val:        132 count:          1  pcnt-of-good-vals:   50.000
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          2  pcnt-of-good-vals:  100.000
+=====================================================================================================
+<top>.c.first : int32
+=====================================================================================================
+2 int32 values, 100 pcnt good, 100 pcnt identical:         12
+=====================================================================================================
+<top>.c.two : int32
+=====================================================================================================
+(No int32 values.)
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.t : int32
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+good vals:          4    bad vals:          0    pcnt-bad:    0.000
+  Characterizing int32 values:  min 12 max 15 avg 13.250
+    => distribution of top 3 values out of 3 distinct values:
+        val:         13 count:          2  pcnt-of-good-vals:   50.000
+        val:         12 count:          1  pcnt-of-good-vals:   25.000
+        val:         15 count:          1  pcnt-of-good-vals:   25.000
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          4  pcnt-of-good-vals:  100.000
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.v : int32
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+4 int32 values, 100 pcnt good, 100 pcnt identical:         11

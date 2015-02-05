@@ -1,0 +1,396 @@
+<PadsC xmlns="http://www.padsproj.org/pads-xml.xsd">
+
+<typedef>
+  <decl>
+    <name>PPtime</name>
+  </decl>
+  <ptype>
+    <name>Pstring</name>
+  </ptype>
+</typedef>
+
+<typedef>
+  <decl>
+    <name>PPip</name>
+  </decl>
+  <ptype>
+    <name>Pstring</name>
+  </ptype>
+</typedef>
+
+<typedef>
+  <decl>
+    <name>PPemail</name>
+  </decl>
+  <ptype>
+    <name>Pstring</name>
+  </ptype>
+</typedef>
+
+<typedef>
+  <decl>
+    <name>PPmac</name>
+  </decl>
+  <ptype>
+    <name>Pstring</name>
+  </ptype>
+</typedef>
+
+<typedef>
+  <decl>
+    <name>PPdate</name>
+  </decl>
+  <ptype>
+    <name>Pstring</name>
+  </ptype>
+</typedef>
+
+<typedef>
+  <decl>
+    <name>PPpath</name>
+  </decl>
+  <ptype>
+    <name>Pstring</name>
+  </ptype>
+</typedef>
+
+<typedef>
+  <decl>
+    <name>PPhostname</name>
+  </decl>
+  <ptype>
+    <name>Pstring</name>
+  </ptype>
+</typedef>
+
+<typedef>
+  <decl>
+    <name>PPbXML</name>
+  </decl>
+  <ptype>
+    <name>Pstring</name>
+  </ptype>
+</typedef>
+
+<typedef>
+  <decl>
+    <name>PPeXML</name>
+  </decl>
+  <ptype>
+    <name>Pstring</name>
+  </ptype>
+</typedef>
+
+<typedef>
+  <decl>
+    <name>PPwhite</name>
+  </decl>
+  <ptype>
+    <name>Pstring</name>
+  </ptype>
+</typedef>
+
+<typedef>
+  <decl>
+    <name>PPint</name>
+  </decl>
+  <ptype>
+    <name>Pstring</name>
+  </ptype>
+</typedef>
+
+<typedef>
+  <decl>
+    <name>PPstring</name>
+  </decl>
+  <ptype>
+    <name>Pstring</name>
+  </ptype>
+</typedef>
+
+<typedef>
+  <decl>
+    <name>PPchar</name>
+  </decl>
+  <ptype>
+    <name>Pstring</name>
+  </ptype>
+</typedef>
+
+<opt>
+  <decl>
+    <name>Opt_16</name>
+  </decl>
+  <ptype>
+    <name>Pstring_ME</name>
+      <argument>"/\+/"</argument>
+  </ptype>
+</opt>
+
+<struct>
+  <decl>
+    <name>Struct_20</name>
+  </decl>
+  <field>
+    <name>v_string_6</name>
+    <ptype>
+      <name>PPstring</name>
+    </ptype>
+  </field>
+  <literal><char>'+'</char></literal>
+  <field>
+    <name>v_opt_16</name>
+    <ptype>
+      <name>Opt_16</name>
+    </ptype>
+  </field>
+  <literal><char>'-'</char></literal>
+</struct>
+
+<opt>
+  <decl>
+    <name>Opt_4</name>
+  </decl>
+  <ptype>
+    <name>Struct_20</name>
+  </ptype>
+</opt>
+
+<struct>
+  <decl>
+    <name>Struct_23</name>
+  </decl>
+  <field>
+    <name>v_opt_4</name>
+    <ptype>
+      <name>Opt_4</name>
+    </ptype>
+  </field>
+  <field>
+    <name>v_host_21</name>
+    <ptype>
+      <name>PPhostname</name>
+    </ptype>
+  </field>
+</struct>
+
+<union>
+  <record/>
+  <decl>
+    <name>Union_24</name>
+  </decl>
+  <inplace>
+    <literal><string>"gpg-pubkey-443e1821-421f218f.(none).rpm"</string></literal>
+    <field>
+      <name>v_struct_23</name>
+      <ptype>
+        <name>Struct_23</name>
+      </ptype>
+    </field>
+  </inplace>
+</union>
+
+<array>
+  <source/>
+  <decl>
+    <name>entries_t</name>
+  </decl>
+  <ptype>
+    <name>Union_24</name>
+  </ptype>
+</array>
+
+<struct>
+  <decl>
+    <name>Char_Arg</name>
+  </decl>
+  <literal><char>'/'</char></literal>
+  <field>
+    <name>test</name>
+    <ptype>
+      <name>Pstring</name>
+        <argument>' '</argument>
+    </ptype>
+  </field>
+</struct>
+
+<enum>
+  <decl>
+    <name>Enum_10</name>
+  </decl>
+  <prefix>"S_"</prefix>
+  <enumField>
+    <label>Installed10</label><physicalName>"Installed"</physicalName><value>1</value>
+  </enumField>
+  <enumField>
+    <label>Updated10</label><physicalName>"Updated"</physicalName>
+  </enumField>
+  <enumField>
+    <label>Erased10</label><physicalName>"Erased"</physicalName>
+  </enumField>
+</enum>
+
+<typedef>
+  <record/>
+  <decl>
+    <name>Intconst_1</name>
+  </decl>
+  <ptype>
+    <name>Puint8</name>
+  </ptype>
+  <predicate>
+    <argument>x</argument>
+    <constraints><expr><native><![CDATA[x == 35]]></native></expr></constraints>
+  </predicate>
+</typedef>
+
+<opt>
+  <decl>
+    <name>Opt_Test</name>
+  </decl>
+  <ptype>
+    <name>Pstring_ME</name>
+      <argument>"/\+/"</argument>
+  </ptype>
+</opt>
+
+<struct>
+  <decl>
+    <name>Char_Arg2</name>
+  </decl>
+  <literal><char>'/'</char></literal>
+  <field>
+    <name>test</name>
+    <ptype>
+      <nestedOption>
+        <name>Pstring</name>
+          <argument>' '</argument>
+      </nestedOption>
+    </ptype>
+  </field>
+</struct>
+
+<union>
+  <source/>
+  <decl>
+    <name>foo</name>
+    <params>
+      <param><name>msg</name><type>Pint32</type></param>
+    </params>
+  </decl>
+  <switched>
+    <expr><native><![CDATA[msg]]></native></expr>
+    <branches>
+      <branch>
+        <case>4</case>
+        <body>
+          <field>
+            <name>t04</name>
+            <ptype>
+              <name>Pint32</name>
+            </ptype>
+          </field>
+        </body>
+      </branch>
+      <branch>
+        <case><default/></case>
+        <body>
+          <field>
+            <name>tushorts_1</name>
+            <ptype>
+              <nestedArray>
+                <ptype>
+                  <name>Pb_uint16</name>
+                </ptype>
+                <sizeConstraints>
+                  <max>4</max>
+                </sizeConstraints>
+              </nestedArray>
+            </ptype>
+          </field>
+        </body>
+      </branch>
+    </branches>
+  </switched>
+</union>
+
+<struct>
+  <decl>
+    <name>Struct_52</name>
+  </decl>
+  <literal><char>' '</char></literal>
+  <field>
+    <name>v_string_40</name>
+    <ptype>
+      <name>PPstring</name>
+    </ptype>
+  </field>
+  <field>
+    <name>v_opt_45</name>
+    <ptype>
+      <nestedOption>
+        <name>Pstring_ME</name>
+          <argument>"/ Columbia/"</argument>
+      </nestedOption>
+    </ptype>
+  </field>
+</struct>
+
+<struct>
+  <decl>
+    <name>log_t</name>
+    <params>
+      <param><name>x</name><type>Puint8</type></param>
+    </params>
+  </decl>
+  <field>
+    <name>ip</name>
+    <ptype>
+      <nestedArray>
+        <ptype>
+          <name>Puint8</name>
+        </ptype>
+        <delimiterConstraints>
+          <sep><char>'.'</char></sep>
+          <term><nosep/></term>
+        </delimiterConstraints>
+        <sizeConstraints>
+          <min><expr><native><![CDATA[x]]></native></expr></min>
+          <max><expr><native><![CDATA[x + 4]]></native></expr></max>
+        </sizeConstraints>
+      </nestedArray>
+    </ptype>
+    <comment> resolved ip address</comment>
+  </field>
+  <literal><char>'|'</char></literal>
+  <field>
+    <name>numBytes</name>
+    <ptype>
+      <name>Puint32</name>
+    </ptype>
+  </field>
+</struct>
+
+<array>
+  <decl>
+    <name>ip_top</name>
+    <params>
+      <param><name>x</name><type>Puint8</type></param>
+      <param><name>y</name><type>Puint16</type></param>
+    </params>
+  </decl>
+  <ptype>
+    <name>Puint8</name>
+  </ptype>
+  <delimiterConstraints>
+    <sep><char>'.'</char></sep>
+    <term><nosep/></term>
+  </delimiterConstraints>
+  <sizeConstraints>
+    <min><expr><native><![CDATA[x]]></native></expr></min>
+    <max><expr><native><![CDATA[x + y]]></native></expr></max>
+  </sizeConstraints>
+</array>
+
+</Padsc>
+

@@ -1,0 +1,3 @@
+Note: set my_disc.out_time_zone to "-0700"
+warning: P_open: Installing default IO discipline : newline-terminated records
+Data file = ../../data/ai_big

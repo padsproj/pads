@@ -1,0 +1,53 @@
+Installed IO discipline fwrec_noseek
+Read sbl integer: 0
+next_rec returned bytes_skipped = 15
+Read sbl integer: -128
+next_rec returned bytes_skipped = 15
+Read sbl integer: 127
+next_rec returned bytes_skipped = 15
+Read sbl integer: 255
+next_rec returned bytes_skipped = 15
+Read sbl integer: -32768
+next_rec returned bytes_skipped = 14
+Read sbl integer: 32767
+next_rec returned bytes_skipped = 14
+Read sbl integer: 65535
+next_rec returned bytes_skipped = 14
+Read sbl integer: -2147483647
+next_rec returned bytes_skipped = 12
+Read sbl integer: 2147483647
+next_rec returned bytes_skipped = 12
+Read sbl integer: 4294967295
+next_rec returned bytes_skipped = 12
+Read sbl integer: -9223372036854775807
+next_rec returned bytes_skipped = 8
+Read sbl integer: 9223372036854775807
+next_rec returned bytes_skipped = 8
+Read sbl integer: 18446744073709551615
+next_rec returned bytes_skipped = 8
+Read sbh integer: 0
+next_rec returned bytes_skipped = 15
+Read sbh integer: -128
+next_rec returned bytes_skipped = 15
+Read sbh integer: 127
+next_rec returned bytes_skipped = 15
+Read sbh integer: 255
+next_rec returned bytes_skipped = 15
+Read sbh integer: -32768
+next_rec returned bytes_skipped = 14
+Read sbh integer: 32767
+next_rec returned bytes_skipped = 14
+Read sbh integer: 65535
+next_rec returned bytes_skipped = 14
+Read sbh integer: -2147483647
+next_rec returned bytes_skipped = 12
+Read sbh integer: 2147483647
+next_rec returned bytes_skipped = 12
+Read sbh integer: 4294967295
+next_rec returned bytes_skipped = 12
+Read sbh integer: -9223372036854775807
+next_rec returned bytes_skipped = 8
+Read sbh integer: 9223372036854775807
+next_rec returned bytes_skipped = 8
+Read sbh integer: 18446744073709551615
+next_rec returned bytes_skipped = 8

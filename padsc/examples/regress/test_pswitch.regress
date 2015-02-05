@@ -1,0 +1,52 @@
+Data file = ../../data/pswitch
+warning: P_open: Installing default IO discipline : newline-terminated records
+warning: Error [in branches_read]: record 4 byte 2 : User constraint on branch number violated
+[record 4]1>>> 23<<<
+read returned error
+*****************************************************************************************************
+<top> : struct choice
+*****************************************************************************************************
+good vals:          3    bad vals:          1    pcnt-bad:   25.000
+  Characterizing number of errors PER READ CALL (nerr-per-read) : min 0 max 1 avg 0.250
+    => distribution of top 2 nerr-per-read values out of 2 distinct nerr-per-read values:
+        val:          0 count:          3 pcnt-of-total-vals:   75.000
+        val:          1 count:          1 pcnt-of-total-vals:   25.000
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          4 pcnt-of-total-vals:  100.000
+[Describing each field of <top>]
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.a : uint32
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+good vals:          4    bad vals:          0    pcnt-bad:    0.000
+  Characterizing uint32 values:  min 1 max 3 avg 1.750
+    => distribution of top 3 values out of 3 distinct values:
+        val:          1 count:          2  pcnt-of-good-vals:   50.000
+        val:          2 count:          1  pcnt-of-good-vals:   25.000
+        val:          3 count:          1  pcnt-of-good-vals:   25.000
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          4  pcnt-of-good-vals:  100.000
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.b : union branches
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Union tag: good vals:          3    bad vals:          1    pcnt-bad:   25.000
+  Characterizing tag values:  min number (    1)  max def (    3)
+    => distribution of top 3 values out of 3 distinct values:
+        val: number (    1)   count:          1  pcnt-of-good-vals:   33.333
+        val: name (    2)     count:          1  pcnt-of-good-vals:   33.333
+        val: def (    3)      count:          1  pcnt-of-good-vals:   33.333
+. . .  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING               count:          3  pcnt-of-good-vals:  100.000
+[Describing each tag arm of <top>.b]
+=====================================================================================================
+<top>.b.number : int32
+=====================================================================================================
+good vals:          1    bad vals:          1    pcnt-bad:   50.000
+For good int32 values, 100 pcnt identical:          4
+=====================================================================================================
+<top>.b.name : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        6): " hello"
+=====================================================================================================
+<top>.b.def : uint32
+=====================================================================================================
+1 uint32 values, 100 pcnt good, 100 pcnt identical:          3

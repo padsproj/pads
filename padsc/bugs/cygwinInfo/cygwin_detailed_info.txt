@@ -1,0 +1,451 @@
+
+Cygwin Configuration Diagnostics
+Current System Time: Wed Nov 11 11:39:57 2009
+
+Windows XP Professional Ver 5.1 Build 2600 Service Pack 2
+
+Path:	C:\cygwin\local\pads\ast-ast\arch\cygwin.i386\bin
+	C:\cygwin\local\pads\scripts
+	C:\cygwin\usr\local\bin
+	C:\cygwin\bin
+	C:\cygwin\bin
+	C:\cygwin\usr\X11R6\bin
+	c:\WINDOWS
+	c:\WINDOWS\system32
+	c:\WINDOWS\System32\Wbem
+	c:\Perl\bin\
+	c:\Lotus\Notes
+	c:\Lotus\Notes\Data
+	c:\Program
+	Files\TortoiseSVN\bin
+	Files\Lustre
+	Translators
+	Files\Objective
+	Caml\bin
+	Files\Network
+	Associates\PGP
+	Files\QuickTime\QTSystem\
+	Files\Prover
+	Files\Kind
+	Files\NuSMV\2.4.3\bin
+	Files\IDM
+	Computer
+	Solutions\UltraEdit\
+	c:\Python23
+	955
+
+Output from C:\cygwin\bin\id.exe (nontsec)
+UID: 117938(lgwagner)     GID: 10545(mkgroup-l-d)
+0(root)                   544(Administrators)       555(Remote Desktop Users)
+545(Users)                1010(LocalLogin)          10545(mkgroup-l-d)
+
+Output from C:\cygwin\bin\id.exe (ntsec)
+UID: 117938(lgwagner)     GID: 10545(mkgroup-l-d)
+0(root)                   544(Administrators)       555(Remote Desktop Users)
+545(Users)                1010(LocalLogin)          10545(mkgroup-l-d)
+
+SysDir: C:\WINDOWS\system32
+WinDir: C:\WINDOWS
+
+USER = 'lgwagner'
+LD_LIBRARY_PATH = '/local/pads/ast-ast/arch/cygwin.i386/lib'
+PWD = '/local/pads/PADS_FBW_Files'
+HOME = '/cygdrive/u'
+MAKE_MODE = 'unix'
+
+SITENAME = 'cr'
+HOMEPATH = '\'
+MANPATH = '/local/pads/ast-ast/arch/cygwin.i386/man:/usr/local/man:/usr/share/man:/usr/man'
+APPDATA = 'C:\Documents and Settings\lgwagner\Application Data'
+HOSTNAME = 'CRP16667'
+RCK_SITENAME = 'Cedar'
+CLIENTSTATUS = 'EVOII'
+INSTALLROOT = '/local/pads/ast-ast/arch/cygwin.i386'
+TERM = 'cygwin'
+PROCESSOR_IDENTIFIER = 'x86 Family 6 Model 15 Stepping 11, GenuineIntel'
+WINDIR = 'C:\WINDOWS'
+PADSGLX_LIB_DIR = '/local/pads/padsc/pads-glx/cygwin.i386'
+OLDPWD = '/local/pads'
+USERDOMAIN = 'CCANET'
+AST_HOME = '/local/pads/ast-ast/arch/cygwin.i386'
+OS = 'Windows_NT'
+ALLUSERSPROFILE = 'C:\Documents and Settings\All Users'
+MATLAB_2008B_HOME = 'C:\Program Files\MATLAB\R2008b'
+!:: = '::\'
+VS90COMNTOOLS = 'C:\Program Files\Microsoft Visual Studio 9.0\Common7\Tools\'
+TEMP = '/cygdrive/c/Temp'
+LUSTRE_TRANSLATOR_HOME = 'C:\Program Files\Lustre Translators'
+DEFLOGDIR = 'C:\Documents and Settings\All Users\Application Data\McAfee\DesktopProtection'
+COMMONPROGRAMFILES = 'C:\Program Files\Common Files'
+PCRE_LIB_DIR = '/home/mff/pcre-4.5-rh9/lib'
+SMLNJ_HOMER = 'C:\rockwellcollins\localapps\SMLNJ'
+QTJAVA = 'C:\Program Files\Java\jre6\lib\ext\QTJava.zip'
+USERNAME = 'lgwagner'
+PROCESSOR_LEVEL = '6'
+AST_ARCH = 'cygwin.i386'
+RCK_OSVERSION = '5.1'
+NUSMV_HOME = 'C:\Program Files\NuSMV\2.4.3'
+SML = '/local/sml/bin/sml'
+FP_NO_HOST_CHECK = 'NO'
+SYSTEMDRIVE = 'C:'
+MLM_LICENSE_FILE = '1253@sunlic1,1253@sunlic2,1253@sunlic3'
+SMLNJ_HOME = '/local/sml'
+MATLAB_RESERVE_LO = '0'
+PADS_HOME = '/local/pads'
+USERPROFILE = 'C:\Documents and Settings\lgwagner'
+KIND_HOME = 'C:\Program Files\Kind'
+CLIENTNAME = 'Console'
+OCAML_BIN_DIR = '/usr/local/bin'
+GALAX_SRC = '/home/mff/galax'
+OCAML_LIB_DIR = '/usr/local/lib/ocaml'
+PS1 = '\[\e]0;\w\a\]\n\[\e[32m\]\u@\h \[\e[33m\]\w\[\e[0m\]\n\$ '
+LOGONSERVER = '\\CRNTDC02'
+PROCESSOR_ARCHITECTURE = 'x86'
+!C: = 'C:\cygwin\bin'
+OS_VERSION = '5.1'
+LUSTRE_TRANSLATOR_HOME_955 = 'C:\Program Files\Lustre Translators 955'
+SHLVL = '1'
+OCAMLLIB = 'C:\Program Files\Objective Caml\lib'
+USERDNSDOMAIN = 'ccanet.rockwellcollins.com'
+PROVER_HOME = 'C:\Program Files\Prover'
+PATHEXT = '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH'
+HOMEDRIVE = 'U:'
+DYLD_LIBRARY_PATH = '/local/pads/ast-ast/arch/cygwin.i386/lib'
+PROMPT = '$P$G'
+COMSPEC = 'C:\WINDOWS\system32\cmd.exe'
+TMP = '/cygdrive/c/Tmp'
+SYSTEMROOT = 'C:\WINDOWS'
+PRINTER = 'p914 on local'
+CVS_RSH = '/bin/ssh'
+PROCESSOR_REVISION = '0f0b'
+SMLNJ_CYGWIN_RUNTIME = '1'
+CLASSPATH = '.;C:\Program Files\Java\jre6\lib\ext\QTJava.zip'
+GALAX_HOME = '/home/mff/Galax'
+SHLIB_PATH = '/local/pads/ast-ast/arch/cygwin.i386/lib'
+INFOPATH = '/usr/local/info:/usr/share/info:/usr/info:'
+PROGRAMFILES = 'C:\Program Files'
+CC = 'gcc'
+HOMESHARE = '\\crnas06\HOME'
+TELELOGIC_LICENSE_FILE = '19356@rhalm1;'
+NUMBER_OF_PROCESSORS = '2'
+MATLAB_2007B_HOME = 'C:\ro_apps\MATLAB\R2007b'
+VSEDEFLOGDIR = 'C:\Documents and Settings\All Users\Application Data\McAfee\DesktopProtection'
+SESSIONNAME = 'Console'
+LSERVER = 'CRNTDC02'
+COMPUTERNAME = 'CRP16667'
+RCK_WINTYPE = 'NT'
+_ = '/usr/bin/cygcheck'
+
+HKEY_CURRENT_USER\Software\Cygnus Solutions
+HKEY_CURRENT_USER\Software\Cygnus Solutions\Cygwin
+HKEY_CURRENT_USER\Software\Cygnus Solutions\Cygwin\mounts v2
+  (default) = '/cygdrive'
+  cygdrive flags = 0x00000022
+HKEY_CURRENT_USER\Software\Cygnus Solutions\Cygwin\mounts v2\/
+  (default) = 'C:\cygwin'
+  flags = 0x00000002
+HKEY_CURRENT_USER\Software\Cygnus Solutions\Cygwin\mounts v2\/usr/bin
+  (default) = 'C:\cygwin/bin'
+  flags = 0x00000002
+HKEY_CURRENT_USER\Software\Cygnus Solutions\Cygwin\mounts v2\/usr/lib
+  (default) = 'C:\cygwin/lib'
+  flags = 0x00000002
+HKEY_CURRENT_USER\Software\Cygnus Solutions\Cygwin\Program Options
+HKEY_LOCAL_MACHINE\SOFTWARE\Cygnus Solutions
+HKEY_LOCAL_MACHINE\SOFTWARE\Cygnus Solutions\Cygwin
+HKEY_LOCAL_MACHINE\SOFTWARE\Cygnus Solutions\Cygwin\mounts v2
+HKEY_LOCAL_MACHINE\SOFTWARE\Cygnus Solutions\Cygwin\Program Options
+
+a:  fd             N/A    N/A                    
+c:  hd  NTFS     76293Mb  39% CP CS UN PA FC     Local Disk
+d:  cd             N/A    N/A                    
+k:  net NTFS     18427Mb  95% CP CS UN PA FC     
+p:  net NTFS    314368Mb  84% CP    UN PA        1878
+q:  net NTFS     51200Mb  52% CP    UN PA        2497
+s:  net NTFS    350003Mb  99% CP CS UN PA FC     H: Raid Set 1
+u:  net NTFS      3072Mb   4% CP    UN PA        1273
+v:  net NTFS     10240Mb  19% CP    UN PA        1336
+x:  net FAT     378880Mb  99% CP CS UN           eda
+y:  net NTFS    120832Mb 100% CP CS    PA        et_acsdept
+
+C:\cygwin      /          user    binmode
+C:\cygwin/bin  /usr/bin   user    binmode
+C:\cygwin/lib  /usr/lib   user    binmode
+.              /cygdrive  user    binmode,cygdrive
+
+Found: C:\cygwin\bin\awk.exe
+Found: C:\cygwin\bin\bash.exe
+Found: C:\cygwin\bin\cat.exe
+Found: C:\cygwin\bin\cp.exe
+Not Found: cpp (good!)
+Not Found: crontab
+Found: C:\cygwin\bin\find.exe
+Not Found: gcc
+Not Found: gdb
+Found: C:\cygwin\bin\grep.exe
+Found: C:\cygwin\bin\kill.exe
+Found: C:\cygwin\bin\ld.exe
+Found: C:\cygwin\bin\ls.exe
+Found: C:\cygwin\bin\make.exe
+Found: C:\cygwin\bin\mv.exe
+Not Found: patch
+Found: C:\cygwin\bin\perl.exe
+Found: c:\Perl\bin\perl.exe
+Warning: C:\cygwin\bin\perl.exe hides c:\Perl\bin\perl.exe
+Found: C:\cygwin\bin\rm.exe
+Found: C:\cygwin\bin\sed.exe
+Not Found: ssh
+Found: C:\cygwin\bin\sh.exe
+Found: C:\cygwin\bin\tar.exe
+Found: C:\cygwin\bin\test.exe
+Not Found: vi
+Not Found: vim
+
+   61k 2009/03/02 C:\cygwin\bin\cygbz2-1.dll - os=4.0 img=1.0 sys=4.0
+                  "cygbz2-1.dll" v0.0 ts=2009/3/1 20:52
+    7k 2003/10/19 C:\cygwin\bin\cygcrypt-0.dll - os=4.0 img=1.0 sys=4.0
+                  "cygcrypt-0.dll" v0.0 ts=2003/10/19 2:57
+  943k 2007/12/17 C:\cygwin\bin\cygdb-4.5.dll - os=4.0 img=1.0 sys=4.0
+                  "cygdb-4.5.dll" v0.0 ts=2007/12/17 7:12
+ 1296k 2007/12/17 C:\cygwin\bin\cygdb_cxx-4.5.dll - os=4.0 img=1.0 sys=4.0
+                  "cygdb_cxx-4.5.dll" v0.0 ts=2007/12/17 7:12
+  118k 2008/05/09 C:\cygwin\bin\cygexpat-1.dll - os=4.0 img=1.0 sys=4.0
+                  "cygexpat-1.dll" v0.0 ts=2008/5/8 23:03
+    9k 2009/03/12 C:\cygwin\bin\cygffi-4.dll - os=4.0 img=1.0 sys=4.0
+                  "cygffi-4.dll" v0.0 ts=2009/3/6 7:37
+   40k 2009/03/01 C:\cygwin\bin\cygform-8.dll - os=4.0 img=1.0 sys=4.0
+                  "cygform-8.dll" v0.0 ts=2009/2/28 20:40
+   41k 2009/03/27 C:\cygwin\bin\cygform-9.dll - os=4.0 img=1.0 sys=4.0
+                  "cygform-9.dll" v0.0 ts=2009/3/26 19:37
+   48k 2003/08/09 C:\cygwin\bin\cygform7.dll - os=4.0 img=1.0 sys=4.0
+                  "cygform7.dll" v0.0 ts=2003/8/9 4:25
+   42k 2009/03/12 C:\cygwin\bin\cyggcc_s-1.dll - os=4.0 img=1.0 sys=4.0
+                  "cyggcc_s-1.dll" v0.0 ts=2009/3/6 5:54
+   41k 2008/09/12 C:\cygwin\bin\cyggcc_s.dll - os=4.0 img=1.0 sys=4.0
+                  "cyggcc_s.dll" v0.0 ts=2008/9/11 1:43
+28731k 2009/03/12 C:\cygwin\bin\cyggcj-9.dll - os=4.0 img=1.0 sys=4.0
+                  "cyggcj-9.dll" v0.0 ts=2009/3/6 8:55
+ 1215k 2009/03/12 C:\cygwin\bin\cyggcj-tools-9.dll - os=4.0 img=1.0 sys=4.0
+                  "cyggcj-tools-9.dll" v0.0 ts=2009/3/6 8:57
+   19k 2009/02/26 C:\cygwin\bin\cyggdbm-4.dll - os=4.0 img=1.0 sys=4.0
+                  "cyggdbm-4.dll" v0.0 ts=2009/2/26 1:55
+    8k 2009/02/26 C:\cygwin\bin\cyggdbm_compat-4.dll - os=4.0 img=1.0 sys=4.0
+                  "cyggdbm_compat-4.dll" v0.0 ts=2009/2/26 1:56
+  651k 2009/03/12 C:\cygwin\bin\cyggfortran-3.dll - os=4.0 img=1.0 sys=4.0
+                  "cyggfortran-3.dll" v0.0 ts=2009/3/6 7:29
+   10k 2009/03/12 C:\cygwin\bin\cyggij-9.dll - os=4.0 img=1.0 sys=4.0
+                  "cyggij-9.dll" v0.0 ts=2009/3/6 8:56
+  219k 2008/10/04 C:\cygwin\bin\cyggmp-3.dll - os=4.0 img=1.0 sys=4.0
+                  "cyggmp-3.dll" v0.0 ts=2008/10/4 18:48
+  288k 2008/10/04 C:\cygwin\bin\cyggmpxx-3.dll - os=4.0 img=1.0 sys=4.0
+                  "cyggmpxx-3.dll" v0.0 ts=2008/10/4 18:48
+  159k 2009/03/12 C:\cygwin\bin\cyggnarl-4.3.dll - os=4.0 img=1.0 sys=4.0
+                  "cyggnarl-4.3.dll" v0.0 ts=2009/3/6 6:17
+ 2328k 2009/03/12 C:\cygwin\bin\cyggnat-4.3.dll - os=4.0 img=1.0 sys=4.0
+                  "cyggnat-4.3.dll" v0.0 ts=2009/3/6 6:17
+   23k 2009/03/12 C:\cygwin\bin\cyggomp-1.dll - os=4.0 img=1.0 sys=4.0
+                  "cyggomp-1.dll" v0.0 ts=2009/3/6 9:00
+   24k 2009/06/23 C:\cygwin\bin\cyghistory6.dll - os=4.0 img=1.0 sys=4.0
+                  "cyghistory6.dll" v0.0 ts=2009/6/23 7:20
+  270k 2009/04/23 C:\cygwin\bin\cygicons-0.dll - os=4.0 img=1.0 sys=4.0
+                  "cygicons-0.dll" v0.0 ts=2009/4/22 21:25
+  982k 2009/05/30 C:\cygwin\bin\cygiconv-2.dll - os=4.0 img=1.0 sys=4.0
+                  "cygiconv-2.dll" v0.0 ts=2009/5/30 13:38
+   37k 2003/08/10 C:\cygwin\bin\cygintl-2.dll - os=4.0 img=1.0 sys=4.0
+                  "cygintl-2.dll" v0.0 ts=2003/8/10 16:50
+   31k 2005/11/20 C:\cygwin\bin\cygintl-3.dll - os=4.0 img=1.0 sys=4.0
+                  "cygintl-3.dll" v0.0 ts=2005/11/19 20:04
+   31k 2009/06/07 C:\cygwin\bin\cygintl-8.dll - os=4.0 img=1.0 sys=4.0
+                  "cygintl-8.dll" v0.0 ts=2009/6/7 16:42
+    6k 2009/03/12 C:\cygwin\bin\cygjvm.dll - os=4.0 img=1.0 sys=4.0
+                  "cygjvm.dll" v0.0 ts=2009/3/6 8:56
+   21k 2009/03/01 C:\cygwin\bin\cygmenu-8.dll - os=4.0 img=1.0 sys=4.0
+                  "cygmenu-8.dll" v0.0 ts=2009/2/28 20:38
+   21k 2009/03/27 C:\cygwin\bin\cygmenu-9.dll - os=4.0 img=1.0 sys=4.0
+                  "cygmenu-9.dll" v0.0 ts=2009/3/26 19:36
+   29k 2003/08/09 C:\cygwin\bin\cygmenu7.dll - os=4.0 img=1.0 sys=4.0
+                  "cygmenu7.dll" v0.0 ts=2003/8/9 4:25
+  121k 2008/10/04 C:\cygwin\bin\cygmp-3.dll - os=4.0 img=1.0 sys=4.0
+                  "cygmp-3.dll" v0.0 ts=2008/10/4 18:48
+  264k 2009/03/02 C:\cygwin\bin\cygmpfr-1.dll - os=4.0 img=1.0 sys=4.0
+                  "cygmpfr-1.dll" v0.0 ts=2009/3/1 18:14
+   66k 2009/03/01 C:\cygwin\bin\cygncurses++-8.dll - os=4.0 img=1.0 sys=4.0
+                  "cygncurses++-8.dll" v0.0 ts=2009/2/28 20:50
+  335k 2009/03/27 C:\cygwin\bin\cygncurses++-9.dll - os=4.0 img=1.0 sys=4.0
+                  "cygncurses++-9.dll" v0.0 ts=2009/3/26 19:45
+  237k 2009/03/01 C:\cygwin\bin\cygncurses-8.dll - os=4.0 img=1.0 sys=4.0
+                  "cygncurses-8.dll" v0.0 ts=2009/2/28 20:36
+  165k 2009/03/27 C:\cygwin\bin\cygncurses-9.dll - os=4.0 img=1.0 sys=4.0
+                  "cygncurses-9.dll" v0.0 ts=2009/3/26 19:34
+  224k 2003/08/09 C:\cygwin\bin\cygncurses7.dll - os=4.0 img=1.0 sys=4.0
+                  "cygncurses7.dll" v0.0 ts=2003/8/9 4:24
+   74k 2009/03/12 C:\cygwin\bin\cygobjc-2.dll - os=4.0 img=1.0 sys=4.0
+                  "cygobjc-2.dll" v0.0 ts=2009/3/6 7:35
+   11k 2009/03/01 C:\cygwin\bin\cygpanel-8.dll - os=4.0 img=1.0 sys=4.0
+                  "cygpanel-8.dll" v0.0 ts=2009/2/28 20:38
+   11k 2009/03/27 C:\cygwin\bin\cygpanel-9.dll - os=4.0 img=1.0 sys=4.0
+                  "cygpanel-9.dll" v0.0 ts=2009/3/26 19:36
+   19k 2003/08/09 C:\cygwin\bin\cygpanel7.dll - os=4.0 img=1.0 sys=4.0
+                  "cygpanel7.dll" v0.0 ts=2003/8/9 4:24
+  181k 2008/09/07 C:\cygwin\bin\cygpcre-0.dll - os=4.0 img=1.0 sys=4.0
+                  "cygpcre-0.dll" v0.0 ts=2008/9/6 22:36
+  302k 2008/09/07 C:\cygwin\bin\cygpcrecpp-0.dll - os=4.0 img=1.0 sys=4.0
+                  "cygpcrecpp-0.dll" v0.0 ts=2008/9/6 22:36
+    7k 2008/09/07 C:\cygwin\bin\cygpcreposix-0.dll - os=4.0 img=1.0 sys=4.0
+                  "cygpcreposix-0.dll" v0.0 ts=2008/9/6 22:36
+ 1543k 2008/07/03 C:\cygwin\bin\cygperl5_10.dll - os=4.0 img=1.0 sys=4.0
+                  "cygperl5_10.dll" v0.0 ts=2008/6/30 11:06
+   22k 2002/06/09 C:\cygwin\bin\cygpopt-0.dll - os=4.0 img=1.0 sys=4.0
+                  "cygpopt-0.dll" v0.0 ts=2002/6/9 0:45
+  155k 2009/06/23 C:\cygwin\bin\cygreadline6.dll - os=4.0 img=1.0 sys=4.0
+                  "cygreadline6.dll" v0.0 ts=2009/6/23 7:20
+    8k 2009/03/12 C:\cygwin\bin\cygssp-0.dll - os=4.0 img=1.0 sys=4.0
+                  "cygssp-0.dll" v0.0 ts=2009/3/6 6:49
+  493k 2009/03/12 C:\cygwin\bin\cygstdc++-6.dll - os=4.0 img=1.0 sys=4.0
+                  "cygstdc++-6.dll" v0.0 ts=2009/3/6 6:46
+   66k 2009/03/27 C:\cygwin\bin\cygtic-9.dll - os=4.0 img=1.0 sys=4.0
+                  "cygtic-9.dll" v0.0 ts=2009/3/26 19:31
+   65k 2009/03/02 C:\cygwin\bin\cygz.dll - os=4.0 img=1.0 sys=4.0
+                  "cygz.dll" v0.0 ts=2009/3/1 19:19
+ 1829k 2008/06/12 C:\cygwin\bin\cygwin1.dll - os=4.0 img=1.0 sys=4.0
+                  "cygwin1.dll" v0.0 ts=2008/6/12 12:35
+    Cygwin DLL version info:
+        DLL version: 1.5.25
+        DLL epoch: 19
+        DLL bad signal mask: 19005
+        DLL old termios: 5
+        DLL malloc env: 28
+        API major: 0
+        API minor: 156
+        Shared data: 4
+        DLL identifier: cygwin1
+        Mount registry: 2
+        Cygnus registry name: Cygnus Solutions
+        Cygwin registry name: Cygwin
+        Program options name: Program Options
+        Cygwin mount registry name: mounts v2
+        Cygdrive flags: cygdrive flags
+        Cygdrive prefix: cygdrive prefix
+        Cygdrive default prefix: 
+        Build date: Thu Jun 12 19:34:46 CEST 2008
+        CVS tag: cr-0x5f1
+        Shared id: cygwin1S4
+
+
+Can't find the cygrunsrv utility, skipping services check.
+
+
+Cygwin Package Information
+Last downloaded files to: C:\Documents and Settings\lgwagner\Desktop
+Last downloaded files from: ftp://sourceware.mirrors.tds.net/pub/sourceware.org/cygwin/
+
+Package              Version
+_update-info-dir     00833-1
+alternatives         1.3.30c-3
+ash                  20040127-4
+base-files           3.7-1
+base-passwd          2.2-1
+bash                 3.2.49-22
+binutils             20080624-2
+bison                2.3-1
+bzip2                1.0.5-3
+coreutils            6.10-2
+crypt                1.1-1
+cygutils             1.3.4-1
+cygwin               1.5.25-15
+cygwin-doc           1.4-4
+dejagnu              20021217-2
+diffutils            2.8.7-1
+editrights           1.01-2
+expat                2.0.1-1
+expect               20030128-1
+findutils            4.4.0-3
+flex                 2.5.35-1
+gawk                 3.1.6-1
+gcc                  3.4.4-999
+gcc-ada              3.4.4-999
+gcc-core             3.4.4-999
+gcc-g++              3.4.4-999
+gcc-g77              3.4.4-999
+gcc-gdc              3.4.4-999
+gcc-gpc              3.4.4-999
+gcc-java             3.4.4-999
+gcc-mingw            20040810-1
+gcc-mingw-ada        20050522-1
+gcc-mingw-core       20050522-1
+gcc-mingw-g++        20050522-1
+gcc-mingw-g77        20050522-1
+gcc-mingw-gdc        20050522-1
+gcc-mingw-gpc        20040810-1
+gcc-mingw-java       20050522-1
+gcc-mingw-objc       20050522-1
+gcc-objc             3.4.4-999
+gcc-tools-autoconf   2.59-2
+gcc-tools-automake   1.9.6-2
+gcc4                 4.3.2-2
+gcc4-ada             4.3.2-2
+gcc4-core            4.3.2-2
+gcc4-fortran         4.3.2-2
+gcc4-g++             4.3.2-2
+gcc4-java            4.3.2-2
+gcc4-objc            4.3.2-2
+gcc4-runtime         4.3.2-1
+gccmakedep           1.0.2-1
+gettext              0.17-4
+gmp                  4.2.4-1
+grep                 2.5.3-1
+groff                1.19.2-2
+gzip                 1.3.12-2
+less                 382-1
+libbz2_1             1.0.5-3
+libdb4.5             4.5.20.2-2
+libexpat1            2.0.1-1
+libexpat1-devel      2.0.1-1
+libffi4              4.3.2-2
+libgcc1              4.3.2-2
+libgcj-common        4.3.2-2
+libgcj9              4.3.2-2
+libgdbm4             1.8.3-9
+libgfortran3         4.3.2-2
+libgmp3              4.2.4-1
+libgnat4.3           4.3.2-2
+libgomp1             4.3.2-2
+libiconv2            1.13-1
+libintl2             0.12.1-3
+libintl3             0.14.5-1
+libintl8             0.17-4
+libmpfr1             2.4.1-1
+libncurses-devel     5.7-5
+libncurses7          5.3-4
+libncurses8          5.5-4
+libncurses9          5.7-5
+libobjc2             4.3.2-2
+libpcre0             7.8-1
+libpopt0             1.6.4-4
+libreadline6         5.2.14-12
+libssp0              4.3.2-2
+libstdc++6           4.3.2-2
+libstdc++6-devel     4.3.2-2
+login                1.10-1
+m4                   1.4.10b-2
+make                 3.81-2
+man                  1.6e-1
+mingw-runtime        3.16-1
+ocaml                3.08.1-1
+perl                 5.10.0-5
+rebase               3.0-2
+run                  1.1.12-1
+sed                  4.1.5-2
+tar                  1.21-1
+tcltk                20080420-1
+termcap              20050421-1
+terminfo             5.7_20090228-1
+terminfo0            5.5_20061104-2
+texinfo              4.13-3
+tzcode               2009k-1
+w32api               3.13-1
+which                2.20-1
+zlib                 1.2.3-3
+zlib-devel           1.2.3-3
+zlib0                1.2.3-3
+Use -h to see help about each section

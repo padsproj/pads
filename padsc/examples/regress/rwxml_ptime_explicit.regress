@@ -1,0 +1,13 @@
+Input file = ../../data/ptime_explicit
+Output file = /dev/stdout
+warning: P_open: Installing default IO discipline : newline-terminated records
+<threetimes>
+  <time1><val>05:10:20</val></time1>
+  <time2><val>23:01:01</val></time2>
+  <time3><val>01:02:03</val></time3>
+</threetimes>
+<threetimes>
+  <time1><val>05:10:21</val></time1>
+  <time2><val>23:01:02</val></time2>
+  <time3><val>01:02:04</val></time3>
+</threetimes>

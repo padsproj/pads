@@ -1,0 +1,19 @@
+line  1:  no errors
+line  2:  no errors
+line  3:  range error for : i8
+line  4:  range error for : i8, ui8
+line  5:  range error for : i8, i16, ui8
+line  6:  range error for : i8, i16, ui8, ui16
+line  7:  range error for : i8, i16, i32, ui8, ui16
+line  8:  range error for : i8, i16, i32, ui8, ui16, ui32
+line  9:  range error for : i8, i16, i32, i64, ui8, ui16, ui32
+line 10:  range error for : i8, i16, i32, i64, ui8, ui16, ui32, ui64
+line 11:  range error for :                    ui8, ui16, ui32, ui64
+line 12:  range error for :                i8, ui8, ui16, ui32, ui64
+line 13:  range error for :                i8, ui8, ui16, ui32, ui64
+line 14:  range error for :           i8, i16, ui8, ui16, ui32, ui64
+line 15:  range error for :           i8, i16, ui8, ui16, ui32, ui64
+line 16:  range error for :      i8, i16, i32, ui8, ui16, ui32, ui64
+line 17:  range error for :      i8, i16, i32, ui8, ui16, ui32, ui64
+line 18:  range error for : i8, i16, i32, i64, ui8, ui16, ui32, ui64
+line 19:  range error for : i8, i16, i32, i64, ui8, ui16, ui32, ui64

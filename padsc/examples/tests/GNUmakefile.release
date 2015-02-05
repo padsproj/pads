@@ -1,0 +1,276 @@
+
+ # This is a GNU makefile.
+
+ifndef PADS_HOME
+  export PADS_HOME=$(shell cd ../../..; pwd)
+endif
+
+ifndef AST_ARCH
+  export AST_ARCH=$(shell $(PADS_HOME)/ast-ast/bin/package.cvs)
+endif
+
+CURDIR := $(shell pwd)
+ifneq ($(AST_ARCH),$(notdir $(CURDIR)))
+include $(PADS_HOME)/mk/redirect.mk
+else
+
+ # The following rules are run from the arch directory
+
+GEN_DIR = ../../gen
+GEN_WRITE = 1
+
+# the following indicates that generated .c files should not be removed
+.PRECIOUS: $(GEN_DIR)/%.c  $(GEN_DIR)/%_expanded.c %_expanded.c
+
+# need to set this before including rules.mk
+REGRESS_TESTS = 1
+
+include $(PADS_HOME)/mk/rules.mk
+
+VPATH =  .. ../../p
+
+RELEASE_TESTS = $(shell cat ../RELEASE_TESTS)
+ALL_TESTS_O = $(RELEASE_TESTS:%.c=%)
+ALL_TESTS_D = $(ALL_TESTS_O:%=%_d)
+ALL_TESTS = $(ALL_TESTS_O) $(ALL_TESTS_D)
+
+REGRESS_O = $(ALL_TESTS_O:%=regress_%_o)
+REGRESS_D = $(ALL_TESTS_O:%=regress_%_d)
+
+CLEANUP_TESTS = $(ALL_TESTS)
+
+rcount:
+	@(cd ..; $(MAKE) regress) | $(PADS_HOME)/scripts/count_differs.pl
+
+regress: regress_o regress_d
+
+regress_o:  sanity_check regress_o_announce $(REGRESS_O)
+	@echo " "; echo "DONE"; echo " "
+
+regress_d:  sanity_check regress_d_announce $(REGRESS_D)
+	@echo " "; echo "DONE"; echo " "
+
+all_tests: sanity_check $(ALL_TESTS)
+
+sanity_check:
+	@$(SanityCheck)
+
+regress_o_announce:
+	@echo " "; echo "REGRESS USING OPTIMIZED CODE"; echo " " \
+
+regress_d_announce:
+	@echo " "; echo "REGRESS USING DEBUG CODE"; echo " " \
+
+regress_test_me_o: test_me
+	@(args=""; suf=""; $(RegressDef))
+regress_test_me_d: test_me_d
+	@(args=""; suf=""; $(RegressDef))
+
+regress_test_me_fooclass_o: test_me_fooclass
+	@(args=""; suf=""; $(RegressDef))
+regress_test_me_fooclass_d: test_me_fooclass_d
+	@(args=""; suf=""; $(RegressDef))
+
+regress_test_format1_o: test_format1
+	@(args=""; suf=""; $(RegressDef))
+regress_test_format1_d: test_format1_d
+	@(args=""; suf=""; $(RegressDef))
+
+regress_test_format2_o: test_format2
+	@(args=""; suf=""; $(RegressDef))
+regress_test_format2_d: test_format2_d
+	@(args=""; suf=""; $(RegressDef))
+
+regress_test_format3_o: test_format3
+	@(args=""; suf=""; $(RegressDef))
+regress_test_format3_d: test_format3_d
+	@(args=""; suf=""; $(RegressDef))
+
+regress_test_format4_o: test_format4
+	@(args=""; suf=""; $(RegressDef))
+regress_test_format4_d: test_format4_d
+	@(args=""; suf=""; $(RegressDef))
+
+regress_test_format5_o: test_format5
+	@(args=""; suf=""; $(RegressDef))
+regress_test_format5_d: test_format5_d
+	@(args=""; suf=""; $(RegressDef))
+
+regress_test_format6_o: test_format6
+	@(args=""; suf=""; $(RegressDef))
+regress_test_format6_d: test_format6_d
+	@(args=""; suf=""; $(RegressDef))
+
+regress_test_readint_o: test_readint
+	@(args=""; suf=""; filter="error:"; $(RegressFilter))
+regress_test_readint_d: test_readint_d
+	@(args=""; suf=""; filter="error:"; $(RegressFilter))
+
+regress_test_ai_o: test_ai
+	@(args=""; suf=""; $(RegressDef))
+regress_test_ai_d: test_ai_d
+	@(args=""; suf=""; $(RegressDef))
+
+regress_test_write_struct1_o: test_write_struct1
+	@(args=""; suf=""; $(RegressDef))
+regress_test_write_struct1_d: test_write_struct1_d
+	@(args=""; suf=""; $(RegressDef))
+
+regress_test_write_struct_strings_o: test_write_struct_strings
+	@(args=""; suf=""; $(RegressDef))
+regress_test_write_struct_strings_d: test_write_struct_strings_d
+	@(args=""; suf=""; $(RegressDef))
+
+regress_test_punion_manifest_o: test_punion_manifest
+	@(args=""; suf=""; $(RegressDef))
+regress_test_punion_manifest_d: test_punion_manifest_d
+	@(args=""; suf=""; $(RegressDef))
+
+regress_rwxml_punion_literal2_o: rwxml_punion_literal2
+	@(args=""; suf=""; $(RegressDef))
+regress_rwxml_punion_literal2_d: rwxml_punion_literal2_d
+	@(args=""; suf=""; $(RegressDef))
+
+regress_test_pswitch_o: test_pswitch
+	@(args=""; suf=""; $(RegressDef))
+regress_test_pswitch_d: test_pswitch_d
+	@(args=""; suf=""; $(RegressDef))
+
+regress_test_pswitch2_o: test_pswitch2
+	@(args=""; suf=""; $(RegressDef))
+regress_test_pswitch2_d: test_pswitch2_d
+	@(args=""; suf=""; $(RegressDef))
+
+regress_test_depends_o: test_depends
+	@(args=""; suf=""; $(RegressDef))
+regress_test_depends_d: test_depends_d
+	@(args=""; suf=""; $(RegressDef))
+
+regress_test_struct3_o: test_struct3
+	@(args=""; suf=""; $(RegressDef))
+regress_test_struct3_d: test_struct3_d
+	@(args=""; suf=""; $(RegressDef))
+
+regress_test_struct_regexp_o: test_struct_regexp
+	@(args=""; suf=""; $(RegressDef))
+regress_test_struct_regexp_d: test_struct_regexp_d
+	@(args=""; suf=""; $(RegressDef))
+
+regress_test_array_regexp_o: test_array_regexp
+	@(args=""; suf=""; $(RegressDef))
+regress_test_array_regexp_d: test_array_regexp_d
+	@(args=""; suf=""; $(RegressDef))
+
+regress_test_array_nosep_o: test_array_nosep
+	@(args=""; suf=""; $(RegressDef))
+regress_test_array_nosep_d: test_array_nosep_d
+	@(args=""; suf=""; $(RegressDef))
+
+regress_test_array_pred_o: test_array_pred
+	@(args=""; suf=""; $(RegressDef))
+regress_test_array_pred_d: test_array_pred_d
+	@(args=""; suf=""; $(RegressDef))
+
+regress_test_array_pred2_o: test_array_pred2
+	@(args=""; suf=""; $(RegressDef))
+regress_test_array_pred2_d: test_array_pred2_d
+	@(args=""; suf=""; $(RegressDef))
+
+regress_test_array_ended_o: test_array_ended
+	@(args=""; suf=""; $(RegressDef))
+regress_test_array_ended_d: test_array_ended_d
+	@(args=""; suf=""; $(RegressDef))
+
+regress_test_array_ended2_o: test_array_ended2
+	@(args=""; suf=""; $(RegressDef))
+regress_test_array_ended2_d: test_array_ended2_d
+	@(args=""; suf=""; $(RegressDef))
+
+regress_test_array_skip_o: test_array_skip
+	@(args=""; suf=""; $(RegressDef))
+regress_test_array_skip_d: test_array_skip_d
+	@(args=""; suf=""; $(RegressDef))
+
+regress_test_array_skip2_o: test_array_skip2
+	@(args=""; suf=""; $(RegressDef))
+regress_test_array_skip2_d: test_array_skip2_d
+	@(args=""; suf=""; $(RegressDef))
+
+regress_test_in_place_o: test_in_place
+	@(args=""; suf=""; $(RegressDef))
+regress_test_in_place_d: test_in_place_d
+	@(args=""; suf=""; $(RegressDef))
+
+regress_test_opt_o: test_opt
+	@(args=""; suf=""; $(RegressDef))
+regress_test_opt_d: test_opt_d
+	@(args=""; suf=""; $(RegressDef))
+
+regress_test_array_post_o: test_array_post
+	@(args=""; suf=""; $(RegressDef))
+regress_test_array_post_d: test_array_post_d
+	@(args=""; suf=""; $(RegressDef))
+
+regress_test_charclass_o: test_charclass
+	@(args=""; suf=""; $(RegressDef))
+regress_test_charclass_d: test_charclass_d
+	@(args=""; suf=""; $(RegressDef))
+
+regress_rw_struct_good_o: rw_struct_good
+	@(args=""; input="../../data/struct_good"; suf=""; $(RegressRW))
+
+regress_rw_struct_good_d: rw_struct_good_d
+	@(args=""; input="../../data/struct_good"; suf=""; $(RegressRW))
+
+regress_rw_pendian_o: rw_pendian
+	@(args=""; input="../../data/endian.delenn"; suf="_delenn"; $(RegressRW))
+	@(args=""; input="../../data/endian.raptor"; suf="_raptor"; $(RegressRW))
+
+regress_rw_pendian_d: rw_pendian_d
+	@(args=""; input="../../data/endian.delenn"; suf="_delenn"; $(RegressRW))
+	@(args=""; input="../../data/endian.raptor"; suf="_raptor"; $(RegressRW))
+
+regress_rwxml_struct1_o: rwxml_struct1
+	@(args=""; input="../../data/struct1"; suf=""; $(RegressInput))
+
+regress_rwxml_struct1_d: rwxml_struct1_d
+	@(args=""; input="../../data/struct1"; suf=""; $(RegressInput))
+
+regress_rwxml_alt1_o: rwxml_alt1
+	@(args=""; input="../../data/alt1"; suf=""; $(RegressInput))
+
+regress_rwxml_alt1_d: rwxml_alt1_d
+	@(args=""; input="../../data/alt1"; suf=""; $(RegressInput))
+
+clean:
+	$(RM) -f *~ *.o $(CLEANUP_TESTS)
+
+veryclean: clean
+	$(RM) $(GEN_DIR)/*.[hc] $(GEN_DIR)/*.xsd tmp/*
+
+# This works for some but not all test cases
+
+# These cases do not fit the usual pattern
+
+test_copy_format5: $(GEN_DIR)/format5.c test_copy_format5.c $(INCLUDE_DEPS) $(LIB_DEPS_O)
+	@$(CCExec_DYNAMIC_O)
+test_copy_format5_d: $(GEN_DIR)/format5.c test_copy_format5.c $(INCLUDE_DEPS) $(LIB_DEPS_D)
+	@$(CCExec_DYNAMIC_D)
+
+test_write_struct1: $(GEN_DIR)/struct1.c test_write_struct1.c $(INCLUDE_DEPS) $(LIB_DEPS_O)
+	@$(CCExec_DYNAMIC_O)
+test_write_struct1_d: $(GEN_DIR)/struct1.c test_write_struct1.c $(INCLUDE_DEPS) $(LIB_DEPS_D)
+	@$(CCExec_DYNAMIC_D)
+
+test_write_struct_strings: $(GEN_DIR)/struct_strings.c test_write_struct_strings.c $(INCLUDE_DEPS) $(LIB_DEPS_O)
+	@$(CCExec_DYNAMIC_O)
+test_write_struct_strings_d: $(GEN_DIR)/struct_strings.c test_write_struct_strings.c $(INCLUDE_DEPS) $(LIB_DEPS_D)
+	@$(CCExec_DYNAMIC_D)
+
+test_copy_ai: $(GEN_DIR)/ai.c test_copy_ai.c $(INCLUDE_DEPS) $(LIB_DEPS_O)
+	@$(CCExec_DYNAMIC_O)
+test_copy_ai_d: $(GEN_DIR)/ai.c test_copy_ai.c $(INCLUDE_DEPS) $(LIB_DEPS_D)
+	@$(CCExec_DYNAMIC_D)
+
+ # End of rules that are run from the arch directory
+endif

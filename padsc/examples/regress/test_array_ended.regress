@@ -1,0 +1,67 @@
+Data file = ../../data/array_ended
+warning: P_open: Installing default IO discipline : newline-terminated records
+read reported no errors and passed predicate test.
+entry_read returned array evens of length: 2
+entry_read returned array odds  of length: 3
+entry_read returned: error
+*****************************************************************************************************
+<top> : struct entry
+*****************************************************************************************************
+good vals:          1    bad vals:          1    pcnt-bad:   50.000
+  Characterizing number of errors PER READ CALL (nerr-per-read) : min 0 max 1 avg 0.500
+    => distribution of top 2 nerr-per-read values out of 2 distinct nerr-per-read values:
+        val:          0 count:          1 pcnt-of-total-vals:   50.000
+        val:          1 count:          1 pcnt-of-total-vals:   50.000
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          2 pcnt-of-total-vals:  100.000
+[Describing each field of <top>]
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.evens : array eseq_t of even
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Array lengths: good vals:          1    bad vals:          1    pcnt-bad:   50.000
+For good array length values, 100 pcnt identical:          2
+=====================================================================================================
+<top>.evens.allArrayElts : all array element [typedef even --> Pint32]
+=====================================================================================================
+good vals:          4    bad vals:          0    pcnt-bad:    0.000
+  Characterizing all array element [typedef even --> Pint32] values:  min 12 max 24 avg 18.000
+    => distribution of top 2 values out of 2 distinct values:
+        val:         12 count:          2  pcnt-of-good-vals:   50.000
+        val:         24 count:          2  pcnt-of-good-vals:   50.000
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          4  pcnt-of-good-vals:  100.000
+=====================================================================================================
+<top>.evens.arrayDetail[0] : array element [typedef even --> Pint32]
+=====================================================================================================
+2 array element [typedef even --> Pint32] values, 100 pcnt good, 100 pcnt identical:         12
+=====================================================================================================
+<top>.evens.arrayDetail[1] : array element [typedef even --> Pint32]
+=====================================================================================================
+2 array element [typedef even --> Pint32] values, 100 pcnt good, 100 pcnt identical:         24
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.odds : array oseq_t of odd
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Array lengths: 2 array length values, 100 pcnt good, 100 pcnt identical:          3
+=====================================================================================================
+<top>.odds.allArrayElts : all array element [typedef odd --> Pint32]
+=====================================================================================================
+good vals:          6    bad vals:          0    pcnt-bad:    0.000
+  Characterizing all array element [typedef odd --> Pint32] values:  min 13 max 17 avg 15.000
+    => distribution of top 3 values out of 3 distinct values:
+        val:         13 count:          2  pcnt-of-good-vals:   33.333
+        val:         15 count:          2  pcnt-of-good-vals:   33.333
+        val:         17 count:          2  pcnt-of-good-vals:   33.333
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          6  pcnt-of-good-vals:  100.000
+=====================================================================================================
+<top>.odds.arrayDetail[0] : array element [typedef odd --> Pint32]
+=====================================================================================================
+2 array element [typedef odd --> Pint32] values, 100 pcnt good, 100 pcnt identical:         13
+=====================================================================================================
+<top>.odds.arrayDetail[1] : array element [typedef odd --> Pint32]
+=====================================================================================================
+2 array element [typedef odd --> Pint32] values, 100 pcnt good, 100 pcnt identical:         15
+=====================================================================================================
+<top>.odds.arrayDetail[2] : array element [typedef odd --> Pint32]
+=====================================================================================================
+2 array element [typedef odd --> Pint32] values, 100 pcnt good, 100 pcnt identical:         17

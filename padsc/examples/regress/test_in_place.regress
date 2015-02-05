@@ -1,0 +1,95 @@
+Data file = ../../data/in_place
+warning: P_open: Installing default IO discipline : newline-terminated records
+*****************************************************************************************************
+<top> : struct bar
+*****************************************************************************************************
+good vals:          2    bad vals:          0    pcnt-bad:    0.000
+[Describing each field of <top>]
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.x : uint32
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2 uint32 values, 100 pcnt good, 100 pcnt identical:          3
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.b : struct foo
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+good vals:          2    bad vals:          0    pcnt-bad:    0.000
+[Describing each field of <top>.b]
+=====================================================================================================
+<top>.b.c : uint8
+=====================================================================================================
+good vals:          2    bad vals:          0    pcnt-bad:    0.000
+  Characterizing uint8 values:  min 2 max 4 avg 3.000
+    => distribution of top 2 values out of 2 distinct values:
+        val:          2 count:          1  pcnt-of-good-vals:   50.000
+        val:          4 count:          1  pcnt-of-good-vals:   50.000
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          2  pcnt-of-good-vals:  100.000
+=====================================================================================================
+<top>.b.ip : array ip_t of Puint8
+=====================================================================================================
+Array lengths: 2 array length values, 100 pcnt good, 100 pcnt identical:          4
+-----------------------------------------------------------------------------------------------------
+<top>.b.ip.allArrayElts : all array element
+-----------------------------------------------------------------------------------------------------
+good vals:          8    bad vals:          0    pcnt-bad:    0.000
+  Characterizing all array element values:  min 1 max 123 avg 33.625
+    => distribution of top 7 values out of 7 distinct values:
+        val:          2 count:          2  pcnt-of-good-vals:   25.000
+        val:          1 count:          1  pcnt-of-good-vals:   12.500
+        val:          3 count:          1  pcnt-of-good-vals:   12.500
+        val:          4 count:          1  pcnt-of-good-vals:   12.500
+        val:         23 count:          1  pcnt-of-good-vals:   12.500
+        val:        111 count:          1  pcnt-of-good-vals:   12.500
+        val:        123 count:          1  pcnt-of-good-vals:   12.500
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          8  pcnt-of-good-vals:  100.000
+-----------------------------------------------------------------------------------------------------
+<top>.b.ip.arrayDetail[0] : array element
+-----------------------------------------------------------------------------------------------------
+good vals:          2    bad vals:          0    pcnt-bad:    0.000
+  Characterizing array element values:  min 1 max 123 avg 62.000
+    => distribution of top 2 values out of 2 distinct values:
+        val:          1 count:          1  pcnt-of-good-vals:   50.000
+        val:        123 count:          1  pcnt-of-good-vals:   50.000
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          2  pcnt-of-good-vals:  100.000
+-----------------------------------------------------------------------------------------------------
+<top>.b.ip.arrayDetail[1] : array element
+-----------------------------------------------------------------------------------------------------
+good vals:          2    bad vals:          0    pcnt-bad:    0.000
+  Characterizing array element values:  min 2 max 111 avg 56.500
+    => distribution of top 2 values out of 2 distinct values:
+        val:          2 count:          1  pcnt-of-good-vals:   50.000
+        val:        111 count:          1  pcnt-of-good-vals:   50.000
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          2  pcnt-of-good-vals:  100.000
+-----------------------------------------------------------------------------------------------------
+<top>.b.ip.arrayDetail[2] : array element
+-----------------------------------------------------------------------------------------------------
+good vals:          2    bad vals:          0    pcnt-bad:    0.000
+  Characterizing array element values:  min 3 max 23 avg 13.000
+    => distribution of top 2 values out of 2 distinct values:
+        val:          3 count:          1  pcnt-of-good-vals:   50.000
+        val:         23 count:          1  pcnt-of-good-vals:   50.000
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          2  pcnt-of-good-vals:  100.000
+-----------------------------------------------------------------------------------------------------
+<top>.b.ip.arrayDetail[3] : array element
+-----------------------------------------------------------------------------------------------------
+good vals:          2    bad vals:          0    pcnt-bad:    0.000
+  Characterizing array element values:  min 2 max 4 avg 3.000
+    => distribution of top 2 values out of 2 distinct values:
+        val:          2 count:          1  pcnt-of-good-vals:   50.000
+        val:          4 count:          1  pcnt-of-good-vals:   50.000
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          2  pcnt-of-good-vals:  100.000
+=====================================================================================================
+<top>.b.d : char
+=====================================================================================================
+good vals:          2    bad vals:          0    pcnt-bad:    0.000
+  Characterizing char values:  min 'd' max 'e' (based on ASCII encoding)
+    => distribution of top 2 values out of 2 distinct values:
+        val:    'd' count:          1  pcnt-of-good-vals:   50.000
+        val:    'e' count:          1  pcnt-of-good-vals:   50.000
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING     count:          2  pcnt-of-good-vals:  100.000

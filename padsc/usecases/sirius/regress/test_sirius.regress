@@ -1,0 +1,306 @@
+Data file = ../../data/sirius
+Note: header read returned OK
+warning: Error [in order_header_t_read]: record 5 byte 68 : Extra data before char separator '|'
+[record 5]2711797|2228733|1|9153689364|9153689364|4323689364|4323689364|79762>>>t<<<|4512197922101|2|0|1614540|LOCAL|CUST_DUE_DATE|1004504399
+read returned error
+warning: Error [in order_header_t_read]: record 6 byte 68 : Extra data before char separator '|'
+[record 6]2711797|2228733|1|9153689364|9153689364|4323689364|4323689364|79762>>>}<<<|4512197922101|2|0|1614540|LOCAL|CUST_DUE_DATE|1004504399
+read returned error
+*****************************************************************************************************
+<top> : struct entry_t
+*****************************************************************************************************
+good vals:          5    bad vals:          2    pcnt-bad:   28.571
+  Characterizing number of errors PER READ CALL (nerr-per-read) : min 0 max 1 avg 0.286
+    => distribution of top 2 nerr-per-read values out of 2 distinct nerr-per-read values:
+        val:          0 count:          5 pcnt-of-total-vals:   71.429
+        val:          1 count:          2 pcnt-of-total-vals:   28.571
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          7 pcnt-of-total-vals:  100.000
+[Describing each field of <top>]
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.header : struct order_header_t
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+good vals:          5    bad vals:          2    pcnt-bad:   28.571
+  Characterizing number of errors PER READ CALL (nerr-per-read) : min 0 max 1 avg 0.286
+    => distribution of top 2 nerr-per-read values out of 2 distinct nerr-per-read values:
+        val:          0 count:          5 pcnt-of-total-vals:   71.429
+        val:          1 count:          2 pcnt-of-total-vals:   28.571
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          7 pcnt-of-total-vals:  100.000
+[Describing each field of <top>.header]
+=====================================================================================================
+<top>.header.order_num : uint32
+=====================================================================================================
+good vals:          7    bad vals:          0    pcnt-bad:    0.000
+  Characterizing uint32 values:  min 2711797 max 9068931 avg 3619959.286
+    => distribution of top 3 values out of 3 distinct values:
+        val:    2711797 count:          4  pcnt-of-good-vals:   57.143
+        val:    2711798 count:          2  pcnt-of-good-vals:   28.571
+        val:    9068931 count:          1  pcnt-of-good-vals:   14.286
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          7  pcnt-of-good-vals:  100.000
+=====================================================================================================
+<top>.header.att_order_num : uint32
+=====================================================================================================
+good vals:          7    bad vals:          0    pcnt-bad:    0.000
+  Characterizing uint32 values:  min 2228733 max 9068931 avg 3205904.429
+    => distribution of top 3 values out of 3 distinct values:
+        val:    2228733 count:          4  pcnt-of-good-vals:   57.143
+        val:    2228734 count:          2  pcnt-of-good-vals:   28.571
+        val:    9068931 count:          1  pcnt-of-good-vals:   14.286
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          7  pcnt-of-good-vals:  100.000
+=====================================================================================================
+<top>.header.ord_version : uint32
+=====================================================================================================
+7 uint32 values, 100 pcnt good, 100 pcnt identical:          1
+=====================================================================================================
+<top>.header.service_tn : opt service_tn_t
+=====================================================================================================
+Opt tag: 7 tag values, 100 pcnt good, 100 pcnt identical: some_service_tn_t (    1)
+[Describing each tag arm of <top>.header.service_tn]
+-----------------------------------------------------------------------------------------------------
+<top>.header.service_tn.some_service_tn_t : typedef pn_t [--> Puint64]
+-----------------------------------------------------------------------------------------------------
+good vals:          7    bad vals:          0    pcnt-bad:    0.000
+  Characterizing typedef pn_t [--> Puint64] values:  min 0 max 9727346500 avg 6702251584.571
+    => distribution of top 3 values out of 3 distinct values:
+        val: 9153689364 count:          3  pcnt-of-good-vals:   42.857
+        val:          0 count:          2  pcnt-of-good-vals:   28.571
+        val: 9727346500 count:          2  pcnt-of-good-vals:   28.571
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          7  pcnt-of-good-vals:  100.000
+=====================================================================================================
+<top>.header.billing_tn : opt billing_tn_t
+=====================================================================================================
+Opt tag: 7 tag values, 100 pcnt good, 100 pcnt identical: some_billing_tn_t (    1)
+[Describing each tag arm of <top>.header.billing_tn]
+-----------------------------------------------------------------------------------------------------
+<top>.header.billing_tn.some_billing_tn_t : typedef pn_t [--> Puint64]
+-----------------------------------------------------------------------------------------------------
+good vals:          7    bad vals:          0    pcnt-bad:    0.000
+  Characterizing typedef pn_t [--> Puint64] values:  min 0 max 9727346500 avg 6620300565.143
+    => distribution of top 3 values out of 3 distinct values:
+        val: 9153689364 count:          4  pcnt-of-good-vals:   57.143
+        val:          0 count:          2  pcnt-of-good-vals:   28.571
+        val: 9727346500 count:          1  pcnt-of-good-vals:   14.286
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          7  pcnt-of-good-vals:  100.000
+=====================================================================================================
+<top>.header.nlp_service_tn : opt nlp_service_tn_t
+=====================================================================================================
+Opt tag: 7 tag values, 100 pcnt good, 100 pcnt identical: some_nlp_service_tn_t (    1)
+[Describing each tag arm of <top>.header.nlp_service_tn]
+-----------------------------------------------------------------------------------------------------
+<top>.header.nlp_service_tn.some_nlp_service_tn_t : typedef pn_t [--> Puint64]
+-----------------------------------------------------------------------------------------------------
+good vals:          7    bad vals:          0    pcnt-bad:    0.000
+  Characterizing typedef pn_t [--> Puint64] values:  min 0 max 9727346500 avg 3860300565.143
+    => distribution of top 3 values out of 3 distinct values:
+        val: 4323689364 count:          4  pcnt-of-good-vals:   57.143
+        val:          0 count:          2  pcnt-of-good-vals:   28.571
+        val: 9727346500 count:          1  pcnt-of-good-vals:   14.286
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          7  pcnt-of-good-vals:  100.000
+=====================================================================================================
+<top>.header.nlp_billing_tn : opt nlp_billing_tn_t
+=====================================================================================================
+Opt tag: 7 tag values, 100 pcnt good, 100 pcnt identical: some_nlp_billing_tn_t (    1)
+[Describing each tag arm of <top>.header.nlp_billing_tn]
+-----------------------------------------------------------------------------------------------------
+<top>.header.nlp_billing_tn.some_nlp_billing_tn_t : typedef pn_t [--> Puint64]
+-----------------------------------------------------------------------------------------------------
+good vals:          7    bad vals:          0    pcnt-bad:    0.000
+  Characterizing typedef pn_t [--> Puint64] values:  min 0 max 9727346500 avg 3860300565.143
+    => distribution of top 3 values out of 3 distinct values:
+        val: 4323689364 count:          4  pcnt-of-good-vals:   57.143
+        val:          0 count:          2  pcnt-of-good-vals:   28.571
+        val: 9727346500 count:          1  pcnt-of-good-vals:   14.286
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          7  pcnt-of-good-vals:  100.000
+=====================================================================================================
+<top>.header.zip_code : opt zip_code_t
+=====================================================================================================
+Opt tag: good vals:          7    bad vals:          0    pcnt-bad:    0.000
+  Characterizing tag values:  min some_zip_code_t (    1)  max none_zip_code_t (    2)
+    => distribution of top 2 values out of 2 distinct values:
+        val: some_zip_code_t (    1)   count:          6  pcnt-of-good-vals:   85.714
+        val: none_zip_code_t (    2)   count:          1  pcnt-of-good-vals:   14.286
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING                        count:          7  pcnt-of-good-vals:  100.000
+[Describing each tag arm of <top>.header.zip_code]
+-----------------------------------------------------------------------------------------------------
+<top>.header.zip_code.some_zip_code_t : union Pzip
+-----------------------------------------------------------------------------------------------------
+Union tag: 6 tag values, 100 pcnt good, 100 pcnt identical: smallZip (    2)
+[Describing each tag arm of <top>.header.zip_code.some_zip_code_t]
+.....................................................................................................
+<top>.header.zip_code.some_zip_code_t.extendedZip : struct extended_zip_t
+.....................................................................................................
+(No struct extended_zip_t values.)
+.....................................................................................................
+<top>.header.zip_code.some_zip_code_t.smallZip : uint32
+.....................................................................................................
+good vals:          6    bad vals:          0    pcnt-bad:    0.000
+  Characterizing uint32 values:  min 75407 max 79762 avg 78310.333
+    => distribution of top 2 values out of 2 distinct values:
+        val:      79762 count:          4  pcnt-of-good-vals:   66.667
+        val:      75407 count:          2  pcnt-of-good-vals:   33.333
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          6  pcnt-of-good-vals:  100.000
+.....................................................................................................
+<top>.header.zip_code.some_zip_code_t.largeZip : uint64
+.....................................................................................................
+(No uint64 values.)
+=====================================================================================================
+<top>.header.ramp : union dib_ramp_t
+=====================================================================================================
+Union tag: good vals:          7    bad vals:          0    pcnt-bad:    0.000
+  Characterizing tag values:  min ramp (    1)  max genRamp (    2)
+    => distribution of top 2 values out of 2 distinct values:
+        val: ramp (    1)      count:          6  pcnt-of-good-vals:   85.714
+        val: genRamp (    2)   count:          1  pcnt-of-good-vals:   14.286
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING                count:          7  pcnt-of-good-vals:  100.000
+[Describing each tag arm of <top>.header.ramp]
+-----------------------------------------------------------------------------------------------------
+<top>.header.ramp.ramp : int64
+-----------------------------------------------------------------------------------------------------
+good vals:          6    bad vals:          0    pcnt-bad:    0.000
+  Characterizing int64 values:  min 4317116487801 max 4512197922101 avg 4447170777334.333
+    => distribution of top 2 values out of 2 distinct values:
+        val: 4512197922101 count:          4  pcnt-of-good-vals:   66.667
+        val: 4317116487801 count:          2  pcnt-of-good-vals:   33.333
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          6  pcnt-of-good-vals:  100.000
+-----------------------------------------------------------------------------------------------------
+<top>.header.ramp.genRamp : struct no_ramp_t
+-----------------------------------------------------------------------------------------------------
+good vals:          1    bad vals:          0    pcnt-bad:    0.000
+[Describing each field of <top>.header.ramp.genRamp]
+.....................................................................................................
+<top>.header.ramp.genRamp.id : uint64
+.....................................................................................................
+1 uint64 values, 100 pcnt good, 100 pcnt identical:      68931
+=====================================================================================================
+<top>.header.order_type : string
+=====================================================================================================
+String lengths: good vals:          7    bad vals:          0    pcnt-bad:    0.000
+  Characterizing string length values:  min 1 max 6 avg 1.714
+    => distribution of top 2 values out of 2 distinct values:
+        val:          1 count:          6  pcnt-of-good-vals:   85.714
+        val:          6 count:          1  pcnt-of-good-vals:   14.286
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          7  pcnt-of-good-vals:  100.000
+  Characterizing string values:
+    => distribution of top 2 strings out of 2 distinct strings:
+        val: "2"      count:          6  pcnt-of-good-vals:   85.714
+        val: "EDTF_6" count:          1  pcnt-of-good-vals:   14.286
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING       count:          7  pcnt-of-good-vals:  100.000
+=====================================================================================================
+<top>.header.order_details : uint32
+=====================================================================================================
+7 uint32 values, 100 pcnt good, 100 pcnt identical:          0
+=====================================================================================================
+<top>.header.unused : string
+=====================================================================================================
+String lengths: good vals:          7    bad vals:          0    pcnt-bad:    0.000
+  Characterizing string length values:  min 6 max 8 avg 6.857
+    => distribution of top 3 values out of 3 distinct values:
+        val:          7 count:          4  pcnt-of-good-vals:   57.143
+        val:          6 count:          2  pcnt-of-good-vals:   28.571
+        val:          8 count:          1  pcnt-of-good-vals:   14.286
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          7  pcnt-of-good-vals:  100.000
+  Characterizing string values:
+    => distribution of top 3 strings out of 3 distinct strings:
+        val: "1614540"  count:          4  pcnt-of-good-vals:   57.143
+        val: "250912"   count:          2  pcnt-of-good-vals:   28.571
+        val: "BREKDAVI" count:          1  pcnt-of-good-vals:   14.286
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          7  pcnt-of-good-vals:  100.000
+=====================================================================================================
+<top>.header.stream : string
+=====================================================================================================
+String lengths: good vals:          7    bad vals:          0    pcnt-bad:    0.000
+  Characterizing string length values:  min 3 max 5 avg 4.714
+    => distribution of top 2 values out of 2 distinct values:
+        val:          5 count:          6  pcnt-of-good-vals:   85.714
+        val:          3 count:          1  pcnt-of-good-vals:   14.286
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          7  pcnt-of-good-vals:  100.000
+  Characterizing string values:
+    => distribution of top 2 strings out of 2 distinct strings:
+        val: "LOCAL" count:          6  pcnt-of-good-vals:   85.714
+        val: "UNO"   count:          1  pcnt-of-good-vals:   14.286
+. . . . . . . . . .  . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING      count:          7  pcnt-of-good-vals:  100.000
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.events : array eventSeq of event_t
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Array lengths: 7 array length values, 100 pcnt good, 100 pcnt identical:          1
+=====================================================================================================
+<top>.events.allArrayElts : all array element
+=====================================================================================================
+good vals:          7    bad vals:          0    pcnt-bad:    0.000
+[Describing each field of <top>.events.allArrayElts]
+-----------------------------------------------------------------------------------------------------
+<top>.events.allArrayElts.state : string
+-----------------------------------------------------------------------------------------------------
+String lengths: good vals:          7    bad vals:          0    pcnt-bad:    0.000
+  Characterizing string length values:  min 9 max 13 avg 12.429
+    => distribution of top 2 values out of 2 distinct values:
+        val:         13 count:          6  pcnt-of-good-vals:   85.714
+        val:          9 count:          1  pcnt-of-good-vals:   14.286
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          7  pcnt-of-good-vals:  100.000
+  Characterizing string values:
+    => distribution of top 2 strings out of 2 distinct strings:
+        val: "CUST_DUE_DATE" count:          6  pcnt-of-good-vals:   85.714
+        val: "EDTF_CRTE"     count:          1  pcnt-of-good-vals:   14.286
+. . . . . . . . . . . . . .  . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING              count:          7  pcnt-of-good-vals:  100.000
+-----------------------------------------------------------------------------------------------------
+<top>.events.allArrayElts.tstamp : uint32
+-----------------------------------------------------------------------------------------------------
+good vals:          7    bad vals:          0    pcnt-bad:    0.000
+  Characterizing uint32 values:  min 969940800 max 1004504399 avg 999542056.286
+    => distribution of top 3 values out of 3 distinct values:
+        val: 1004504399 count:          4  pcnt-of-good-vals:   57.143
+        val: 1004417999 count:          2  pcnt-of-good-vals:   28.571
+        val:  969940800 count:          1  pcnt-of-good-vals:   14.286
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          7  pcnt-of-good-vals:  100.000
+=====================================================================================================
+<top>.events.arrayDetail[0] : array element
+=====================================================================================================
+good vals:          7    bad vals:          0    pcnt-bad:    0.000
+[Describing each field of <top>.events.arrayDetail[0]]
+-----------------------------------------------------------------------------------------------------
+<top>.events.arrayDetail[0].state : string
+-----------------------------------------------------------------------------------------------------
+String lengths: good vals:          7    bad vals:          0    pcnt-bad:    0.000
+  Characterizing string length values:  min 9 max 13 avg 12.429
+    => distribution of top 2 values out of 2 distinct values:
+        val:         13 count:          6  pcnt-of-good-vals:   85.714
+        val:          9 count:          1  pcnt-of-good-vals:   14.286
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          7  pcnt-of-good-vals:  100.000
+  Characterizing string values:
+    => distribution of top 2 strings out of 2 distinct strings:
+        val: "CUST_DUE_DATE" count:          6  pcnt-of-good-vals:   85.714
+        val: "EDTF_CRTE"     count:          1  pcnt-of-good-vals:   14.286
+. . . . . . . . . . . . . .  . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING              count:          7  pcnt-of-good-vals:  100.000
+-----------------------------------------------------------------------------------------------------
+<top>.events.arrayDetail[0].tstamp : uint32
+-----------------------------------------------------------------------------------------------------
+good vals:          7    bad vals:          0    pcnt-bad:    0.000
+  Characterizing uint32 values:  min 969940800 max 1004504399 avg 999542056.286
+    => distribution of top 3 values out of 3 distinct values:
+        val: 1004504399 count:          4  pcnt-of-good-vals:   57.143
+        val: 1004417999 count:          2  pcnt-of-good-vals:   28.571
+        val:  969940800 count:          1  pcnt-of-good-vals:   14.286
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          7  pcnt-of-good-vals:  100.000

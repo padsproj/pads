@@ -1,0 +1,68 @@
+Data file = ../../data/array_skip2
+warning: P_open: Installing default IO discipline : newline-terminated records
+read reported no errors and passed predicate test.
+entry_read returned array of length: 2
+read reported no errors and passed predicate test.
+entry_read returned array of length: 5
+read reported no errors and passed predicate test.
+entry_read returned array of length: 2
+read reported no errors and passed predicate test.
+entry_read returned array of length: 2
+read reported no errors and passed predicate test.
+entry_read returned array of length: 2
+read reported no errors and passed predicate test.
+entry_read returned array of length: 2
+*****************************************************************************************************
+<top> : struct entry
+*****************************************************************************************************
+good vals:          6    bad vals:          0    pcnt-bad:    0.000
+[Describing each field of <top>]
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.seq : array seq_t of Pint32
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Array lengths: good vals:          6    bad vals:          0    pcnt-bad:    0.000
+  Characterizing array length values:  min 2 max 5 avg 2.500
+    => distribution of top 2 values out of 2 distinct values:
+        val:          2 count:          5  pcnt-of-good-vals:   83.333
+        val:          5 count:          1  pcnt-of-good-vals:   16.667
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          6  pcnt-of-good-vals:  100.000
+=====================================================================================================
+<top>.seq.allArrayElts : all array element
+=====================================================================================================
+good vals:         15    bad vals:          0    pcnt-bad:    0.000
+  Characterizing all array element values:  min 3 max 13 avg 5.000
+    => distribution of top 5 values out of 5 distinct values:
+        val:          3 count:          7  pcnt-of-good-vals:   46.667
+        val:          5 count:          5  pcnt-of-good-vals:   33.333
+        val:          7 count:          1  pcnt-of-good-vals:    6.667
+        val:          9 count:          1  pcnt-of-good-vals:    6.667
+        val:         13 count:          1  pcnt-of-good-vals:    6.667
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:         15  pcnt-of-good-vals:  100.000
+=====================================================================================================
+<top>.seq.arrayDetail[0] : array element
+=====================================================================================================
+6 array element values, 100 pcnt good, 100 pcnt identical:          3
+=====================================================================================================
+<top>.seq.arrayDetail[1] : array element
+=====================================================================================================
+good vals:          6    bad vals:          0    pcnt-bad:    0.000
+  Characterizing array element values:  min 5 max 13 avg 6.333
+    => distribution of top 2 values out of 2 distinct values:
+        val:          5 count:          5  pcnt-of-good-vals:   83.333
+        val:         13 count:          1  pcnt-of-good-vals:   16.667
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          6  pcnt-of-good-vals:  100.000
+=====================================================================================================
+<top>.seq.arrayDetail[2] : array element
+=====================================================================================================
+1 array element values, 100 pcnt good, 100 pcnt identical:          7
+=====================================================================================================
+<top>.seq.arrayDetail[3] : array element
+=====================================================================================================
+1 array element values, 100 pcnt good, 100 pcnt identical:          9
+=====================================================================================================
+<top>.seq.arrayDetail[4] : array element
+=====================================================================================================
+1 array element values, 100 pcnt good, 100 pcnt identical:          3

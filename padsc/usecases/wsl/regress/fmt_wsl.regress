@@ -1,0 +1,5 @@
+Input file = ../../data/wsl
+Output file = /dev/stdout
+Installing fmt override function FMT_OVERRIDE_TY1 for type Phostname
+207.136.97.49|-|-|10/16/97:00:00:00|GET|/tk/p.txt|1|0|200|30
+tj62.aol.com|-|-|10/16/97:00:00:00|POST|/scpt/dd@grp.org/confirm|1|0|200|941

@@ -1,0 +1,43 @@
+Input file = ../../data/simple2
+Output file = /dev/stdout
+<simple2_types>
+  <birthtimestamp><val>1975-11-01+12:00:00</val></birthtimestamp>
+  <birthtime><val>12:00:00</val></birthtime>
+  <birthdate><val>1975-11-01</val></birthdate>
+  <num_accts><val>3</val></num_accts>
+  <name><val>Carlson J. Kessel</val></name>
+</simple2_types>
+<simple2_types>
+  <birthtimestamp><val>1997-01-05+19:00:00</val></birthtimestamp>
+  <birthtime><val>19:00:00</val></birthtime>
+  <birthdate><val>1997-01-05</val></birthdate>
+  <num_accts><val>5</val></num_accts>
+  <name><val>Howard K. Bilge</val></name>
+</simple2_types>
+warning: Error [in Pa_int32_read]: at record 3 at byte 28 : Invalid ASCII character encoding of a number 
+[record 3]6:32 9/11/99|06:32|9/11/99|>>>n<<<one|Bob Jones
+<simple2_types>
+  <pd><pstate>Normal</pstate><nerr>2</nerr><errCode>P_STRUCT_FIELD_ERR</errCode><loc><b><num>3</num><byte>28</byte><offset>134</offset></b><e><num>3</num><byte>28</byte><offset>134</offset></e></loc></pd>
+  <birthtimestamp><val>1999-09-11+06:32:00</val></birthtimestamp>
+  <birthtime><val>06:32:00</val></birthtime>
+  <birthdate><val>1999-09-11</val></birthdate>
+  <num_accts><pd><pstate>Normal</pstate><nerr>1</nerr><errCode>P_INVALID_A_NUM</errCode><loc><b><num>3</num><byte>28</byte><offset>134</offset></b><e><num>3</num><byte>28</byte><offset>134</offset></e></loc></pd></num_accts>
+  <name><val>Bob Jones</val></name>
+</simple2_types>
+<simple2_types>
+  <birthtimestamp><val>2006-01-12+14:14:00</val></birthtimestamp>
+  <birthtime><val>14:14:00</val></birthtime>
+  <birthdate><val>2006-01-12</val></birthdate>
+  <num_accts><val>8</val></num_accts>
+  <name><val>Jerry Johnson</val></name>
+</simple2_types>
+warning: Error [in simple2_types_read]: record 5 byte 42 : Extra data before char separator '|'
+[record 5]midnight sep 11, 1980|midnight|09111980|4>>>.2<<<|Whyia C. Nott
+<simple2_types>
+  <pd><pstate>Normal</pstate><nerr>1</nerr><errCode>P_STRUCT_EXTRA_BEFORE_SEP</errCode><loc><b><num>5</num><byte>42</byte><offset>235</offset></b><e><num>5</num><byte>43</byte><offset>236</offset></e></loc></pd>
+  <birthtimestamp><val>1980-09-11+00:00:00</val></birthtimestamp>
+  <birthtime><val>00:00:00</val></birthtime>
+  <birthdate><val>1980-09-11</val></birthdate>
+  <num_accts><val>4</val></num_accts>
+  <name><val>Whyia C. Nott</val></name>
+</simple2_types>

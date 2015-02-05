@@ -1,0 +1,12 @@
+warning: P_open: Installing default IO discipline : newline-terminated records
+warning: Error [in pn_t_read]: at record 1 from byte 1 to byte 11: Typedef constraint error 
+[record 1]>>>20198543987<<<
+Record not okay:	x = 20198543987
+warning: Error [in pn_t_read]: at record 2 from byte 1 to byte 3: Typedef constraint error 
+[record 2]>>>123<<<
+Record not okay:	x = 123
+Record okay:	x = 9739843167
+warning: Error [in pn_t_read]: at record 4 from byte 1 to byte 12: Typedef constraint error 
+[record 4]>>>119739843167<<<
+Record not okay:	x = 119739843167
+Record okay:	x = 9733608077

@@ -1,0 +1,15 @@
+Input file = ../../data/enum
+Output file = /dev/stdout
+warning: P_open: Installing default IO discipline : newline-terminated records
+<orderStates><val>S_init</val></orderStates>
+<orderStates><val>S_lec</val></orderStates>
+<orderStates><val>S_care</val></orderStates>
+<orderStates><val>if</val></orderStates>
+<orderStates><val>S_tpv</val></orderStates>
+<orderStates><val>for</val></orderStates>
+<orderStates><val>for</val></orderStates>
+warning: Error [in orderStates_read]: record 8 byte 1 : Did not match any branch of Penum orderStates
+[record 8]>>><<<frob
+Note [in orderStates_read]: record 8 byte 1 : Resynching at EOR
+[record 8]>>>frob<<<
+<orderStates><pd><pstate>Normal</pstate><nerr>1</nerr><errCode>P_ENUM_MATCH_ERR</errCode><loc><b><num>8</num><byte>1</byte></b><e><num>8</num><byte>0</byte></e></loc></pd></orderStates>

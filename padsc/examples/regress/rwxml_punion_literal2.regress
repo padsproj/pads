@@ -1,0 +1,48 @@
+Input file = ../../data/punion_literal2
+Output file = /dev/stdout
+warning: P_open: Installing default IO discipline : newline-terminated records
+<test>
+  <baz><val>baz</val></baz>
+</test>
+<test>
+  <c><val>c</val></c>
+</test>
+<test>
+  <baz><val>baz</val></baz>
+</test>
+<test>
+  <f><val>34</val></f>
+</test>
+<test>
+  <star><val>*</val></star>
+</test>
+<test>
+  <baz><val>baz</val></baz>
+</test>
+<test>
+  <f><val>356</val></f>
+</test>
+<test>
+  <star><val>*</val></star>
+</test>
+<test>
+  <c><val>c</val></c>
+</test>
+<test>
+  <baz><val>baz</val></baz>
+</test>
+<test>
+  <star><val>*</val></star>
+</test>
+<test>
+  <as><val>as</val></as>
+</test>
+<test>
+  <as><val>as</val></as>
+</test>
+<test>
+  <as><val>as</val></as>
+</test>
+<test>
+  <f><val>23</val></f>
+</test>

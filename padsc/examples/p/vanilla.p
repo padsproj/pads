@@ -1,0 +1,1 @@
+../../../infer/include/vanilla.p

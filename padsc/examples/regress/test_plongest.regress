@@ -1,0 +1,104 @@
+Data file = ../../data/plongest
+
+warning: P_open: Installing default IO discipline : newline-terminated records
+
+*****************************************************************************************************
+<top> : struct entry_t
+*****************************************************************************************************
+good vals:          5    bad vals:          0    pcnt-bad:    0.000
+
+[Describing each field of <top>]
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.evens : array evens_t of even_t
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Array lengths: good vals:          5    bad vals:          0    pcnt-bad:    0.000
+  Characterizing array length values:  min 0 max 3 avg 1.000
+    => distribution of top 3 values out of 3 distinct values:
+        val:          0 count:          2  pcnt-of-good-vals:   40.000
+        val:          1 count:          2  pcnt-of-good-vals:   40.000
+        val:          3 count:          1  pcnt-of-good-vals:   20.000
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          5  pcnt-of-good-vals:  100.000
+
+=====================================================================================================
+<top>.evens.allArrayElts : all array element [typedef even_t --> Puint32]
+=====================================================================================================
+good vals:          5    bad vals:          0    pcnt-bad:    0.000
+  Characterizing all array element [typedef even_t --> Puint32] values:  min 12 max 56 avg 27.600
+    => distribution of top 4 values out of 4 distinct values:
+        val:         12 count:          2  pcnt-of-good-vals:   40.000
+        val:         24 count:          1  pcnt-of-good-vals:   20.000
+        val:         34 count:          1  pcnt-of-good-vals:   20.000
+        val:         56 count:          1  pcnt-of-good-vals:   20.000
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          5  pcnt-of-good-vals:  100.000
+
+=====================================================================================================
+<top>.evens.arrayDetail[0] : array element [typedef even_t --> Puint32]
+=====================================================================================================
+good vals:          3    bad vals:          0    pcnt-bad:    0.000
+  Characterizing array element [typedef even_t --> Puint32] values:  min 12 max 24 avg 16.000
+    => distribution of top 2 values out of 2 distinct values:
+        val:         12 count:          2  pcnt-of-good-vals:   66.667
+        val:         24 count:          1  pcnt-of-good-vals:   33.333
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          3  pcnt-of-good-vals:  100.000
+
+=====================================================================================================
+<top>.evens.arrayDetail[1] : array element [typedef even_t --> Puint32]
+=====================================================================================================
+1 array element [typedef even_t --> Puint32] values, 100 pcnt good, 100 pcnt identical:         34
+
+=====================================================================================================
+<top>.evens.arrayDetail[2] : array element [typedef even_t --> Puint32]
+=====================================================================================================
+1 array element [typedef even_t --> Puint32] values, 100 pcnt good, 100 pcnt identical:         56
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.rest : array rest_t of Puint32
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Array lengths: good vals:          5    bad vals:          0    pcnt-bad:    0.000
+  Characterizing array length values:  min 0 max 2 avg 1.200
+    => distribution of top 3 values out of 3 distinct values:
+        val:          1 count:          2  pcnt-of-good-vals:   40.000
+        val:          2 count:          2  pcnt-of-good-vals:   40.000
+        val:          0 count:          1  pcnt-of-good-vals:   20.000
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          5  pcnt-of-good-vals:  100.000
+
+=====================================================================================================
+<top>.rest.allArrayElts : all array element
+=====================================================================================================
+good vals:          6    bad vals:          0    pcnt-bad:    0.000
+  Characterizing all array element values:  min 3 max 67 avg 20.333
+    => distribution of top 4 values out of 4 distinct values:
+        val:          3 count:          3  pcnt-of-good-vals:   50.000
+        val:         12 count:          1  pcnt-of-good-vals:   16.667
+        val:         34 count:          1  pcnt-of-good-vals:   16.667
+        val:         67 count:          1  pcnt-of-good-vals:   16.667
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          6  pcnt-of-good-vals:  100.000
+
+=====================================================================================================
+<top>.rest.arrayDetail[0] : array element
+=====================================================================================================
+good vals:          4    bad vals:          0    pcnt-bad:    0.000
+  Characterizing array element values:  min 3 max 67 avg 19.000
+    => distribution of top 2 values out of 2 distinct values:
+        val:          3 count:          3  pcnt-of-good-vals:   75.000
+        val:         67 count:          1  pcnt-of-good-vals:   25.000
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          4  pcnt-of-good-vals:  100.000
+
+=====================================================================================================
+<top>.rest.arrayDetail[1] : array element
+=====================================================================================================
+good vals:          2    bad vals:          0    pcnt-bad:    0.000
+  Characterizing array element values:  min 12 max 34 avg 23.000
+    => distribution of top 2 values out of 2 distinct values:
+        val:         12 count:          1  pcnt-of-good-vals:   50.000
+        val:         34 count:          1  pcnt-of-good-vals:   50.000
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          2  pcnt-of-good-vals:  100.000
+

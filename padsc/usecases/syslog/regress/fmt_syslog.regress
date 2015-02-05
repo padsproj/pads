@@ -1,0 +1,11 @@
+Input file = ../../data/syslog
+Output file = /dev/stdout
+011104,08:07:01,sideshow,Customer:NONE,sideshow,Serial8/1/1/27,,,Line protocol down,UNKNOWN
+,020203,12:51:04,illinois,Customer:NONE,illinois,POS5/2,,,Line protocol down,UNKNOWN
+,071901,11:14:06,savannah,Customer:NONE,savannah,POS5/1,,,Sonet link down (B3 BER exceeds threshold, TC alarm declared),UNKNOWN 05/8/04|07:15:02|illinois|Customer:NONE|illinois|POS5/2|||Line protocol up|UNKNOWN
+,021105,04:16:12,illinois,Customer:NONE,illinois,POS5/2,,,Line protocol down,UNKNOWN
+,113003,05:17:44,barron,Customer:NONE,barron,Serial4/1/0/23,,,Link up,UNKNOWN
+,051504,03:08:51,illinois,Customer:NONE,illinois,POS5/2,,,Line protocol up,UNKNOWN
+,020702,01:18:05,savannah,Customer:NONE,savannah,POS5/1,,,Sonet link up (B3 BER below threshold, TC alarm cleared),UNKNOWN
+,080103,11:12:17,barron,Customer:NONE,barron,Serial4/1/0/23,,,Line protocol up,UNKNOWN
+,040802,04:25:17,call,Customer:NONE,call,POS6/0,,,Line protocol down,UNKNOWN

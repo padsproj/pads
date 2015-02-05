@@ -1,0 +1,26 @@
+Pstruct test {
+  Pstring(:' ':)   i8s; ' ';
+  Pa_int8          i8 : i8 == Pstring2int8(&i8s);
+  '\n';
+  Pstring(:' ':)   i16s; ' ';
+  Pa_int16         i16 : i16 == Pstring2int16(&i16s);
+  '\n';
+  Pstring(:' ':)   i32s; ' ';
+  Pa_int32         i32 : i32 == Pstring2int32(&i32s);
+  '\n';
+  Pstring(:' ':)   i64s; ' ';
+  Pa_int64         i64 : i64 == Pstring2int64(&i64s);
+  '\n';
+  Pstring(:' ':)   u8s; ' ';
+  Pa_uint8         u8 : u8 == Pstring2uint8(&u8s);
+  '\n';
+  Pstring(:' ':)   u16s; ' ';
+  Pa_uint16        u16 : u16 == Pstring2uint16(&u16s);
+  '\n';
+  Pstring(:' ':)   u32s; ' ';
+  Pa_uint32        u32 : u32 == Pstring2uint32(&u32s);
+  '\n';
+  Pstring(:' ':)   u64s; ' ';
+  Pa_uint64        u64 : u64 == Pstring2uint64(&u64s);
+  '\n';
+};

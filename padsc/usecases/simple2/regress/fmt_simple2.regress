@@ -1,0 +1,11 @@
+Input file = ../../data/simple2
+Output file = /dev/stdout
+1975-11-01+12:00:00|12:00:00|110175|3|Carlson J. Kessel
+1997-01-05+19:00:00|19:00:00|010597|5|Howard K. Bilge
+warning: Error [in Pa_int32_read]: at record 3 at byte 28 : Invalid ASCII character encoding of a number 
+[record 3]6:32 9/11/99|06:32|9/11/99|>>>n<<<one|Bob Jones
+read returned error
+2006-01-12+14:14:00|14:14:00|011206|8|Jerry Johnson
+warning: Error [in simple2_types_read]: record 5 byte 42 : Extra data before char separator '|'
+[record 5]midnight sep 11, 1980|midnight|09111980|4>>>.2<<<|Whyia C. Nott
+read returned error

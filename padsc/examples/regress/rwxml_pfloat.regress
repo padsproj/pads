@@ -1,0 +1,31 @@
+Input file = ../../data/pfloat
+Output file = /dev/stdout
+warning: P_open: Installing default IO discipline : newline-terminated records
+<test>
+  <x><val>11.300000</val></x>
+  <y><val>282.500000</val></y>
+</test>
+<test>
+  <x><val>-99.111000</val></x>
+  <y><val>-2477.775000</val></y>
+</test>
+<test>
+  <x><val>0.000000</val></x>
+  <y><val>0.000000</val></y>
+</test>
+<test>
+  <x><val>10000000.000000</val></x>
+  <y><val>250000000.000000</val></y>
+</test>
+<test>
+  <x><val>10.000000</val></x>
+  <y><val>250.000010</val></y>
+</test>
+<test>
+  <x><val>10000.000000</val></x>
+  <y><val>250000.000000</val></y>
+</test>
+<test>
+  <x><val>1.000000</val></x>
+  <y><val>25.000000</val></y>
+</test>

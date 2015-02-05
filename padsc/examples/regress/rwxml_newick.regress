@@ -1,0 +1,55 @@
+Input file = ../../data/newick
+Output file = /dev/stdout
+warning: P_open: Installing default IO discipline : newline-terminated records
+<tree>
+  <branches>
+    <elt>
+      <tip>
+        <some_tip_t>
+          <name><val>B</val></name>
+          <dist><val>3</val></dist>
+        </some_tip_t>
+      </tip>
+    </elt>
+    <elt>
+      <interior>
+        <branches>
+          <elt>
+            <tip>
+              <some_tip_t>
+                <name><val>A</val></name>
+                <dist><val>5</val></dist>
+              </some_tip_t>
+            </tip>
+          </elt>
+          <elt>
+            <tip>
+              <some_tip_t>
+                <name><val>C</val></name>
+                <dist><val>10</val></dist>
+              </some_tip_t>
+            </tip>
+          </elt>
+          <elt>
+            <tip>
+              <some_tip_t>
+                <name><val>E</val></name>
+                <dist><val>2</val></dist>
+              </some_tip_t>
+            </tip>
+          </elt>
+          <length>3</length>
+          </branches>
+      </interior>
+    </elt>
+    <elt>
+      <tip>
+        <some_tip_t>
+          <name><val>D</val></name>
+          <dist><val>0</val></dist>
+        </some_tip_t>
+      </tip>
+    </elt>
+    <length>3</length>
+    </branches>
+</tree>

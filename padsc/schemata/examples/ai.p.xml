@@ -1,0 +1,186 @@
+<!-- ai.p.xml -->
+<PadsC xmlns="http://www.padsproj.org/pads-xml.xsd">
+  <!-- 
+    Parray nIP {
+      Puint8 [4] : Psep('.') && Pterm(Pnosep);          
+   };
+  -->
+  <array>
+    <decl><name>nIP</name></decl>
+    <ptype><name>Puint8</name></ptype>
+    <delimiterConstraints>
+      <sep><char>.</char></sep>
+      <term><nosep/></term>
+    </delimiterConstraints>
+    <arrayConstraints>
+      <size><max>4</max></size>
+    </arrayConstraints>
+  </array>
+  <!--
+    Parray sIP{
+      Pstring_SE(:"/[. ]/":) [] : Psep('.') && Pterm(Pnosep); 
+   };
+
+   ??!!  The argument to Pstring_SE is not qualified 
+  -->
+  <array>
+    <decl><name>sIP</name></decl>
+    <ptype>
+      <name>Pstring_SE</name>
+      <argument>/[. ]/</argument>
+    </ptype>
+    <delimiterConstraints>
+      <sep><char>.</char></sep>
+      <term><nosep/></term>
+    </delimiterConstraints>
+  </array>
+  <!--
+    Punion clihost_t {
+      nIP resolved;    /- 135.207.23.32
+      sIP symbolic;    /- www.research.att.com
+    };
+  -->
+  <union>
+    <decl><name>clihost_t</name></decl>
+    <field><ptype><name>nIP</name></ptype><name>resolved</name></field>
+    <field><ptype><name>sIP</name></ptype><name>symbolic</name></field>
+  </union>
+  <!-- 
+    Ptypedef Pchar unknown_t : unknown_t x => { x == '-'};
+  -->
+  <typedef>
+    <decl><name>unknown_t</name></decl>
+    <ptype><name>Pchar</name></ptype>
+    <var>x</var>   
+    <constraints>
+      <expr><native>x == '-'</native></expr>
+    </constraints>
+  </typedef>
+  <!-- 
+    Punion auth_id_t {
+      unknown_t unauthorized;         /- non-authenticated http session
+      Pstring(:' ':) id;              /- login supplied during authentication
+    };
+
+   ??!!  The argument to Pstring is not qualified 
+  -->
+  <union>
+    <decl><name>auth_id_t</name></decl>
+    <field><ptype><name>unknown_t</name></ptype><name>unauthorized</name></field>
+    <field><ptype><name>Pstring</name><argument>' '</argument></ptype><name>id</name></field>
+  </union>
+  <!--
+    Punion contentOpt_t {
+      Puint32 len;                    /- length available
+      unknown_t unavailable;
+    };
+  -->
+  <union>
+    <decl><name>contentOpt_t</name></decl>
+    <field><ptype><name>Puint32</name></ptype><name>len</name></field>
+    <field><ptype><name>unknown_t</name></ptype><name>unavailable</name></field>
+  </union>
+  <!-- 
+    Pstruct http_v_t {
+      "HTTP/";
+      Puint8 major; '.';
+      Puint8 minor;           /- http minor mode
+    };
+  -->
+  <struct>
+    <decl><name>http_v_t</name></decl>
+    <literal><string>HTTP/</string></literal>
+    <field><ptype><name>Puint8</name></ptype><name>major</name></field>
+    <literal><char>.</char></literal>
+    <field><ptype><name>Puint8</name></ptype><name>minor</name></field>
+  </struct>
+  <!--
+    Penum http_method_t {
+        GET,     PUT,     POST,     HEAD,     DELETE, 
+        LINK,        /- Unused after http 1.1
+        UNLINK       /- Unused after http 1.1
+    };
+  -->
+  <enum>
+    <decl><name>http_method_t</name></decl>
+    <enumField><name>GET</name></enumField>
+    <enumField><name>PUT</name></enumField>
+    <enumField><name>POST</name></enumField>
+    <enumField><name>HEAD</name></enumField>
+    <enumField><name>DELETE</name></enumField> <!-- Unused after http 1.1 -->
+    <enumField><name>UNLINK</name></enumField> <!-- Unused after http 1.1 -->
+  </enum>
+  <function>
+    <name>checkVersion</name>
+    <expr><native>
+<![CDATA[
+      int  checkVersion(http_v_t version, http_method_t meth)  {
+        if ((version.major == 1) && (version.minor == 1)) return 1;
+        if ((meth == LINK)  || (meth == UNLINK )) return 0;
+        return 1;
+      }
+]]>
+    </native></expr>
+  </function>
+  <!--
+    Pstruct http_request_t {
+    '\"';   http_method_t meth;             /- Method used during request
+    ' ';    Pstring(:' ':) req_uri;         /- Requested uri.
+    ' ';    http_v_t       version : checkVersion(version, meth); /- HTTP version number of request 
+    '\"';
+  };
+  -->
+  <struct>
+    <decl><name>http_request_t</name></decl>
+    <literal><char>"</char></literal>
+    <field><ptype><name>http_method_t</name></ptype><name>meth</name></field>
+    <literal><char> </char></literal>
+    <field>
+      <ptype><name>http_v_t</name></ptype><name>version</name>
+      <constraints><expr><native>checkVersion(version, meth);</native></expr></constraints>
+    </field>
+    <literal><char>"</char></literal>
+  </struct>
+  <!-- 
+    Precord Pstruct http_clf_t {
+            clihost_t host;                   /- IP address of client requesting service
+       ' '; auth_id_t remoteID;               /- Remote identity; '-' indicates not obtained.
+       ' '; auth_id_t auth;                   /- Name of authenticated user.
+       " [";
+       Ptimestamp(:']':) ts;                  /- Timestamp of request.
+       "] ";
+       http_request_t request;                /- Request.
+       ' ';  Puint16_FW(:3:) response;        /- 3-digit response code
+       ' ';  contentOpt_t contentLength;      /- Number of bytes in request response.
+    };
+
+   ??!!  The argument to Ptimestamp is not qualified 
+  -->
+  <struct>
+    <record/>
+    <decl><name>http_clf_t</name></decl>
+    <field><ptype><name>clihost_t</name></ptype><name>host</name></field>
+    <literal><char> </char></literal>
+    <field><ptype><name>auth_id_t</name></ptype><name>remoteID</name></field>
+    <literal><char> </char></literal>
+    <field><ptype><name>auth_id_t</name></ptype><name>auth</name></field>
+    <literal><char> [</char></literal>
+    <field><ptype><name>Ptimestamp</name><argument>]</argument></ptype><name>ts</name></field>
+    <literal><char>] </char></literal>
+    <field><ptype><name>http_request_t</name></ptype><name>request</name></field>
+    <literal><char> </char></literal>
+    <field><ptype><name>Puint16_FW</name><argument>3</argument></ptype><name>response</name></field>
+    <literal><char> </char></literal>
+    <field><ptype><name>contentOpt_t</name></ptype><name>contentLength</name></field>
+  </struct>
+  <!-- 
+    Psource Parray log_t {
+      http_clf_t [];
+    }
+  -->
+  <array>
+    <source/>
+    <decl><name>log_t</name></decl>
+    <ptype><name>http_clf_t</name></ptype>
+  </array>
+</PadsC>  

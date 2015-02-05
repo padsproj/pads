@@ -1,0 +1,13 @@
+Group is
+
+#if defined(NEW_CM)
+  $/basis.cm
+  $/smlnj-lib.cm
+  $/pp-lib.cm
+#else
+  smlnj-lib.cm
+  pp-lib.cm
+#endif
+
+  parseCmdLine-sig.sml
+  parseCmdLine.sml

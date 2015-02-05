@@ -1,0 +1,23 @@
+Data file = ../../data/enum2
+
+warning: P_open: Installing default IO discipline : newline-terminated records
+
+*****************************************************************************************************
+<top> : enum orderStates
+*****************************************************************************************************
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top> : enum orderStates
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+good vals:          8    bad vals:          0    pcnt-bad:    0.000
+  Characterizing enum orderStates:  min init (    0)  max if (   11)
+    => distribution of top 6 values out of 6 distinct values:
+        val: for (   10)    count:          2  pcnt-of-good-vals:   25.000
+        val: if (   11)     count:          2  pcnt-of-good-vals:   25.000
+        val: init (    0)   count:          1  pcnt-of-good-vals:   12.500
+        val: lec (    2)    count:          1  pcnt-of-good-vals:   12.500
+        val: care (    3)   count:          1  pcnt-of-good-vals:   12.500
+        val: tpv (    5)    count:          1  pcnt-of-good-vals:   12.500
+. .  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING             count:          8  pcnt-of-good-vals:  100.000
+

@@ -1,0 +1,20 @@
+Data file = ../../data/transform
+warning: P_open: Installing default IO discipline : newline-terminated records
+*****************************************************************************************************
+<top> : struct entry_t
+*****************************************************************************************************
+good vals:          5    bad vals:          0    pcnt-bad:    0.000
+[Describing each field of <top>]
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.f : transform hexint32 [--> Puint32]
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+good vals:          5    bad vals:          0    pcnt-bad:    0.000
+  Characterizing transform hexint32 [--> Puint32] values:  min 1 max 4294967295 avg 2008132327.400
+    => distribution of top 5 values out of 5 distinct values:
+        val:          1 count:          1  pcnt-of-good-vals:   20.000
+        val:         12 count:          1  pcnt-of-good-vals:   20.000
+        val: 2863311530 count:          1  pcnt-of-good-vals:   20.000
+        val: 2882382799 count:          1  pcnt-of-good-vals:   20.000
+        val: 4294967295 count:          1  pcnt-of-good-vals:   20.000
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          5  pcnt-of-good-vals:  100.000

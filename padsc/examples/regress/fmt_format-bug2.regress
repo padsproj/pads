@@ -1,0 +1,8 @@
+Input file = ../../data/format-bug2
+Output file = /dev/stdout
+warning: P_open: Installing default IO discipline : newline-terminated records
+:snort
+:snort
+:Disabling
+:succeeded
+:hello

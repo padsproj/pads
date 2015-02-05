@@ -1,0 +1,568 @@
+Data file = ../../data/syslog
+*****************************************************************************************************
+<top> : array syslogs of syslog
+*****************************************************************************************************
+Array lengths: 1 array length values, 100 pcnt good, 100 pcnt identical:          9
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.allArrayElts : all array element
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+good vals:          9    bad vals:          0    pcnt-bad:    0.000
+[Describing each field of <top>.allArrayElts]
+=====================================================================================================
+<top>.allArrayElts.syslog_date : date
+    ** N.B. dates are reported in # of seconds since midnight 1-jan-1970, and also as formatted strings (using the default date output format)
+=====================================================================================================
+good vals:          9    bad vals:          0    pcnt-bad:    0.000
+  Characterizing date values:  min 995500800 (2001-07-19) max 1108080000 (2005-02-11) avg rounded down to nearest Puint32: 1051910400 (2003-05-02)
+    => distribution of top 9 values out of 9 distinct values:
+        val:  995500800 (2001-07-19) count:          1  pcnt-of-good-vals:   11.111
+        val: 1013040000 (2002-02-07) count:          1  pcnt-of-good-vals:   11.111
+        val: 1018224000 (2002-04-08) count:          1  pcnt-of-good-vals:   11.111
+        val: 1044144000 (2003-02-02) count:          1  pcnt-of-good-vals:   11.111
+        val: 1059696000 (2003-08-01) count:          1  pcnt-of-good-vals:   11.111
+        val: 1070150400 (2003-11-30) count:          1  pcnt-of-good-vals:   11.111
+        val: 1073779200 (2004-01-11) count:          1  pcnt-of-good-vals:   11.111
+        val: 1084579200 (2004-05-15) count:          1  pcnt-of-good-vals:   11.111
+        val: 1108080000 (2005-02-11) count:          1  pcnt-of-good-vals:   11.111
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          9  pcnt-of-good-vals:  100.000
+=====================================================================================================
+<top>.allArrayElts.syslog_time : string
+=====================================================================================================
+String lengths: 9 string length values, 100 pcnt good, 100 pcnt identical:          8
+  Characterizing string values:
+    => distribution of top 9 strings out of 9 distinct strings:
+        val: "01:18:05" count:          1  pcnt-of-good-vals:   11.111
+        val: "03:08:51" count:          1  pcnt-of-good-vals:   11.111
+        val: "04:16:12" count:          1  pcnt-of-good-vals:   11.111
+        val: "04:25:17" count:          1  pcnt-of-good-vals:   11.111
+        val: "05:17:44" count:          1  pcnt-of-good-vals:   11.111
+        val: "08:07:01" count:          1  pcnt-of-good-vals:   11.111
+        val: "11:12:17" count:          1  pcnt-of-good-vals:   11.111
+        val: "11:14:06" count:          1  pcnt-of-good-vals:   11.111
+        val: "12:51:04" count:          1  pcnt-of-good-vals:   11.111
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          9  pcnt-of-good-vals:  100.000
+=====================================================================================================
+<top>.allArrayElts.router_name : string
+=====================================================================================================
+String lengths: good vals:          9    bad vals:          0    pcnt-bad:    0.000
+  Characterizing string length values:  min 4 max 8 avg 7.111
+    => distribution of top 3 values out of 3 distinct values:
+        val:          8 count:          6  pcnt-of-good-vals:   66.667
+        val:          6 count:          2  pcnt-of-good-vals:   22.222
+        val:          4 count:          1  pcnt-of-good-vals:   11.111
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          9  pcnt-of-good-vals:  100.000
+  Characterizing string values:
+    => distribution of top 5 strings out of 5 distinct strings:
+        val: "illinois" count:          3  pcnt-of-good-vals:   33.333
+        val: "barron"   count:          2  pcnt-of-good-vals:   22.222
+        val: "savannah" count:          2  pcnt-of-good-vals:   22.222
+        val: "call"     count:          1  pcnt-of-good-vals:   11.111
+        val: "sideshow" count:          1  pcnt-of-good-vals:   11.111
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          9  pcnt-of-good-vals:  100.000
+=====================================================================================================
+<top>.allArrayElts.classification : string
+=====================================================================================================
+9 string values, 100 pcnt good, 100 pcnt identical (length       13): "Customer:NONE"
+=====================================================================================================
+<top>.allArrayElts.source_router : string
+=====================================================================================================
+String lengths: good vals:          9    bad vals:          0    pcnt-bad:    0.000
+  Characterizing string length values:  min 4 max 8 avg 7.111
+    => distribution of top 3 values out of 3 distinct values:
+        val:          8 count:          6  pcnt-of-good-vals:   66.667
+        val:          6 count:          2  pcnt-of-good-vals:   22.222
+        val:          4 count:          1  pcnt-of-good-vals:   11.111
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          9  pcnt-of-good-vals:  100.000
+  Characterizing string values:
+    => distribution of top 5 strings out of 5 distinct strings:
+        val: "illinois" count:          3  pcnt-of-good-vals:   33.333
+        val: "barron"   count:          2  pcnt-of-good-vals:   22.222
+        val: "savannah" count:          2  pcnt-of-good-vals:   22.222
+        val: "call"     count:          1  pcnt-of-good-vals:   11.111
+        val: "sideshow" count:          1  pcnt-of-good-vals:   11.111
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          9  pcnt-of-good-vals:  100.000
+=====================================================================================================
+<top>.allArrayElts.source_interface : string
+=====================================================================================================
+String lengths: good vals:          9    bad vals:          0    pcnt-bad:    0.000
+  Characterizing string length values:  min 6 max 14 avg 8.667
+    => distribution of top 2 values out of 2 distinct values:
+        val:          6 count:          6  pcnt-of-good-vals:   66.667
+        val:         14 count:          3  pcnt-of-good-vals:   33.333
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          9  pcnt-of-good-vals:  100.000
+  Characterizing string values:
+    => distribution of top 5 strings out of 5 distinct strings:
+        val: "POS5/2"         count:          3  pcnt-of-good-vals:   33.333
+        val: "POS5/1"         count:          2  pcnt-of-good-vals:   22.222
+        val: "Serial4/1/0/23" count:          2  pcnt-of-good-vals:   22.222
+        val: "POS6/0"         count:          1  pcnt-of-good-vals:   11.111
+        val: "Serial8/1/1/27" count:          1  pcnt-of-good-vals:   11.111
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING               count:          9  pcnt-of-good-vals:  100.000
+=====================================================================================================
+<top>.allArrayElts.dest_router : string
+=====================================================================================================
+9 string values, 100 pcnt good, 100 pcnt identical (length        0): ""
+=====================================================================================================
+<top>.allArrayElts.dest_interface : string
+=====================================================================================================
+9 string values, 100 pcnt good, 100 pcnt identical (length        0): ""
+=====================================================================================================
+<top>.allArrayElts.message : string
+=====================================================================================================
+String lengths: good vals:          9    bad vals:          0    pcnt-bad:    0.000
+  Characterizing string length values:  min 7 max 61 avg 25.333
+    => distribution of top 5 values out of 5 distinct values:
+        val:         18 count:          4  pcnt-of-good-vals:   44.444
+        val:         16 count:          2  pcnt-of-good-vals:   22.222
+        val:          7 count:          1  pcnt-of-good-vals:   11.111
+        val:         56 count:          1  pcnt-of-good-vals:   11.111
+        val:         61 count:          1  pcnt-of-good-vals:   11.111
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          9  pcnt-of-good-vals:  100.000
+  Characterizing string values:
+    => distribution of top 5 strings out of 5 distinct strings:
+        val: "Line protocol down"                                            count:          4  pcnt-of-good-vals:   44.444
+        val: "Line protocol up"                                              count:          2  pcnt-of-good-vals:   22.222
+        val: "Link up"                                                       count:          1  pcnt-of-good-vals:   11.111
+        val: "Sonet link down (B3 BER exceeds threshold, TC alarm declared)" count:          1  pcnt-of-good-vals:   11.111
+        val: "Sonet link up (B3 BER below threshold, TC alarm cleared)"      count:          1  pcnt-of-good-vals:   11.111
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING                                                              count:          9  pcnt-of-good-vals:  100.000
+=====================================================================================================
+<top>.allArrayElts.link_ospf_state : string
+=====================================================================================================
+String lengths: good vals:          9    bad vals:          0    pcnt-bad:    0.000
+  Characterizing string length values:  min 7 max 90 avg 16.222
+    => distribution of top 2 values out of 2 distinct values:
+        val:          7 count:          8  pcnt-of-good-vals:   88.889
+        val:         90 count:          1  pcnt-of-good-vals:   11.111
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          9  pcnt-of-good-vals:  100.000
+  Characterizing string values:
+    => distribution of top 2 strings out of 2 distinct strings:
+        val: "UNKNOWN"                                                                                    count:          8  pcnt-of-good-vals:   88.889
+        val: "UNKNOWN 05/8/04|07:15:02|illinois|Customer:NONE|illinois|POS5/2|||Line protocol up|UNKNOWN" count:          1  pcnt-of-good-vals:   11.111
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING                                                                                           count:          9  pcnt-of-good-vals:  100.000
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.arrayDetail[0] : array element
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+good vals:          1    bad vals:          0    pcnt-bad:    0.000
+[Describing each field of <top>.arrayDetail[0]]
+=====================================================================================================
+<top>.arrayDetail[0].syslog_date : date
+    ** N.B. dates are reported in # of seconds since midnight 1-jan-1970, and also as formatted strings (using the default date output format)
+=====================================================================================================
+1 date values, 100 pcnt good, 100 pcnt identical: 1073779200 (2004-01-11)
+=====================================================================================================
+<top>.arrayDetail[0].syslog_time : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        8): "08:07:01"
+=====================================================================================================
+<top>.arrayDetail[0].router_name : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        8): "sideshow"
+=====================================================================================================
+<top>.arrayDetail[0].classification : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length       13): "Customer:NONE"
+=====================================================================================================
+<top>.arrayDetail[0].source_router : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        8): "sideshow"
+=====================================================================================================
+<top>.arrayDetail[0].source_interface : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length       14): "Serial8/1/1/27"
+=====================================================================================================
+<top>.arrayDetail[0].dest_router : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        0): ""
+=====================================================================================================
+<top>.arrayDetail[0].dest_interface : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        0): ""
+=====================================================================================================
+<top>.arrayDetail[0].message : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length       18): "Line protocol down"
+=====================================================================================================
+<top>.arrayDetail[0].link_ospf_state : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        7): "UNKNOWN"
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.arrayDetail[1] : array element
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+good vals:          1    bad vals:          0    pcnt-bad:    0.000
+[Describing each field of <top>.arrayDetail[1]]
+=====================================================================================================
+<top>.arrayDetail[1].syslog_date : date
+    ** N.B. dates are reported in # of seconds since midnight 1-jan-1970, and also as formatted strings (using the default date output format)
+=====================================================================================================
+1 date values, 100 pcnt good, 100 pcnt identical: 1044144000 (2003-02-02)
+=====================================================================================================
+<top>.arrayDetail[1].syslog_time : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        8): "12:51:04"
+=====================================================================================================
+<top>.arrayDetail[1].router_name : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        8): "illinois"
+=====================================================================================================
+<top>.arrayDetail[1].classification : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length       13): "Customer:NONE"
+=====================================================================================================
+<top>.arrayDetail[1].source_router : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        8): "illinois"
+=====================================================================================================
+<top>.arrayDetail[1].source_interface : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        6): "POS5/2"
+=====================================================================================================
+<top>.arrayDetail[1].dest_router : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        0): ""
+=====================================================================================================
+<top>.arrayDetail[1].dest_interface : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        0): ""
+=====================================================================================================
+<top>.arrayDetail[1].message : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length       18): "Line protocol down"
+=====================================================================================================
+<top>.arrayDetail[1].link_ospf_state : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        7): "UNKNOWN"
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.arrayDetail[2] : array element
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+good vals:          1    bad vals:          0    pcnt-bad:    0.000
+[Describing each field of <top>.arrayDetail[2]]
+=====================================================================================================
+<top>.arrayDetail[2].syslog_date : date
+    ** N.B. dates are reported in # of seconds since midnight 1-jan-1970, and also as formatted strings (using the default date output format)
+=====================================================================================================
+1 date values, 100 pcnt good, 100 pcnt identical:  995500800 (2001-07-19)
+=====================================================================================================
+<top>.arrayDetail[2].syslog_time : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        8): "11:14:06"
+=====================================================================================================
+<top>.arrayDetail[2].router_name : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        8): "savannah"
+=====================================================================================================
+<top>.arrayDetail[2].classification : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length       13): "Customer:NONE"
+=====================================================================================================
+<top>.arrayDetail[2].source_router : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        8): "savannah"
+=====================================================================================================
+<top>.arrayDetail[2].source_interface : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        6): "POS5/1"
+=====================================================================================================
+<top>.arrayDetail[2].dest_router : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        0): ""
+=====================================================================================================
+<top>.arrayDetail[2].dest_interface : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        0): ""
+=====================================================================================================
+<top>.arrayDetail[2].message : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length       61): "Sonet link down (B3 BER exceeds threshold, TC alarm declared)"
+=====================================================================================================
+<top>.arrayDetail[2].link_ospf_state : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length       90): "UNKNOWN 05/8/04|07:15:02|illinois|Customer:NONE|illinois|POS5/2|||Line protocol up|UNKNOWN"
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.arrayDetail[3] : array element
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+good vals:          1    bad vals:          0    pcnt-bad:    0.000
+[Describing each field of <top>.arrayDetail[3]]
+=====================================================================================================
+<top>.arrayDetail[3].syslog_date : date
+    ** N.B. dates are reported in # of seconds since midnight 1-jan-1970, and also as formatted strings (using the default date output format)
+=====================================================================================================
+1 date values, 100 pcnt good, 100 pcnt identical: 1108080000 (2005-02-11)
+=====================================================================================================
+<top>.arrayDetail[3].syslog_time : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        8): "04:16:12"
+=====================================================================================================
+<top>.arrayDetail[3].router_name : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        8): "illinois"
+=====================================================================================================
+<top>.arrayDetail[3].classification : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length       13): "Customer:NONE"
+=====================================================================================================
+<top>.arrayDetail[3].source_router : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        8): "illinois"
+=====================================================================================================
+<top>.arrayDetail[3].source_interface : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        6): "POS5/2"
+=====================================================================================================
+<top>.arrayDetail[3].dest_router : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        0): ""
+=====================================================================================================
+<top>.arrayDetail[3].dest_interface : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        0): ""
+=====================================================================================================
+<top>.arrayDetail[3].message : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length       18): "Line protocol down"
+=====================================================================================================
+<top>.arrayDetail[3].link_ospf_state : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        7): "UNKNOWN"
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.arrayDetail[4] : array element
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+good vals:          1    bad vals:          0    pcnt-bad:    0.000
+[Describing each field of <top>.arrayDetail[4]]
+=====================================================================================================
+<top>.arrayDetail[4].syslog_date : date
+    ** N.B. dates are reported in # of seconds since midnight 1-jan-1970, and also as formatted strings (using the default date output format)
+=====================================================================================================
+1 date values, 100 pcnt good, 100 pcnt identical: 1070150400 (2003-11-30)
+=====================================================================================================
+<top>.arrayDetail[4].syslog_time : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        8): "05:17:44"
+=====================================================================================================
+<top>.arrayDetail[4].router_name : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        6): "barron"
+=====================================================================================================
+<top>.arrayDetail[4].classification : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length       13): "Customer:NONE"
+=====================================================================================================
+<top>.arrayDetail[4].source_router : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        6): "barron"
+=====================================================================================================
+<top>.arrayDetail[4].source_interface : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length       14): "Serial4/1/0/23"
+=====================================================================================================
+<top>.arrayDetail[4].dest_router : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        0): ""
+=====================================================================================================
+<top>.arrayDetail[4].dest_interface : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        0): ""
+=====================================================================================================
+<top>.arrayDetail[4].message : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        7): "Link up"
+=====================================================================================================
+<top>.arrayDetail[4].link_ospf_state : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        7): "UNKNOWN"
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.arrayDetail[5] : array element
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+good vals:          1    bad vals:          0    pcnt-bad:    0.000
+[Describing each field of <top>.arrayDetail[5]]
+=====================================================================================================
+<top>.arrayDetail[5].syslog_date : date
+    ** N.B. dates are reported in # of seconds since midnight 1-jan-1970, and also as formatted strings (using the default date output format)
+=====================================================================================================
+1 date values, 100 pcnt good, 100 pcnt identical: 1084579200 (2004-05-15)
+=====================================================================================================
+<top>.arrayDetail[5].syslog_time : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        8): "03:08:51"
+=====================================================================================================
+<top>.arrayDetail[5].router_name : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        8): "illinois"
+=====================================================================================================
+<top>.arrayDetail[5].classification : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length       13): "Customer:NONE"
+=====================================================================================================
+<top>.arrayDetail[5].source_router : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        8): "illinois"
+=====================================================================================================
+<top>.arrayDetail[5].source_interface : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        6): "POS5/2"
+=====================================================================================================
+<top>.arrayDetail[5].dest_router : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        0): ""
+=====================================================================================================
+<top>.arrayDetail[5].dest_interface : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        0): ""
+=====================================================================================================
+<top>.arrayDetail[5].message : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length       16): "Line protocol up"
+=====================================================================================================
+<top>.arrayDetail[5].link_ospf_state : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        7): "UNKNOWN"
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.arrayDetail[6] : array element
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+good vals:          1    bad vals:          0    pcnt-bad:    0.000
+[Describing each field of <top>.arrayDetail[6]]
+=====================================================================================================
+<top>.arrayDetail[6].syslog_date : date
+    ** N.B. dates are reported in # of seconds since midnight 1-jan-1970, and also as formatted strings (using the default date output format)
+=====================================================================================================
+1 date values, 100 pcnt good, 100 pcnt identical: 1013040000 (2002-02-07)
+=====================================================================================================
+<top>.arrayDetail[6].syslog_time : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        8): "01:18:05"
+=====================================================================================================
+<top>.arrayDetail[6].router_name : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        8): "savannah"
+=====================================================================================================
+<top>.arrayDetail[6].classification : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length       13): "Customer:NONE"
+=====================================================================================================
+<top>.arrayDetail[6].source_router : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        8): "savannah"
+=====================================================================================================
+<top>.arrayDetail[6].source_interface : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        6): "POS5/1"
+=====================================================================================================
+<top>.arrayDetail[6].dest_router : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        0): ""
+=====================================================================================================
+<top>.arrayDetail[6].dest_interface : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        0): ""
+=====================================================================================================
+<top>.arrayDetail[6].message : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length       56): "Sonet link up (B3 BER below threshold, TC alarm cleared)"
+=====================================================================================================
+<top>.arrayDetail[6].link_ospf_state : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        7): "UNKNOWN"
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.arrayDetail[7] : array element
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+good vals:          1    bad vals:          0    pcnt-bad:    0.000
+[Describing each field of <top>.arrayDetail[7]]
+=====================================================================================================
+<top>.arrayDetail[7].syslog_date : date
+    ** N.B. dates are reported in # of seconds since midnight 1-jan-1970, and also as formatted strings (using the default date output format)
+=====================================================================================================
+1 date values, 100 pcnt good, 100 pcnt identical: 1059696000 (2003-08-01)
+=====================================================================================================
+<top>.arrayDetail[7].syslog_time : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        8): "11:12:17"
+=====================================================================================================
+<top>.arrayDetail[7].router_name : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        6): "barron"
+=====================================================================================================
+<top>.arrayDetail[7].classification : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length       13): "Customer:NONE"
+=====================================================================================================
+<top>.arrayDetail[7].source_router : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        6): "barron"
+=====================================================================================================
+<top>.arrayDetail[7].source_interface : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length       14): "Serial4/1/0/23"
+=====================================================================================================
+<top>.arrayDetail[7].dest_router : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        0): ""
+=====================================================================================================
+<top>.arrayDetail[7].dest_interface : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        0): ""
+=====================================================================================================
+<top>.arrayDetail[7].message : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length       16): "Line protocol up"
+=====================================================================================================
+<top>.arrayDetail[7].link_ospf_state : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        7): "UNKNOWN"
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.arrayDetail[8] : array element
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+good vals:          1    bad vals:          0    pcnt-bad:    0.000
+[Describing each field of <top>.arrayDetail[8]]
+=====================================================================================================
+<top>.arrayDetail[8].syslog_date : date
+    ** N.B. dates are reported in # of seconds since midnight 1-jan-1970, and also as formatted strings (using the default date output format)
+=====================================================================================================
+1 date values, 100 pcnt good, 100 pcnt identical: 1018224000 (2002-04-08)
+=====================================================================================================
+<top>.arrayDetail[8].syslog_time : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        8): "04:25:17"
+=====================================================================================================
+<top>.arrayDetail[8].router_name : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        4): "call"
+=====================================================================================================
+<top>.arrayDetail[8].classification : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length       13): "Customer:NONE"
+=====================================================================================================
+<top>.arrayDetail[8].source_router : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        4): "call"
+=====================================================================================================
+<top>.arrayDetail[8].source_interface : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        6): "POS6/0"
+=====================================================================================================
+<top>.arrayDetail[8].dest_router : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        0): ""
+=====================================================================================================
+<top>.arrayDetail[8].dest_interface : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        0): ""
+=====================================================================================================
+<top>.arrayDetail[8].message : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length       18): "Line protocol down"
+=====================================================================================================
+<top>.arrayDetail[8].link_ospf_state : string
+=====================================================================================================
+1 string values, 100 pcnt good, 100 pcnt identical (length        7): "UNKNOWN"

@@ -1,0 +1,66 @@
+Installed IO discipline fwrec_noseek
+warning: Error [in Pebc_fpoint8_read]: at 26B Block 1 from byte 1 to byte 3: Invalid argument value used in padsc library call 
+[26B Block 1]>>>\360\360\360<<<@@@@@@@@@@@@@@@@@@@@@@
+next_rec returned bytes_skipped = 22
+Read ebc fpoint: num 0 denom 1
+next_rec returned bytes_skipped = 22
+warning: Error [in Pebc_fpoint8_read]: at 26B Block 3 just before byte 1: Invalid argument value used in padsc library call
+[26B Block 3]>>><<<\361\362\330@@@@@@@@@@@@@@@@@@@@@@
+next_rec returned bytes_skipped = 25
+Read ebc fpoint: num -128 denom 10
+next_rec returned bytes_skipped = 22
+warning: Error [in Pebc_fpoint8_read]: at 26B Block 5 from byte 1 to byte 3: Number out of range error 
+[26B Block 5]>>>\371\371\371<<<@@@@@@@@@@@@@@@@@@@@@@
+next_rec returned bytes_skipped = 22
+Read ebc fpoint: num 127 denom 100
+next_rec returned bytes_skipped = 22
+warning: Error [in Pebc_ufpoint8_read]: at 26B Block 7 from byte 1 to byte 3: Number out of range error 
+[26B Block 7]>>>\371\371\371<<<@@@@@@@@@@@@@@@@@@@@@@
+next_rec returned bytes_skipped = 22
+Read ebc ufpoint: num 255 denom 100
+next_rec returned bytes_skipped = 22
+warning: Error [in Pebc_fpoint16_read]: at 26B Block 9 from byte 1 to byte 5: Invalid argument value used in padsc library call 
+[26B Block 9]>>>\363\362\367\366\330<<<@@@@@@@@@@@@@@@@@@@@
+next_rec returned bytes_skipped = 20
+Read ebc fpoint: num -32768 denom 10000
+next_rec returned bytes_skipped = 20
+warning: Error [in Pebc_fpoint16_read]: at 26B Block 11 from byte 1 to byte 10: Invalid argument value used in padsc library call 
+[26B Block 11]>>>\363\362\367\366\367@@@@@<<<@@@@@@@@@@@@@@@
+next_rec returned bytes_skipped = 15
+Read ebc fpoint: num 32767 denom 10000
+next_rec returned bytes_skipped = 20
+warning: Error [in Pebc_ufpoint16_read]: at 26B Block 13 from byte 1 to byte 5: Number out of range error 
+[26B Block 13]>>>\371\371\371\371\371<<<@@@@@@@@@@@@@@@@@@@@
+next_rec returned bytes_skipped = 20
+Read ebc ufpoint: num 65535 denom 10000
+next_rec returned bytes_skipped = 20
+warning: Error [in Pebc_fpoint32_read]: at 26B Block 15 from byte 1 to byte 11: Invalid argument value used in padsc library call 
+[26B Block 15]>>>\362\361\364\367\364\370\363\366\364\327@<<<@@@@@@@@@@@@@@
+next_rec returned bytes_skipped = 14
+Read ebc fpoint: num -2147483647 denom 1000000000
+next_rec returned bytes_skipped = 15
+warning: Error [in Pebc_fpoint32_read]: at 26B Block 17 from byte 1 to byte 10: Invalid argument value used in padsc library call 
+[26B Block 17]>>>\362\361\364\367\364\370\363\366\364\367<<<@@@@@@@@@@@@@@@
+next_rec returned bytes_skipped = 15
+Read ebc fpoint: num 2147483647 denom 1000000000
+next_rec returned bytes_skipped = 15
+warning: Error [in Pebc_ufpoint32_read]: at 26B Block 19 from byte 1 to byte 11: Invalid argument value used in padsc library call 
+[26B Block 19]>>>\364\362\371\364\371\366\367\362\371\365@<<<@@@@@@@@@@@@@@
+next_rec returned bytes_skipped = 14
+Read ebc ufpoint: num 4294967295 denom 1000000000
+next_rec returned bytes_skipped = 15
+warning: Error [in Pebc_fpoint64_read]: at 26B Block 21 from byte 1 to byte 19: Number out of range error 
+[26B Block 21]>>>\371\371\371\362\362\363\363\367\362\360\363\366\370\365\364\367\367\365\330<<<@@@@@@
+next_rec returned bytes_skipped = 6
+Read ebc fpoint: num -9223372036854775807 denom 10000000000000000000
+next_rec returned bytes_skipped = 6
+warning: Error [in Pebc_fpoint64_read]: at 26B Block 23 just before byte 1: Invalid argument value used in padsc library call
+[26B Block 23]>>><<<\371\362\362\363\363\367\362\360\363\366\370\365\364\367\367\365\370\360\367@@@@@@
+next_rec returned bytes_skipped = 25
+Read ebc fpoint: num 9223372036854775807 denom 10000000000000000000
+next_rec returned bytes_skipped = 6
+warning: Error [in Pebc_ufpoint64_read]: at 26B Block 25 from byte 1 to byte 21: Invalid argument value used in padsc library call 
+[26B Block 25]>>>\361\370\364\364\366\367\364\364\360\367\363\367\360\371\365\365\361\366\361\365@<<<@@@@
+next_rec returned bytes_skipped = 4
+Read ebc ufpoint: num 18446744073709551615 denom 10000000000000000000
+next_rec returned bytes_skipped = 5

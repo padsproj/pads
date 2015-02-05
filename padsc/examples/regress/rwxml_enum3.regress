@@ -1,0 +1,7 @@
+Input file = ../../data/enum3
+Output file = /dev/stdout
+warning: P_open: Installing default IO discipline : newline-terminated records
+<FixityDirection><val>InfixL</val></FixityDirection>
+<FixityDirection><val>InfixR</val></FixityDirection>
+<FixityDirection><val>InfixN</val></FixityDirection>
+<FixityDirection><val>InfixL</val></FixityDirection>

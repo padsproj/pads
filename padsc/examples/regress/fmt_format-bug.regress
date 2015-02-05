@@ -1,0 +1,7 @@
+Input file = ../../data/format-bug
+Output file = /dev/stdout
+warning: P_open: Installing default IO discipline : newline-terminated records
+started:
+reply:10
+started:
+reply:

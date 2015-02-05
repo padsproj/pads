@@ -1,0 +1,24 @@
+
+* output of .p file
+
+* test that does full cycle
+
+input -> cmonster -> output
+input -> comonser -p -> pfile
+pfile + convert back program -> new_input
+diff input new_input
+
+* More use of NDEBUG, mimimal checking in production
+  Perhaps replace error report function with a trival one?
+  At a minimum, change error reporting level and
+  change error output target to be cm.errf.
+
+* buf_full computed by write2buf could be used rather than
+  coding explicit checking prior to the write2buf call?
+
+* switch ignores records that do not match any switch arm, does
+  not report this an error.  should there be a way to indicate
+  that complete coverage is expected?
+
+* should switch have a default mechanism?
+

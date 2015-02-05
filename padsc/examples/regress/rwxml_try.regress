@@ -1,0 +1,15 @@
+Input file = ../../data/try
+Output file = /dev/stdout
+warning: P_open: Installing default IO discipline : newline-terminated records
+<entry_t>
+  <first><val>aaaa</val></first>
+  <second><val>aaaa</val></second>
+</entry_t>
+<entry_t>
+  <first><val>bbbb</val></first>
+  <second><val>bbbb</val></second>
+</entry_t>
+<entry_t>
+  <first><val>cccc</val></first>
+  <second><val>cccc</val></second>
+</entry_t>

@@ -1,0 +1,423 @@
+#include "pads-internal.h"
+#include "transform.h"
+int hexCharToInt (char c)
+{
+  if ((48<=c)&&(c<=57)) 
+    {
+      return c-48;
+    }
+  else
+    {
+      switch (c)
+        {
+          
+        case 97: 
+          
+        case 65: 
+          return 10;
+          
+        case 98: 
+          
+        case 66: 
+          return 11;
+          
+        case 99: 
+          
+        case 67: 
+          return 12;
+          
+        case 100: 
+          
+        case 68: 
+          return 13;
+          
+        case 101: 
+          
+        case 69: 
+          return 14;
+          
+        case 102: 
+          
+        case 70: 
+          return 15;
+        }
+      return -1;
+    }
+}
+char intToHexChar (Puint32 h)
+{
+  if ((h<0)||(h>15)) 
+    return 122;
+  if ((h>=0)&&(h<10)) 
+    return 48+h;
+  return 97+(h-10);
+}
+void toInt32 (Pstring *src,Pbase_pd *src_pd,Puint32 *dest,Pbase_pd *dest_pd)
+{
+  size_t i;
+  Puint32 digit;
+  *dest = 0;
+  *dest_pd = (*src_pd);
+  for (i = 0; i<(src->len); i++)
+    {
+      digit = hexCharToInt ((src->str)[i]);
+      if (digit<0) 
+        {
+          (dest_pd->nerr)++;
+          dest_pd->errCode = P_TRANSFORM_FAILED;
+          break;
+        }
+      else
+        {
+          *dest = (((*dest)*16)+digit);
+        }
+    }
+}
+void toHexString (P_t *p,Puint32 size,Puint32 *src,Pbase_pd *src_pd,Pstring *dest,Pbase_pd *dest_pd)
+{
+  Puint32 local=*src;
+  int i;
+  char *str=(char *) malloc (size+1);
+  *dest_pd = (*src_pd);
+  for (i = 0; i<(size+1); i++)
+    {
+      str[i] = 0;
+    }
+  for (i = size; i>0; i--)
+    {
+      char result=intToHexChar (local%16);
+      if (result = 122) 
+        {
+          (dest_pd->nerr)++;
+          dest_pd->errCode = P_TRANSFORM_FAILED;
+          break;
+        }
+      str[i] = result;
+      local = (local/16);
+    }
+  if (local!=0) 
+    {
+      (dest_pd->nerr)++;
+      dest_pd->errCode = P_TRANSFORM_FAILED;
+    }
+  ;
+  if (P_OK!=Pstring_cstr_copy (p,dest,str,size)) 
+    {
+      (dest_pd->nerr)++;
+      dest_pd->errCode = P_TRANSFORM_FAILED;
+    }
+  ;
+  free (str);
+}
+Perror_t hexint32_init (P_t *pads,hexint32 *rep)
+{
+  return P_OK;
+}
+Perror_t hexint32_pd_init (P_t *pads,hexint32_pd *pd)
+{
+  return P_OK;
+}
+Perror_t hexint32_cleanup (P_t *pads,hexint32 *rep)
+{
+  return P_OK;
+}
+Perror_t hexint32_pd_cleanup (P_t *pads,hexint32_pd *pd)
+{
+  return P_OK;
+}
+Perror_t hexint32_copy (P_t *pads,hexint32 *rep_dst,hexint32 *rep_src)
+{
+  memcpy ((void *) rep_dst,(void *) rep_src,sizeof(hexint32));
+  return P_OK;
+}
+Perror_t hexint32_pd_copy (P_t *pads,hexint32_pd *pd_dst,hexint32_pd *pd_src)
+{
+  memcpy ((void *) pd_dst,(void *) pd_src,sizeof(hexint32_pd));
+  return P_OK;
+}
+void hexint32_m_init (P_t *pads,hexint32_m *mask,Pbase_m baseMask)
+{
+  PDCI_fill_mask ((Pbase_m *) mask,baseMask,sizeof(hexint32_m));
+}
+Perror_t hexint32_read (P_t *pads,hexint32_m *m,hexint32_pd *pd,hexint32 *rep,Puint32 size)
+{
+  PDCI_IODISC_3P_CHECKS ("hexint32_read",m,pd,rep);
+  {
+    Pstring src_PCGEN_;
+    Pbase_pd src_pd_PCGEN_;
+    Pbase_m src_m_PCGEN_;
+    Pstring_init (pads,&src_PCGEN_);
+    Pstring_pd_init (pads,&src_pd_PCGEN_);
+
+    Pstring_cleanup (pads,&src_PCGEN_);
+    Pstring_pd_cleanup (pads,&src_pd_PCGEN_);
+    return (pd->nerr) ? P_ERR : P_OK;
+  }
+}
+Perror_t entry_t_init (P_t *pads,entry_t *rep)
+{
+  return P_OK;
+}
+Perror_t entry_t_pd_init (P_t *pads,entry_t_pd *pd)
+{
+  return P_OK;
+}
+Perror_t entry_t_cleanup (P_t *pads,entry_t *rep)
+{
+  return P_OK;
+}
+Perror_t entry_t_pd_cleanup (P_t *pads,entry_t_pd *pd)
+{
+  return P_OK;
+}
+Perror_t entry_t_copy (P_t *pads,entry_t *rep_dst,entry_t *rep_src)
+{
+  PDCI_DISC_2P_CHECKS ("entry_t_copy",rep_src,rep_dst);
+  memcpy ((void *) rep_dst,(void *) rep_src,sizeof(entry_t));
+  return P_OK;
+}
+Perror_t entry_t_pd_copy (P_t *pads,entry_t_pd *pd_dst,entry_t_pd *pd_src)
+{
+  PDCI_DISC_2P_CHECKS ("entry_t_pd_copy",pd_src,pd_dst);
+  memcpy ((void *) pd_dst,(void *) pd_src,sizeof(entry_t_pd));
+  return P_OK;
+}
+void entry_t_m_init (P_t *pads,entry_t_m *mask,Pbase_m baseMask)
+{
+  PDCI_fill_mask ((Pbase_m *) mask,baseMask,sizeof(entry_t_m));
+}
+Perror_t entry_t_read (P_t *pads,entry_t_m *m,entry_t_pd *pd,entry_t *rep)
+{
+  PDCI_IODISC_3P_CHECKS ("entry_t_read",m,pd,rep);
+  PD_COMMON_INIT_NO_ERR (pd);
+  PD_COMMON_READ_INIT (pads,pd);
+  // Read field 'f'
+  PCGEN_STRUCT_READ_FIRST ("entry_t_read",f,hexint32_read (pads,&(m->f),&(pd->f),&(rep->f),8),_NOOP);
+  PCGEN_FIND_EOR ("entry_t_read");
+  return ((pd->nerr)==0) ? P_OK : P_ERR;
+}
+int entry_t_verify (entry_t *rep)
+{
+  return hexint32_verify (&(rep->f),8)&&1;
+}
+int entry_t_genPD (P_t *pads,entry_t *rep,entry_t_pd *pd)
+{
+  pd->errCode = P_NO_ERR;
+  hexint32_genPD (pads,&(rep->f),&(pd->f),8);
+  return 0==(pd->nerr);
+}
+Perror_t entry_t_acc_init (P_t *pads,entry_t_acc *acc)
+{
+  Puint32 nerr=0;
+  if (P_ERR==Puint32_acc_init (pads,&(acc->nerr))) 
+    {
+      nerr++;
+    }
+  if (P_ERR==hexint32_acc_init (pads,&(acc->f))) 
+    {
+      nerr++;
+    }
+  return (nerr==0) ? P_OK : P_ERR;
+}
+Perror_t entry_t_acc_reset (P_t *pads,entry_t_acc *acc)
+{
+  Puint32 nerr=0;
+  if (P_ERR==Puint32_acc_reset (pads,&(acc->nerr))) 
+    {
+      nerr++;
+    }
+  if (P_ERR==hexint32_acc_reset (pads,&(acc->f))) 
+    {
+      nerr++;
+    }
+  return (nerr==0) ? P_OK : P_ERR;
+}
+Perror_t entry_t_acc_cleanup (P_t *pads,entry_t_acc *acc)
+{
+  Puint32 nerr=0;
+  if (P_ERR==Puint32_acc_cleanup (pads,&(acc->nerr))) 
+    {
+      nerr++;
+    }
+  if (P_ERR==hexint32_acc_cleanup (pads,&(acc->f))) 
+    {
+      nerr++;
+    }
+  return (nerr==0) ? P_OK : P_ERR;
+}
+Perror_t entry_t_acc_add (P_t *pads,entry_t_acc *acc,entry_t_pd *pd,entry_t *rep)
+{
+  Puint32 nerr=0;
+  Pbase_pd tpd;
+  tpd.errCode = P_NO_ERR;
+  if (P_ERR==Puint32_acc_add (pads,&(acc->nerr),&tpd,&(pd->nerr))) 
+    {
+      nerr++;
+    }
+  if ((pd->errCode)!=P_PANIC_SKIPPED) 
+    {
+      if (P_ERR==hexint32_acc_add (pads,&(acc->f),&(pd->f),&(rep->f))) 
+        {
+          nerr++;
+        }
+    }
+  return (nerr==0) ? P_OK : P_ERR;
+}
+Perror_t entry_t_acc_report2io (P_t *pads,Sfio_t *outstr,char const *prefix,char const *what,int nst,entry_t_acc *acc)
+{
+  Sfio_t *tmpstr;
+  if (!(tmpstr = sfstropen ())) 
+    {
+      return P_ERR;
+    }
+  if ((!prefix)||(0==(*prefix))) 
+    {
+      prefix = "<top>";
+    }
+  if (!what) 
+    {
+      what = "struct entry_t";
+    }
+  PDCI_nst_prefix_what (outstr,&nst,prefix,what,0);
+  PCGEN_STRUCT_ACC_REP_NOVALS ();
+  if (P_ERR==P_nerr_acc_report2io (pads,outstr,"Errors","errors",-1,&(acc->nerr))) 
+    {
+      sfstrclose (tmpstr);
+      return P_ERR;
+    }
+  sfprintf (outstr,"\n[Describing each field of %s]\n",prefix);
+  sfprintf (tmpstr,"%s.f",prefix);
+  if (P_ERR==hexint32_acc_report2io (pads,outstr,sfstruse (tmpstr),0,nst,&(acc->f))) 
+    {
+      sfstrclose (tmpstr);
+      return P_ERR;
+    }
+  sfstrclose (tmpstr);
+  return P_OK;
+}
+Perror_t entry_t_acc_report (P_t *pads,char const *prefix,char const *what,int nst,entry_t_acc *acc)
+{
+  Perror_t result;
+  Sfio_t *outstr;
+  if (!(outstr = sfstropen ())) 
+    {
+      return P_ERR;
+    }
+  if (((!pads)||(!acc))||(!(pads->disc))) 
+    {
+      return P_ERR;
+    }
+  if (!((pads->disc)->error_fn)) 
+    {
+      return P_OK;
+    }
+  result = entry_t_acc_report2io (pads,outstr,prefix,what,nst,acc);
+  if (P_OK==result) 
+    {
+      ((pads->disc)->error_fn) (0,0,"%s",sfstruse (outstr));
+    }
+  sfstrclose (outstr);
+  return result;
+}
+Perror_t entry_t_acc_report2xml_io (P_t *pads,Sfio_t *outstr,int nst,entry_t_acc *acc)
+{
+  PDCI_indent (outstr,nst);
+  sfprintf (outstr,"<struct>\n");
+  nst++;
+  PDCI_indent (outstr,nst);
+  sfprintf (outstr,"<name>entry_t</name>\n");
+  PDCI_indent (outstr,nst);
+  sfprintf (outstr,"<field>\n");
+  nst++;
+  PDCI_indent (outstr,nst);
+  sfprintf (outstr,"<name>f</name>\n");
+  nst++;
+  if (P_ERR==hexint32_acc_report2xml_io (pads,outstr,nst,&(acc->f))) 
+    {
+      return P_ERR;
+    }
+  nst--;
+  PDCI_indent (outstr,nst);
+  sfprintf (outstr,"</field>\n");
+  nst--;
+  PDCI_indent (outstr,nst);
+  sfprintf (outstr,"</struct>\n");
+  return P_OK;
+}
+ssize_t entry_t_write2buf (P_t *pads,Pbyte *buf,size_t buf_len,int *buf_full,entry_t_pd *pd,entry_t *rep)
+{
+  Pbyte *buf_cursor_PCGEN_=buf;
+  ssize_t length_PCGEN_=0;
+  ssize_t tlen_PCGEN_;
+  PDCI_IODISC_3P_CHECKS_RET_SSIZE ("entry_t_write2buf",buf,buf_full,rep);
+  *buf_full = 0;
+  tlen_PCGEN_ = PDCI_io_rec_open_write2buf (pads,buf_cursor_PCGEN_,buf_len,buf_full,"entry_t_write2buf");
+  PCGEN_TLEN_UPDATES ();
+  tlen_PCGEN_ = hexint32_write2buf (pads,buf_cursor_PCGEN_,buf_len,buf_full,&(pd->f),&(rep->f),8);
+  PCGEN_TLEN_UPDATES ();
+  tlen_PCGEN_ = PDCI_io_rec_close_write2buf (pads,buf_cursor_PCGEN_,buf_len,buf_full,buf,length_PCGEN_,"entry_t_write2buf");
+  PCGEN_FINAL_TLEN_UPDATES ();
+  return length_PCGEN_;
+}
+ssize_t entry_t_write2io (P_t *pads,Sfio_t *io,entry_t_pd *pd,entry_t *rep)
+{
+  Pbyte *buf;
+  int buf_full;
+  size_t buf_len;
+  PCGEN_WRITE2IO_USE_WRITE2BUF ("entry_t_write2io",entry_t_write2buf (pads,buf,buf_len,&buf_full,pd,rep));
+  return -1;
+}
+ssize_t entry_t_write_xml_2buf (P_t *pads,Pbyte *buf,size_t buf_len,int *buf_full,entry_t_pd *pd,entry_t *rep,char const *_tag,int indent)
+{
+  Pbyte *buf_cursor_PCGEN_=buf;
+  ssize_t length_PCGEN_=0;
+  ssize_t tlen_PCGEN_;
+  PDCI_IODISC_3P_CHECKS_RET_SSIZE ("entry_t_write_xml_2buf",buf,buf_full,rep);
+  *buf_full = 0;
+  PCGEN_TAG_OPEN_XML_OUT ("entry_t");
+  tlen_PCGEN_ = hexint32_write_xml_2buf (pads,buf_cursor_PCGEN_,buf_len,buf_full,&(pd->f),&(rep->f),"f",indent+2,8);
+  PCGEN_TLEN_UPDATES ();
+  PCGEN_STRUCT_PD_XML_OUT ();
+  PCGEN_TAG_CLOSE_XML_OUT ();
+  return length_PCGEN_;
+}
+ssize_t entry_t_write_xml_2io (P_t *pads,Sfio_t *io,entry_t_pd *pd,entry_t *rep,char const *_tag,int indent)
+{
+  Pbyte *buf;
+  int buf_full;
+  size_t buf_len;
+  PCGEN_WRITE2IO_USE_WRITE2BUF ("entry_t_write_xml_2io",entry_t_write_xml_2buf (pads,buf,buf_len,&buf_full,pd,rep,_tag,indent));
+  return -1;
+}
+ssize_t entry_t_fmt2buf_final (P_t *pads,Pbyte *buf,size_t buf_len,int *buf_full,int *requestedOut,char const *delims,entry_t_m *m,entry_t_pd *pd,entry_t *rep)
+{
+  Pbyte *buf_cursor_PCGEN_=buf;
+  ssize_t length_PCGEN_=0;
+  ssize_t tlen_PCGEN_;
+  char const *tdelim_PCGEN_;
+  int trequestedOut_PCGEN_=0;
+  PCGEN_STRUCT_FMT2BUF_FINAL_INIT ("entry_t_fmt2buf_final");
+  PCGEN_FMT2BUF_STRUCT_FIELD ("hexint32_fmt2buf",hexint32_fmt2buf (pads,buf_cursor_PCGEN_,buf_len,buf_full,&trequestedOut_PCGEN_,tdelim_PCGEN_,&(m->f),&(pd->f),&(rep->f),8));
+  PCGEN_FMT2BUF_FIX_LAST ();
+  PCGEN_FMT2BUF_RECORD ("entry_t_fmt2buf_final");
+  return length_PCGEN_;
+}
+ssize_t entry_t_fmt2buf (P_t *pads,Pbyte *buf,size_t buf_len,int *buf_full,int *requestedOut,char const *delims,entry_t_m *m,entry_t_pd *pd,entry_t *rep)
+{
+  Pfmt_fn fn_PCGEN_;
+  PCGEN_STANDARD_FMT2BUF_INIT ("entry_t_fmt2buf",fn_PCGEN_ = PDCI_GET_FMT_FN (pads,"entry_t"),P_invoke_fmt_fn (fn_PCGEN_,pads,buf,buf_len,buf_full,requestedOut,delims,m,pd,rep));
+  return entry_t_fmt2buf_final (pads,buf,buf_len,buf_full,requestedOut,delims,m,pd,rep);
+}
+ssize_t entry_t_fmt2io (P_t *pads,Sfio_t *io,int *requestedOut,char const *delims,entry_t_m *m,entry_t_pd *pd,entry_t *rep)
+{
+  Pbyte *buf;
+  int buf_full;
+  size_t buf_len;
+  PCGEN_WRITE2IO_USE_WRITE2BUF ("entry_t_fmt2io",entry_t_fmt2buf (pads,buf,buf_len,&buf_full,requestedOut,delims,m,pd,rep));
+  return -1;
+}
+void P_lib_init ()
+{
+  // Initialize character classes
+}
+

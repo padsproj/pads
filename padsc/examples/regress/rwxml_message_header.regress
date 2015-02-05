@@ -1,0 +1,21 @@
+Input file = ../../data/message-header-01
+Output file = /dev/stdout
+<message_header_t>
+  <field_name><val>Connection</val></field_name>
+  <ws><val></val></ws>
+  <_bnf_10><val> </val></_bnf_10>
+  <_bnf_4>
+    <field_value>
+      <_bnf_0>
+        <_bnf_1>
+          <field_content><val>close</val></field_content>
+        </_bnf_1>
+        <_bnf_2>
+          <length>0</length>
+          </_bnf_2>
+      </_bnf_0>
+    </field_value>
+  </_bnf_4>
+</message_header_t>
+warning: Error [in Pstring_ME_read]: at 512B Block 1 from byte 18 to byte 19: Match for regular expression not found 
+[512B Block 1]Connection: close>>>\n\n<<<

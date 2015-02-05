@@ -1,0 +1,15 @@
+Installed IO discipline nlrec_noseek
+Read ascii integer of width 6: -6
+Read ascii integer of width 6: 12
+Read ascii integer of width 6: 24
+warning: Error [in Pa_int8_FW_read]: at record 1 from byte 19 to byte 24: Number out of range error 
+[record 1]-6    12    24    >>> 9999 <<<
+next_rec returned bytes_skipped = 0
+warning: Error [in Pa_int8_FW_read]: at record 2 from byte 1 to byte 6: Invalid ASCII character encoding of a number 
+[record 2]>>>1a    <<<12    a4    36    
+Read ascii integer of width 6: 12
+warning: Error [in Pa_int8_FW_read]: at record 2 from byte 13 to byte 18: Invalid ASCII character encoding of a number 
+[record 2]1a    12    >>>a4    <<<36    
+Read ascii integer of width 6: 36
+next_rec returned bytes_skipped = 0
+Main program found eof

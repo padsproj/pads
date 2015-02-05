@@ -1,0 +1,53 @@
+Input file = ../../data/wsl
+Output file = /dev/stdout
+<entry_t>
+  <client>
+    <ip><val>207.136.97.49</val></ip>
+  </client>
+  <remoteID>
+    <unauthorized><val>-</val></unauthorized>
+  </remoteID>
+  <auth>
+    <unauthorized><val>-</val></unauthorized>
+  </auth>
+  <date><val>1997-10-16</val></date>
+  <request>
+    <meth><val>GET</val></meth>
+    <req_uri><val>/tk/p.txt</val></req_uri>
+    <version>
+      <major><val>1</val></major>
+      <minor><val>0</val></minor>
+    </version>
+  </request>
+  <response><val>200</val></response>
+  <length>
+    <len><val>30</val></len>
+  </length>
+</entry_t>
+<entry_t>
+  <client>
+      <elt><val>tj62</val></elt>
+      <elt><val>aol</val></elt>
+      <elt><val>com</val></elt>
+      <length>3</length>
+  </client>
+  <remoteID>
+    <unauthorized><val>-</val></unauthorized>
+  </remoteID>
+  <auth>
+    <unauthorized><val>-</val></unauthorized>
+  </auth>
+  <date><val>1997-10-16</val></date>
+  <request>
+    <meth><val>POST</val></meth>
+    <req_uri><val>/scpt/dd@grp.org/confirm</val></req_uri>
+    <version>
+      <major><val>1</val></major>
+      <minor><val>0</val></minor>
+    </version>
+  </request>
+  <response><val>200</val></response>
+  <length>
+    <len><val>941</val></len>
+  </length>
+</entry_t>

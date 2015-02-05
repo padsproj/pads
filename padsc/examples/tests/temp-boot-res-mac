@@ -1,0 +1,273 @@
+#include "vanilla.p"
+Penum Enum_28 {
+	sysinit28 Pfrom("sysinit"),
+	static28 Pfrom("static")
+};
+Pstruct Struct_30 {
+	'.';
+	Enum_28  v_enum_28;
+};
+Popt Struct_30 Opt_24;
+Pstruct Struct_33 {
+	" srv7 ";
+	PPstring  v_string_17;
+	Opt_24  v_opt_24;
+	':';
+};
+Popt Struct_33 Opt_34;
+Pstruct Struct_55 {
+	PPdate  v_date_47;
+	' ';
+	PPtime  v_time_51;
+};
+Punion Union_62 {
+	v_stringconst_57 Pfrom("line");
+	Struct_55  v_struct_55;
+};
+Pstruct Struct_41 {
+	' ';
+	Union_62  v_union_62;
+	' ';
+};
+Popt Struct_41 Opt_40;
+Popt Pstring_ME(:"/  /":) Opt_68;
+Penum Enum_73 {
+	NOTE73 Pfrom("NOTE"),
+	e73 Pfrom("e"),
+	c73 Pfrom("c")
+};
+Pstruct Struct_75 {
+	Opt_68  v_opt_68;
+	Enum_73  v_enum_73;
+};
+Popt Struct_75 Opt_76;
+Pstruct Struct_78 {
+	Opt_40  v_opt_40;
+	Pint64  v_int_63;
+	Opt_76  v_opt_76;
+};
+Penum Enum_90 {
+	Listening90 Pfrom("Listening"),
+	Sending90 Pfrom("Sending")
+};
+Pstruct Struct_98 {
+	Enum_90  v_enum_90;
+	" on";
+	PPwhite  v_white_96;
+};
+Popt Struct_98 Opt_100;
+Pstruct Struct_103 {
+	' ';
+	Opt_100  v_opt_100;
+	PPpath  v_path_101;
+};
+Pstruct Struct_115 {
+	PPstring  v_string_111;
+	PPwhite  v_white_113;
+};
+Parray Array_105 {
+	Struct_115[] : Plongest;
+};
+Popt Pstring_ME(:"/\\//":) Opt_120;
+Pstruct Struct_127 {
+	Opt_120  v_opt_120;
+	PPstring  v_string_125;
+};
+Punion Union_128 {
+	v_stringconst_135 Pfrom("(localtime)");
+	PPhostname  v_host_130;
+	Struct_127  v_struct_127;
+};
+Pstruct Struct_492 {
+	' ';
+	Array_105  v_array_105;
+	Union_128  v_union_128;
+};
+Penum Enum_81 {
+	f181 Pfrom("f1"),
+	d481 Pfrom("d4")
+};
+Punion Union_79 {
+	Struct_78  v_struct_78;
+	Struct_103  v_struct_103;
+	Struct_492  v_struct_492;
+	Enum_81  v_enum_81;
+};
+Pstruct Struct_148 {
+	Union_79  v_union_79;
+	':';
+};
+Parray Array_7 {
+	Struct_148[] : Plongest;
+};
+Penum Enum_156 {
+	kernel156 Pfrom("kernel"),
+	net156 Pfrom("net")
+};
+Penum Enum_166 {
+	core_uses_pid166 Pfrom("core_uses_pid"),
+	sysrq166 Pfrom("sysrq"),
+	ipv4166 Pfrom("ipv4")
+};
+Penum Enum_190 {
+	accept_source_route190 Pfrom("accept_source_route"),
+	rp_filter190 Pfrom("rp_filter")
+};
+Pstruct Struct_193 {
+	"conf.default.";
+	Enum_190  v_enum_190;
+};
+Punion Union_194 {
+	v_stringconst_196 Pfrom("ip_forward");
+	Struct_193  v_struct_193;
+};
+Pstruct Struct_174 {
+	'.';
+	Union_194  v_union_194;
+};
+Popt Struct_174 Opt_173;
+Pstruct Struct_201 {
+	Enum_156  v_enum_156;
+	'.';
+	Enum_166  v_enum_166;
+	Opt_173  v_opt_173;
+	' ';
+};
+Punion Union_263 {
+	v_stringconst_208 Pfrom("--use-syslog, no facility specified, using default value.  Did you forget the ");
+	v_stringconst_204 Pfrom("LABEL");
+	Struct_201  v_struct_201;
+};
+Pstruct Struct_274 {
+	' ';
+	Puint8  v_intrange_269;
+	' ';
+};
+Popt PPwhite Opt_305;
+Pstruct Struct_306 {
+	"/boot duplicate - not mounted";
+	Opt_305  v_opt_305;
+};
+Punion Union_275 {
+	Struct_274  v_struct_274;
+	Struct_306  v_struct_306;
+	v_stringconst_308 Pfrom("\?");
+};
+Pstruct Struct_312 {
+	' ';
+	Union_263  v_union_263;
+	'=';
+	Union_275  v_union_275;
+};
+Popt PPwhite Opt_319;
+Punion Union_325 {
+	v_stringconst_332 Pfrom("$");
+	v_stringconst_327 Pfrom("-");
+	Pempty;
+};
+Penum Enum_349 {
+	idmapd349 Pfrom("idmapd"),
+	statd349 Pfrom("statd")
+};
+Popt Enum_349 Opt_353;
+Pstruct Struct_354 {
+	'.';
+	Opt_353  v_opt_353;
+};
+Punion Union_340 {
+	v_stringconst_358 Pfrom("(s)");
+	Struct_354  v_struct_354;
+	v_stringconst_342 Pfrom(",");
+	Pempty;
+};
+Pstruct Struct_367 {
+	Union_325  v_union_325;
+	PPstring  v_string_335;
+	Union_340  v_union_340;
+};
+Pstruct Struct_382 {
+	PPip  v_ip_378;
+	'.';
+};
+Pstruct Struct_402 {
+	'/';
+	Pint64  v_int_400;
+};
+Popt Struct_402 Opt_396;
+Pstruct Struct_387 {
+	Pint64  v_int_389;
+	Opt_396  v_opt_396;
+};
+Pstruct Struct_410 {
+	">>";
+	PPpath  v_path_408;
+};
+Punion Union_368 {
+	PPtime  v_time_370;
+	PPdate  v_date_374;
+	PPpath  v_path_384;
+	Struct_367  v_struct_367;
+	Struct_382  v_struct_382;
+	Struct_387  v_struct_387;
+	Struct_410  v_struct_410;
+};
+Pstruct Struct_414 {
+	Union_368  v_union_368;
+	PPwhite  v_white_412;
+};
+Parray Array_314 {
+	Struct_414[] : Plongest;
+};
+Pstruct Struct_427 {
+	"\033[";
+	Puint8  v_intconst425 : v_intconst425 == 60;
+};
+Popt Struct_427 Opt_419;
+Punion Union_443 {
+	Pfloat64  v_float_445;
+	v_stringconst_453 Pfrom("..");
+	Pempty;
+};
+Pstruct Struct_434 {
+	'.';
+	Union_443  v_union_443;
+};
+Popt Struct_434 Opt_433;
+Pstruct Struct_459 {
+	Opt_419  v_opt_419;
+	PPstring  v_string_428;
+	Opt_433  v_opt_433;
+};
+Pstruct Struct_484 {
+	Puint8  v_intrange_476;
+	">&";
+	Puint8  v_intrange_482;
+};
+Punion Union_460 {
+	PPurl  v_url_472;
+	PPpath  v_path_467;
+	Struct_459  v_struct_459;
+	Struct_484  v_struct_484;
+	v_stringconst_486 Pfrom(".");
+	Pempty;
+};
+Pstruct Struct_494 {
+	Opt_319  v_opt_319;
+	Array_314  v_array_314;
+	Union_460  v_union_460;
+};
+Punion Union_313 {
+	Struct_312  v_struct_312;
+	Struct_494  v_struct_494;
+};
+Precord Pstruct Struct_490 {
+	PPdate  v_date_1;
+	' ';
+	PPtime  v_time_6;
+	Opt_34  v_opt_34;
+	Array_7  v_array_7;
+	Union_313  v_union_313;
+};
+Psource Parray entries_t {
+	Struct_490[];
+};

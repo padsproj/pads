@@ -1,0 +1,8 @@
+warning: P_open: Installing default IO discipline : newline-terminated records
+line contains: foo1|bar1|zot1
+line contains: foo2|bar2|zot2
+warning: Error [in T1_read]: record 3 byte 10 : Missing string separator "|"
+[record 3]foo3|bar3>>><<< zot3
+Note [in T1_read]: record 3 byte 10 : Resynching at EOR
+[record 3]foo3|bar3>>> zot3<<<
+line contains: foo4|bar4|zot4

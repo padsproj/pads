@@ -1,0 +1,211 @@
+Note: set my_disc.out_time_zone to "-0700"
+Data file = ../../data/ai
+warning: P_open: Installing default IO discipline : newline-terminated records
+*****************************************************************************************************
+<top> : struct http_clf_t
+*****************************************************************************************************
+good vals:         11    bad vals:          0    pcnt-bad:    0.000
+[Describing each field of <top>]
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.host : union clihost_t
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Union tag: good vals:         11    bad vals:          0    pcnt-bad:    0.000
+  Characterizing tag values:  min resolved (    1)  max symbolic (    2)
+    => distribution of top 2 values out of 2 distinct values:
+        val: symbolic (    2)   count:          7  pcnt-of-good-vals:   63.636
+        val: resolved (    1)   count:          4  pcnt-of-good-vals:   36.364
+. . . .  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING                 count:         11  pcnt-of-good-vals:  100.000
+[Describing each tag arm of <top>.host]
+=====================================================================================================
+<top>.host.resolved : array nIP of Puint8
+=====================================================================================================
+Array lengths: 4 array length values, 100 pcnt good, 100 pcnt identical:          4
+-----------------------------------------------------------------------------------------------------
+<top>.host.resolved.allArrayElts : all array element
+-----------------------------------------------------------------------------------------------------
+good vals:         16    bad vals:          0    pcnt-bad:    0.000
+  Characterizing all array element values:  min 49 max 207 avg 122.375
+    => distribution of top 5 values out of 5 distinct values:
+        val:         97 count:          4  pcnt-of-good-vals:   25.000
+        val:        136 count:          4  pcnt-of-good-vals:   25.000
+        val:        207 count:          4  pcnt-of-good-vals:   25.000
+        val:         49 count:          2  pcnt-of-good-vals:   12.500
+        val:         50 count:          2  pcnt-of-good-vals:   12.500
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:         16  pcnt-of-good-vals:  100.000
+-----------------------------------------------------------------------------------------------------
+<top>.host.resolved.arrayDetail[0] : array element
+-----------------------------------------------------------------------------------------------------
+4 array element values, 100 pcnt good, 100 pcnt identical:        207
+-----------------------------------------------------------------------------------------------------
+<top>.host.resolved.arrayDetail[1] : array element
+-----------------------------------------------------------------------------------------------------
+4 array element values, 100 pcnt good, 100 pcnt identical:        136
+-----------------------------------------------------------------------------------------------------
+<top>.host.resolved.arrayDetail[2] : array element
+-----------------------------------------------------------------------------------------------------
+4 array element values, 100 pcnt good, 100 pcnt identical:         97
+-----------------------------------------------------------------------------------------------------
+<top>.host.resolved.arrayDetail[3] : array element
+-----------------------------------------------------------------------------------------------------
+good vals:          4    bad vals:          0    pcnt-bad:    0.000
+  Characterizing array element values:  min 49 max 50 avg 49.500
+    => distribution of top 2 values out of 2 distinct values:
+        val:         49 count:          2  pcnt-of-good-vals:   50.000
+        val:         50 count:          2  pcnt-of-good-vals:   50.000
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          4  pcnt-of-good-vals:  100.000
+=====================================================================================================
+<top>.host.symbolic : array sIP of Pstring_SE
+=====================================================================================================
+Array lengths: 7 array length values, 100 pcnt good, 100 pcnt identical:          4
+-----------------------------------------------------------------------------------------------------
+<top>.host.symbolic.allArrayElts : all array element
+-----------------------------------------------------------------------------------------------------
+String lengths: good vals:         28    bad vals:          0    pcnt-bad:    0.000
+  Characterizing string length values:  min 1 max 3 avg 1.500
+    => distribution of top 2 values out of 2 distinct values:
+        val:          1 count:         21  pcnt-of-good-vals:   75.000
+        val:          3 count:          7  pcnt-of-good-vals:   25.000
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:         28  pcnt-of-good-vals:  100.000
+  Characterizing string values:
+    => distribution of top 5 strings out of 5 distinct strings:
+        val: "3"   count:          9  pcnt-of-good-vals:   32.143
+        val: "1"   count:          7  pcnt-of-good-vals:   25.000
+        val: "foo" count:          7  pcnt-of-good-vals:   25.000
+        val: "4"   count:          4  pcnt-of-good-vals:   14.286
+        val: "5"   count:          1  pcnt-of-good-vals:    3.571
+. . . . . . . . .  . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING    count:         28  pcnt-of-good-vals:  100.000
+-----------------------------------------------------------------------------------------------------
+<top>.host.symbolic.arrayDetail[0] : array element
+-----------------------------------------------------------------------------------------------------
+7 string values, 100 pcnt good, 100 pcnt identical (length        1): "1"
+-----------------------------------------------------------------------------------------------------
+<top>.host.symbolic.arrayDetail[1] : array element
+-----------------------------------------------------------------------------------------------------
+7 string values, 100 pcnt good, 100 pcnt identical (length        3): "foo"
+-----------------------------------------------------------------------------------------------------
+<top>.host.symbolic.arrayDetail[2] : array element
+-----------------------------------------------------------------------------------------------------
+7 string values, 100 pcnt good, 100 pcnt identical (length        1): "3"
+-----------------------------------------------------------------------------------------------------
+<top>.host.symbolic.arrayDetail[3] : array element
+-----------------------------------------------------------------------------------------------------
+String lengths: 7 string length values, 100 pcnt good, 100 pcnt identical:          1
+  Characterizing string values:
+    => distribution of top 3 strings out of 3 distinct strings:
+        val: "4" count:          4  pcnt-of-good-vals:   57.143
+        val: "3" count:          2  pcnt-of-good-vals:   28.571
+        val: "5" count:          1  pcnt-of-good-vals:   14.286
+. . . . . . . .  . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING  count:          7  pcnt-of-good-vals:  100.000
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.remoteID : union auth_id_t
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Union tag: 11 tag values, 100 pcnt good, 100 pcnt identical: unauthorized (    1)
+[Describing each tag arm of <top>.remoteID]
+=====================================================================================================
+<top>.remoteID.unauthorized : typedef unknown_t [--> Pchar]
+=====================================================================================================
+11 typedef unknown_t [--> Pchar] values, 100 pcnt good, 100 pcnt identical: '-' (as ASCII)
+=====================================================================================================
+<top>.remoteID.id : string
+=====================================================================================================
+(No string values.)
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.auth : union auth_id_t
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Union tag: 11 tag values, 100 pcnt good, 100 pcnt identical: unauthorized (    1)
+[Describing each tag arm of <top>.auth]
+=====================================================================================================
+<top>.auth.unauthorized : typedef unknown_t [--> Pchar]
+=====================================================================================================
+11 typedef unknown_t [--> Pchar] values, 100 pcnt good, 100 pcnt identical: '-' (as ASCII)
+=====================================================================================================
+<top>.auth.id : string
+=====================================================================================================
+(No string values.)
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.ts : timestamp
+    ** N.B. timestamps are reported in # of seconds since midnight 1-jan-1970, and also as formatted strings (using the default timestamp output format)
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+good vals:         11    bad vals:          0    pcnt-bad:    0.000
+  Characterizing timestamp values:  min 876966411 (1997-10-15+18:46:51) max 876974569 (1997-10-15+21:02:49) avg rounded down to nearest Puint32: 876971602 (1997-10-15+20:13:22)
+    => distribution of top 2 values out of 2 distinct values:
+        val:  876974569 (1997-10-15+21:02:49) count:          7  pcnt-of-good-vals:   63.636
+        val:  876966411 (1997-10-15+18:46:51) count:          4  pcnt-of-good-vals:   36.364
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:         11  pcnt-of-good-vals:  100.000
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.request : struct http_request_t
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+good vals:         11    bad vals:          0    pcnt-bad:    0.000
+[Describing each field of <top>.request]
+=====================================================================================================
+<top>.request.meth : enum http_method_t
+=====================================================================================================
+11 enum http_method_t values, 100 pcnt good, 100 pcnt identical: GET (    0)
+=====================================================================================================
+<top>.request.req_uri : string
+=====================================================================================================
+String lengths: good vals:         11    bad vals:          0    pcnt-bad:    0.000
+  Characterizing string length values:  min 17 max 27 avg 23.636
+    => distribution of top 3 values out of 3 distinct values:
+        val:         27 count:          7  pcnt-of-good-vals:   63.636
+        val:         18 count:          3  pcnt-of-good-vals:   27.273
+        val:         17 count:          1  pcnt-of-good-vals:    9.091
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:         11  pcnt-of-good-vals:  100.000
+  Characterizing string values:
+    => distribution of top 3 strings out of 3 distinct strings:
+        val: "/amnesty/urgact/urgact.html" count:          7  pcnt-of-good-vals:   63.636
+        val: "/turkey/amnty1.gif"          count:          3  pcnt-of-good-vals:   27.273
+        val: "/turkey/clear.gif"           count:          1  pcnt-of-good-vals:    9.091
+. . . . . . . . . . . . . . . . . . . . .  . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING                            count:         11  pcnt-of-good-vals:  100.000
+=====================================================================================================
+<top>.request.version : struct http_v_t
+=====================================================================================================
+good vals:         11    bad vals:          0    pcnt-bad:    0.000
+[Describing each field of <top>.request.version]
+-----------------------------------------------------------------------------------------------------
+<top>.request.version.major : uint8
+-----------------------------------------------------------------------------------------------------
+11 uint8 values, 100 pcnt good, 100 pcnt identical:          1
+-----------------------------------------------------------------------------------------------------
+<top>.request.version.minor : uint8
+-----------------------------------------------------------------------------------------------------
+11 uint8 values, 100 pcnt good, 100 pcnt identical:          0
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.response : uint16
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+good vals:         11    bad vals:          0    pcnt-bad:    0.000
+  Characterizing uint16 values:  min 200 max 404 avg 329.818
+    => distribution of top 2 values out of 2 distinct values:
+        val:        404 count:          7  pcnt-of-good-vals:   63.636
+        val:        200 count:          4  pcnt-of-good-vals:   36.364
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:         11  pcnt-of-good-vals:  100.000
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.contentLength : union contentOpt_t
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Union tag: 11 tag values, 100 pcnt good, 100 pcnt identical: len (    1)
+[Describing each tag arm of <top>.contentLength]
+=====================================================================================================
+<top>.contentLength.len : uint32
+=====================================================================================================
+good vals:         11    bad vals:          0    pcnt-bad:    0.000
+  Characterizing uint32 values:  min 76 max 3013 avg 942.545
+    => distribution of top 3 values out of 3 distinct values:
+        val:        179 count:          7  pcnt-of-good-vals:   63.636
+        val:       3013 count:          3  pcnt-of-good-vals:   27.273
+        val:         76 count:          1  pcnt-of-good-vals:    9.091
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:         11  pcnt-of-good-vals:  100.000
+=====================================================================================================
+<top>.contentLength.unavailable : typedef unknown_t [--> Pchar]
+=====================================================================================================
+(No typedef unknown_t [--> Pchar] values.)

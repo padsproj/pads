@@ -1,0 +1,144 @@
+Group
+is
+
+#if defined(NEW_CM)
+#if (SMLNJ_VERSION * 100 + SMLNJ_MINOR_VERSION >= 11029)
+
+        (* standard basis *)
+        $/basis.cm
+
+	(* standard library *)
+	$/smlnj-lib.cm
+#else
+	(* standard basis *)
+	basis.cm
+
+	(* standard library *)
+	smlnj-lib.cm
+#endif
+#else
+	smlnj-lib.cm
+#endif
+
+	(* parser *)
+        ../parser/group.cm
+
+        (* configuration *)
+        ../variants/group.cm
+
+	extensions/pads/transform/group.cm
+
+	(* C symbols *)
+	symbol-sig.sml
+	symbol.sml
+
+	(* unique identifiers *)
+	uid-sig.sml
+	uid-fn.sml
+
+	(* abstract syntax *)
+	aid.sml  (* was adornment.sml *)
+	pid.sml
+	extensions/pads/paid.sml
+	tid.sml
+	ast-sig.sml
+	ast.sml
+        ctype-eq.sml
+
+	(* language extension support *)
+	cnv-ext-sig.sml
+
+	(* tables for unique identifiers *)
+	uidtabimp-sig.sml
+	uidtabimp-fn.sml
+        aidtab.sml
+	(* pidtab.sml *)
+	extensions/pads/paidtab.sml
+	tidtab.sml
+	tables.sml (* type abbreviations for pidtab, tidtab, aidtab *)
+
+	(* pretty-printers *)
+	pp/pp-lib.sml
+	pp/pp-ast-sig.sml
+	pp/pp-ast.sml
+	pp/pp-ast-adornment-sig.sml
+	pp/pp-ast-ext-sig.sml
+	pp/pp-ast-fn.sml
+
+
+
+(* Not currently needed: current uses of ast-equality (in simplify-ast)
+   just use polymorphic equality.  But this code may be useful in the future
+   if the modifications to the ast types violate rules for eqtypes.
+	(* equality modulo alpha renaming *)
+	eq-binary-maps.sml
+        eq-ast-ext-sig.sml
+        eq-ctype.sml
+        eq-ast.sml
+*)
+	(* translation from parse tree *)
+	sizes-sig.sml
+	sizes.sml
+	sizeof-sig.sml
+	sizeof.sml
+
+	type-util-sig.sml
+	type-util.sml
+
+        bindings.sml
+
+        (* state-related extensions *)
+        extensions/pads/ty-properties.sml
+        extensions/pads/base-tys.sml
+        extensions/pads/cmp-tys.sml
+        extensions/pads/select.sml        (* used for select expressions *)
+        extensions/pads/charclass.sml     (* used for collecting  character classes *)
+        extensions/pads/state.sml     (* used for reinitializing state *)
+
+	state-sig.sml
+	state.sml
+
+        simplify-assign-ops.sml
+	build-ast-sig.sml
+	build-ast.sml
+
+        anonymous-structs.sml
+
+	initializer-normalizer-sig.sml
+	initializer-normalizer.sml
+
+	(* top level *)
+	parse-to-ast-sig.sml 
+        parse-to-ast.sml
+
+        (* extensions *)
+        extensions/pads/input.sml
+        extensions/pads/ast-ext.sml
+	extensions/pads/gen-galax-sig.sml
+	extensions/pads/gen-galax.sml
+        extensions/pads/cnv-ext.sml
+        extensions/pads/pp-ast-ext-fn.sml
+
+        extensions/pads/parse-tree-utils.sml
+        extensions/pads/build-utils.sml
+        extensions/pads/perror-sig.sml
+        extensions/pads/perror.sml
+        extensions/pads/names.sml
+        extensions/pads/plib.sml
+
+	extensions/pads/hist.sml
+	extensions/pads/cluster.sml
+       
+        extensions/pads/utils.sml
+
+	(* pretty printer extensions *)
+	pp/extensions/pads/pp-ast-paid-adornment-sig.sml
+	pp/extensions/pads/pp-ast-xschema-sig.sml       
+	pp/extensions/pads/pp-ast-xschema-fn.sml       
+	pp/extensions/pads/pp-ast-xschema.sml       
+
+	pp/extensions/pads/pp-ast-desc-xschema-sig.sml       
+	pp/extensions/pads/pp-ast-desc-xschema-fn.sml       
+	pp/extensions/pads/pp-ast-desc-xschema.sml       
+
+        extensions/pads/transform/transform.sml

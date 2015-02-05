@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<padsns:PSource xmlns:padsns="file:format7.p"><elt><id><val>1</val></id><ts><val>11</val></ts></elt><elt><id><val>2</val></id><ts><val>22</val></ts></elt><elt><id><val>3</val></id><ts><val>33</val></ts></elt><length>3</length></padsns:PSource>

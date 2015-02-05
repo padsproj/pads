@@ -1,0 +1,18 @@
+Input file = ../../data/pdate
+Output file = /dev/stdout
+warning: P_open: Installing default IO discipline : newline-terminated records
+<threedates>
+  <date1><val>default_date_out_fmt:1975-11-01+00:00:00</val></date1>
+  <date2><val>default_date_out_fmt:2006-01-12+00:00:00</val></date2>
+  <date3><val>default_date_out_fmt:2006-01-10+00:00:00</val></date3>
+</threedates>
+<threedates>
+  <date1><val>default_date_out_fmt:2007-01-05+00:00:00</val></date1>
+  <date2><val>default_date_out_fmt:2004-05-19+00:00:00</val></date2>
+  <date3><val>default_date_out_fmt:2006-01-10+00:00:00</val></date3>
+</threedates>
+<threedates>
+  <date1><val>default_date_out_fmt:1999-09-11+00:00:00</val></date1>
+  <date2><val>default_date_out_fmt:2000-09-11+00:00:00</val></date2>
+  <date3><val>default_date_out_fmt:1980-09-11+00:00:00</val></date3>
+</threedates>

@@ -1,0 +1,13 @@
+Input file = ../../data/ptimestamp
+Output file = /dev/stdout
+warning: P_open: Installing default IO discipline : newline-terminated records
+<threetimestamps>
+  <ts1><val>default_timestamp_out_fmt:1972-09-11+23:02:02</val></ts1>
+  <ts2><val>default_timestamp_out_fmt:1972-09-11+23:02:02</val></ts2>
+  <ts3><val>default_timestamp_out_fmt:1972-09-11+23:02:02</val></ts3>
+</threetimestamps>
+<threetimestamps>
+  <ts1><val>default_timestamp_out_fmt:1972-09-11+23:02:02</val></ts1>
+  <ts2><val>default_timestamp_out_fmt:2007-01-05+18:26:13</val></ts2>
+  <ts3><val>default_timestamp_out_fmt:2006-01-10+12:00:00</val></ts3>
+</threetimestamps>

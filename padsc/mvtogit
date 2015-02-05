@@ -1,0 +1,4 @@
+for f in `find . -name .cvsignore | sort `; do
+  dir=`dirname $f`
+  cat $f | awk '{print "'$dir'/"$1}' >> .gitignore
+done

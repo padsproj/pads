@@ -1,0 +1,18 @@
+Input file = ../../data/transform
+Output file = /dev/stdout
+warning: P_open: Installing default IO discipline : newline-terminated records
+<entry_t>
+  <f><val>1</val></f>
+</entry_t>
+<entry_t>
+  <f><val>12</val></f>
+</entry_t>
+<entry_t>
+  <f><val>2863311530</val></f>
+</entry_t>
+<entry_t>
+  <f><val>4294967295</val></f>
+</entry_t>
+<entry_t>
+  <f><val>2882382799</val></f>
+</entry_t>

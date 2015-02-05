@@ -1,0 +1,118 @@
+Data file = ../../data/opt
+warning: P_open: Installing default IO discipline : newline-terminated records
+warning: Error [in entry_read]: record 4 byte 7 : Unexpected data before EOR
+[record 4]|24|2_>>>1<<<
+read returned error
+*****************************************************************************************************
+<top> : struct entry
+*****************************************************************************************************
+good vals:          6    bad vals:          1    pcnt-bad:   14.286
+  Characterizing number of errors PER READ CALL (nerr-per-read) : min 0 max 1 avg 0.143
+    => distribution of top 2 nerr-per-read values out of 2 distinct nerr-per-read values:
+        val:          0 count:          6 pcnt-of-total-vals:   85.714
+        val:          1 count:          1 pcnt-of-total-vals:   14.286
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          7 pcnt-of-total-vals:  100.000
+[Describing each field of <top>]
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.x : opt foo
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Opt tag: 7 tag values, 100 pcnt good, 100 pcnt identical: some_foo (    1)
+[Describing each tag arm of <top>.x]
+=====================================================================================================
+<top>.x.some_foo : string
+=====================================================================================================
+String lengths: good vals:          7    bad vals:          0    pcnt-bad:    0.000
+  Characterizing string length values:  min 0 max 6 avg 3.429
+    => distribution of top 2 values out of 2 distinct values:
+        val:          6 count:          4  pcnt-of-good-vals:   57.143
+        val:          0 count:          3  pcnt-of-good-vals:   42.857
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          7  pcnt-of-good-vals:  100.000
+  Characterizing string values:
+    => distribution of top 3 strings out of 3 distinct strings:
+        val: ""       count:          3  pcnt-of-good-vals:   42.857
+        val: "friend" count:          3  pcnt-of-good-vals:   42.857
+        val: "values" count:          1  pcnt-of-good-vals:   14.286
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING       count:          7  pcnt-of-good-vals:  100.000
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.f : opt baz
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Opt tag: good vals:          7    bad vals:          0    pcnt-bad:    0.000
+  Characterizing tag values:  min some_baz (    1)  max none_baz (    2)
+    => distribution of top 2 values out of 2 distinct values:
+        val: some_baz (    1)   count:          4  pcnt-of-good-vals:   57.143
+        val: none_baz (    2)   count:          3  pcnt-of-good-vals:   42.857
+. . . .  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING                 count:          7  pcnt-of-good-vals:  100.000
+[Describing each tag arm of <top>.f]
+=====================================================================================================
+<top>.f.some_baz : uint32
+=====================================================================================================
+good vals:          4    bad vals:          0    pcnt-bad:    0.000
+  Characterizing uint32 values:  min 22 max 24 avg 23.500
+    => distribution of top 2 values out of 2 distinct values:
+        val:         24 count:          3  pcnt-of-good-vals:   75.000
+        val:         22 count:          1  pcnt-of-good-vals:   25.000
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          4  pcnt-of-good-vals:  100.000
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.biz : opt biz_t
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Opt tag: good vals:          7    bad vals:          0    pcnt-bad:    0.000
+  Characterizing tag values:  min some_biz_t (    1)  max none_biz_t (    2)
+    => distribution of top 2 values out of 2 distinct values:
+        val: none_biz_t (    2)   count:          4  pcnt-of-good-vals:   57.143
+        val: some_biz_t (    1)   count:          3  pcnt-of-good-vals:   42.857
+. . . . .  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING                   count:          7  pcnt-of-good-vals:  100.000
+[Describing each tag arm of <top>.biz]
+=====================================================================================================
+<top>.biz.some_biz_t : uint32
+=====================================================================================================
+3 uint32 values, 100 pcnt good, 100 pcnt identical:         23
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.zot : opt zot_t
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Opt tag: good vals:          7    bad vals:          0    pcnt-bad:    0.000
+  Characterizing tag values:  min some_zot_t (    1)  max none_zot_t (    2)
+    => distribution of top 2 values out of 2 distinct values:
+        val: some_zot_t (    1)   count:          4  pcnt-of-good-vals:   57.143
+        val: none_zot_t (    2)   count:          3  pcnt-of-good-vals:   42.857
+. . . . .  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING                   count:          7  pcnt-of-good-vals:  100.000
+[Describing each tag arm of <top>.zot]
+=====================================================================================================
+<top>.zot.some_zot_t : uint32
+=====================================================================================================
+good vals:          4    bad vals:          0    pcnt-bad:    0.000
+  Characterizing uint32 values:  min 2 max 4 avg 2.750
+    => distribution of top 3 values out of 3 distinct values:
+        val:          2 count:          2  pcnt-of-good-vals:   50.000
+        val:          3 count:          1  pcnt-of-good-vals:   25.000
+        val:          4 count:          1  pcnt-of-good-vals:   25.000
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          4  pcnt-of-good-vals:  100.000
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.zig : opt zig_t
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Opt tag: good vals:          7    bad vals:          0    pcnt-bad:    0.000
+  Characterizing tag values:  min some_zig_t (    1)  max none_zig_t (    2)
+    => distribution of top 2 values out of 2 distinct values:
+        val: some_zig_t (    1)   count:          4  pcnt-of-good-vals:   57.143
+        val: none_zig_t (    2)   count:          3  pcnt-of-good-vals:   42.857
+. . . . .  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING                   count:          7  pcnt-of-good-vals:  100.000
+[Describing each tag arm of <top>.zig]
+=====================================================================================================
+<top>.zig.some_zig_t : uint32
+=====================================================================================================
+good vals:          4    bad vals:          0    pcnt-bad:    0.000
+  Characterizing uint32 values:  min 12 max 1234 avg 373.000
+    => distribution of top 3 values out of 3 distinct values:
+        val:        123 count:          2  pcnt-of-good-vals:   50.000
+        val:         12 count:          1  pcnt-of-good-vals:   25.000
+        val:       1234 count:          1  pcnt-of-good-vals:   25.000
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          4  pcnt-of-good-vals:  100.000

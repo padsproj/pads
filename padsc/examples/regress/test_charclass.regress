@@ -1,0 +1,28 @@
+Data file = ../../data/charclass
+warning: P_open: Installing default IO discipline : newline-terminated records
+warning: Error [in entry_read]: record 3 byte 1 : Missing regexp separator Pre "/[[:digit:]]+/"
+[record 3]>>><<<a
+Note [in entry_read]: record 3 byte 1 : Resynching at EOR
+[record 3]>>>a<<<
+read returned error
+*****************************************************************************************************
+<top> : struct entry
+*****************************************************************************************************
+good vals:          3    bad vals:          1    pcnt-bad:   25.000
+  Characterizing number of errors PER READ CALL (nerr-per-read) : min 0 max 2 avg 0.500
+    => distribution of top 2 nerr-per-read values out of 2 distinct nerr-per-read values:
+        val:          0 count:          3 pcnt-of-total-vals:   75.000
+        val:          2 count:          1 pcnt-of-total-vals:   25.000
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          4 pcnt-of-total-vals:  100.000
+[Describing each field of <top>]
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.c : char
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+good vals:          3    bad vals:          1    pcnt-bad:   25.000
+  Characterizing char values:  min 'a' max 'q' (based on ASCII encoding)
+    => distribution of top 2 values out of 2 distinct values:
+        val:    'a' count:          2  pcnt-of-good-vals:   66.667
+        val:    'q' count:          1  pcnt-of-good-vals:   33.333
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING     count:          3  pcnt-of-good-vals:  100.000

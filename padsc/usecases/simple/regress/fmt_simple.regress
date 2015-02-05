@@ -1,0 +1,11 @@
+Input file = ../../data/simple
+Output file = /dev/stdout
+110175|3|Carlson J. Kessel
+010597|5|Howard K. Bilge
+warning: Error [in Pa_int32_read]: at record 3 at byte 8 : Invalid ASCII character encoding of a number 
+[record 3]091199|>>>n<<<one|Bob Jones
+read returned error
+011206|8|Jerry Johnson
+warning: Error [in simple_types_read]: record 5 byte 11 : Extra data before char separator '|'
+[record 5]09111980|4>>>.3<<<|Whyia C. Nott
+read returned error

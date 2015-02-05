@@ -1,0 +1,89 @@
+Data file = ../../data/array_post
+warning: P_open: Installing default IO discipline : newline-terminated records
+read reported no errors and passed predicate test.
+intList_read returned array of length: 4
+warning: Error [in intList_read]: record 2 byte 1 : Pparsecheck constraint for array intList violated
+[record 2]>>>4|6|8|10<<<
+intList_read returned: error
+warning: Error [in intList_read]: record 3 byte 1 : Pforall constraint for array intList violated
+[record 3]>>>4|2|10|1500<<<
+intList_read returned: error
+warning: Error [in intList_read]: record 4 byte 1 : Pwhere constraint for array intList violated
+[record 4]>>>0|24|34|46<<<
+intList_read returned: error
+warning: Error [in intList_read]: record 5 byte 1 : Pforall constraint for array intList violated
+[record 5]>>>2|3|34|466<<<
+intList_read returned: error
+*****************************************************************************************************
+<top> : array intList of Puint32
+*****************************************************************************************************
+Array lengths: good vals:          1    bad vals:          4    pcnt-bad:   80.000
+For good array length values, 100 pcnt identical:          4
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.allArrayElts : all array element
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+good vals:         20    bad vals:          0    pcnt-bad:    0.000
+  Characterizing all array element values:  min 0 max 1500 avg 110.650
+    => distribution of top 10 values out of 16 distinct values:
+        val:          2 count:          2  pcnt-of-good-vals:   10.000
+        val:          4 count:          2  pcnt-of-good-vals:   10.000
+        val:         10 count:          2  pcnt-of-good-vals:   10.000
+        val:         34 count:          2  pcnt-of-good-vals:   10.000
+        val:          0 count:          1  pcnt-of-good-vals:    5.000
+        val:          3 count:          1  pcnt-of-good-vals:    5.000
+        val:          6 count:          1  pcnt-of-good-vals:    5.000
+        val:          8 count:          1  pcnt-of-good-vals:    5.000
+        val:         12 count:          1  pcnt-of-good-vals:    5.000
+        val:         14 count:          1  pcnt-of-good-vals:    5.000
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:         14  pcnt-of-good-vals:   70.000
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.arrayDetail[0] : array element
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+good vals:          5    bad vals:          0    pcnt-bad:    0.000
+  Characterizing array element values:  min 0 max 12 avg 4.400
+    => distribution of top 4 values out of 4 distinct values:
+        val:          4 count:          2  pcnt-of-good-vals:   40.000
+        val:          0 count:          1  pcnt-of-good-vals:   20.000
+        val:          2 count:          1  pcnt-of-good-vals:   20.000
+        val:         12 count:          1  pcnt-of-good-vals:   20.000
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          5  pcnt-of-good-vals:  100.000
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.arrayDetail[1] : array element
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+good vals:          5    bad vals:          0    pcnt-bad:    0.000
+  Characterizing array element values:  min 2 max 24 avg 9.800
+    => distribution of top 5 values out of 5 distinct values:
+        val:          2 count:          1  pcnt-of-good-vals:   20.000
+        val:          3 count:          1  pcnt-of-good-vals:   20.000
+        val:          6 count:          1  pcnt-of-good-vals:   20.000
+        val:         14 count:          1  pcnt-of-good-vals:   20.000
+        val:         24 count:          1  pcnt-of-good-vals:   20.000
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          5  pcnt-of-good-vals:  100.000
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.arrayDetail[2] : array element
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+good vals:          5    bad vals:          0    pcnt-bad:    0.000
+  Characterizing array element values:  min 8 max 34 avg 20.400
+    => distribution of top 4 values out of 4 distinct values:
+        val:         34 count:          2  pcnt-of-good-vals:   40.000
+        val:          8 count:          1  pcnt-of-good-vals:   20.000
+        val:         10 count:          1  pcnt-of-good-vals:   20.000
+        val:         16 count:          1  pcnt-of-good-vals:   20.000
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          5  pcnt-of-good-vals:  100.000
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.arrayDetail[3] : array element
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+good vals:          5    bad vals:          0    pcnt-bad:    0.000
+  Characterizing array element values:  min 10 max 1500 avg 408.000
+    => distribution of top 5 values out of 5 distinct values:
+        val:         10 count:          1  pcnt-of-good-vals:   20.000
+        val:         18 count:          1  pcnt-of-good-vals:   20.000
+        val:         46 count:          1  pcnt-of-good-vals:   20.000
+        val:        466 count:          1  pcnt-of-good-vals:   20.000
+        val:       1500 count:          1  pcnt-of-good-vals:   20.000
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          5  pcnt-of-good-vals:  100.000

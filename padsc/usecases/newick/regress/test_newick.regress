@@ -1,0 +1,5 @@
+Input file = ../../data/simple.txt
+Output file = /dev/stdout
+warning: P_open: Installing default IO discipline : newline-terminated records
+read reported no errors and passed predicate test.
+(B:3,(A:5,C:10,E:2),D:0)

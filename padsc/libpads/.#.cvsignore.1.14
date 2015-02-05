@@ -1,0 +1,21 @@
+Makefile.ms
+Makefile.mo
+padsc.req
+do_cpp
+linux.i386
+sgi.mips3
+*.i
+*gen.h
+*gen.c
+*.setaside
+SETASIDE
+a.out foo.c
+SETASIDE
+FOO
+freebsd.i386
+bob*
+sol8.sun4
+darwin.ppc
+cygwin.i386
+linux.x86_64
+ppc-darwin

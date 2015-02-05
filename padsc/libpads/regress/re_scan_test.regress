@@ -1,0 +1,49 @@
+Using PADSC IO discipline nlrec
+Try using scan1
+line 0: scan1 found vbars at offset 4
+line 0: scan1 found vbars at offset 4
+line 0: scan1 found term at offset 4
+bytes_skipped to find EOR/newline = 0
+line 1: scan1 found vbars at offset 4
+line 1: scan1 found vbars at offset 4
+line 1: scan1 found term at offset 4
+bytes_skipped to find EOR/newline = 0
+line 2: scan1 found vbars at offset 4
+line 2: UNEXPECTED, scan1 did not find vbars
+bytes_skipped to find EOR/newline = 9
+line 3: scan1 found vbars at offset 4
+line 3: scan1 found vbars at offset 4
+line 3: scan1 found term at offset 4
+bytes_skipped to find EOR/newline = 5
+line 4: scan1 found vbars at offset 4
+line 4: scan1 found vbars at offset 4
+line 4: scan1 found term at offset 4
+bytes_skipped to find EOR/newline = 2
+line 5: scan1 found vbars at offset 4
+line 5: scan1 found vbars at offset 4
+line 5: UNEXPECTED, scan1 did not find term
+Could not find EOR (newline), ending program
+Try using scan2
+line 0: scan2 found vbars at offset 4
+line 0: scan2 found vbars at offset 4
+line 0: scan2 found term at offset 4
+bytes_skipped to find EOR/newline = 0
+line 1: scan2 found vbars at offset 4
+line 1: scan2 found vbars at offset 4
+line 1: scan2 found term at offset 4
+bytes_skipped to find EOR/newline = 0
+line 2: scan2 found vbars at offset 4
+line 2: UNEXPECTED, scan2 found term at offset 9
+bytes_skipped to find EOR/newline = 0
+line 3: scan2 found vbars at offset 4
+line 3: scan2 found vbars at offset 4
+line 3: scan2 found term at offset 4
+bytes_skipped to find EOR/newline = 5
+line 4: scan2 found vbars at offset 4
+line 4: scan2 found vbars at offset 4
+line 4: scan2 found term at offset 4
+bytes_skipped to find EOR/newline = 2
+line 5: scan2 found vbars at offset 4
+line 5: scan2 found vbars at offset 4
+line 5: UNEXPECTED, scan2 did not find sep or term
+Could not find EOR (newline), ending program

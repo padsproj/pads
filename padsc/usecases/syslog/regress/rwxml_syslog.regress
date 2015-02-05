@@ -1,0 +1,114 @@
+Input file = ../../data/syslog
+Output file = /dev/stdout
+<?xml version="1.0" encoding="UTF-8"?>
+<padsns:PSource xmlns:padsns="file:syslog.p">
+    <elt>
+      <syslog_date><val>2004-01-11+00:00:00</val></syslog_date>
+      <syslog_time><val>08:07:01</val></syslog_time>
+      <router_name><val>sideshow</val></router_name>
+      <classification><val>Customer:NONE</val></classification>
+      <source_router><val>sideshow</val></source_router>
+      <source_interface><val>Serial8/1/1/27</val></source_interface>
+      <dest_router><val></val></dest_router>
+      <dest_interface><val></val></dest_interface>
+      <message><val>Line protocol down</val></message>
+      <link_ospf_state><val>UNKNOWN</val></link_ospf_state>
+    </elt>
+    <elt>
+      <syslog_date><val>2003-02-02+00:00:00</val></syslog_date>
+      <syslog_time><val>12:51:04</val></syslog_time>
+      <router_name><val>illinois</val></router_name>
+      <classification><val>Customer:NONE</val></classification>
+      <source_router><val>illinois</val></source_router>
+      <source_interface><val>POS5/2</val></source_interface>
+      <dest_router><val></val></dest_router>
+      <dest_interface><val></val></dest_interface>
+      <message><val>Line protocol down</val></message>
+      <link_ospf_state><val>UNKNOWN</val></link_ospf_state>
+    </elt>
+    <elt>
+      <syslog_date><val>2001-07-19+00:00:00</val></syslog_date>
+      <syslog_time><val>11:14:06</val></syslog_time>
+      <router_name><val>savannah</val></router_name>
+      <classification><val>Customer:NONE</val></classification>
+      <source_router><val>savannah</val></source_router>
+      <source_interface><val>POS5/1</val></source_interface>
+      <dest_router><val></val></dest_router>
+      <dest_interface><val></val></dest_interface>
+      <message><val>Sonet link down (B3 BER exceeds threshold, TC alarm declared)</val></message>
+      <link_ospf_state><val>UNKNOWN 05/8/04|07:15:02|illinois|Customer:NONE|illinois|POS5/2|||Line protocol up|UNKNOWN</val></link_ospf_state>
+    </elt>
+    <elt>
+      <syslog_date><val>2005-02-11+00:00:00</val></syslog_date>
+      <syslog_time><val>04:16:12</val></syslog_time>
+      <router_name><val>illinois</val></router_name>
+      <classification><val>Customer:NONE</val></classification>
+      <source_router><val>illinois</val></source_router>
+      <source_interface><val>POS5/2</val></source_interface>
+      <dest_router><val></val></dest_router>
+      <dest_interface><val></val></dest_interface>
+      <message><val>Line protocol down</val></message>
+      <link_ospf_state><val>UNKNOWN</val></link_ospf_state>
+    </elt>
+    <elt>
+      <syslog_date><val>2003-11-30+00:00:00</val></syslog_date>
+      <syslog_time><val>05:17:44</val></syslog_time>
+      <router_name><val>barron</val></router_name>
+      <classification><val>Customer:NONE</val></classification>
+      <source_router><val>barron</val></source_router>
+      <source_interface><val>Serial4/1/0/23</val></source_interface>
+      <dest_router><val></val></dest_router>
+      <dest_interface><val></val></dest_interface>
+      <message><val>Link up</val></message>
+      <link_ospf_state><val>UNKNOWN</val></link_ospf_state>
+    </elt>
+    <elt>
+      <syslog_date><val>2004-05-15+00:00:00</val></syslog_date>
+      <syslog_time><val>03:08:51</val></syslog_time>
+      <router_name><val>illinois</val></router_name>
+      <classification><val>Customer:NONE</val></classification>
+      <source_router><val>illinois</val></source_router>
+      <source_interface><val>POS5/2</val></source_interface>
+      <dest_router><val></val></dest_router>
+      <dest_interface><val></val></dest_interface>
+      <message><val>Line protocol up</val></message>
+      <link_ospf_state><val>UNKNOWN</val></link_ospf_state>
+    </elt>
+    <elt>
+      <syslog_date><val>2002-02-07+00:00:00</val></syslog_date>
+      <syslog_time><val>01:18:05</val></syslog_time>
+      <router_name><val>savannah</val></router_name>
+      <classification><val>Customer:NONE</val></classification>
+      <source_router><val>savannah</val></source_router>
+      <source_interface><val>POS5/1</val></source_interface>
+      <dest_router><val></val></dest_router>
+      <dest_interface><val></val></dest_interface>
+      <message><val>Sonet link up (B3 BER below threshold, TC alarm cleared)</val></message>
+      <link_ospf_state><val>UNKNOWN</val></link_ospf_state>
+    </elt>
+    <elt>
+      <syslog_date><val>2003-08-01+00:00:00</val></syslog_date>
+      <syslog_time><val>11:12:17</val></syslog_time>
+      <router_name><val>barron</val></router_name>
+      <classification><val>Customer:NONE</val></classification>
+      <source_router><val>barron</val></source_router>
+      <source_interface><val>Serial4/1/0/23</val></source_interface>
+      <dest_router><val></val></dest_router>
+      <dest_interface><val></val></dest_interface>
+      <message><val>Line protocol up</val></message>
+      <link_ospf_state><val>UNKNOWN</val></link_ospf_state>
+    </elt>
+    <elt>
+      <syslog_date><val>2002-04-08+00:00:00</val></syslog_date>
+      <syslog_time><val>04:25:17</val></syslog_time>
+      <router_name><val>call</val></router_name>
+      <classification><val>Customer:NONE</val></classification>
+      <source_router><val>call</val></source_router>
+      <source_interface><val>POS6/0</val></source_interface>
+      <dest_router><val></val></dest_router>
+      <dest_interface><val></val></dest_interface>
+      <message><val>Line protocol down</val></message>
+      <link_ospf_state><val>UNKNOWN</val></link_ospf_state>
+    </elt>
+    <length>9</length>
+</padsns:PSource>

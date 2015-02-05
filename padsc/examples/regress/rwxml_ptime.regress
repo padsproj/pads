@@ -1,0 +1,13 @@
+Input file = ../../data/ptime
+Output file = /dev/stdout
+warning: P_open: Installing default IO discipline : newline-terminated records
+<threetimes>
+  <time1><val>default_time_out_fmt:05:10:20</val></time1>
+  <time2><val>default_time_out_fmt:23:01:01</val></time2>
+  <time3><val>default_time_out_fmt:13:02:03</val></time3>
+</threetimes>
+<threetimes>
+  <time1><val>default_time_out_fmt:01:20:00</val></time1>
+  <time2><val>default_time_out_fmt:21:00:00</val></time2>
+  <time3><val>default_time_out_fmt:12:00:00</val></time3>
+</threetimes>

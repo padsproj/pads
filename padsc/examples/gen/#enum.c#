@@ -1,0 +1,1087 @@
+#include "pads-internal.h"
+#include "enum.h"
+char const *orderStates2str (orderStates which)
+{
+  switch (which)
+    {
+      
+    case S_init: 
+      {
+        return "S_init";
+      }
+      
+    case S_lec: 
+      {
+        return "S_lec";
+      }
+      
+    case S_care: 
+      {
+        return "S_care";
+      }
+      
+    case S_for: 
+      {
+        return "for";
+      }
+      
+    case S_if: 
+      {
+        return "if";
+      }
+      
+    case S_tpv: 
+      {
+        return "S_tpv";
+      }
+      
+    default: 
+      {
+        return "*unknown_tag*";
+      }
+    }
+}
+Perror_t orderStates_init (P_t *pads,orderStates *rep)
+{
+  return P_OK;
+}
+Perror_t orderStates_pd_init (P_t *pads,orderStates_pd *pd)
+{
+  return P_OK;
+}
+Perror_t orderStates_cleanup (P_t *pads,orderStates *rep)
+{
+  return P_OK;
+}
+Perror_t orderStates_pd_cleanup (P_t *pads,orderStates_pd *pd)
+{
+  return P_OK;
+}
+Perror_t orderStates_copy (P_t *pads,orderStates *rep_dst,orderStates *rep_src)
+{
+  PDCI_DISC_2P_CHECKS ("orderStates_copy",rep_src,rep_dst);
+  memcpy ((void *) rep_dst,(void *) rep_src,sizeof(orderStates));
+  return P_OK;
+}
+Perror_t orderStates_pd_copy (P_t *pads,orderStates_pd *pd_dst,orderStates_pd *pd_src)
+{
+  PDCI_DISC_2P_CHECKS ("orderStates_pd_copy",pd_src,pd_dst);
+  memcpy ((void *) pd_dst,(void *) pd_src,sizeof(orderStates_pd));
+  return P_OK;
+}
+void orderStates_m_init (P_t *pads,orderStates_m *mask,Pbase_m baseMask)
+{
+  PDCI_fill_mask ((Pbase_m *) mask,baseMask,sizeof(orderStates_m));
+}
+Perror_t orderStates_m_rec_init (P_t *pads,orderStates_m *mask,Pbase_m baseMask)
+{
+  *mask = baseMask;
+  return P_OK;
+}
+Perror_t orderStates_read (P_t *pads,orderStates_m *m,orderStates_pd *pd,orderStates *rep)
+{
+  PDCI_IODISC_3P_CHECKS ("orderStates_read",m,pd,rep);
+  PD_COMMON_INIT_NO_ERR (pd);
+  PD_COMMON_READ_INIT (pads,pd);
+  PDCI_ECHO_TOKEN_PREFIX(pads,"orderStates_read");
+  {
+    Pstring strlit;
+    Perror_t result;
+    strlit.str = "S_init";
+    strlit.len = 6;
+    if (P_ERR==P_io_checkpoint (pads,1)) 
+      {
+        PDCI_report_err (pads,P_LEV_FATAL,0,P_CHKPOINT_ERR,"orderStates_read",0);
+      }
+    if (P_ERR==Pstr_lit_match (pads,&strlit,1)) 
+      {
+        if (P_ERR==P_io_restore (pads)) 
+          {
+            PDCI_report_err (pads,P_LEV_FATAL,0,P_RESTORE_ERR,"orderStates_read",0);
+          }
+      }
+    else
+      {
+        if (P_ERR==P_io_commit (pads)) 
+          {
+            PDCI_report_err (pads,P_LEV_FATAL,0,P_COMMIT_ERR,"orderStates_read",0);
+          }
+        *rep = S_init;
+        result = P_OK;
+        goto orderStates_findpostlude;
+      }
+    strlit.str = "S_lec";
+    strlit.len = 5;
+    if (P_ERR==P_io_checkpoint (pads,1)) 
+      {
+        PDCI_report_err (pads,P_LEV_FATAL,0,P_CHKPOINT_ERR,"orderStates_read",0);
+      }
+    if (P_ERR==Pstr_lit_match (pads,&strlit,1)) 
+      {
+        if (P_ERR==P_io_restore (pads)) 
+          {
+            PDCI_report_err (pads,P_LEV_FATAL,0,P_RESTORE_ERR,"orderStates_read",0);
+          }
+      }
+    else
+      {
+        if (P_ERR==P_io_commit (pads)) 
+          {
+            PDCI_report_err (pads,P_LEV_FATAL,0,P_COMMIT_ERR,"orderStates_read",0);
+          }
+        *rep = S_lec;
+        result = P_OK;
+        goto orderStates_findpostlude;
+      }
+    strlit.str = "S_care";
+    strlit.len = 6;
+    if (P_ERR==P_io_checkpoint (pads,1)) 
+      {
+        PDCI_report_err (pads,P_LEV_FATAL,0,P_CHKPOINT_ERR,"orderStates_read",0);
+      }
+    if (P_ERR==Pstr_lit_match (pads,&strlit,1)) 
+      {
+        if (P_ERR==P_io_restore (pads)) 
+          {
+            PDCI_report_err (pads,P_LEV_FATAL,0,P_RESTORE_ERR,"orderStates_read",0);
+          }
+      }
+    else
+      {
+        if (P_ERR==P_io_commit (pads)) 
+          {
+            PDCI_report_err (pads,P_LEV_FATAL,0,P_COMMIT_ERR,"orderStates_read",0);
+          }
+        *rep = S_care;
+        result = P_OK;
+        goto orderStates_findpostlude;
+      }
+    strlit.str = "for";
+    strlit.len = 3;
+    if (P_ERR==P_io_checkpoint (pads,1)) 
+      {
+        PDCI_report_err (pads,P_LEV_FATAL,0,P_CHKPOINT_ERR,"orderStates_read",0);
+      }
+    if (P_ERR==Pstr_lit_match (pads,&strlit,1)) 
+      {
+        if (P_ERR==P_io_restore (pads)) 
+          {
+            PDCI_report_err (pads,P_LEV_FATAL,0,P_RESTORE_ERR,"orderStates_read",0);
+          }
+      }
+    else
+      {
+        if (P_ERR==P_io_commit (pads)) 
+          {
+            PDCI_report_err (pads,P_LEV_FATAL,0,P_COMMIT_ERR,"orderStates_read",0);
+          }
+        *rep = S_for;
+        result = P_OK;
+        goto orderStates_findpostlude;
+      }
+    strlit.str = "if";
+    strlit.len = 2;
+    if (P_ERR==P_io_checkpoint (pads,1)) 
+      {
+        PDCI_report_err (pads,P_LEV_FATAL,0,P_CHKPOINT_ERR,"orderStates_read",0);
+      }
+    if (P_ERR==Pstr_lit_match (pads,&strlit,1)) 
+      {
+        if (P_ERR==P_io_restore (pads)) 
+          {
+            PDCI_report_err (pads,P_LEV_FATAL,0,P_RESTORE_ERR,"orderStates_read",0);
+          }
+      }
+    else
+      {
+        if (P_ERR==P_io_commit (pads)) 
+          {
+            PDCI_report_err (pads,P_LEV_FATAL,0,P_COMMIT_ERR,"orderStates_read",0);
+          }
+        *rep = S_if;
+        result = P_OK;
+        goto orderStates_findpostlude;
+      }
+    strlit.str = "S_tpv";
+    strlit.len = 5;
+    if (P_ERR==P_io_checkpoint (pads,1)) 
+      {
+        PDCI_report_err (pads,P_LEV_FATAL,0,P_CHKPOINT_ERR,"orderStates_read",0);
+      }
+    if (P_ERR==Pstr_lit_match (pads,&strlit,1)) 
+      {
+        if (P_ERR==P_io_restore (pads)) 
+          {
+            PDCI_report_err (pads,P_LEV_FATAL,0,P_RESTORE_ERR,"orderStates_read",0);
+          }
+      }
+    else
+      {
+        if (P_ERR==P_io_commit (pads)) 
+          {
+            PDCI_report_err (pads,P_LEV_FATAL,0,P_COMMIT_ERR,"orderStates_read",0);
+          }
+        *rep = S_tpv;
+        result = P_OK;
+        goto orderStates_findpostlude;
+      }
+    // We didn't match any branch
+    (pd->nerr)++;
+    pd->errCode = P_ENUM_MATCH_ERR;
+    PDCI_READFN_GETLOC_SPAN0 (pads,pd->loc);
+    PDCI_report_err (pads,P_LEV_WARN,&(pd->loc),pd->errCode,"orderStates_read","Did not match any branch of Penum orderStates");
+    P_PS_setPanic (pd);
+    result = P_ERR;
+    
+  orderStates_findpostlude: 
+    {
+      // Read to EOR
+      {
+        Pbase_pd tpd;
+        size_t bytes_skipped;
+        PDCI_READFN_BEGINLOC (pads,tpd.loc);
+        if (P_OK==P_io_next_rec (pads,&bytes_skipped)) 
+          {
+            if (bytes_skipped) 
+              {
+                // in genReadEOR1
+                PDCI_READFN_ENDLOC_MINUS1 (pads,tpd.loc);
+                if (!P_PS_isPanic (pd)) 
+                  {
+                    PDCI_report_err (pads,P_LEV_WARN,&(tpd.loc),P_EXTRA_BEFORE_EOR,"orderStates_read","Unexpected data before EOR");
+                    pd->errCode = P_EXTRA_BEFORE_EOR;
+                    pd->loc = (tpd.loc);
+                  }
+                else
+                  {
+                    PDCI_READFN_ENDLOC_MINUS1 (pads,tpd.loc);
+                    PDCI_report_err (pads,P_LEV_INFO,&(tpd.loc),P_NO_ERR,"orderStates_read","Resynching at EOR");
+                  }
+                if (P_spec_level (pads)) 
+                  {
+                    return P_ERR;
+                  }
+              }
+            P_PS_unsetPanic (pd);
+          }
+        else
+          {
+            // in genReadEOR2
+            P_PS_unsetPanic (pd);
+            PDCI_READFN_ENDLOC_MINUS1 (pads,tpd.loc);
+            PDCI_report_err (pads,P_LEV_WARN,&(tpd.loc),P_AT_EOR,"orderStates_read","Found EOF when searching for EOR");
+            if (P_spec_level (pads)) 
+              {
+                return P_ERR;
+              }
+          }
+      }
+      return result;
+    }
+  }
+}
+int orderStates_verify (P_t *pads,orderStates *rep)
+{
+  switch (*rep)
+    {
+      
+    case S_init: 
+      {
+        return 1;
+      }
+      
+    case S_lec: 
+      {
+        return 1;
+      }
+      
+    case S_care: 
+      {
+        return 1;
+      }
+      
+    case S_for: 
+      {
+        return 1;
+      }
+      
+    case S_if: 
+      {
+        return 1;
+      }
+      
+    case S_tpv: 
+      {
+        return 1;
+      }
+      
+    default: 
+      {
+        return 0;
+      }
+    }
+  return 1;
+}
+int orderStates_genPD (P_t *pads,orderStates *rep,orderStates_pd *pd)
+{
+  switch (*rep)
+    {
+      
+    case S_init: 
+      {
+        pd->errCode = P_NO_ERR;
+        pd->nerr = 0;
+        return 1;
+      }
+      
+    case S_lec: 
+      {
+        pd->errCode = P_NO_ERR;
+        pd->nerr = 0;
+        return 1;
+      }
+      
+    case S_care: 
+      {
+        pd->errCode = P_NO_ERR;
+        pd->nerr = 0;
+        return 1;
+      }
+      
+    case S_for: 
+      {
+        pd->errCode = P_NO_ERR;
+        pd->nerr = 0;
+        return 1;
+      }
+      
+    case S_if: 
+      {
+        pd->errCode = P_NO_ERR;
+        pd->nerr = 0;
+        return 1;
+      }
+      
+    case S_tpv: 
+      {
+        pd->errCode = P_NO_ERR;
+        pd->nerr = 0;
+        return 1;
+      }
+      
+    default: 
+      {
+        pd->errCode = P_USER_CONSTRAINT_VIOLATION;
+        pd->nerr = 1;
+        return 0;
+      }
+    }
+  return 1;
+}
+Perror_t orderStates_acc_init (P_t *pads,orderStates_acc *acc)
+{
+  return Pint32_acc_init (pads,acc);
+}
+Perror_t orderStates_acc_reset (P_t *pads,orderStates_acc *acc)
+{
+  return Pint32_acc_reset (pads,acc);
+}
+Perror_t orderStates_acc_cleanup (P_t *pads,orderStates_acc *acc)
+{
+  return Pint32_acc_cleanup (pads,acc);
+}
+Perror_t orderStates_acc_add (P_t *pads,orderStates_acc *acc,orderStates_pd *pd,orderStates *rep)
+{
+  return Pint32_acc_add (pads,acc,pd,(Pint32 *) rep);
+}
+Perror_t orderStates_acc_report2io (P_t *pads,Sfio_t *outstr,char const *prefix,char const *what,int nst,orderStates_acc *acc)
+{
+  PCGEN_ENUM_ACC_REP2IO ("enum orderStates",Pint32_acc_map_report2io (pads,outstr,prefix,what,nst,(Pint32_map_fn) orderStates2str,acc));
+}
+Perror_t orderStates_acc_report (P_t *pads,char const *prefix,char const *what,int nst,orderStates_acc *acc)
+{
+  Perror_t result;
+  Sfio_t *outstr;
+  if (!(outstr = sfstropen ())) 
+    {
+      return P_ERR;
+    }
+  if (((!pads)||(!acc))||(!(pads->disc))) 
+    {
+      return P_ERR;
+    }
+  if (!((pads->disc)->error_fn)) 
+    {
+      return P_OK;
+    }
+  result = orderStates_acc_report2io (pads,outstr,prefix,what,nst,acc);
+  if (P_OK==result) 
+    {
+      ((pads->disc)->error_fn) (0,0,"%s",sfstruse (outstr));
+    }
+  sfstrclose (outstr);
+  return result;
+}
+Perror_t orderStates_acc_report2xml_io (P_t *pads,Sfio_t *outstr,int nst,orderStates_acc *acc)
+{
+  PDCI_indent (outstr,nst);
+  sfprintf (outstr,"<enum>\n");
+  nst++;
+  PDCI_indent (outstr,nst);
+  sfprintf (outstr,"<name>orderStates</name>\n");
+  if (P_ERR==Pint32_acc_map_report2xml_io (pads,outstr,nst,(Pint32_map_fn) orderStates2str,acc)) 
+    {
+      return P_ERR;
+    }
+  nst--;
+  PDCI_indent (outstr,nst);
+  sfprintf (outstr,"</enum>\n");
+  return P_OK;
+}
+ssize_t orderStates_write2buf (P_t *pads,Pbyte *buf,size_t buf_len,int *buf_full,orderStates_pd *pd,orderStates *rep)
+{
+  Pbyte *buf_cursor_PCGEN_=buf;
+  ssize_t length_PCGEN_=0;
+  ssize_t tlen_PCGEN_;
+  PDCI_IODISC_3P_CHECKS_RET_SSIZE ("orderStates_write2buf",buf,buf_full,rep);
+  *buf_full = 0;
+  tlen_PCGEN_ = PDCI_io_rec_open_write2buf (pads,buf_cursor_PCGEN_,buf_len,buf_full,"orderStates_write2buf");
+  PCGEN_TLEN_BUF_UPDATES ();
+  tlen_PCGEN_ = Pcstr_lit_write2buf (pads,buf_cursor_PCGEN_,buf_len,buf_full,orderStates2str (*rep));
+  PCGEN_TLEN_BUF_UPDATES ();
+  tlen_PCGEN_ = PDCI_io_rec_close_write2buf (pads,buf_cursor_PCGEN_,buf_len,buf_full,buf,length_PCGEN_,"orderStates_write2buf");
+  PCGEN_FINAL_TLEN_BUF_UPDATES ();
+  return length_PCGEN_;
+}
+ssize_t orderStates_write2io (P_t *pads,Sfio_t *io,orderStates_pd *pd,orderStates *rep)
+{
+  ssize_t length_PCGEN_=0;
+  ssize_t tlen_PCGEN_;
+  PDCI_IODISC_2P_CHECKS_RET_SSIZE ("orderStates_write2io",pd,rep);
+  tlen_PCGEN_ = PDCI_io_rec_open_write2io (pads,io,"orderStates_write2io");
+  PCGEN_TLEN_IO_UPDATES ();
+  tlen_PCGEN_ = Pcstr_lit_write2io (pads,io,orderStates2str (*rep));
+  PCGEN_TLEN_IO_UPDATES ();
+  tlen_PCGEN_ = PDCI_io_rec_close_write2io (pads,io,"orderStates_write2io");
+  PCGEN_FINAL_TLEN_IO_UPDATES ();
+  return length_PCGEN_;
+}
+ssize_t orderStates_write_xml_2buf (P_t *pads,Pbyte *buf,size_t buf_len,int *buf_full,orderStates_pd *pd,orderStates *rep,char const *_tag,int indent)
+{
+  Pbyte *buf_cursor_PCGEN_=buf;
+  ssize_t length_PCGEN_=0;
+  ssize_t tlen_PCGEN_;
+  PDCI_IODISC_3P_CHECKS_RET_SSIZE ("orderStates_write_xml_2buf",buf,buf_full,rep);
+  *buf_full = 0;
+  PCGEN_ENUM_XML_BUF_OUT ("orderStates",orderStates2str);
+  return length_PCGEN_;
+}
+ssize_t orderStates_write_xml_2io (P_t *pads,Sfio_t *io,orderStates_pd *pd,orderStates *rep,char const *_tag,int indent)
+{
+  ssize_t length_PCGEN_=0;
+  ssize_t tlen_PCGEN_;
+  PDCI_IODISC_3P_CHECKS_RET_SSIZE ("orderStates_write_xml_2io",io,pd,rep);
+  PCGEN_ENUM_XML_IO_OUT ("orderStates",orderStates2str);
+  return length_PCGEN_;
+}
+ssize_t orderStates_fmt2buf_final (P_t *pads,Pbyte *buf,size_t buf_len,int *buf_full,int *requestedOut,char const *delims,orderStates_m *m,orderStates_pd *pd,orderStates *rep)
+{
+  Pbyte *buf_cursor_PCGEN_=buf;
+  ssize_t length_PCGEN_=0;
+  ssize_t tlen_PCGEN_;
+  char const *tdelim_PCGEN_;
+  int trequestedOut_PCGEN_=0;
+  PCGEN_ENUM_FMT2BUF_FINAL_INIT ("orderStates_fmt2buf_final");
+  PCGEN_FMT2BUF_ENUM ("orderStates_fmt2buf_final",orderStates2str (*rep));
+  PCGEN_FMT2BUF_RECORD ("orderStates_fmt2buf_final");
+  return length_PCGEN_;
+}
+ssize_t orderStates_fmt2buf (P_t *pads,Pbyte *buf,size_t buf_len,int *buf_full,int *requestedOut,char const *delims,orderStates_m *m,orderStates_pd *pd,orderStates *rep)
+{
+  Pfmt_fn fn_PCGEN_;
+  PCGEN_ENUM_FMT2BUF_INIT ("orderStates_fmt2buf",fn_PCGEN_ = PDCI_GET_FMT_FN (pads,"orderStates"),P_invoke_fmt_fn (fn_PCGEN_,pads,buf,buf_len,buf_full,requestedOut,delims,m,pd,rep));
+  return orderStates_fmt2buf_final (pads,buf,buf_len,buf_full,requestedOut,delims,m,pd,rep);
+}
+ssize_t orderStates_fmt2io (P_t *pads,Sfio_t *io,int *requestedOut,char const *delims,orderStates_m *m,orderStates_pd *pd,orderStates *rep)
+{
+  Pbyte *buf;
+  int buf_full;
+  size_t buf_len;
+  PCGEN_WRITE2IO_USE_WRITE2BUF ("orderStates_fmt2io",orderStates_fmt2buf (pads,buf,buf_len,&buf_full,requestedOut,delims,m,pd,rep));
+  return -1;
+}
+Perror_t enums_init (P_t *pads,enums *rep)
+{
+  PDCI_DISC_1P_CHECKS ("enums_init",rep);
+  memset ((void *) rep,0,sizeof(enums));
+  return P_OK;
+}
+Perror_t enums_pd_init (P_t *pads,enums_pd *pd)
+{
+  PDCI_DISC_1P_CHECKS ("enums_pd_init",pd);
+  memset ((void *) pd,0,sizeof(enums_pd));
+  return P_OK;
+}
+Perror_t enums_cleanup (P_t *pads,enums *rep)
+{
+  PDCI_DISC_1P_CHECKS ("enums_cleanup",rep);
+  {
+    Puint32 nerr_PCGEN_=0;
+    PCGEN_ARRAY_CLEANUP_AR_DYN_ELT_STAT ("enums_cleanup",rep);
+    return (nerr_PCGEN_==0) ? P_OK : P_ERR;
+  }
+}
+Perror_t enums_pd_cleanup (P_t *pads,enums_pd *pd)
+{
+  PDCI_DISC_1P_CHECKS ("enums_pd_cleanup",pd);
+  {
+    Puint32 nerr_PCGEN_=0;
+    PCGEN_ARRAY_CLEANUP_AR_DYN_ELT_STAT ("enums_pd_cleanup",pd);
+    return (nerr_PCGEN_==0) ? P_OK : P_ERR;
+  }
+}
+Perror_t enums_copy (P_t *pads,enums *rep_dst,enums *rep_src)
+{
+  PDCI_DISC_2P_CHECKS ("enums_copy",rep_src,rep_dst);
+  {
+    Puint32 nerr_PCGEN_=0;
+    PCGEN_ARRAY_COPY_AR_DYN_ELT_STAT ("enums_copy",rep_src,rep_dst);
+    return (nerr_PCGEN_==0) ? P_OK : P_ERR;
+  }
+}
+Perror_t enums_pd_copy (P_t *pads,enums_pd *pd_dst,enums_pd *pd_src)
+{
+  PDCI_DISC_2P_CHECKS ("enums_pd_copy",pd_src,pd_dst);
+  {
+    Puint32 nerr_PCGEN_=0;
+    PCGEN_ARRAY_COPY_AR_DYN_ELT_STAT ("enums_pd_copy",pd_src,pd_dst);
+    return (nerr_PCGEN_==0) ? P_OK : P_ERR;
+  }
+}
+void enums_m_init (P_t *pads,enums_m *mask,Pbase_m baseMask)
+{
+  PDCI_fill_mask ((Pbase_m *) mask,baseMask,sizeof(enums_m));
+}
+Perror_t enums_m_rec_init (P_t *pads,enums_m *mask,Pbase_m baseMask)
+{
+  int did_alloc;
+  Perror_t err=PDCI_alloc_mask_map (pads,&did_alloc);
+  if (P_ERR==err) 
+    goto cleanup;
+  mask->compoundLevel = baseMask;
+  err = orderStates_m_rec_init (pads,&(mask->element),baseMask);
+  if (P_ERR==err) 
+    goto cleanup;
+  
+cleanup: 
+  if (did_alloc&&(P_ERR==PDCI_dealloc_mask_map (pads))) 
+    return P_ERR;
+  return err;
+}
+void enums_ro_params_init (enums_ro_params_t *params)
+{
+}
+Pread_res_t enums_final_checks (P_t *pads,enums_m *m,enums_pd *pd,enums *rep,Ploc_t *loc_ptr,int consume)
+{
+  PDCI_IODISC_3P_CHECKS ("enums_final_checks",m,pd,rep);
+  {
+    PCGEN_ARRAY_UNSET_PARTIAL ();
+    pd->length = (rep->length);
+    return PCGEN_ARRAY_RET_DONE (consume);
+  }
+}
+Pread_res_t enums_read_one_init (P_t *pads,enums_m *m,enums_pd *pd,enums *rep,Ploc_t *loc_ptr)
+{
+  PDCI_IODISC_3P_CHECKS ("enums_read_one_init",m,pd,rep);
+  PD_COMMON_INIT_NO_ERR (pd);
+  PD_COMMON_READ_INIT (pads,pd);
+  {
+    rep->length = 0;
+    pd->neerr = 0;
+    pd->firstError = 0;
+    pd->numRead = 0;
+    PDCI_READFN_BEGINLOC (pads,*loc_ptr);
+    if (0==(rep->_internal)) 
+      {
+        rep->_internal = RMM_new_rbuf (P_rmm_nozero (pads));
+        if (0==(rep->_internal)) 
+          {
+            PDCI_report_err (pads,P_LEV_FATAL,0,P_ALLOC_ERR,"enums_read","");
+          }
+      }
+    if (0==(pd->_internal)) 
+      {
+        pd->_internal = RMM_new_rbuf (P_rmm_zero (pads));
+        if (0==(pd->_internal)) 
+          {
+            PDCI_report_err (pads,P_LEV_FATAL,0,P_ALLOC_ERR,"enums_read","");
+          }
+      }
+    if (P_PS_isPanic (pd)||P_io_at_eof (pads)) 
+      PCGEN_ARRAY_DO_FINAL_CHECKS ();
+    PDCI_READFN_BEGINLOC (pads,pd->loc);
+    PCGEN_ARRAY_SET_PARTIAL ();
+    return PCGEN_ARRAY_RET_ONGOING (0);
+    PCGEN_ARRAY_LBL_FINAL_CHECKS ();
+    return enums_final_checks (pads,m,pd,rep,loc_ptr,0);
+  }
+}
+Pread_res_t enums_read_one (P_t *pads,enums_m *m,enums_pd *pd,enums *rep,Ploc_t *loc_ptr,orderStates_pd *elt_pd,orderStates *elt_rep)
+{
+  PDCI_IODISC_3P_CHECKS ("enums_read_one",m,pd,rep);
+  PDCI_IODISC_2P_CHECKS ("enums_read_one",elt_pd,elt_rep);
+  {
+    int haveData=0;
+    PCGEN_ARRAY_RO_DECS ();
+    PCGEN_ARRAY_TEST_ALREADY_DONE ();
+    PCGEN_ARRAY_GET_BEGIN_LOC ();
+    // Ready to read next element
+    if ((pd->numRead)>0) 
+      {
+      }
+    PCGEN_ARRAY_READ_ELEM_HD (orderStates_read (pads,&(m->element),elt_pd,elt_rep),haveData);
+    PCGEN_ARRAY_TEST_READ_ERR (1,1);
+    if (P_PS_isPanic (elt_pd)) 
+      {
+        {
+          // No recovery possible
+          P_PS_setPanic (pd);
+          PCGEN_ARRAY_DO_FINAL_CHECKS ();
+        }
+      }
+    // Have we finished reading array?
+    if (P_io_at_eof (pads)||P_io_at_eor (pads)) 
+      {
+        PCGEN_ARRAY_DO_FINAL_CHECKS ();
+      }
+    PCGEN_ARRAY_TEST_FC_SOURCE_ADVANCE2 ();
+    return PCGEN_ARRAY_RET_ONGOING (1);
+    PCGEN_ARRAY_LBL_FINAL_CHECKS ();
+    return enums_final_checks (pads,m,pd,rep,loc_ptr,haveData);
+  }
+}
+Perror_t enums_read (P_t *pads,enums_m *m,enums_pd *pd,enums *rep)
+{
+  PDCI_IODISC_3P_CHECKS ("enums_read",m,pd,rep);
+  PD_COMMON_INIT_NO_ERR (pd);
+  PD_COMMON_READ_INIT (pads,pd);
+  {
+    Ploc_t tloc;
+    Ploc_t *loc_ptr=&tloc;
+    int i=0;
+    int result;
+    enums_read_one_init (pads,m,pd,rep,loc_ptr);
+    PCGEN_ARRAY_READ_ALL (PCGEN_ARRAY_RESERVE_SPACE (enums,orderStates,orderStates_pd,0),enums_read_one (pads,m,pd,rep,loc_ptr,&(pd->elts)[i],&(rep->elts)[i]),i = (rep->length),"enums_read");
+    return PCGEN_ARRAY_STD_RETURN ();
+  }
+}
+Pread_res_t enums_reread_one (P_t *pads,enums_m *m,enums_pd *pd,enums *rep,Ploc_t *loc_ptr,orderStates_pd *elt_pd,orderStates *elt_rep,int notFirstElt)
+{
+  PDCI_IODISC_3P_CHECKS ("enums_reread_one",m,pd,rep);
+  PDCI_IODISC_2P_CHECKS ("enums_reread_one",elt_pd,elt_rep);
+  {
+    // Ready to read element
+    PCGEN_ARRAY_REREAD_ELEM_BODY (orderStates_read (pads,&(m->element),elt_pd,elt_rep));
+    return PCGEN_ARRAY_REREAD_ELEM_RET ();
+  }
+}
+int enums_verify (P_t *pads,enums *rep)
+{
+  int violated=0;
+  {
+    int i;
+    for (i = 0; (!violated)&&(i<(rep->length)); i++)
+      {
+        if (!orderStates_verify (pads,&(rep->elts)[i])) 
+          {
+            violated = 1;
+          }
+      }
+  }
+  return !violated;
+}
+int enums_genPD (P_t *pads,enums *rep,enums_pd *pd)
+{
+  pd->errCode = P_NO_ERR;
+  pd->nerr = 0;
+  pd->neerr = 0;
+  pd->numRead = (rep->length);
+  pd->length = (rep->length);
+  if (0!=RBuf_reserve (pd->_internal,(void **) (&(pd->elts)),sizeof(orderStates_pd),rep->length,rep->length)) 
+    {
+      PDCI_report_err (pads,P_LEV_FATAL,0,P_ALLOC_ERR,"enums_read",0);
+    }
+  {
+    int i;
+    for (i = 0; i<(rep->length); i++)
+      {
+        (pd->elts)[i].errCode = P_NO_ERR;
+        if (!orderStates_genPD (pads,&(rep->elts)[i],&(pd->elts)[i])) 
+          {
+            (pd->neerr)++;
+            if (0==(pd->nerr)) 
+              {
+                pd->firstError = i;
+                pd->errCode = P_ARRAY_ELEM_ERR;
+                pd->nerr = 1;
+              }
+          }
+      }
+  }
+  return 0==(pd->nerr);
+}
+Perror_t enums_acc_init (P_t *pads,enums_acc *acc)
+{
+  Puint32 nerr=0;
+  if (P_ERR==Puint32_acc_init (pads,&(acc->length))) 
+    {
+      nerr++;
+    }
+  if (P_ERR==orderStates_acc_init (pads,&(acc->compoundLevel))) 
+    {
+      nerr++;
+    }
+  {
+    int i;
+    for (i = 0; i<10; i++)
+      {
+        if (P_ERR==orderStates_acc_init (pads,&(acc->arrayDetail)[i])) 
+          {
+            nerr++;
+          }
+      }
+  }
+  return (nerr==0) ? P_OK : P_ERR;
+}
+Perror_t enums_acc_reset (P_t *pads,enums_acc *acc)
+{
+  Puint32 nerr=0;
+  if (P_ERR==Puint32_acc_reset (pads,&(acc->length))) 
+    {
+      nerr++;
+    }
+  if (P_ERR==orderStates_acc_reset (pads,&(acc->compoundLevel))) 
+    {
+      nerr++;
+    }
+  {
+    int i;
+    for (i = 0; i<10; i++)
+      {
+        if (P_ERR==orderStates_acc_reset (pads,&(acc->arrayDetail)[i])) 
+          {
+            nerr++;
+          }
+      }
+  }
+  return (nerr==0) ? P_OK : P_ERR;
+}
+Perror_t enums_acc_cleanup (P_t *pads,enums_acc *acc)
+{
+  Puint32 nerr=0;
+  if (P_ERR==Puint32_acc_cleanup (pads,&(acc->length))) 
+    {
+      nerr++;
+    }
+  if (P_ERR==orderStates_acc_cleanup (pads,&(acc->compoundLevel))) 
+    {
+      nerr++;
+    }
+  {
+    int i;
+    for (i = 0; i<10; i++)
+      {
+        if (P_ERR==orderStates_acc_cleanup (pads,&(acc->arrayDetail)[i])) 
+          {
+            nerr++;
+          }
+      }
+  }
+  return (nerr==0) ? P_OK : P_ERR;
+}
+Perror_t enums_acc_add (P_t *pads,enums_acc *acc,enums_pd *pd,enums *rep)
+{
+  Puint32 nerr=0;
+  Pbase_pd tpd;
+  tpd.errCode = (pd->errCode);
+  if ((pd->errCode)!=P_PANIC_SKIPPED) 
+    {
+      if (P_ERR==Puint32_acc_add (pads,&(acc->length),&tpd,&(rep->length))) 
+        {
+          nerr++;
+        }
+      {
+        int i;
+        for (i = 0; i<(rep->length); i++)
+          {
+            if (i<10) 
+              {
+                if (P_ERR==orderStates_acc_add (pads,&(acc->arrayDetail)[i],&(pd->elts)[i],&(rep->elts)[i])) 
+                  {
+                    nerr++;
+                  }
+              }
+            if (P_ERR==orderStates_acc_add (pads,&(acc->compoundLevel),&(pd->elts)[i],&(rep->elts)[i])) 
+              {
+                nerr++;
+              }
+          }
+      }
+    }
+  return (nerr==0) ? P_OK : P_ERR;
+}
+Perror_t enums_acc_report2io (P_t *pads,Sfio_t *outstr,char const *prefix,char const *what,int nst,enums_acc *acc)
+{
+  Sfio_t *tmpstr;
+  if (!(tmpstr = sfstropen ())) 
+    {
+      return P_ERR;
+    }
+  if ((!prefix)||(0==(*prefix))) 
+    {
+      prefix = "<top>";
+    }
+  if (!what) 
+    {
+      what = "array enums of orderStates";
+    }
+  PDCI_nst_prefix_what (outstr,&nst,prefix,what,0);
+  PCGEN_ARRAY_ACC_REP_NOVALS ();
+  if (P_ERR==Puint32_acc_report2io (pads,outstr,"Array lengths","array length",-1,&(acc->length))) 
+    {
+      sfstrclose (tmpstr);
+      return P_ERR;
+    }
+  sfprintf (tmpstr,"%s.allArrayElts",prefix);
+  if (P_ERR==orderStates_acc_report2io (pads,outstr,sfstruse (tmpstr),"all array element",nst,&(acc->compoundLevel))) 
+    {
+      sfstrclose (tmpstr);
+      return P_ERR;
+    }
+  {
+    int i;
+    for (i = 0; i<((((acc->length).max)<10) ? (acc->length).max : 10); i++)
+      {
+        sfprintf (tmpstr,"%s.arrayDetail[%d]",prefix,i);
+        if (P_ERR==orderStates_acc_report2io (pads,outstr,sfstruse (tmpstr),"array element",nst,&(acc->arrayDetail)[i])) 
+          {
+            sfstrclose (tmpstr);
+            return P_ERR;
+          }
+      }
+  }
+  sfstrclose (tmpstr);
+  return P_OK;
+}
+Perror_t enums_acc_report (P_t *pads,char const *prefix,char const *what,int nst,enums_acc *acc)
+{
+  Perror_t result;
+  Sfio_t *outstr;
+  if (!(outstr = sfstropen ())) 
+    {
+      return P_ERR;
+    }
+  if (((!pads)||(!acc))||(!(pads->disc))) 
+    {
+      return P_ERR;
+    }
+  if (!((pads->disc)->error_fn)) 
+    {
+      return P_OK;
+    }
+  result = enums_acc_report2io (pads,outstr,prefix,what,nst,acc);
+  if (P_OK==result) 
+    {
+      ((pads->disc)->error_fn) (0,0,"%s",sfstruse (outstr));
+    }
+  sfstrclose (outstr);
+  return result;
+}
+Perror_t enums_acc_report2xml_io (P_t *pads,Sfio_t *outstr,int nst,enums_acc *acc)
+{
+  PDCI_indent (outstr,nst);
+  sfprintf (outstr,"<PadsAccum xmlns=\"http://www.padsproj.org/pads-accum.xsd\">\n");
+  nst++;
+  PDCI_indent (outstr,nst);
+  sfprintf (outstr,"<PSource >\n");
+  nst++;
+  PDCI_indent (outstr,nst);
+  sfprintf (outstr,"<array>\n");
+  nst++;
+  PDCI_indent (outstr,nst);
+  sfprintf (outstr,"<name>enums</name>\n");
+  PDCI_indent (outstr,nst);
+  sfprintf (outstr,"<length>\n");
+  nst++;
+  if (P_ERR==Puint32_acc_report2xml_io (pads,outstr,nst,&(acc->length))) 
+    {
+      return P_ERR;
+    }
+  nst--;
+  PDCI_indent (outstr,nst);
+  sfprintf (outstr,"</length>\n");
+  PDCI_indent (outstr,nst);
+  sfprintf (outstr,"<compoundLevel >\n");
+  nst++;
+  if (P_ERR==orderStates_acc_report2xml_io (pads,outstr,nst,&(acc->compoundLevel))) 
+    {
+      return P_ERR;
+    }
+  nst--;
+  PDCI_indent (outstr,nst);
+  sfprintf (outstr,"</compoundLevel>\n");
+  {
+    int i;
+    for (i = 0; i<((((acc->length).max)<10) ? (acc->length).max : 10); i++)
+      {
+        PDCI_indent (outstr,nst);
+        sfprintf (outstr,"<arrayDetail >\n");
+        nst++;
+        PDCI_indent (outstr,nst);
+        sfprintf (outstr,"<index>");
+        sfprintf (outstr,"%d",i);
+        sfprintf (outstr,"</index>\n");
+        if (P_ERR==orderStates_acc_report2xml_io (pads,outstr,nst,&(acc->arrayDetail)[i])) 
+          {
+            return P_ERR;
+          }
+        nst--;
+        PDCI_indent (outstr,nst);
+        sfprintf (outstr,"</arrayDetail>\n");
+      }
+  }
+  nst--;
+  PDCI_indent (outstr,nst);
+  sfprintf (outstr,"</array>\n");
+  nst--;
+  PDCI_indent (outstr,nst);
+  sfprintf (outstr,"</PSource>\n");
+  nst--;
+  PDCI_indent (outstr,nst);
+  sfprintf (outstr,"</PadsAccum>\n");
+  return P_OK;
+}
+ssize_t enums_write2buf (P_t *pads,Pbyte *buf,size_t buf_len,int *buf_full,enums_pd *pd,enums *rep)
+{
+  Pbyte *buf_cursor_PCGEN_=buf;
+  ssize_t length_PCGEN_=0;
+  ssize_t tlen_PCGEN_;
+  PDCI_IODISC_3P_CHECKS_RET_SSIZE ("enums_write2buf",buf,buf_full,rep);
+  *buf_full = 0;
+  {
+    int i=0;
+    if ((rep->length)>1) 
+      {
+        for (i = 0; i<((rep->length)-1); i++)
+          {
+            tlen_PCGEN_ = orderStates_write2buf (pads,buf_cursor_PCGEN_,buf_len,buf_full,&(pd->elts)[i],&(rep->elts)[i]);
+            PCGEN_TLEN_BUF_UPDATES ();
+          }
+      }
+    if ((rep->length)!=0) 
+      {
+        tlen_PCGEN_ = orderStates_write2buf (pads,buf_cursor_PCGEN_,buf_len,buf_full,&(pd->elts)[i],&(rep->elts)[i]);
+        PCGEN_TLEN_BUF_UPDATES ();
+      }
+  }
+  return length_PCGEN_;
+}
+ssize_t enums_write2io (P_t *pads,Sfio_t *io,enums_pd *pd,enums *rep)
+{
+  ssize_t length_PCGEN_=0;
+  ssize_t tlen_PCGEN_;
+  PDCI_IODISC_2P_CHECKS_RET_SSIZE ("enums_write2io",pd,rep);
+  {
+    int i=0;
+    if ((rep->length)>1) 
+      {
+        for (i = 0; i<((rep->length)-1); i++)
+          {
+            tlen_PCGEN_ = orderStates_write2io (pads,io,&(pd->elts)[i],&(rep->elts)[i]);
+            PCGEN_TLEN_IO_UPDATES ();
+          }
+      }
+    if ((rep->length)!=0) 
+      {
+        tlen_PCGEN_ = orderStates_write2io (pads,io,&(pd->elts)[i],&(rep->elts)[i]);
+        PCGEN_TLEN_IO_UPDATES ();
+      }
+  }
+  return length_PCGEN_;
+}
+ssize_t enums_write_xml_2buf (P_t *pads,Pbyte *buf,size_t buf_len,int *buf_full,enums_pd *pd,enums *rep,char const *_tag,int indent)
+{
+  Pbyte *buf_cursor_PCGEN_=buf;
+  ssize_t length_PCGEN_=0;
+  ssize_t tlen_PCGEN_;
+  PDCI_IODISC_3P_CHECKS_RET_SSIZE ("enums_write_xml_2buf",buf,buf_full,rep);
+  *buf_full = 0;
+  PCGEN_SOURCE_XML_BUF_OUT_BEGIN ("enum.p");
+  PCGEN_ARRAY_OPEN_XML_BUF_OUT ();
+  {
+    int i=0;
+    for (i = 0; i<(rep->length); i++)
+      {
+        tlen_PCGEN_ = orderStates_write_xml_2buf (pads,buf_cursor_PCGEN_,buf_len,buf_full,&(pd->elts)[i],&(rep->elts)[i],"elt",indent+2);
+        PCGEN_TLEN_BUF_UPDATES ();
+      }
+  }
+  PCGEN_XML_VALUE_BUF_OUT ("length",rep->length);
+  PCGEN_ARRAY_PD_XML_BUF_OUT ();
+  PCGEN_ARRAY_CLOSE_XML_BUF_OUT ();
+  PCGEN_SOURCE_XML_BUF_OUT_END ();
+  return length_PCGEN_;
+}
+ssize_t enums_write_xml_2io (P_t *pads,Sfio_t *io,enums_pd *pd,enums *rep,char const *_tag,int indent)
+{
+  ssize_t length_PCGEN_=0;
+  ssize_t tlen_PCGEN_;
+  PDCI_IODISC_3P_CHECKS_RET_SSIZE ("enums_write_xml_2io",io,pd,rep);
+  PCGEN_SOURCE_XML_IO_OUT_BEGIN ("enum.p");
+  PCGEN_ARRAY_OPEN_XML_IO_OUT ();
+  {
+    int i=0;
+    for (i = 0; i<(rep->length); i++)
+      {
+        tlen_PCGEN_ = orderStates_write_xml_2io (pads,io,&(pd->elts)[i],&(rep->elts)[i],"elt",indent+2);
+        PCGEN_TLEN_IO_UPDATES ();
+      }
+  }
+  PCGEN_XML_VALUE_IO_OUT ("length",rep->length);
+  PCGEN_ARRAY_PD_XML_IO_OUT ();
+  PCGEN_ARRAY_CLOSE_XML_IO_OUT ();
+  PCGEN_SOURCE_XML_IO_OUT_END ();
+  return length_PCGEN_;
+}
+ssize_t enums_fmt2buf_final (P_t *pads,Pbyte *buf,size_t buf_len,int *buf_full,int *requestedOut,char const *delims,enums_m *m,enums_pd *pd,enums *rep)
+{
+  Pbyte *buf_cursor_PCGEN_=buf;
+  ssize_t length_PCGEN_=0;
+  ssize_t tlen_PCGEN_;
+  char const *tdelim_PCGEN_;
+  int trequestedOut_PCGEN_=0;
+  int i=0;
+  PCGEN_STRUCT_FMT2BUF_FINAL_INIT ("enums_fmt2buf_final");
+  PCGEN_FMT2BUF_ARRAY ("enums_fmt2buf_final",orderStates_fmt2buf (pads,buf_cursor_PCGEN_,buf_len,buf_full,&trequestedOut_PCGEN_,tdelim_PCGEN_,&(m->element),&(pd->elts)[i],&(rep->elts)[i]));
+  PCGEN_FMT2BUF_FIX_LAST ();
+  return length_PCGEN_;
+}
+ssize_t enums_fmt2buf (P_t *pads,Pbyte *buf,size_t buf_len,int *buf_full,int *requestedOut,char const *delims,enums_m *m,enums_pd *pd,enums *rep)
+{
+  Pfmt_fn fn_PCGEN_;
+  PCGEN_STANDARD_FMT2BUF_INIT ("enums_fmt2buf",fn_PCGEN_ = PDCI_GET_FMT_FN (pads,"enums"),P_invoke_fmt_fn (fn_PCGEN_,pads,buf,buf_len,buf_full,requestedOut,delims,m,pd,rep));
+  return enums_fmt2buf_final (pads,buf,buf_len,buf_full,requestedOut,delims,m,pd,rep);
+}
+ssize_t enums_fmt2io (P_t *pads,Sfio_t *io,int *requestedOut,char const *delims,enums_m *m,enums_pd *pd,enums *rep)
+{
+  Pbyte *buf;
+  int buf_full;
+  size_t buf_len;
+  PCGEN_WRITE2IO_USE_WRITE2BUF ("enums_fmt2io",enums_fmt2buf (pads,buf,buf_len,&buf_full,requestedOut,delims,m,pd,rep));
+  return -1;
+}
+void P_lib_init ()
+{
+  // Initialize character classes
+}
+

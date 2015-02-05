@@ -1,0 +1,66 @@
+Data file = ../../data/simple
+warning: Error [in Pa_int32_read]: at record 3 at byte 8 : Invalid ASCII character encoding of a number 
+[record 3]091199|>>>n<<<one|Bob Jones
+read returned error
+warning: Error [in simple_types_read]: record 5 byte 11 : Extra data before char separator '|'
+[record 5]09111980|4>>>.3<<<|Whyia C. Nott
+read returned error
+*****************************************************************************************************
+<top> : struct simple_types
+*****************************************************************************************************
+good vals:          3    bad vals:          2    pcnt-bad:   40.000
+  Characterizing number of errors PER READ CALL (nerr-per-read) : min 0 max 2 avg 0.600
+    => distribution of top 3 nerr-per-read values out of 3 distinct nerr-per-read values:
+        val:          0 count:          3 pcnt-of-total-vals:   60.000
+        val:          1 count:          1 pcnt-of-total-vals:   20.000
+        val:          2 count:          1 pcnt-of-total-vals:   20.000
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          5 pcnt-of-total-vals:  100.000
+[Describing each field of <top>]
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.birthdate : date
+    ** N.B. dates are reported in # of seconds since midnight 1-jan-1970, and also as formatted strings (using the default date output format)
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+good vals:          5    bad vals:          0    pcnt-bad:    0.000
+  Characterizing date values:  min 184032000 (1975-11-01) max 1137024000 (2006-01-12) avg rounded down to nearest Puint32: 689592960 (1991-11-08)
+    => distribution of top 5 values out of 5 distinct values:
+        val:  184032000 (1975-11-01) count:          1  pcnt-of-good-vals:   20.000
+        val:  337478400 (1980-09-11) count:          1  pcnt-of-good-vals:   20.000
+        val:  852422400 (1997-01-05) count:          1  pcnt-of-good-vals:   20.000
+        val:  937008000 (1999-09-11) count:          1  pcnt-of-good-vals:   20.000
+        val: 1137024000 (2006-01-12) count:          1  pcnt-of-good-vals:   20.000
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          5  pcnt-of-good-vals:  100.000
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.num_accts : int32
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+good vals:          4    bad vals:          1    pcnt-bad:   20.000
+  Characterizing int32 values:  min 3 max 8 avg 5.000
+    => distribution of top 4 values out of 4 distinct values:
+        val:          3 count:          1  pcnt-of-good-vals:   25.000
+        val:          4 count:          1  pcnt-of-good-vals:   25.000
+        val:          5 count:          1  pcnt-of-good-vals:   25.000
+        val:          8 count:          1  pcnt-of-good-vals:   25.000
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          4  pcnt-of-good-vals:  100.000
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.name : string
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+String lengths: good vals:          5    bad vals:          0    pcnt-bad:    0.000
+  Characterizing string length values:  min 9 max 17 avg 13.400
+    => distribution of top 4 values out of 4 distinct values:
+        val:         13 count:          2  pcnt-of-good-vals:   40.000
+        val:          9 count:          1  pcnt-of-good-vals:   20.000
+        val:         15 count:          1  pcnt-of-good-vals:   20.000
+        val:         17 count:          1  pcnt-of-good-vals:   20.000
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          5  pcnt-of-good-vals:  100.000
+  Characterizing string values:
+    => distribution of top 5 strings out of 5 distinct strings:
+        val: "Bob Jones"         count:          1  pcnt-of-good-vals:   20.000
+        val: "Carlson J. Kessel" count:          1  pcnt-of-good-vals:   20.000
+        val: "Howard K. Bilge"   count:          1  pcnt-of-good-vals:   20.000
+        val: "Jerry Johnson"     count:          1  pcnt-of-good-vals:   20.000
+        val: "Whyia C. Nott"     count:          1  pcnt-of-good-vals:   20.000
+. . . . . . . . . . . . . . . .  . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING                  count:          5  pcnt-of-good-vals:  100.000

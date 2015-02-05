@@ -1,0 +1,53 @@
+Data file = ../../data/array_nosep
+warning: P_open: Installing default IO discipline : newline-terminated records
+read reported no errors and passed predicate test.
+entry_read returned array of length: 3
+read reported no errors and passed predicate test.
+entry_read returned array of length: 2
+*****************************************************************************************************
+<top> : array entry of Pint32
+*****************************************************************************************************
+Array lengths: good vals:          2    bad vals:          0    pcnt-bad:    0.000
+  Characterizing array length values:  min 2 max 3 avg 2.500
+    => distribution of top 2 values out of 2 distinct values:
+        val:          2 count:          1  pcnt-of-good-vals:   50.000
+        val:          3 count:          1  pcnt-of-good-vals:   50.000
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          2  pcnt-of-good-vals:  100.000
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.allArrayElts : all array element
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+good vals:          5    bad vals:          0    pcnt-bad:    0.000
+  Characterizing all array element values:  min 1 max 14 avg 8.600
+    => distribution of top 5 values out of 5 distinct values:
+        val:          1 count:          1  pcnt-of-good-vals:   20.000
+        val:          3 count:          1  pcnt-of-good-vals:   20.000
+        val:         12 count:          1  pcnt-of-good-vals:   20.000
+        val:         13 count:          1  pcnt-of-good-vals:   20.000
+        val:         14 count:          1  pcnt-of-good-vals:   20.000
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          5  pcnt-of-good-vals:  100.000
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.arrayDetail[0] : array element
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+good vals:          2    bad vals:          0    pcnt-bad:    0.000
+  Characterizing array element values:  min 1 max 12 avg 6.500
+    => distribution of top 2 values out of 2 distinct values:
+        val:          1 count:          1  pcnt-of-good-vals:   50.000
+        val:         12 count:          1  pcnt-of-good-vals:   50.000
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          2  pcnt-of-good-vals:  100.000
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.arrayDetail[1] : array element
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+good vals:          2    bad vals:          0    pcnt-bad:    0.000
+  Characterizing array element values:  min 3 max 13 avg 8.000
+    => distribution of top 2 values out of 2 distinct values:
+        val:          3 count:          1  pcnt-of-good-vals:   50.000
+        val:         13 count:          1  pcnt-of-good-vals:   50.000
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          2  pcnt-of-good-vals:  100.000
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.arrayDetail[2] : array element
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+1 array element values, 100 pcnt good, 100 pcnt identical:         14

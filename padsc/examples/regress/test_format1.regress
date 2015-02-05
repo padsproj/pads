@@ -1,0 +1,82 @@
+Data file = ../../data/format1
+warning: P_open: Installing default IO discipline : newline-terminated records
+read reported no errors and passed predicate test.
+test_read returned: id 1  ts 11
+read reported no errors and passed predicate test.
+test_read returned: id 2  ts 22
+read reported no errors and passed predicate test.
+test_read returned: id 3  ts 33
+warning: Error [in test_read]: record 4 byte 2 : Extra data before char separator '|'
+[record 4]4>>>a<<<|44
+test_read returned: error
+warning: Error [in test_read]: record 5 byte 5 : Unexpected data before EOR
+[record 5]5|55>>>ab<<<
+test_read returned: error
+warning: Error [in test_read]: record 6 byte 7 : Missing char separator '|'
+[record 6]000006>>><<<a66b
+Note [in test_read]: record 6 byte 7 : Resynching at EOR
+[record 6]000006>>>a66b<<<
+test_read returned: error
+read reported no errors and passed predicate test.
+test_read returned: id 7  ts 77
+warning: Error [in Pa_int32_read]: at record 8 from byte 1 to byte 5: Invalid ASCII character encoding of a number 
+[record 8]>>>     <<<
+Note [in test_read]: record 8 byte 1 : Resynching at EOR
+[record 8]>>>     <<<
+test_read returned: error
+read reported no errors and passed predicate test.
+test_read returned: id 8  ts 88
+warning: Error [in Pa_int32_read]: at record 10 at byte 1 : Invalid ASCII character encoding of a number 
+[record 10]>>>a<<<4|44
+warning: Error [in test_read]: record 10 byte 4 : User constraint on field ts violated
+[record 10]a4|>>>44<<<
+test_read returned: error
+warning: Error [in Pa_int32_read]: at record 11 from byte 1 to byte 2: Invalid ASCII character encoding of a number 
+[record 11]>>> a<<<4|44
+warning: Error [in test_read]: record 11 byte 5 : User constraint on field ts violated
+[record 11] a4|>>>44<<<
+test_read returned: error
+*****************************************************************************************************
+<top> : struct test
+*****************************************************************************************************
+good vals:          5    bad vals:          6    pcnt-bad:   54.545
+  Characterizing number of errors PER READ CALL (nerr-per-read) : min 0 max 3 avg 1.182
+    => distribution of top 4 nerr-per-read values out of 4 distinct nerr-per-read values:
+        val:          0 count:          5 pcnt-of-total-vals:   45.455
+        val:          3 count:          3 pcnt-of-total-vals:   27.273
+        val:          1 count:          2 pcnt-of-total-vals:   18.182
+        val:          2 count:          1 pcnt-of-total-vals:    9.091
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:         11 pcnt-of-total-vals:  100.000
+[Describing each field of <top>]
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.id : int32
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+good vals:          8    bad vals:          3    pcnt-bad:   27.273
+  Characterizing int32 values:  min 1 max 8 avg 4.500
+    => distribution of top 8 values out of 8 distinct values:
+        val:          1 count:          1  pcnt-of-good-vals:   12.500
+        val:          2 count:          1  pcnt-of-good-vals:   12.500
+        val:          3 count:          1  pcnt-of-good-vals:   12.500
+        val:          4 count:          1  pcnt-of-good-vals:   12.500
+        val:          5 count:          1  pcnt-of-good-vals:   12.500
+        val:          6 count:          1  pcnt-of-good-vals:   12.500
+        val:          7 count:          1  pcnt-of-good-vals:   12.500
+        val:          8 count:          1  pcnt-of-good-vals:   12.500
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          8  pcnt-of-good-vals:  100.000
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.ts : int32
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+good vals:          7    bad vals:          4    pcnt-bad:   36.364
+  Characterizing int32 values:  min 11 max 88 avg 47.143
+    => distribution of top 7 values out of 7 distinct values:
+        val:         11 count:          1  pcnt-of-good-vals:   14.286
+        val:         22 count:          1  pcnt-of-good-vals:   14.286
+        val:         33 count:          1  pcnt-of-good-vals:   14.286
+        val:         44 count:          1  pcnt-of-good-vals:   14.286
+        val:         55 count:          1  pcnt-of-good-vals:   14.286
+        val:         77 count:          1  pcnt-of-good-vals:   14.286
+        val:         88 count:          1  pcnt-of-good-vals:   14.286
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          7  pcnt-of-good-vals:  100.000

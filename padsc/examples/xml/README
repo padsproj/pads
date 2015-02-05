@@ -1,0 +1,139 @@
+
+14 October 2004 - Mary
+
+  I. Organization of tests for PADS/Galax Interface 
+ II. Running Regression Tests for PADS-Galax Interface
+III. Project Description
+------------------------------------------------------
+
+I. Organization of tests for PADS/Galax Interface
+=================================================
+
+  The examples/xml/ directory is organized as follows:
+  
+      gen/	Generated *.{h,c,xsd} files
+      queries/  Example queries
+      README	This file    
+      regress/  Expected results for XML regression tests
+      schema/	PADS-specific XML schemas
+      tests/	Template *.[ch] files for testing 
+      xml/	Generated XML output
+  
+  The are three kinds of template programs for testing:
+      load      in padsc/includes/templates/pglx_load.h
+      bulk      in padsc/includes/templates/pglx_bulk_query.h
+      smart     in padsc/includes/templates/pglx_smart_query.h
+  
+  The "load" template (bulk) reads an entire PADS source, passes the
+  corresponding document node to Galax and Galax serializes the result
+  to standard output.
+  
+  The "bulk" template (bulk) reads an entire PADS source; binds the
+  corresponding document node to the "." variable; Galax applies a query
+  defined in a file to ".", and then serializes the result to standard
+  output.
+  
+  The "smart" template is the same as the "bulk" template, but instead
+  of reading the entire PADS source before query evaluation, it uses
+  smart nodes to incrementally read a Psource Parray during query
+  evaluation.
+
+  The "schema" regression runs the "load" regression and then
+  validates the resulting XML document against the generated .xsd file
+  in padsc/examples/xml/gen. 
+
+  In example/xml/tests/, there are template *.[hc] files for each of
+  the following PADS sources:
+
+	    format7, ai, dibbler_notrailer, dns
+
+  E.g., test_format7.h, which is included in test_{load,bulk,smart}_format7.c.
+
+  The format7, ai, dibbler_notrailer sources all contain top-level
+  Parrays and therefore can be read using smart nodes.  The dns source
+  does not. 
+
+  Each template header defines a default input file and a default
+  query (examples/xml/queries/dot.xq).  
+  
+
+  NB: There are NO checks in the drivers that a-priori determine
+  that the input data source matches the pads description for which
+  the driver is written.
+ 
+II. Running Regression Tests for PADS-Galax Interface
+=====================================================
+
+1. On delenn, set following environment variables:
+
+   (I prefer to set them in .bashrc/.tcshrc instead of changing
+   defaults in INT_DO_SETENV.sh)
+
+   # Installed development version of Galax:
+   setenv GALAX_HOME /home/mff/Galax-0.4.1-devel
+
+   # Perl-compatible library directory:
+   setenv PCRE_LIB_DIR /home/mff/pcre-4.5-rh9/lib/
+
+   # PADS-Galax O'Caml library directory:
+   setenv PADSGLX_HOME /home/mff/pads-glx/api
+
+   # Required to generate PADS code with Galax extensions:
+   setenv USE_GALAX 1
+
+   # O'Caml compiler, version 3.08:
+   setenv OCAML_LIB_DIR /home/mff/ocaml-3.08-rh9/lib/ocaml
+
+2. In examples/xml/tests/
+
+      gmake regress
+
+   This will run regressions for : format7, wsl, ai,
+   dibbler_notrailer, dns
+
+   This regression will compare the output of each
+   {load,bulk,smart}_* program with the expected results in
+   examples/xml/regress.   The default query is ".", which simply
+   returns the entire document.
+
+   The templates/regressions assume that they are executed in the
+   examples/xml/tests/<arch> directory.
+
+3. Running queries
+
+   Example queries are in examples/xml/queries/.
+
+   Each query is prefixed by the source to which it applies, e.g., 
+   ai_date.xq selects all dates from the ai source.
+
+   If the query file does not contain a prefix, then it is a generic
+   query that can be applied to any source. 
+
+   To run a query, in examples/xml/tests/<arch>, execute:
+
+      test_bulk_<source-name> <data-file-name> <query-file-name>
+      test_smart_<source-name> <data-file-name> <query-file-name>
+
+III. Project Description
+========================
+We (Mary Fernandez, Bob Gruber, and Kathleen Fisher) would like to
+host a summer student to work on integrating XQuery with PADS.  In
+particular, we would like to extend the PADS and XQuery
+infrastructures to allow people to write XQuery queries against raw
+data whose format has been described using PADS.  Such queries would
+be compiled using Galax into a typed intermediate representation that
+would invoke functions in a PADS-generated library to access the raw
+data.  The summer student would work on defining the API between Galax
+and PADS and translating the Galax typed intermediate representation
+into C-code to link with the PADS library.
+
+Ideally, the summer student would be a graduate student with
+programming language expertise, as the work will involve a lot of
+meta-programming.  We do not yet have a student in mind, but Greg
+Morrisett, Benjamin Pierce, Craig Chambers, or Zhong Zhao might have
+students with the appropriate skills and interests. 
+
+
+    
+  
+

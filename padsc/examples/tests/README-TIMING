@@ -1,0 +1,79 @@
+Contents:
+  A. Data generation
+  B. Timing
+
+A. Data Generation
+
+To facilitate timing tests, we have added a script for generating data
+files from existing ones. The script is called gendata.sh. It is
+invoked as:
+
+  $PADS_HOME/scripts/gendata.sh <data_dir> <format> <target_size> <output_file>
+
+Note, for the dibbler data just specify the format as "dibbler".
+
+In addition, there are special targets in the makefile for particular
+file sizes.  For example, ../data/dibbler_new.10Mb and similarly for
+50MB and 100MB.
+
+B. Timing
+
+There are two levels of timing supported: base PADS functions and PADS
++ the PADX node interface. While the timing functionality is currently
+in the makefile, we provide shell scripts as an convinient interface.
+
+I. Timing PADS Reading
+
+Timing for any given pads format can be done with one of three
+possible mask settings:
+* Ignore
+* Syntactic check and set
+* All checks and set
+
+In addition, there are two methods of reading supported:
+
+* bulk - in which one the Psource type is specified as the PADS_TY its read function
+  is called once to read the entire file
+
+* linear - in which the header (if any) and the Precord type are specified, and only one 
+  record is read (and stored) at a time.
+
+The driver files for four formats are provide: dibbler_new,ai,ai2, and
+dns. Note that ai2 is a simple variant of ai, with datetimes replaced
+by strings. It exists for testing purposes only.
+
+We provide the shell script time_pads.sh to help with the timing. It
+is invoked as follows:
+
+  time_pads.sh data_format <bulk | linear> data_extension
+
+where the first argument (data_format) is the name of the .p file
+used, the second argument is either "bulk" or "linear", as explained
+above, and the last argument specifies the filename extension for the
+input file, where the data format name is used as the main portion of
+the file name. For example, for format "foo" we might have an input
+file "foo.1000" containing 1000 records for the foo format.
+
+II. Timing PADX Reading
+Timing for PADX supports three methods of reading:
+* Bulk
+* Linear (currently only supported for dibbler_new.p, ai.p,ai2.p)
+* Smart
+
+The timing script is invoked as follows:
+time_pglx.sh data_format <bulk | linear | smart> data_extension
+
+Note that, as the linear functionality is hand-coded for dibbler_new,
+you need to copy the files dibbler_new.c and dibbler_new.h to ../gen
+before running these tests. Ditto for ai and ai2. Eventually, this
+functionality should be supported by the compiler and these files will
+be removed.
+
+To Do:
+- Move timing functionality out of makefile into scripts. Leave only compilation
+management to makefile.
+
+
+
+
+

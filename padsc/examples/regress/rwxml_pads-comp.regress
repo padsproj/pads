@@ -1,0 +1,27 @@
+Input file = ../../data/pads-comp
+Output file = /dev/stdout
+warning: P_open: Installing default IO discipline : newline-terminated records
+<entry>
+  <h>
+    <foo><val>hello</val></foo>
+    <bar><val>hello</val></bar>
+    <x><val>12</val></x>
+  </h>
+  <b>
+    <foo><val>hello</val></foo>
+    <bar><val>hello</val></bar>
+    <x><val>12</val></x>
+  </b>
+</entry>
+<entry>
+  <h>
+    <foo><val>goodbye</val></foo>
+    <bar><val>goodbye</val></bar>
+    <x><val>13</val></x>
+  </h>
+  <b>
+    <foo><val>goodbye</val></foo>
+    <bar><val>goodbye</val></bar>
+    <x><val>13</val></x>
+  </b>
+</entry>

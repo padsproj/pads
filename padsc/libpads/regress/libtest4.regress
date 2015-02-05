@@ -1,0 +1,21 @@
+Using PADSC IO discipline nlrec
+Read string term by vbar: foo1 (length 4)
+Read string term by vbar: bar1 (length 4)
+Read string term by EOR or X : zot1 (length 4)
+bytes_skipped to find EOR/newline = 0
+Read string term by vbar: foo2 (length 4)
+Read string term by vbar: bar2 (length 4)
+Read string term by EOR or X : zot2 (length 4)
+bytes_skipped to find EOR/newline = 0
+Read string term by vbar: foo3 (length 4)
+warning: Error [in Pa_string_read]: at record 3 from byte 6 to byte 14: Expected character literal not found 
+[record 3]foo3|>>>bar3 zot3<<<
+bytes_skipped to find EOR/newline = 9
+Read string term by vbar: foo4 (length 4)
+Read string term by vbar: bar4 (length 4)
+Read string term by EOR or X : zot4 (length 4)
+bytes_skipped to find EOR/newline = 1
+Read string term by vbar: foo5 (length 4)
+Read string term by vbar: bar5 (length 4)
+warning: Error [in Pa_string_CSE_read]: at record 5 just before byte 11: Match for regular expression not found
+[record 5]foo5|bar5|>>><<<

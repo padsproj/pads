@@ -1,0 +1,22 @@
+warning: P_open: Installing default IO discipline : newline-terminated records
+Data file = ../../data/write_struct1
+calling testtwo_read
+testtwo_read returned: id 1  ts 11  f 11 
+1|11|11
+calling testtwo_read
+testtwo_read returned: id 2  ts 22  f 22 
+2|22|22
+calling testtwo_read
+testtwo_read returned: id 3  ts 33  f 33 
+3|33|33
+calling testtwo_read
+warning: Error [in testtwo_read]: record 4 byte 6 : User constraint on field f violated
+[record 4]3|33|>>>10<<<
+testtwo_read returned: error
+3|33|77777
+calling testtwo_read
+warning: Error [in Pa_uint32_read]: at record 5 at byte 1 : Invalid ASCII character encoding of a number 
+[record 5]>>>a<<<|33|33
+testtwo_read returned: error
+99999|33|33
+Found eof

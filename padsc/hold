@@ -1,0 +1,18 @@
+
+/* MACROS USED TO ECHO TOKENS TO FILE FOR LEARNING TRAINING */
+#ifdef ECHO_TOKENS
+#define PDCI_INIT_ECHO_TOKENS(pads) \
+  do { \
+    sfprintf(sfstdout, "Opening Echo Token file: %s\n", ECHO_TOKENS);\
+    sfopen(pads->tokenOut5, ECHO_TOKENS,"w");\
+  } while (0)  /* END_MACRO */
+
+#define PDCI_ECHO_TOKEN(pads, token,beginPtr,endPtr) \
+  do { \
+    sfprint(pads->tokenOut5,"%s:",token);\
+  } while (0)   /* END_MACRO */
+#else
+  /* Echo_tokens not enabled */ \
+  #define PDCI_ECHO_TOKEN(pads, token,beginPtr,endPtr)
+  #define PDCI_INIT_ECHO_TOKENS(pads)
+#endif

@@ -1,0 +1,21 @@
+Using PADSC IO discipline norec
+Read bint8  : -2
+Read buint8 : 2
+Read bint16  : -2
+Read buint16 : 2
+Read bint32  : -2
+Read buint32 : 2
+Read bint64  : -2
+Read buint64 : 2
+bytes_skipped to find EOR/newline = 0
+Read bint8  : -2
+Read buint8 : 2
+Read bint16  : -2
+Read buint16 : 2
+Read bint32  : -2
+Read buint32 : 2
+Read bint64  : -2
+warning: Error [in Pb_uint64_read]: at 512B Block 1 from byte 54 to byte 56: Specified width not available (EOR/EOF encountered) 
+[512B Block 1]\376\002\377\376\000\002\377\377\377\376\000\000\000\002\377\377\377\377\377\377\377\376\000\000\000\000\000\000\000\002\n\376\002\377\376\000\002\377\377\377\376\000\000\000\002\377\377\377\377\377\377\377\376>>>\000\002\n<<<
+bytes_skipped to find EOR/newline = 2
+Main program found eof

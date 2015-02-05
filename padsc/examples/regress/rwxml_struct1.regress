@@ -1,0 +1,53 @@
+Input file = ../../data/struct1
+Output file = /dev/stdout
+warning: P_open: Installing default IO discipline : newline-terminated records
+<testtwo>
+  <header>
+    <id><val>1</val></id>
+    <ts><val>11</val></ts>
+  </header>
+  <f><val>11</val></f>
+</testtwo>
+<testtwo>
+  <header>
+    <id><val>2</val></id>
+    <ts><val>22</val></ts>
+  </header>
+  <f><val>22</val></f>
+</testtwo>
+warning: Error [in test_read]: record 3 byte 2 : Extra data before char separator '|'
+[record 3]3>>>a<<<|33|33
+<testtwo>
+  <header>
+    <id><val>3</val></id>
+    <ts><val>33</val></ts>
+    <pd><pstate>Normal</pstate><nerr>1</nerr><errCode>P_STRUCT_EXTRA_BEFORE_SEP</errCode><loc><b><num>3</num><byte>2</byte></b><e><num>3</num><byte>2</byte></e></loc></pd>
+  </header>
+  <f><val>33</val></f>
+  <pd><pstate>Normal</pstate><nerr>1</nerr><errCode>P_STRUCT_FIELD_ERR</errCode><loc><b><num>3</num><byte>2</byte></b><e><num>3</num><byte>2</byte></e></loc></pd>
+</testtwo>
+warning: Error [in test_read]: record 4 byte 3 : User constraint on field ts violated
+[record 4]4|>>>23<<<|23
+<testtwo>
+  <header>
+    <id><val>4</val></id>
+    <ts><val>23</val>
+    <pd><pstate>Normal</pstate><nerr>1</nerr><errCode>P_USER_CONSTRAINT_VIOLATION</errCode>
+    <loc><b><num>4</num><byte>3</byte></b><e><num>4</num><byte>4</byte></e></loc></pd></ts>
+    <pd><pstate>Normal</pstate><nerr>1</nerr><errCode>P_STRUCT_FIELD_ERR</errCode><loc><b><num>4</num><byte>3</byte></b><e><num>4</num><byte>4</byte></e></loc></pd>
+  </header>
+  <f><val>23</val></f>
+  <pd><pstate>Normal</pstate><nerr>1</nerr><errCode>P_STRUCT_FIELD_ERR</errCode><loc><b><num>4</num><byte>3</byte></b><e><num>4</num><byte>4</byte></e></loc></pd>
+</testtwo>
+warning: Error [in testtwo_read]: record 5 byte 6 : User constraint on field f violated
+[record 5]5|55|>>>65<<<
+<testtwo>
+  <header>
+    <id><val>5</val></id>
+    <ts><val>55</val></ts>
+  </header>
+  <f><val>65</val>
+  <pd><pstate>Normal</pstate><nerr>1</nerr><errCode>P_USER_CONSTRAINT_VIOLATION</errCode>
+  <loc><b><num>5</num><byte>6</byte></b><e><num>5</num><byte>7</byte></e></loc></pd></f>
+  <pd><pstate>Normal</pstate><nerr>1</nerr><errCode>P_STRUCT_FIELD_ERR</errCode><loc><b><num>5</num><byte>6</byte></b><e><num>5</num><byte>7</byte></e></loc></pd>
+</testtwo>

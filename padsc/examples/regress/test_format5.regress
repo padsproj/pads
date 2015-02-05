@@ -1,0 +1,4 @@
+warning: P_open: Installing default IO discipline : newline-terminated records
+Record okay:	x = 3	tagged as phone number: 124
+Record okay:	x = 3	tagged as code: 123
+Record okay:	x = 2	tagged as code: 122

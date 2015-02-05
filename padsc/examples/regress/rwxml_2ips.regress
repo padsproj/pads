@@ -1,0 +1,70 @@
+Input file = ../../data/2ips
+Output file = /dev/stdout
+warning: P_open: Installing default IO discipline : newline-terminated records
+warning: Error [in Pip_read]: at record 1 at byte 1 : Invalid IP address 
+[record 1]>>>1<<<|12.
+warning: Error [in Pip_read]: at record 1 from byte 3 to byte 5: Invalid IP address 
+[record 1]1|>>>12.<<<
+warning: Error [in test_read]: record 1 byte 3 : Unexpected data before EOR
+[record 1]1|>>>12.<<<
+<test>
+  <ip1><pd><pstate>Normal</pstate><nerr>1</nerr><errCode>P_INVALID_IP</errCode><loc><b><num>1</num><byte>1</byte></b><e><num>1</num><byte>1</byte></e></loc></pd></ip1>
+  <ip2><pd><pstate>Normal</pstate><nerr>1</nerr><errCode>P_INVALID_IP</errCode><loc><b><num>1</num><byte>3</byte></b><e><num>1</num><byte>5</byte></e></loc></pd></ip2>
+  <pd><pstate>Normal</pstate><nerr>4</nerr><errCode>P_STRUCT_FIELD_ERR</errCode><loc><b><num>1</num><byte>1</byte></b><e><num>1</num><byte>1</byte></e></loc></pd>
+</test>
+warning: Error [in Pip_read]: at record 2 from byte 1 to byte 7: Invalid IP address 
+[record 2]>>>123.234<<<|255.0.
+warning: Error [in Pip_read]: at record 2 from byte 9 to byte 14: Invalid IP address 
+[record 2]123.234|>>>255.0.<<<
+warning: Error [in test_read]: record 2 byte 9 : Unexpected data before EOR
+[record 2]123.234|>>>255.0.<<<
+<test>
+  <ip1><pd><pstate>Normal</pstate><nerr>1</nerr><errCode>P_INVALID_IP</errCode><loc><b><num>2</num><byte>1</byte></b><e><num>2</num><byte>7</byte></e></loc></pd></ip1>
+  <ip2><pd><pstate>Normal</pstate><nerr>1</nerr><errCode>P_INVALID_IP</errCode><loc><b><num>2</num><byte>9</byte></b><e><num>2</num><byte>14</byte></e></loc></pd></ip2>
+  <pd><pstate>Normal</pstate><nerr>4</nerr><errCode>P_STRUCT_FIELD_ERR</errCode><loc><b><num>2</num><byte>1</byte></b><e><num>2</num><byte>7</byte></e></loc></pd>
+</test>
+warning: Error [in Pip_read]: at record 3 from byte 1 to byte 7: Invalid IP address 
+[record 3]>>>10.0.10<<<|10.10.10
+warning: Error [in Pip_read]: at record 3 from byte 9 to byte 16: Invalid IP address 
+[record 3]10.0.10|>>>10.10.10<<<
+warning: Error [in test_read]: record 3 byte 9 : Unexpected data before EOR
+[record 3]10.0.10|>>>10.10.10<<<
+<test>
+  <ip1><pd><pstate>Normal</pstate><nerr>1</nerr><errCode>P_INVALID_IP</errCode><loc><b><num>3</num><byte>1</byte></b><e><num>3</num><byte>7</byte></e></loc></pd></ip1>
+  <ip2><pd><pstate>Normal</pstate><nerr>1</nerr><errCode>P_INVALID_IP</errCode><loc><b><num>3</num><byte>9</byte></b><e><num>3</num><byte>16</byte></e></loc></pd></ip2>
+  <pd><pstate>Normal</pstate><nerr>4</nerr><errCode>P_STRUCT_FIELD_ERR</errCode><loc><b><num>3</num><byte>1</byte></b><e><num>3</num><byte>7</byte></e></loc></pd>
+</test>
+<test>
+  <ip1><val>6.7.8.9</val></ip1>
+  <ip2><val>6.7.8.9</val></ip2>
+</test>
+warning: Error [in Pip_read]: at record 5 from byte 1 to byte 3: Invalid IP address, numbers must be between 0 and 255 
+[record 5]>>>256<<<.5.5.256|1.1.1.1.
+<test>
+  <ip1><pd><pstate>Normal</pstate><nerr>1</nerr><errCode>P_INVALID_IP_RANGE</errCode><loc><b><num>5</num><byte>1</byte></b><e><num>5</num><byte>3</byte></e></loc></pd></ip1>
+  <ip2><val>1.1.1.1</val></ip2>
+  <pd><pstate>Normal</pstate><nerr>1</nerr><errCode>P_STRUCT_FIELD_ERR</errCode><loc><b><num>5</num><byte>1</byte></b><e><num>5</num><byte>3</byte></e></loc></pd>
+</test>
+warning: Error [in Pip_read]: at record 6 from byte 7 to byte 9: Invalid IP address, numbers must be between 0 and 255 
+[record 6]5.5.5.>>>256<<<|1.1.1.1.
+<test>
+  <ip1><pd><pstate>Normal</pstate><nerr>1</nerr><errCode>P_INVALID_IP_RANGE</errCode><loc><b><num>6</num><byte>7</byte></b><e><num>6</num><byte>9</byte></e></loc></pd></ip1>
+  <ip2><val>1.1.1.1</val></ip2>
+  <pd><pstate>Normal</pstate><nerr>1</nerr><errCode>P_STRUCT_FIELD_ERR</errCode><loc><b><num>6</num><byte>7</byte></b><e><num>6</num><byte>9</byte></e></loc></pd>
+</test>
+warning: Error [in Pip_read]: at record 7 from byte 7 to byte 9: Invalid IP address, numbers must be between 0 and 255 
+[record 7]5.5.5.>>>256<<<.|1.1.1.1.
+<test>
+  <ip1><pd><pstate>Normal</pstate><nerr>1</nerr><errCode>P_INVALID_IP_RANGE</errCode><loc><b><num>7</num><byte>7</byte></b><e><num>7</num><byte>9</byte></e></loc></pd></ip1>
+  <ip2><val>1.1.1.1</val></ip2>
+  <pd><pstate>Normal</pstate><nerr>1</nerr><errCode>P_STRUCT_FIELD_ERR</errCode><loc><b><num>7</num><byte>7</byte></b><e><num>7</num><byte>9</byte></e></loc></pd>
+</test>
+warning: Error [in Pip_read]: at record 8 at byte 11 : Invalid IP address 
+[record 8]255.5.5.5|>>>a<<<1.1.1.1.
+warning: Error [in test_read]: record 8 byte 11 : Unexpected data before EOR
+[record 8]255.5.5.5|>>>a1.1.1.1.<<<
+<test>
+  <ip1><val>255.5.5.5</val></ip1>
+  <ip2><pd><pstate>Normal</pstate><nerr>1</nerr><errCode>P_INVALID_IP</errCode><loc><b><num>8</num><byte>11</byte></b><e><num>8</num><byte>11</byte></e></loc></pd></ip2>
+  <pd><pstate>Normal</pstate><nerr>2</nerr><errCode>P_STRUCT_FIELD_ERR</errCode><loc><b><num>8</num><byte>11</byte></b><e><num>8</num><byte>11</byte></e></loc></pd>
+</test>

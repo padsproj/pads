@@ -1,0 +1,36 @@
+Ptypedef Pstring(:' ':) Purl;
+
+Precord Pstruct entry_t{
+  Purl url;
+  ' ';
+  Pint16_FW(:2:) fwi;
+  "--";
+  Pint8 i8;
+  ',';
+  Popt Puint8 iu8;
+  ';';
+  Pint16 i16;
+  " ";
+  Puint16 iu16;
+  ' ';
+  Pint32 i32;
+  ',';
+  Puint32 iu32;
+  Pre "|;*|";
+  Pint64 i64;
+  " hello ";
+  Puint64 iu64;
+  ',';
+  Pfloat32 f;
+  '#';
+  Pchar c;
+  ' ';
+  Pstring(:' ':) strstop;
+  ' ';
+  Pstring_FW(:2:) str;
+  ' ';
+  Pstring_ME(:"/[abc]+/":) strme;
+  ' ';
+  Pstring_SE(:"/[0-9]/":) strse;
+  Puint32 is;
+};

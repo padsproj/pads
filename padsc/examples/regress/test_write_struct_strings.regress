@@ -1,0 +1,30 @@
+warning: P_open: Installing default IO discipline : newline-terminated records
+Data file = ../../data/write_struct_strings
+calling testtwo_read
+test_read returned: s1 xabcdefghi  s2 abcdefg
+xabcdefghi|abcdefg|
+calling testtwo_read
+warning: Error [in test_read]: record 2 byte 12 : User constraint on field s2 violated
+[record 2]xabcdefghi|>>>abcdefgh<<<|
+test_read returned: error
+xabcdefghi|BAD_LEN|
+calling testtwo_read
+warning: Error [in Pstring_read]: at record 3 from byte 12 to byte 18: Expected character literal not found 
+[record 3]xabcdefghi|>>>abcdefg<<<
+Note [in test_read]: record 3 byte 12 : Resynching at EOR
+[record 3]xabcdefghi|>>>abcdefg<<<
+test_read returned: error
+xabcdefghi|INV_STR|
+calling testtwo_read
+warning: Error [in test_read]: record 4 byte 1 : User constraint on field s1 violated
+[record 4]>>>aabcdefghi<<<|abcdefg|
+test_read returned: error
+xxxxxxxxxx|abcdefg|
+calling testtwo_read
+warning: Error [in Pstring_FW_read]: at record 5 at byte 1 : Specified width not available (EOR/EOF encountered) 
+[record 5]>>> <<<
+warning: Error [in test_read]: record 5 byte 1 : Found EOF when searching for EOR
+[record 5]>>> <<<
+test_read returned: error
+x---------|INV_STR|
+Found eof

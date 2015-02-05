@@ -1,0 +1,107 @@
+Data file = ../../data/liste
+warning: P_open: Installing default IO discipline : newline-terminated records
+*****************************************************************************************************
+<top> : struct entry_t
+*****************************************************************************************************
+good vals:          2    bad vals:          0    pcnt-bad:    0.000
+[Describing each field of <top>]
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+<top>.data : array Array_1 of Union_1
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Array lengths: good vals:          2    bad vals:          0    pcnt-bad:    0.000
+  Characterizing array length values:  min 2 max 4 avg 3.000
+    => distribution of top 2 values out of 2 distinct values:
+        val:          2 count:          1  pcnt-of-good-vals:   50.000
+        val:          4 count:          1  pcnt-of-good-vals:   50.000
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          2  pcnt-of-good-vals:  100.000
+=====================================================================================================
+<top>.data.allArrayElts : all array element
+=====================================================================================================
+Union tag: good vals:          6    bad vals:          0    pcnt-bad:    0.000
+  Characterizing tag values:  min v_int_1 (    2)  max Pdefault_0 (    3)
+    => distribution of top 2 values out of 2 distinct values:
+        val: v_int_1 (    2)      count:          4  pcnt-of-good-vals:   66.667
+        val: Pdefault_0 (    3)   count:          2  pcnt-of-good-vals:   33.333
+. . . . .  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING                   count:          6  pcnt-of-good-vals:  100.000
+[Describing each tag arm of <top>.data.allArrayElts]
+-----------------------------------------------------------------------------------------------------
+<top>.data.allArrayElts.v_str_1 : typedef PPstring [--> Pstring_ME]
+-----------------------------------------------------------------------------------------------------
+(No string values.)
+-----------------------------------------------------------------------------------------------------
+<top>.data.allArrayElts.v_int_1 : uint32
+-----------------------------------------------------------------------------------------------------
+good vals:          4    bad vals:          0    pcnt-bad:    0.000
+  Characterizing uint32 values:  min 354228 max 368880 avg 358006.500
+    => distribution of top 3 values out of 3 distinct values:
+        val:     354228 count:          2  pcnt-of-good-vals:   50.000
+        val:     354690 count:          1  pcnt-of-good-vals:   25.000
+        val:     368880 count:          1  pcnt-of-good-vals:   25.000
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING         count:          4  pcnt-of-good-vals:  100.000
+=====================================================================================================
+<top>.data.arrayDetail[0] : array element
+=====================================================================================================
+Union tag: good vals:          2    bad vals:          0    pcnt-bad:    0.000
+  Characterizing tag values:  min v_int_1 (    2)  max Pdefault_0 (    3)
+    => distribution of top 2 values out of 2 distinct values:
+        val: v_int_1 (    2)      count:          1  pcnt-of-good-vals:   50.000
+        val: Pdefault_0 (    3)   count:          1  pcnt-of-good-vals:   50.000
+. . . . .  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING                   count:          2  pcnt-of-good-vals:  100.000
+[Describing each tag arm of <top>.data.arrayDetail[0]]
+-----------------------------------------------------------------------------------------------------
+<top>.data.arrayDetail[0].v_str_1 : typedef PPstring [--> Pstring_ME]
+-----------------------------------------------------------------------------------------------------
+(No string values.)
+-----------------------------------------------------------------------------------------------------
+<top>.data.arrayDetail[0].v_int_1 : uint32
+-----------------------------------------------------------------------------------------------------
+1 uint32 values, 100 pcnt good, 100 pcnt identical:     354228
+=====================================================================================================
+<top>.data.arrayDetail[1] : array element
+=====================================================================================================
+Union tag: good vals:          2    bad vals:          0    pcnt-bad:    0.000
+  Characterizing tag values:  min v_int_1 (    2)  max Pdefault_0 (    3)
+    => distribution of top 2 values out of 2 distinct values:
+        val: v_int_1 (    2)      count:          1  pcnt-of-good-vals:   50.000
+        val: Pdefault_0 (    3)   count:          1  pcnt-of-good-vals:   50.000
+. . . . .  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        SUMMING                   count:          2  pcnt-of-good-vals:  100.000
+[Describing each tag arm of <top>.data.arrayDetail[1]]
+-----------------------------------------------------------------------------------------------------
+<top>.data.arrayDetail[1].v_str_1 : typedef PPstring [--> Pstring_ME]
+-----------------------------------------------------------------------------------------------------
+(No string values.)
+-----------------------------------------------------------------------------------------------------
+<top>.data.arrayDetail[1].v_int_1 : uint32
+-----------------------------------------------------------------------------------------------------
+1 uint32 values, 100 pcnt good, 100 pcnt identical:     354228
+=====================================================================================================
+<top>.data.arrayDetail[2] : array element
+=====================================================================================================
+Union tag: 1 tag values, 100 pcnt good, 100 pcnt identical: v_int_1 (    2)
+[Describing each tag arm of <top>.data.arrayDetail[2]]
+-----------------------------------------------------------------------------------------------------
+<top>.data.arrayDetail[2].v_str_1 : typedef PPstring [--> Pstring_ME]
+-----------------------------------------------------------------------------------------------------
+(No string values.)
+-----------------------------------------------------------------------------------------------------
+<top>.data.arrayDetail[2].v_int_1 : uint32
+-----------------------------------------------------------------------------------------------------
+1 uint32 values, 100 pcnt good, 100 pcnt identical:     354690
+=====================================================================================================
+<top>.data.arrayDetail[3] : array element
+=====================================================================================================
+Union tag: 1 tag values, 100 pcnt good, 100 pcnt identical: v_int_1 (    2)
+[Describing each tag arm of <top>.data.arrayDetail[3]]
+-----------------------------------------------------------------------------------------------------
+<top>.data.arrayDetail[3].v_str_1 : typedef PPstring [--> Pstring_ME]
+-----------------------------------------------------------------------------------------------------
+(No string values.)
+-----------------------------------------------------------------------------------------------------
+<top>.data.arrayDetail[3].v_int_1 : uint32
+-----------------------------------------------------------------------------------------------------
+1 uint32 values, 100 pcnt good, 100 pcnt identical:     368880
