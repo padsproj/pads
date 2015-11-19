@@ -1,4 +1,6 @@
-#include "vanilla.p"
+// #include "vanilla.p"
+
+Ptypedef Pstring_ME(:"/(?:[A-Za-z][A-Za-z0-9_\\-]*)/":) PPstring;
 
 Punion Union_1 {
  PPstring v_str_1;
